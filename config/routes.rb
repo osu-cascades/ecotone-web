@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
   root 'static_pages#home'
-  get 'signup' => 'admins#new'
+  get 'signup' => 'users#new'
 end

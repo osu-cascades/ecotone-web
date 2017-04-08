@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe AdminsController, type: :controller do
+RSpec.describe UsersController, type: :controller do
 
   describe "GET #new" do
     it "returns http success" do
