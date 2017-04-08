@@ -2,8 +2,9 @@
 <html>
   <head>
     <title><%= full_title(yield(:title)) %> | Ecotone</title>
-    <%= csrf_meta_tags %>
 
+    <%= favicon_link_tag 'favicon.ico' %>
+    <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= render 'layouts/shim' %>
@@ -12,7 +13,7 @@
   <body>
     <%= render 'layouts/header' %>
     <% flash.each do |message_type, message| %>
-      <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
     <% end %>
     <div class="container">
       <%= yield %>
