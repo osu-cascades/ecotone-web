@@ -105,11 +105,15 @@ aside {
       line-height: 1;
     }
     h1 {
-      font-size: 1.4em;
+      font-size: 1.6em;
       text-align: left;
       letter-spacing: -1px;
       margin-bottom: 3px;
       margin-top: 0px;
+    }
+    h2 {
+      font-size: 1.3em;
+      text-align: left;
     }
   }
 }
@@ -173,6 +177,10 @@ input {
   width: 100%;
   margin-top: 45px;
   @include box-sizing;
+}
+
+.alert {
+  margin: 25px 45px 0 45px;
 }
 
 

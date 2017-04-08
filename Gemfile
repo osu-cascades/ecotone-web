@@ -23,6 +23,7 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails', '~> 3.1'
   gem 'capybara'
+  gem 'factory_girl_rails'
 end
 
 group :development do
