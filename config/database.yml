@@ -5,14 +5,14 @@ default: &default
 
 development:
   <<: *default
-  database: nathanstruhs
+  database: ecotone_web_development
 
 test:
   <<: *default
-  database: nathanstruhs
+  database: ecotone_web_test
 
 production:
   <<: *default
-  database: myapp_production
-  username: myapp
+  database: ecotone_web_production
+  username: ecotone_web
   password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
