@@ -19,6 +19,8 @@
       <%= form.label :password_confirmation, "Confirm Password" %>
       <%= form.password_field :password_confirmation, class: 'form-control' %>
 
+      <%= recaptcha_tags %>
+
       <%= form.submit "Create my account", class: "btn btn-primary" %>
     <% end %>
   </div>

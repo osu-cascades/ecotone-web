@@ -5,7 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
+gem 'dotenv-rails', groups: [:development, :test]
 gem 'rails', '~> 5.0.2'
 gem 'bootstrap-sass'
 gem 'pg'
@@ -18,6 +18,7 @@ gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'bcrypt'
+gem "recaptcha", require: "recaptcha/rails"
 
 group :development, :test do
   gem 'byebug', platform: :mri
