@@ -8,6 +8,7 @@ end
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'rails', '~> 5.0.2'
 gem 'bootstrap-sass'
+gem 'haml'
 gem 'pg'
 gem 'puma', '~> 3.0'
 gem 'sass-rails', '~> 5.0'
