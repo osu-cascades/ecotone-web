@@ -4,6 +4,9 @@
     <section class="user-info">
       <h1><%= @user.name %></h1>
       <h2><%= @user.email %></h2>
+      <% if admin?(current_user) || current_user?(@user) %>
+        <%= link_to "Edit Account", edit_user_path(params[:id]) %>
+      <% end %>
     </section>
   </aside>
 </div>
