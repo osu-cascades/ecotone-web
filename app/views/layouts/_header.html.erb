@@ -4,7 +4,9 @@
     <nav>
       <ul class="nav navbar-nav navbar-right">
         <% if logged_in? %>
-          <li><%= link_to "Users", users_path %></li>
+          <% if admin?(current_user) %>
+            <li><%= link_to "Users", users_path %></li>
+          <% end %>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <%= current_user.name %><b class="caret"></b>

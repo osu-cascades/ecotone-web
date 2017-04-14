@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
   before_filter :login_required, except: [:new, :create]
   before_filter :admin_required, only: :destroy
-  before_filter :prevent_normal_users_from_editing_other_users, only: [:edit, :update]
+  before_filter :prevent_normal_users_from_editing_and_viewing_other_users, only: [:edit, :update, :show]
 
   def index
     @users = User.all
@@ -53,7 +53,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 
-  def prevent_normal_users_from_editing_other_users
+  def prevent_normal_users_from_editing_and_viewing_other_users
     redirect_to(root_url) unless current_user.id == params[:id].to_i || admin?(current_user)
   end
 
