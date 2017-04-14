@@ -1,10 +1,9 @@
 module ApplicationHelper
-  def full_title(page_title='')
-    base_title = "Ecotone | OSU Cascades"
-    if page_title.empty?
-      base_title
-    else
-      page_title + " | " + base_title
-    end
+
+  BASE_TITLE = "Ecotone | OSU Cascades"
+
+  def full_title(page_title = '')
+    page_title.empty? ? BASE_TITLE : "#{page_title} | #{BASE_TITLE}"
   end
+
 end
