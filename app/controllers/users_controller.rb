@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
 
-  before_filter :logged_in_user, except: [:new, :create]
-  before_filter :correct_user, only: [:edit, :update]
-  before_filter :admin_user, only: :destroy
+  before_filter :login_required, except: [:new, :create]
+  before_filter :admin_required, only: :destroy
+  before_filter :prevent_normal_users_from_editing_other_users, only: [:edit, :update]
 
   def index
     @users = User.all
@@ -28,9 +28,11 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:id])
   end
 
   def update
+    @user = User.find(params[:id])
     if @user.update_attributes(user_params)
       flash[:success] = "Account updated"
       redirect_to @user
@@ -51,20 +53,8 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 
-  def logged_in_user
-    unless logged_in?
-      flash[:danger] = "Please login"
-      redirect_to login_url
-    end
-  end
-
-  def correct_user
-    @user = User.find(params[:id])
-    redirect_to(root_url) unless current_user?(@user)
-  end
-
-  def admin_user
-    redirect_to(root_url) unless current_user.admin?
+  def prevent_normal_users_from_editing_other_users
+    redirect_to(root_url) unless current_user.id == params[:id].to_i
   end
 
 end
