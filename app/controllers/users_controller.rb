@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
+
   before_filter :logged_in_user, only: [:edit, :update, :show, :index, :destroy]
   before_filter :correct_user, only: [:edit, :update]
   before_filter :admin_user, only: :destroy
 
   def index
-    @users = User.all 
+    @users = User.all
   end
 
   def show
@@ -15,7 +16,7 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def create 
+  def create
     @user = User.new(user_params)
     if verify_recaptcha(model: @user) && @user.save
       log_in @user
@@ -27,11 +28,9 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
   end
 
   def update
-    @user = User.find(params[:id])
     if @user.update_attributes(user_params)
       flash[:success] = "Account updated"
       redirect_to @user
@@ -46,7 +45,7 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
-  private 
+  private
 
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
@@ -67,4 +66,5 @@ class UsersController < ApplicationController
   def admin_user
     redirect_to(root_url) unless current_user.admin?
   end
+
 end
