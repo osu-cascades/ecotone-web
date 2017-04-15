@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "user sign up" do
+RSpec.describe "user sign up" do
   it "rejects invalid signup information" do
     visit signup_path
     fill_in('Name', :with => '')

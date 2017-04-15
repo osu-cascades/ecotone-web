@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "user log in" do
+RSpec.describe "user log in" do
   it "rejects invalid login credentials" do
     visit login_path
     fill_in('Email', :with => '')
@@ -18,6 +18,6 @@ describe "user log in" do
   #   visit login_path
   #   fill_in('Email', :with => 'nathanstruhs@gmail.com')
   #   fill_in('Password', :with => 'password')
-    
+
   # end
 end

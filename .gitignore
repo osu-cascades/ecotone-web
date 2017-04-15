@@ -20,6 +20,7 @@
 # Ignore Byebug command history file.
 .byebug_history
 
-.DS_Store
+spec/examples.txt
 
+.DS_Store
 .env
