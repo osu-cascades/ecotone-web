@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
 
-  before_filter :login_required, except: [:new, :create]
-  before_filter :admin_required, only: :destroy
-  before_filter :prevent_normal_users_from_editing_and_viewing_other_users, only: [:edit, :update, :show]
+  before_action :login_required, except: [:new, :create]
+  before_action :admin_required, only: :destroy
+  before_action :prevent_normal_users_from_editing_and_viewing_other_users, only: [:edit, :update, :show]
 
   def index
     @users = User.all
