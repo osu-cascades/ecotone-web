@@ -1,0 +1,8 @@
+- provide(:title, @user.name)
+.row
+  %aside.col-md-6
+    %section.user-info
+      %h1= @user.name
+      %h2= @user.email
+      - if admin?(current_user) || current_user?(@user)
+        = link_to "Edit Account", edit_user_path(params[:id])
