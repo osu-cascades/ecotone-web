@@ -63,4 +63,10 @@ RSpec.describe User, type: :model do
     expect(user.valid?).to be_falsy
   end
 
+  it "password should match password confirmation" do
+    user.password = "something"
+    user.password_confirmation = "something else"
+    expect(user.valid?).to be_falsy
+  end
+
 end
