@@ -1,22 +1,23 @@
 require 'rails_helper'
 
 RSpec.describe "user sign up" do
+
   it "rejects invalid signup information" do
     visit signup_path
     fill_in('Name', :with => '')
     fill_in('Email', :with => 'user@invalid')
     fill_in('Password', :with => 'a')
-    fill_in('Confirmation', :with => 'z')
+    fill_in('Confirm Password', :with => 'z')
     click_on("Create my account")
     expect(page).to have_content("error")
   end
 
   it "accepts valid signup information" do
     visit signup_path
-    fill_in('Name', :with => 'Issac Newton')
-    fill_in('Email', :with => 'issac_is@valid.com')
+    fill_in('Name', :with => 'Valid User')
+    fill_in('Email', :with => 'example@example.com')
     fill_in('Password', :with => 'password')
-    fill_in('Confirmation', :with => 'password')
+    fill_in('Confirm Password', :with => 'password')
     click_on("Create my account")
     expect(page).to have_content("Welcome") #content could be replaced with "Log out" when functionality is created
   end
