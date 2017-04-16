@@ -5,6 +5,13 @@ RSpec.describe User, type: :model do
   subject(:user) { build :user }
 
   context "when created" do
+    it { is_expected.to have_attributes(
+      name: "Example Valid User",
+      email: "example@example.com",
+      password: "password",
+      password_confirmation: "password",
+      admin: false
+    ) }
     it { is_expected.to be_valid }
     it { is_expected.to_not be_admin }
   end
