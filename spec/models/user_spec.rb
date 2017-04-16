@@ -69,4 +69,8 @@ RSpec.describe User, type: :model do
     expect(user.valid?).to be_falsy
   end
 
+  it "is not an admin by default" do
+    expect(user.admin).to be_falsy
+  end
+
 end
