@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let(:user) { User.new(name: "Example User", email: "user@example.com", password: "password", password_confirmation: "password") }
+  let(:user) { User.create!(name: "Example User", email: "user@example.com", password: "password", password_confirmation: "password") }
 
   it "should be valid" do
     expect(user.valid?).to be_truthy
@@ -40,7 +40,7 @@ RSpec.describe User, type: :model do
     end
   end
 
-  it "email should reject invalid addresses" do 
+  it "email should reject invalid addresses" do
     invalid_addresses = ["user@example,com", "user_at_foo.org", "user.name@example.", "foo@bar_baz.com", "aoo@bar+baz.com"]
     invalid_addresses.each do |ina|
       user.email = ina
@@ -49,8 +49,7 @@ RSpec.describe User, type: :model do
   end
 
   it "email should be unique" do
-    skip
-    duplicate_user = user.dup
+    duplicate_user = User.new(name: "Example User", email: user.email, password: "password", password_confirmation: "password")
     expect(duplicate_user.valid?).to be_falsy
   end
 
@@ -63,4 +62,5 @@ RSpec.describe User, type: :model do
     user.password = 'z' * 5
     expect(user.valid?).to be_falsy
   end
+
 end
