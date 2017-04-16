@@ -1,11 +1,16 @@
 FactoryGirl.define do
+
   factory :user do
-    name "Regular User"
-    email "regular@example.com"
-    #password_digest: { User.digest('password') }
+
+    name "Example Valid User"
+    email "example@example.com"
+    password "password"
+    password_confirmation "password"
 
     trait :admin do
       admin true
     end
+
   end
+
 end
