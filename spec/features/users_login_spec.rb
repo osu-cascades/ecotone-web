@@ -1,23 +1,51 @@
 require 'rails_helper'
 
 RSpec.describe "user log in" do
-  it "rejects invalid login credentials" do
-    visit login_path
-    fill_in('Email', :with => '')
-    fill_in('Password', :with => '')
-    click_button("login-btn")
-    expect(page).to have_content("Log in")
-    expect(page).to have_selector ".alert", text: "Invalid email/password combination"
-    # ensure the flash does not persist after visiting any subsequent screens
-    visit root_path
-    expect(page).to_not have_selector ".alert"
+
+  context "when not logged in" do
+
+    it "provides invalid credentials" do
+      visit login_path
+      fill_in('Email', :with => '')
+      fill_in('Password', :with => '')
+      click_button("login-btn")
+      expect(page).to have_content("Log in")
+      expect(page).to have_selector ".alert", text: "Invalid email/password combination"
+      # ensure the flash does not persist after visiting any subsequent screens
+      visit root_path
+      expect(page).to_not have_selector ".alert"
+    end
+
+    it "provides valid credentials" do
+      user = create(:user)
+      visit login_path
+      fill_in('Email', :with => user.email)
+      fill_in('Password', :with => user.password)
+      click_button("login-btn")
+      expect(page).to have_selector ".alert", text: "Welcome back, #{user.name}"
+    end
+
   end
 
-  # it "accepts valid login credentials" do
-  #   user = FactoryGirl.build_stubbed(:user, name: "Nathan Struhs", email: "nathanstruhs@gmail.com" password: "password")
-  #   visit login_path
-  #   fill_in('Email', :with => 'nathanstruhs@gmail.com')
-  #   fill_in('Password', :with => 'password')
+  context "when logged in" do
 
-  # end
+    let(:user) { create(:user) }
+
+    before do
+      visit login_path
+      fill_in('Email', :with => user.email)
+      fill_in('Password', :with => user.password)
+      click_button("login-btn")
+    end
+
+    it "logs out" do
+      expect(page).to have_no_link "Log in"
+      expect(page).to have_link "Log out"
+      click_link "Log out"
+      expect(page).to have_no_link "Log out"
+      expect(page).to have_link "Log in"
+      expect(page).to have_selector ".alert", text: "You have logged out."
+    end
+  end
+
 end
