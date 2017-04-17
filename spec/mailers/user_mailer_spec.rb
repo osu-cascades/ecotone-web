@@ -1,18 +1,26 @@
 require "rails_helper"
 
 RSpec.describe UserMailer, type: :mailer do
+
   describe "password_reset" do
-    let(:mail) { UserMailer.password_reset }
+
+    let(:user) { build(:user, :resetting_password) }
+    subject(:mail) do
+      UserMailer.password_reset(user)
+    end
 
     it "renders the headers" do
-      expect(mail.subject).to eq("Password reset")
-      expect(mail.to).to eq(["to@example.org"])
-      expect(mail.from).to eq(["from@example.com"])
+      expect(mail.subject).to eq("Ecotone Password Reset")
+      expect(mail.to).to eq([user.email])
+      expect(mail.from).to eq(["noreply@example.com"])
     end
 
     it "renders the body" do
-      expect(mail.body.encoded).to match("Hi")
+      password_reset_url = /http.*:\/\/.*\/password_resets\/#{user.reset_token}\/edit\?email=#{CGI.escape user.email}/
+      expect(mail.body.encoded).to match(password_reset_url)
+      expect(mail.body.encoded).to have_link("Reset password", href: password_reset_url)
     end
+
   end
 
 end
