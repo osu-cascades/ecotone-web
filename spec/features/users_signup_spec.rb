@@ -19,7 +19,7 @@ RSpec.describe "user sign up" do
     fill_in('Password', :with => 'password')
     fill_in('Confirm Password', :with => 'password')
     click_on("Create my account")
-    expect(page).to have_content("Welcome") #content could be replaced with "Log out" when functionality is created
+    expect(page).to have_content("Welcome")
   end
 end
 
