@@ -5,6 +5,7 @@
       %ul.nav.navbar-nav.navbar-right
         - if logged_in?
           - if admin?(current_user)
+            %li= link_to "Plants", plants_path
             %li= link_to "Users", users_path
           %li.dropdown
             %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
