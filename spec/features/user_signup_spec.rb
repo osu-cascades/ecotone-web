@@ -2,8 +2,9 @@ require 'rails_helper'
 
 RSpec.feature "Signing up" do
 
+  before { visit signup_path }
+
   scenario "User provides invalid signup information" do
-    visit signup_path
     fill_in('Name', :with => '')
     fill_in('Email', :with => 'user@invalid')
     fill_in('Password', :with => 'a')
@@ -13,7 +14,6 @@ RSpec.feature "Signing up" do
   end
 
   scenario "User provides valid signup information" do
-    visit signup_path
     fill_in('Name', :with => 'Valid User')
     fill_in('Email', :with => 'example@example.com')
     fill_in('Password', :with => 'password')
