@@ -7,10 +7,7 @@ RSpec.describe "admin create plant" do
     let(:user) { create(:user, :admin) }
 
     before do
-      visit login_path
-      fill_in('Email', :with => user.email)
-      fill_in('Password', :with => user.password)
-      click_button('login-btn')
+      sign_in(user)
     end
 
     it "accepts valid signup information" do
