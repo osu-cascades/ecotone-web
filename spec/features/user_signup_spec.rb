@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe "user sign up" do
+RSpec.feature "Signing up" do
 
-  it "rejects invalid signup information" do
+  scenario "User provides invalid signup information" do
     visit signup_path
     fill_in('Name', :with => '')
     fill_in('Email', :with => 'user@invalid')
@@ -12,7 +12,7 @@ RSpec.describe "user sign up" do
     expect(page).to have_content("error")
   end
 
-  it "accepts valid signup information" do
+  scenario "User provides valid signup information" do
     visit signup_path
     fill_in('Name', :with => 'Valid User')
     fill_in('Email', :with => 'example@example.com')
@@ -21,6 +21,7 @@ RSpec.describe "user sign up" do
     click_on("Create my account")
     expect(page).to have_content("Welcome")
   end
+
 end
 
 # Capybara cheat sheet (Source: https://gist.github.com/zhengjia/428105)
