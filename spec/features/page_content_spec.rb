@@ -18,6 +18,10 @@ RSpec.describe "page content" do
       expect(page).to have_content("Ecotone")
     end
 
+    it "has link to bug reporter" do
+      expect(page).to have_link("Report a Bug")
+    end
+
   end
 
 end
