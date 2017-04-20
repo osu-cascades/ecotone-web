@@ -173,9 +173,13 @@ input {
   margin-bottom: 15px;
 }
 
-// User index
+// Model indexes
 
-.users {
+ul.indexing {
+  margin-bottom: 25px;
+}
+
+.indexing {
   list-style: none;
   margin: 0;
   li {
@@ -183,6 +187,10 @@ input {
     padding: 10px 0;
     border-bottom: 1px solid $gray-lighter;
   }
+}
+
+.add-plant {
+  margin-left: 40px;
 }
 
 // Miscellaneous

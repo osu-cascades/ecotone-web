@@ -1,0 +1,7 @@
+- if @plant.errors.any?
+  #error_explanation
+    .alert.alert-danger
+      The form contains #{ pluralize(@plant.errors.count, "error") }.
+    %ul
+      - @plant.errors.full_messages.each do |msg|
+        %li= msg

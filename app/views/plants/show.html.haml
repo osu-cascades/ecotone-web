@@ -1,0 +1,11 @@
+- provide(:title, @plant.common_name)
+.row
+  %aside.col-md-6
+    %section.user-info
+      %h1= @plant.common_name
+      %h2= @plant.scientific_name
+      %p
+        Habitat type: #{@plant.habitat_type}
+      %p
+        Sunlight tolerance: #{@plant.sunlight_tolerance}
+      = link_to "Edit plant", edit_plant_path(params[:id])
