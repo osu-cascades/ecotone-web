@@ -38,10 +38,8 @@ class PlantsController < ApplicationController
 
   def destroy
     @plant.destroy
-    respond_to do |format|
-      format.html { redirect_to plants_url, notice: 'Plant was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to plants_url
+    flash[:success] = 'Plant successfully destroyed.' 
   end
 
   private
