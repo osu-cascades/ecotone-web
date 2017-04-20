@@ -18,10 +18,7 @@ RSpec.describe "user log in" do
 
     it "provides valid credentials" do
       user = create(:user)
-      visit login_path
-      fill_in('Email', :with => user.email)
-      fill_in('Password', :with => user.password)
-      click_button("login-btn")
+      sign_in(user)
       expect(page).to have_selector ".alert", text: "Welcome back, #{user.name}"
     end
 
@@ -30,13 +27,7 @@ RSpec.describe "user log in" do
   context "when logged in" do
 
     let(:user) { create(:user) }
-
-    before do
-      visit login_path
-      fill_in('Email', :with => user.email)
-      fill_in('Password', :with => user.password)
-      click_button("login-btn")
-    end
+    before { sign_in(user) }
 
     it "logs out" do
       expect(page).to have_no_link "Log in"
