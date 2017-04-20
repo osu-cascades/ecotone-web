@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Plot:</strong>
+  <%= @plot.plot_id %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @plot.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @plot.longitude %>
+</p>
+
+<p>
+  <strong>Elevation:</strong>
+  <%= @plot.elevation %>
+</p>
+
+<p>
+  <strong>Area:</strong>
+  <%= @plot.area %>
+</p>
+
+<p>
+  <strong>Location description:</strong>
+  <%= @plot.location_description %>
+</p>
+
+<p>
+  <strong>Aspect:</strong>
+  <%= @plot.aspect %>
+</p>
+
+<p>
+  <strong>Origin:</strong>
+  <%= @plot.origin %>
+</p>
+
+<p>
+  <strong>Inoculated:</strong>
+  <%= @plot.inoculated %>
+</p>
+
+<p>
+  <strong>Initial planting date:</strong>
+  <%= @plot.initial_planting_date %>
+</p>
+
+<p>
+  <strong>Initial succession:</strong>
+  <%= @plot.initial_succession %>
+</p>
+
+<p>
+  <strong>Photo:</strong>
+  <%= @plot.photo %>
+</p>
+
+<%= link_to 'Edit', edit_plot_path(@plot) %> |
+<%= link_to 'Back', plots_path %>
