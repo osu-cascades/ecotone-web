@@ -154,6 +154,11 @@ input {
   height: auto !important;
 }
 
+input[type="checkbox"] {
+  margin-bottom: 15px;
+  box-shadow: none !important;
+}
+
 #error_explanation {
   color: red;
   ul {

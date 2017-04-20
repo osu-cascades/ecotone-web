@@ -1,16 +1,16 @@
 FactoryGirl.define do
   factory :plot do
-    plot_id 1
-    latitude 1.5
-    longitude 1.5
-    elevation 1.5
-    area 1.5
-    location_description "MyText"
-    aspect "MyString"
-    origin "MyString"
-    inoculated false
-    initial_planting_date "MyString"
-    initial_succession "MyString"
-    photo "MyString"
+      plot_id 1
+      latitude 44.0582
+      longitude 121.3153
+      elevation 3623
+      area 100
+      location_description "South wall of Tykson Hall"
+      aspect "North"
+      origin "Salvage"
+      inoculated true
+      initial_planting_date "Spring, 2017"
+      initial_succession "Nudation"
+      photo "https://example@aws.com"
   end
 end

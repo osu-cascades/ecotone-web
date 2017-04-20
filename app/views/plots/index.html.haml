@@ -1,0 +1,9 @@
+- provide(:title, "All Plots")
+%h1 All Plots
+%ul.indexing
+  - @plots.each do |plot|
+    %li
+      = link_to "Plot ##{plot.plot_id}", plot
+      | #{link_to "delete", plot, method: :delete, data: { confirm: "Delete Plot ##{plot.plot_id}?" }}
+
+= link_to "Add Plot", new_plot_path, class: "btn btn-primary add-plant"

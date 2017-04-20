@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170418193419) do
+ActiveRecord::Schema.define(version: 20170420201151) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,23 @@ ActiveRecord::Schema.define(version: 20170418193419) do
     t.string   "sunlight_tolerance"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+  end
+
+  create_table "plots", force: :cascade do |t|
+    t.integer  "plot_id"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.float    "elevation"
+    t.float    "area"
+    t.text     "location_description"
+    t.string   "aspect"
+    t.string   "origin"
+    t.boolean  "inoculated"
+    t.string   "initial_planting_date"
+    t.string   "initial_succession"
+    t.string   "photo"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
   end
 
   create_table "users", force: :cascade do |t|
