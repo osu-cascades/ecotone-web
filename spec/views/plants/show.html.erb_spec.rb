@@ -9,12 +9,4 @@ RSpec.describe "plants/show", type: :view do
       :sunlight_tolerance => "Sunlight Tolerance"
     ))
   end
-
-  it "renders attributes in <p>" do
-    render
-    expect(rendered).to match(/Common Name/)
-    expect(rendered).to match(/Scientific Name/)
-    expect(rendered).to match(/Habitat Type/)
-    expect(rendered).to match(/Sunlight Tolerance/)
-  end
 end

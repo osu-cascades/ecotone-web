@@ -1,8 +1,10 @@
 FactoryGirl.define do
   factory :plant do
-    common_name "MyString"
-    scientific_name "MyString"
-    habitat_type "MyString"
-    sunlight_tolerance "MyString"
+
+    common_name "Plant Example"
+    scientific_name "Scientific Example"
+    habitat_type "Habitat Example"
+    sunlight_tolerance "Sunlight Example"
+
   end
 end
