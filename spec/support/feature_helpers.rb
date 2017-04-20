@@ -1,3 +1,4 @@
+# http://stackoverflow.com/questions/38906811/rspec-rails-4-access-current-user-from-rspec-feature-spec
 module FeatureHelpers
 
   def sign_in(user)
@@ -8,9 +9,3 @@ module FeatureHelpers
   end
 
 end
-
-RSpec.configure do |config|
-  config.include FeatureHelpers, :type => :feature
-end
-
-# http://stackoverflow.com/questions/38906811/rspec-rails-4-access-current-user-from-rspec-feature-spec
