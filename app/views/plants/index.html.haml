@@ -6,6 +6,4 @@
       = link_to plant.common_name, plant
       | #{link_to "delete", plant, method: :delete, data: { confirm: "Delete #{plant.common_name}?" }}
 
-= link_to new_plant_path, class: 'add_plant' do
-  = image_tag "add.svg", size: "12x12"
-  Add Plant
+= link_to "Add Plant", new_plant_path, class: "btn btn-primary add-plant"

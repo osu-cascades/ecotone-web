@@ -3,6 +3,7 @@
 .row
   .col-md-6.col-md-offset-3
     = form_for(@plant) do |form|
+      = render 'shared/plant_error_messages'
       = form.label :common_name
       = form.text_field :common_name, class: 'form-control'
       = form.label :scientific_name
