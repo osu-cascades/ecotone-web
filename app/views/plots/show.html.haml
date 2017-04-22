@@ -25,4 +25,4 @@
         Initial succession: #{@plot.initial_succession}
       %p
         Photo: #{@plot.photo}    
-      = link_to "Edit plot", edit_plot_path(params[:id])
+      = link_to "Edit plot", edit_plot_path(params[:id]), class: "btn btn-primary edit-btn"

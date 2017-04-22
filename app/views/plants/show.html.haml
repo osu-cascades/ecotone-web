@@ -8,4 +8,4 @@
         Habitat type: #{@plant.habitat_type}
       %p
         Sunlight tolerance: #{@plant.sunlight_tolerance}
-      = link_to "Edit plant", edit_plant_path(params[:id])
+      = link_to "Edit plant", edit_plant_path(params[:id]), class: "btn btn-primary edit-btn"
