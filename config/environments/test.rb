@@ -40,11 +40,4 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
-  before do
-    Recaptcha.configuration.skip_verify_env.delete("test")
-  end
-
-  after do
-    Recaptcha.configuration.skip_verify_env << "test"
-  end
 end
