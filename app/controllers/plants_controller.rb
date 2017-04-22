@@ -20,7 +20,7 @@ class PlantsController < ApplicationController
   def create
     @plant = Plant.new(plant_params)
     if @plant.save
-      redirect_to @plant
+      redirect_to plants_path
       flash[:success] = 'Plant was successfully created.'
     else
       render 'new'
@@ -38,8 +38,8 @@ class PlantsController < ApplicationController
 
   def destroy
     @plant.destroy
-    redirect_to plants_url
-    flash[:success] = 'Plant successfully destroyed.' 
+    redirect_to plants_path
+    flash[:success] = 'Plant was successfully destroyed.' 
   end
 
   private

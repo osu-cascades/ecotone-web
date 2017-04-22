@@ -20,7 +20,7 @@ class PlotsController < ApplicationController
   def create
     @plot = Plot.new(plot_params)
     if @plot.save
-      redirect_to @plot
+      redirect_to plots_path
       flash[:success] = 'Plot was successfully created.'
     else
       render 'new'
@@ -36,12 +36,10 @@ class PlotsController < ApplicationController
     end    
   end
 
-  # DELETE /plots/1
-  # DELETE /plots/1.json
   def destroy
     @plot.destroy
-    redirect_to plots_url
-    flash[:success] = 'Plot successfully destroyed.'
+    redirect_to plots_path
+    flash[:success] = 'Plot was successfully destroyed.'
   end
 
   private
