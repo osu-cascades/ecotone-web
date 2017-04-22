@@ -2,3 +2,12 @@ language: ruby
 rvm:
  - 2.4.0
 
+services:
+  - postgresql
+
+before_script:
+  - psql -c 'create database ecotone_web_test;' -U postgres
+
+test:
+  adapter: postgresql
+  database: ecotone_web_test
