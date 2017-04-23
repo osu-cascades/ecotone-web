@@ -1,15 +1,38 @@
 require 'rails_helper'
 
-# Specs in this file have access to a helper object that includes
-# the UsersHelper. For example:
-#
-# describe UsersHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       expect(helper.concat_strings("this","that")).to eq("this that")
-#     end
-#   end
-# end
-# RSpec.describe UsersHelper, type: :helper do
-#   pending "add some examples to (or delete) #{__FILE__}"
-# end
+RSpec.describe UsersHelper, type: :helper do
+
+  describe "#delete_user_link" do
+
+    context "current user is admin" do
+
+      let(:current_user) { build(:user, :admin) }
+      let(:user) { build(:user) }
+      before { assign(:current_user, current_user) }
+
+      it "returns a link if the user is not the current user" do
+        expect(helper.delete_user_link(current_user, user)).to have_link "delete"
+      end
+
+      it "returns nil if the user is the current user" do
+        expect(helper.delete_user_link(current_user, current_user)).to be_nil
+      end
+
+    end
+
+    context "current user is not an admin" do
+
+      let(:current_user) { build(:user) }
+      let(:user) { build(:user, id: "DIFFERENT") }
+      before { assign(:current_user, current_user) }
+
+      it "returns nil" do
+        expect(helper.delete_user_link(current_user, user)).to be_nil
+        expect(helper.delete_user_link(current_user, current_user)).to be_nil
+      end
+
+    end
+
+  end
+
+end
