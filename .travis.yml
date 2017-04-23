@@ -11,3 +11,7 @@ before_script:
 test:
   adapter: postgresql
   database: ecotone_web_test
+
+env:
+- RECAPTCHA_SITE_KEY=fake
+- RECAPTCHA_SECRET_KEY=fake
