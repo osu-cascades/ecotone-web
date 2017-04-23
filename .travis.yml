@@ -13,5 +13,6 @@ test:
   database: ecotone_web_test
 
 env:
-- RECAPTCHA_SITE_KEY=fake
-- RECAPTCHA_SECRET_KEY=fake
+  global:
+    - RECAPTCHA_SITE_KEY=fake
+    - RECAPTCHA_SECRET_KEY=fake
