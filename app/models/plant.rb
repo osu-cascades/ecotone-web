@@ -3,4 +3,7 @@ class Plant < ApplicationRecord
   validates :scientific_name, presence: true
   validates :habitat_type, presence: true
   validates :sunlight_tolerance, presence: true
+
+  has_attached_file :photo
+
 end
