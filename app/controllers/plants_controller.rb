@@ -2,6 +2,7 @@ class PlantsController < ApplicationController
   
   before_action :set_plant, only: [:show, :edit, :update, :destroy]
   before_action :login_required
+  before_action :admin_required
 
   def index
     @plants = Plant.all
@@ -20,7 +21,7 @@ class PlantsController < ApplicationController
   def create
     @plant = Plant.new(plant_params)
     if @plant.save
-      redirect_to plants_path
+      redirect_to plants_path #, {last_added_id: @plant.id }, then create view method
       flash[:success] = 'Plant was successfully created.'
     else
       render 'new'

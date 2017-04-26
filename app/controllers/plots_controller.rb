@@ -2,6 +2,7 @@ class PlotsController < ApplicationController
 
   before_action :set_plot, only: [:show, :edit, :update, :destroy]
   before_action :login_required
+  before_action :admin_required
 
   def index
     @plots = Plot.all
