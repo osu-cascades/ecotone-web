@@ -24,7 +24,7 @@ class PlantsController < ApplicationController
       redirect_to plants_path #, {last_added_id: @plant.id }, then create view method
       flash[:success] = 'Plant was successfully created.'
     else
-      render 'new'
+      render :new
     end
   end
 
@@ -33,7 +33,7 @@ class PlantsController < ApplicationController
       redirect_to @plant
       flash[:success] = 'Plant was successfully updated.'
     else
-      render 'edit'
+      render :edit
     end
   end
 
