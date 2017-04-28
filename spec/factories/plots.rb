@@ -13,4 +13,8 @@ FactoryGirl.define do
       initial_succession "Nudation"
       photo "https://example@aws.com"
   end
+
+  factory :invalid_plot, parent: :plot do |f|
+    f.plot_id nil
+  end
 end

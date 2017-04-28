@@ -31,7 +31,7 @@ class PlotsController < ApplicationController
   def update
     if @plot.update(plot_params)
       redirect_to @plot
-      flash[:success] = 'Plot was successfuly updated.'
+      flash[:success] = 'Plot was successfully updated.'
     else
       render 'edit'
     end    
