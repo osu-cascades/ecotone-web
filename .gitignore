@@ -24,3 +24,5 @@ spec/examples.txt
 
 .DS_Store
 .env
+
+/public/system

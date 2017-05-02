@@ -1,5 +1,5 @@
 class PlantsController < ApplicationController
-  
+
   before_action :set_plant, only: [:show, :edit, :update, :destroy]
   before_action :login_required
   before_action :admin_required
@@ -40,17 +40,17 @@ class PlantsController < ApplicationController
   def destroy
     @plant.destroy
     redirect_to plants_path
-    flash[:success] = 'Plant was successfully destroyed.' 
+    flash[:success] = 'Plant was successfully destroyed.'
   end
 
   private
-    
+
     def set_plant
       @plant = Plant.find(params[:id])
     end
 
     def plant_params
-      params.require(:plant).permit(:common_name, :scientific_name, :habitat_type, :sunlight_tolerance)
+      params.require(:plant).permit(:common_name, :scientific_name, :habitat_type, :sunlight_tolerance, :photo)
     end
 
 end
