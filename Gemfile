@@ -20,6 +20,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt'
 gem 'recaptcha', require: 'recaptcha/rails'
 gem 'paperclip', '~>5.1.0'
+gem 'aws-sdk', '~>2.9.0'
 
 group :development, :test do
   gem 'byebug', platform: :mri
