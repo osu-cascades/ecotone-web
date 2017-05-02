@@ -4,6 +4,7 @@
   - @plants.each do |plant|
     %li
       = link_to plant.common_name, plant
-      | #{link_to "delete", plant, method: :delete, data: { confirm: "Delete #{plant.common_name}?" }}
+      |
+      = link_to "delete", plant, method: :delete, data: { confirm: "Delete #{plant.common_name}?" }, class: "lnk-danger"
 
 = link_to "Add Plant", new_plant_path, class: "btn btn-primary add-btn"
