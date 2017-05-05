@@ -1,28 +1,19 @@
 - provide(:title, "Plot ##{@plot.plot_id}")
 .row
-  %aside.col-md-6
-    %section.user-info
+  %aside.col-md-3
+    %section
       %h1 Plot ##{@plot.plot_id}
-      %p
-        Description: #{@plot.location_description}
-      %p
-        Latitude: #{@plot.latitude}
-      %p
-        Longitude: #{@plot.longitude}
-      %p
-        Elevation: #{@plot.elevation}
-      %p
-        Area: #{@plot.area}
-      %p
-        Aspect: #{@plot.aspect}
-      %p
-        Origin: #{@plot.origin}
-      %p
-        Inoculated? #{@plot.inoculated}
-      %p
-        Initial planting date: #{@plot.initial_planting_date}
-      %p
-        Initial succession: #{@plot.initial_succession}
-      %p
-        Photo: #{@plot.photo}    
+      %p Description: #{@plot.location_description}
+      %p Latitude: #{@plot.latitude}
+      %p Longitude: #{@plot.longitude}
+      %p Elevation: #{@plot.elevation}
+      %p Area: #{@plot.area}
+      %p Aspect: #{@plot.aspect}
+      %p Origin: #{@plot.origin}
+      %p Inoculated? #{@plot.inoculated}
+      %p Initial planting date: #{@plot.initial_planting_date}
+      %p Initial succession: #{@plot.initial_succession}  
       = link_to "Edit plot", edit_plot_path(params[:id]), class: "btn btn-primary edit-btn"
+  .col-md-6
+    %section
+      .plot_photo= image_tag @plot.photo.url(:default)

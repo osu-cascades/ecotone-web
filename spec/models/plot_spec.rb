@@ -16,7 +16,6 @@ RSpec.describe Plot, type: :model do
       inoculated: true,
       initial_planting_date: "Spring, 2017",
       initial_succession: "Nudation",
-      photo: "https://example@aws.com"
     ) }
     it { is_expected.to be_valid }
   end

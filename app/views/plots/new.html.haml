@@ -2,7 +2,7 @@
 %h1 New Plot
 .row
   .col-md-6.col-md-offset-3
-    = form_for(@plot) do |form|
+    = form_for(@plot, html: { multipart: true }) do |form|
       = render 'shared/plot_error_messages'
       = form.label :plot_id, "Plot ID"
       = form.text_field :plot_id, class: 'form-control'
@@ -27,6 +27,5 @@
       = form.label :initial_succession
       = form.text_field :initial_succession, class: 'form-control'
       = form.label :photo
-      = form.text_field :photo, class: 'form-control'
-
+      = form.file_field :photo, class: 'form-control'
       = form.submit "Add plot", class: "btn btn-primary"

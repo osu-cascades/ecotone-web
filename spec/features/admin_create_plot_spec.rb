@@ -23,7 +23,6 @@ RSpec.describe "admin create plot" do
       check('Inoculated')
       fill_in('Initial planting date', :with => 'Spring 2016')
       fill_in('Initial succession', :with => 'example succession')
-      fill_in('Photo', :with => 'https://example@aws.com')
       click_on("Add plot")
       expect(page).to have_content("Plot was successfully created.")
     end

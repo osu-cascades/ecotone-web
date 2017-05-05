@@ -10,6 +10,6 @@ class Plot < ApplicationRecord
   validates :initial_planting_date, presence: true
   validates :initial_succession, presence: true
 
-  has_attached_file :photo, default_url: "missing.png"
+  has_attached_file :photo, default_url: "missing.png", styles: { default: "400x400#", thumbnail: "50x50#" }
   validates_attachment_content_type :photo, content_type: /\Aimage/
 end

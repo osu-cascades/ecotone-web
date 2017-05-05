@@ -11,7 +11,6 @@ FactoryGirl.define do
       inoculated true
       initial_planting_date "Spring, 2017"
       initial_succession "Nudation"
-      photo "https://example@aws.com"
   end
 
   factory :invalid_plot, parent: :plot do |f|
