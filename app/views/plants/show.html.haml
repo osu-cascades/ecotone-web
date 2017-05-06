@@ -2,7 +2,7 @@
 .row
   %aside.col-md-6
     %section
-      .plant_photo= image_tag @plant.photo.url
+      .plant_photo= image_tag @plant.photo.url(:default)
       %h1= @plant.common_name
       %h2
         %em= @plant.scientific_name

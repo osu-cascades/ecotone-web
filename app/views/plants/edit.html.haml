@@ -3,6 +3,7 @@
 .row
   .col-md-6.col-md-offset-3
     = form_for(@plant, html: {multipart: true}) do |form|
+      = render partial: 'shared/error_messages', locals: { object: @plant }
       = form.label :common_name
       = form.text_field :common_name, class: 'form-control'
       = form.label :scientific_name

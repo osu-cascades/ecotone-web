@@ -3,7 +3,7 @@
 .row
   .col-md-6.col-md-offset-3
     = form_for(@plot, html: { multipart: true }) do |form|
-      = render 'shared/plot_error_messages'
+      = render partial: 'shared/error_messages', locals: { object: @plot }
       = form.label :plot_id, "Plot ID"
       = form.text_field :plot_id, class: 'form-control'
       = form.label :location_description
