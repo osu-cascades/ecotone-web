@@ -1,14 +1,24 @@
 - provide(:title, @plant.common_name)
 .row
-  %aside.col-md-3
+  %aside.col-md-12
     %section
       %h1= @plant.common_name
       %h2
         %em= @plant.scientific_name
-      %p Description: #{@plant.description}
-      %p Habitat type: #{@plant.habitat_type}
-      %p Sunlight tolerance: #{@plant.sunlight_tolerance}
-      = link_to "Edit plant", edit_plant_path(params[:id]), class: "btn btn-primary edit-btn"
-  .col-md-6
     %section
-      .plant_photo= image_tag @plant.photo.url(:default)
+      .col-md-4
+        .plant_photo= image_tag @plant.photo.url(:default)
+      .col-md-8
+        %section
+          %p= @plant.description
+          %p
+            %strong Habitat type:
+            = @plant.habitat_type
+          %p
+            %strong Sunlight tolerance:
+            = @plant.sunlight_tolerance
+    %section
+      .col-md-2
+        = link_to "Edit plant", edit_plant_path(@plant), class: "btn btn-primary edit-btn"
+      .col-md-1
+        = link_to "delete", @plant, method: :delete, data: { confirm: "Delete #{@plant.common_name}?" }, class: "lnk-danger lnk-show-delete"
