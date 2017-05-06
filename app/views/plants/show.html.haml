@@ -4,7 +4,8 @@
     %section
       .plant_photo= image_tag @plant.photo.url
       %h1= @plant.common_name
-      %h2= @plant.scientific_name
+      %h2
+        %em= @plant.scientific_name
       %p Habitat type: #{@plant.habitat_type}
       %p Sunlight tolerance: #{@plant.sunlight_tolerance}
       = link_to "Edit plant", edit_plant_path(params[:id]), class: "btn btn-primary edit-btn"
