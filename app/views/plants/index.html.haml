@@ -2,11 +2,13 @@
 %h1 All Plants
 %ul.indexing
   - @plants.each do |plant|
-    %li
-      .plant
+    %li.plant
+      .col-md-1
         = link_to image_tag(plant.photo.url(:thumbnail)), plant
+      .col-md-8
         %h3= link_to plant.common_name, plant
         %h4= plant.scientific_name
-      = link_to "edit", edit_plant_path(plant)
+        - if admin?(current_user)
+          %p= link_to "edit", edit_plant_path(plant)
 
 = link_to "Add Plant", new_plant_path, class: "btn btn-primary add-btn"
