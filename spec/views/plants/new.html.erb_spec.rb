@@ -6,7 +6,7 @@ RSpec.describe "plants/new", type: :view do
       :common_name => "MyString",
       :scientific_name => "MyString",
       :habitat_type => "MyString",
-      :sunlight_tolerance => "MyString"
+      :tolerance => "MyString"
     ))
   end
 
@@ -21,7 +21,7 @@ RSpec.describe "plants/new", type: :view do
 
       assert_select "input#plant_habitat_type[name=?]", "plant[habitat_type]"
 
-      assert_select "input#plant_sunlight_tolerance[name=?]", "plant[sunlight_tolerance]"
+      assert_select "input#plant_tolerance[name=?]", "plant[tolerance]"
     end
   end
 end

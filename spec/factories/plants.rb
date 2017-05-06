@@ -5,7 +5,7 @@ FactoryGirl.define do
     scientific_name "Scientific Example"
     description "Description Example"
     habitat_type "Habitat Example"
-    sunlight_tolerance "Sunlight Example"
+    tolerance "Tolerance Example"
   end
 
   factory :invalid_plant, parent: :plant do |f|

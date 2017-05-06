@@ -16,7 +16,7 @@ RSpec.describe "admin create plant" do
       fill_in('Scientific name', :with => 'Species Name example')
       fill_in('Description', :with => 'Description example')
       fill_in('Habitat type', :with => 'Jungle')
-      fill_in('Sunlight tolerance', :with => 'Very low')
+      fill_in('Tolerance', :with => 'Very low')
       click_on("Add plant")
       expect(page).to have_content("Plant was successfully created")
     end

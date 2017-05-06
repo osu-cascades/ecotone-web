@@ -10,7 +10,7 @@ RSpec.describe Plant, type: :model do
       scientific_name: "Scientific Example",
       description: "Description Example",
       habitat_type: "Habitat Example",
-      sunlight_tolerance: "Sunlight Example"
+      tolerance: "Tolerance Example"
     ) }
     it { is_expected.to be_valid }
   end
@@ -20,6 +20,6 @@ RSpec.describe Plant, type: :model do
     it { is_expected.to validate_presence_of(:scientific_name) }
     it { is_expected.to validate_presence_of(:description) }
     it { is_expected.to validate_presence_of(:habitat_type) }
-    it { is_expected.to validate_presence_of(:sunlight_tolerance) }
+    it { is_expected.to validate_presence_of(:tolerance) }
   end
 end

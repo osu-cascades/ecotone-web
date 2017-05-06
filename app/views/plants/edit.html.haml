@@ -12,8 +12,8 @@
       = form.text_area :description, class: 'form-control', rows: 5
       = form.label :habitat_type
       = form.text_field :habitat_type, class: 'form-control'
-      = form.label :sunlight_tolerance
-      = form.text_field :sunlight_tolerance, class: 'form-control'
+      = form.label :tolerance
+      = form.text_field :tolerance, class: 'form-control'
       = form.label :photo, class: 'form-label-photo'
       = image_tag @plant.photo.url
       = form.file_field :photo, class: 'form-control'
