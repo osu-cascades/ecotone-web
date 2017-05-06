@@ -9,11 +9,12 @@
       = form.label :scientific_name
       = form.text_field :scientific_name, class: 'form-control'
       = form.label :description
-      = form.text_area :description, class: 'form-control'
+      = form.text_area :description, class: 'form-control', rows: 5
       = form.label :habitat_type
       = form.text_field :habitat_type, class: 'form-control'
       = form.label :sunlight_tolerance
       = form.text_field :sunlight_tolerance, class: 'form-control'
-      = form.label :photo
+      = form.label :photo, class: 'form-label-photo'
+      = image_tag @plant.photo.url
       = form.file_field :photo, class: 'form-control'
       = form.submit "Save changes", class: "btn btn-primary"
