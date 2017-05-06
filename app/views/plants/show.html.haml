@@ -1,11 +1,14 @@
 - provide(:title, @plant.common_name)
 .row
-  %aside.col-md-6
+  %aside.col-md-3
     %section
-      .plant_photo= image_tag @plant.photo.url(:default)
       %h1= @plant.common_name
       %h2
         %em= @plant.scientific_name
+      %p Description: #{@plant.description}
       %p Habitat type: #{@plant.habitat_type}
       %p Sunlight tolerance: #{@plant.sunlight_tolerance}
       = link_to "Edit plant", edit_plant_path(params[:id]), class: "btn btn-primary edit-btn"
+  .col-md-6
+    %section
+      .plant_photo= image_tag @plant.photo.url(:default)
