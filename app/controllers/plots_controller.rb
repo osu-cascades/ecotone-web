@@ -5,7 +5,7 @@ class PlotsController < ApplicationController
   before_action :admin_required
 
   def index
-    @plots = Plot.all
+    @plots = Plot.all.order(:plot_id)
   end
 
   def show
