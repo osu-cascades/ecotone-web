@@ -50,6 +50,6 @@ class PlotsController < ApplicationController
     end
 
     def plot_params
-      params.require(:plot).permit(:plot_id, :latitude, :longitude, :elevation, :area, :location_description, :aspect, :origin, :inoculated, :initial_planting_date, :initial_succession, :photo)
+      params.require(:plot).permit(:plot_id, :featured_plant, :latitude, :longitude, :elevation, :area, :location_description, :aspect, :origin, :inoculated, :initial_planting_date, :initial_succession, :photo)
     end
 end
