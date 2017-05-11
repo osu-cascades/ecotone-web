@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Plot, type: :model do
   subject(:plot) { build :plot }
-  let(:plant) { FactoryGirl.create(:plant) }
+  let(:plant) { subject.featured_plant }
 
   context "when created" do
     it { is_expected.to have_attributes(
