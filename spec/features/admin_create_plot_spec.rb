@@ -10,7 +10,7 @@ RSpec.describe "admin create plot" do
       sign_in(user)
     end
 
-    it "accepts valid signup information" do
+    it "creates a new plot" do
       visit new_plot_path
       fill_in('Plot', :with => 1)
       fill_in('Location description', :with => 'Top of the hill')
