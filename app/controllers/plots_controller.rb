@@ -17,6 +17,7 @@ class PlotsController < ApplicationController
   end
 
   def edit
+    @plants = Plant.all
   end
 
   def create

@@ -6,6 +6,8 @@
       = render partial: 'shared/error_messages', locals: { object: @plot }
       = form.label :plot_id, "Plot ID"
       = form.text_field :plot_id, class: 'form-control'
+      = form.label :featured_plant_id
+      = form.collection_select :featured_plant_id, @plants, :id, :common_name, :include_blank => "Choose one"
       = form.label :location_description
       = form.text_area :location_description, class: 'form-control'
       = form.label :latitude
