@@ -1,20 +1,28 @@
-%header.navbar.navbar-fixed-top.navbar-inverse
+.navbar-wrapper
   .container
-    = link_to "Ecotone", root_path, id: "logo"
-    %nav
-      %ul.nav.navbar-nav.navbar-right
-        - if logged_in?
-          - if admin?(current_user)
-            %li= link_to "Plots", plots_path
-            %li= link_to "Plants", plants_path
-            %li= link_to "Users", users_path
-          %li.dropdown
-            %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-              = current_user.name
-              %b.caret
-            %ul.dropdown-menu
-              %li= link_to "My Account", current_user
-              %li.divider
-              %li= link_to "Log out", logout_path, method: "delete"
-        - else
-          %li= link_to "Log in", login_path
+    %nav.navbar.navbar-fixed-top.navbar-inverse
+      .container
+        .navbar-header
+          %button.navbar-toggle.collapsed{"aria-controls" => "navbar", "aria-expanded" => "false", "data-target" => "#navbar", "data-toggle" => "collapse", :type => "button"}
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.navbar-brand= link_to "Ecotone", root_path, id: "logo"
+        #navbar.navbar-collapse.collapse
+          %ul.nav.navbar-nav.navbar-right
+            - if logged_in?
+              - if admin?(current_user)
+                %li= link_to "Plots", plots_path
+                %li= link_to "Plants", plants_path
+                %li= link_to "Users", users_path
+              %li.dropdown
+                %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+                  =current_user.name
+                  %span.caret
+                %ul.dropdown-menu
+                  %li= link_to "My Account", current_user
+                  %li.divider
+                  %li= link_to "Log out", logout_path, method: "delete"
+            - else
+              %li= link_to "Log in", login_path
