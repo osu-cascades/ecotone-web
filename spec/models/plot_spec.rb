@@ -2,10 +2,12 @@ require 'rails_helper'
 
 RSpec.describe Plot, type: :model do
   subject(:plot) { build :plot }
+  let(:plant) { subject.featured_plant }
 
   context "when created" do
     it { is_expected.to have_attributes(
       plot_id: 1,
+      featured_plant: plant,
       latitude: 44.0582,
       longitude: 121.3153,
       elevation: 3623.0,
@@ -22,6 +24,7 @@ RSpec.describe Plot, type: :model do
 
   describe "validations" do
     it { is_expected.to validate_presence_of(:plot_id) }
+    it { is_expected.to validate_presence_of(:featured_plant) }
     it { is_expected.to validate_presence_of(:latitude) }
     it { is_expected.to validate_presence_of(:longitude) }
     it { is_expected.to validate_presence_of(:elevation) }

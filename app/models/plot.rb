@@ -1,5 +1,7 @@
 class Plot < ApplicationRecord
+
   validates :plot_id, presence: true
+  validates :featured_plant, presence: true
   validates :latitude, presence: true
   validates :longitude, presence: true
   validates :elevation, presence: true
@@ -12,4 +14,7 @@ class Plot < ApplicationRecord
 
   has_attached_file :photo, default_url: "missing.png", styles: { default: "400x400#", thumbnail: "50x50#" }
   validates_attachment_content_type :photo, content_type: /\Aimage/
+
+  belongs_to :featured_plant, class_name: 'Plant'
+
 end

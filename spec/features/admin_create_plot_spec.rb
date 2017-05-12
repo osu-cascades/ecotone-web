@@ -8,11 +8,13 @@ RSpec.describe "admin create plot" do
 
     before do
       sign_in(user)
+      create(:plant)
     end
 
-    it "accepts valid signup information" do
+    it "creates a new plot" do
       visit new_plot_path
       fill_in('Plot', :with => 1)
+      select('Plant Example', :from => 'Featured plant')
       fill_in('Location description', :with => 'Top of the hill')
       fill_in('Latitude', :with => 1234)
       fill_in('Longitude', :with => 1234)

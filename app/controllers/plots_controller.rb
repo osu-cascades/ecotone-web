@@ -13,9 +13,11 @@ class PlotsController < ApplicationController
 
   def new
     @plot = Plot.new
+    @plants = Plant.all
   end
 
   def edit
+    @plants = Plant.all
   end
 
   def create
@@ -24,6 +26,7 @@ class PlotsController < ApplicationController
       redirect_to plots_path
       flash[:success] = 'Plot was successfully created.'
     else
+      @plants = Plant.all
       render 'new'
     end
   end
@@ -34,7 +37,7 @@ class PlotsController < ApplicationController
       flash[:success] = 'Plot was successfully updated.'
     else
       render 'edit'
-    end    
+    end
   end
 
   def destroy
@@ -50,6 +53,6 @@ class PlotsController < ApplicationController
     end
 
     def plot_params
-      params.require(:plot).permit(:plot_id, :latitude, :longitude, :elevation, :area, :location_description, :aspect, :origin, :inoculated, :initial_planting_date, :initial_succession, :photo)
+      params.require(:plot).permit(:plot_id, :featured_plant_id, :latitude, :longitude, :elevation, :area, :location_description, :aspect, :origin, :inoculated, :initial_planting_date, :initial_succession, :photo)
     end
 end
