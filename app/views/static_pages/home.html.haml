@@ -1,3 +1,22 @@
 .center.jumbotron
-  %h1 Ecotone
+  %h1 Welcome to Ecotone
+  %h3 "tagline"
   = link_to "Sign up!", signup_path, class: "btn btn-lg btn-primary"
+
+/ source: http://getbootstrap.com/examples/carousel/#
+.container
+  .row
+    .col-lg-4
+      %img.img-circle{:alt => "Native plant species at OSU cascades", :height => "200", :width => "200", :src => "/assets/ecotone-plants-tykson-hall-osu-cascades-200x200.jpg"}/
+      %h2 Heading
+      %p Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.
+    .col-lg-4
+      %img.img-circle{:alt => "Ecotone plot on OSU Cascades campus in Bend, OR", :height => "200", :width => "200", :src => "/assets/ecotone-plot-with-trees-osu-cascades-bend-or-200x200.jpg"}/
+      %h2 Education
+      %p Biology students can submit data samples of plot and plant health on campus.
+    .col-lg-4
+      %img.img-circle{:alt => "Flower on OSU Cascades campus", :height => "200", :width => "200", :src => "/assets/ecotone-flower2-osu-cascades-200x200.jpg"}/
+      %h2 Plant Identification
+      %p Learn more about plant species that are native to Central Oregon. The Ecotone Mobile app enables users to to identify featured plants on each of OSU Cascades' plots around campus with a quick photo of a QR code.
+      %p
+        .btn{:href => "#", :role => "button"} Get the App »

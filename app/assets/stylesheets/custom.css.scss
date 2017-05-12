@@ -38,6 +38,7 @@ textarea {
 .btn {
   background-color: $osu-orange;
   border-color: $osu-orange;
+  color: white;
   &:hover {
     background-color: darken($osu-orange, 5%);
     border-color: darken($osu-orange, 5%);
@@ -84,6 +85,13 @@ p {
     color: white;
     text-decoration: none;
   }
+}
+
+// Homepage
+
+.img-circle {
+  margin: auto;
+  display: block;
 }
 
 // Sidebar
