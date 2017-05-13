@@ -17,4 +17,8 @@ class Plot < ApplicationRecord
 
   belongs_to :featured_plant, class_name: 'Plant'
 
+  def featured_plant_name
+    featured_plant&.common_name || "Unspecified"
+  end
+
 end

@@ -35,4 +35,19 @@ RSpec.describe Plot, type: :model do
     it { is_expected.to validate_presence_of(:initial_planting_date) }
     it { is_expected.to validate_presence_of(:initial_succession) }
   end
+
+  context "without a featured plant" do
+    before {plot.featured_plant = nil}
+    it "has an unspecified featured plant name" do
+      expect(plot.featured_plant_name).to eq('Unspecified')
+    end
+
+  end
+
+  context "with a featured plant" do
+    it "has a featured plant_name that is the common name of the plant" do
+      expect(plot.featured_plant_name).to eq(plot.featured_plant.common_name)
+    end
+  end
+
 end

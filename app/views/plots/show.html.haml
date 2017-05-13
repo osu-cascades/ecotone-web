@@ -3,7 +3,7 @@
   %aside.col-md-3
     %section
       %h1 Plot ##{@plot.plot_id}
-      %p Featured Plant: #{link_to @plot.featured_plant.common_name, plant_path(@plot.featured_plant) }
+      %p Featured Plant: #{link_to @plot.featured_plant_name, plant_path(@plot.featured_plant) }
       %p Description: #{@plot.location_description}
       %p Latitude: #{@plot.latitude}
       %p Longitude: #{@plot.longitude}
@@ -13,7 +13,7 @@
       %p Origin: #{@plot.origin}
       %p Inoculated? #{@plot.inoculated}
       %p Initial planting date: #{@plot.initial_planting_date}
-      %p Initial succession: #{@plot.initial_succession}  
+      %p Initial succession: #{@plot.initial_succession}
       = link_to "Edit plot", edit_plot_path(params[:id]), class: "btn btn-primary edit-btn"
   .col-md-6
     %section
