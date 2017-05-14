@@ -26,3 +26,4 @@ spec/examples.txt
 .env
 
 /public/system
+/coverage

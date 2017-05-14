@@ -16,3 +16,6 @@ env:
   global:
     - RECAPTCHA_SITE_KEY=fake
     - RECAPTCHA_SECRET_KEY=fake
+
+after_success:
+  - bundle exec codeclimate-test-reporter

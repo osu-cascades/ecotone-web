@@ -22,6 +22,11 @@ gem 'recaptcha', require: 'recaptcha/rails'
 gem 'paperclip', '~>5.1.0'
 gem 'aws-sdk', '~>2.9.0'
 
+group :test do
+  gem 'simplecov'
+  gem 'codeclimate-test-reporter', '~> 1.0.8'
+end
+
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails', '~> 3.5'
