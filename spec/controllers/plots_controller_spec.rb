@@ -7,6 +7,7 @@ RSpec.describe PlotsController, type: :controller do
   let(:general_user) { FactoryGirl.build(:user) }
   let(:admin_user) { FactoryGirl.build(:user, :admin) }
   let(:plot) { FactoryGirl.create(:plot) }
+  let(:plant) { create(:plant) }
   let(:invalid_plot) { FactoryGirl.build(:invalid_plot) }
 
   before(:each) do
@@ -39,23 +40,23 @@ RSpec.describe PlotsController, type: :controller do
     context "with valid attributes" do
 
       it "creates new plot" do
-        plot_params = FactoryGirl.attributes_for(:plot)
+        plot_params = FactoryGirl.attributes_for(:plot, featured_plant_id: plant.id)
         expect { post :create, params: { :plot => plot_params } }.to change(Plot, :count).by(1)
       end
 
-      it "redirects to index" do 
-        post :create, params: { plot: FactoryGirl.attributes_for(:plot) }
+      it "redirects to index" do
+        post :create, params: { plot: FactoryGirl.attributes_for(:plot, featured_plant_id: plant.id) }
         expect(response).to redirect_to plots_path
       end
 
       it "produces correct flash notice" do
-        post :create, params: { plot: FactoryGirl.attributes_for(:plot) }
+        post :create, params: { plot: FactoryGirl.attributes_for(:plot, featured_plant_id: plant.id) }
         assert_equal 'Plot was successfully created.', flash[:success]
       end
 
     end
 
-    context "with invalid attributes" do 
+    context "with invalid attributes" do
 
       it "does not save new plot" do
         plot_params = FactoryGirl.attributes_for(:invalid_plot)
@@ -73,7 +74,7 @@ RSpec.describe PlotsController, type: :controller do
 
   describe "#update" do
 
-    before(:each) do 
+    before(:each) do
       @plot = create(:plot, plot_id: 1)
     end
 
@@ -82,7 +83,7 @@ RSpec.describe PlotsController, type: :controller do
       it "updates plot attributes" do
         put :update, params: { id: @plot, plot: FactoryGirl.attributes_for(:plot, plot_id: 2) }
         @plot.reload
-        expect(@plot.plot_id).to eq(2)    
+        expect(@plot.plot_id).to eq(2)
       end
 
       it "redirects to the updated plot" do
@@ -143,17 +144,17 @@ RSpec.describe PlotsController, type: :controller do
         allow(controller).to receive(:current_user).and_return(general_user)
       end
 
-      it "#index redirects" do 
+      it "#index redirects" do
         get :index
         expect(response).to redirect_to :root
       end
 
-      it "#show redirects" do 
+      it "#show redirects" do
         get :show, params: { id: plot.id }
         expect(response).to redirect_to :root
       end
 
-      it "#new redirects" do 
+      it "#new redirects" do
         get :new
         expect(response).to redirect_to :root
       end
@@ -163,7 +164,7 @@ RSpec.describe PlotsController, type: :controller do
         expect(response).to redirect_to :root
       end
 
-      before(:each) do 
+      before(:each) do
         @plot = create(:plot)
       end
 

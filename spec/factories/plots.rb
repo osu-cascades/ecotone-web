@@ -2,7 +2,7 @@ FactoryGirl.define do
 
   factory :plot do
       plot_id 1
-      association :featured_plant, factory: :plant
+      featured_plant
       latitude 44.0582
       longitude 121.3153
       elevation 3623
