@@ -16,6 +16,7 @@ env:
   global:
     - RECAPTCHA_SITE_KEY=fake
     - RECAPTCHA_SECRET_KEY=fake
+    - CODECLIMATE_REPO_TOKEN=6740d99d8afa2dba2f5f3fb6e864781cb544be23af2efe29d31c27698fa0743d
 
 after_success:
   - bundle exec codeclimate-test-reporter
