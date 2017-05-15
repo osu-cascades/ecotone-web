@@ -3,7 +3,7 @@
   %aside.col-md-3
     %section
       %h1 Plot ##{@plot.plot_id}
-      %p Featured Plant: #{link_to @plot.featured_plant_name, plant_path(@plot.featured_plant) }
+      %p Featured Plant: #{ link_to_featured_plant(@plot) }
       %p Description: #{@plot.location_description}
       %p Latitude: #{@plot.latitude}
       %p Longitude: #{@plot.longitude}
