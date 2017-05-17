@@ -15,6 +15,6 @@
       = form.label :tolerance
       = form.text_field :tolerance, class: 'form-control'
       = form.label :photo, class: 'form-label-photo'
-      = image_tag @plant.photo.url
+      = image_tag @plant.photo.url(:default)
       = form.file_field :photo, class: 'form-control'
       = form.submit "Save changes", class: "btn btn-primary"
