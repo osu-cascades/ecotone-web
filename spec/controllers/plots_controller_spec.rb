@@ -35,6 +35,14 @@ RSpec.describe PlotsController, type: :controller do
     end
   end
 
+  describe "#edit" do
+    it "returns http success" do
+      get :edit, params: { id: plot.id }
+      expect(response).to have_http_status(:success)
+    end
+  end
+
+
   describe "#create" do
 
     context "with valid attributes" do
