@@ -45,6 +45,16 @@ textarea {
   }
 }
 
+.danger-btn {
+  background-color:  #D00;
+  border-color:  #D00;
+  color: white;
+  &:hover {
+    background-color: darken( #D00, 5%);
+    border-color: darken( #D00, 5%);
+  }
+}
+
 // Typography
 
 h1, h2, h3, h4, h5, h6 {
@@ -235,11 +245,16 @@ ul.indexing {
 
 .edit-btn {
   margin-top: 40px;
+  width: 80px;
 }
 
 .lnk-show-delete {
   display: block;
   margin-top: 48px;
+}
+
+.inline-btn {
+  margin-left: 15px;
 }
 
 .lnk-danger {
