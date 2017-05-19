@@ -2,7 +2,7 @@
 %h1 All Plants
 %ul.indexing
   - @plants.each do |plant|
-    %li.plant
+    %li.photo_list
       .col-md-1
         = link_to image_tag(plant.photo.url(:thumbnail)), plant
       .col-md-8

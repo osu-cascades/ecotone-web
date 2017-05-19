@@ -21,6 +21,7 @@ body {
 
 section {
   overflow: auto;
+  margin-bottom: 10px;
 }
 
 textarea {
@@ -69,7 +70,7 @@ h1 {
 
 h2 {
   font-size: 1.2em;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   text-align: center;
   font-weight: normal;
   color: $gray-light;
@@ -224,7 +225,7 @@ ul.indexing {
     padding: 10px 0;
     border-bottom: 1px solid $gray-lighter;
   }
-  li.plant {
+  li.photo_list {
     img {
       width: 50px;
       height: 50px;
@@ -239,8 +240,8 @@ ul.indexing {
   }
 }
 
-.add-btn {
-  margin-left: 40px;
+.btn-group > .btn:first-child {
+  margin-right: 5px;
 }
 
 .edit-btn {
@@ -254,7 +255,7 @@ ul.indexing {
 }
 
 .inline-btn {
-  margin-left: 15px;
+  margin-right: 15px;
 }
 
 .lnk-danger {
@@ -281,4 +282,8 @@ ul.indexing {
 
 .alert {
   margin: 25px 45px 25px 45px;
+}
+
+.col-md-3 {
+  padding-left: 0;
 }

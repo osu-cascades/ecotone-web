@@ -5,8 +5,9 @@
       %h1= @plant.common_name
       %h2
         %em= @plant.scientific_name
+      %hr
     %section
-      .col-md-4
+      .col-md-3
         .plant_photo= image_tag @plant.photo.url(:default)
       .col-md-8
         %section
@@ -17,8 +18,6 @@
           %p
             %strong Tolerance:
             = @plant.tolerance
-    %section
-      .col-md-1
-        = link_to "Edit", edit_plant_path(@plant), class: "btn btn-primary edit-btn"
-      .col-md-1
-        = link_to "Delete", @plant, method: :delete, data: { confirm: "Delete #{@plant.common_name}?" }, class: " btn btn-primary edit-btn danger-btn inline-btn"
+  .btn-group
+    = link_to "Edit", edit_plant_path(@plant), class: "btn btn-primary edit-btn right-btn"
+    = link_to "Delete", @plant, method: :delete, data: { confirm: "Delete #{@plant.common_name}?" }, class: " btn btn-primary edit-btn danger-btn"

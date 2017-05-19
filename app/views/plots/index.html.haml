@@ -2,9 +2,12 @@
 %h1 All Plots
 %ul.indexing
   - @plots.each do |plot|
-    %li
-      = link_to "Plot ##{plot.plot_id}", plot
-      |
-      = link_to "delete", plot, method: :delete, data: { confirm: "Delete Plot ##{plot.plot_id}?" }, class: "lnk-danger"
+    %li.photo_list
+      .col-md-1
+        = link_to image_tag(plot.photo.url(:thumbnail)), plot
+      .col-md-8
+        %h3= link_to "Plot ##{plot.plot_id}", plot
+        - if admin?(current_user)
+          %p= link_to "edit", edit_plot_path(plot)
 
 = link_to "Add Plot", new_plot_path, class: "btn btn-primary add-btn"

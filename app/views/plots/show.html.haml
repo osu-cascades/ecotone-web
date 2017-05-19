@@ -3,6 +3,7 @@
   %aside.col-md-3
     %section
       %h1 Plot ##{@plot.plot_id}
+      %hr
       %p Featured Plant: #{ link_to_featured_plant(@plot) }
       %p Description: #{@plot.location_description}
       %p Latitude: #{@plot.latitude}
@@ -14,7 +15,9 @@
       %p Inoculated? #{@plot.inoculated}
       %p Initial planting date: #{@plot.initial_planting_date}
       %p Initial succession: #{@plot.initial_succession}
-      = link_to "Edit plot", edit_plot_path(params[:id]), class: "btn btn-primary edit-btn"
+      .btn-group
+        = link_to "Edit", edit_plot_path(@plot), class: "btn btn-primary edit-btn"
+        = link_to "Delete", @plot, method: :delete, data: { confirm: "Delete Plot ##{@plot.plot_id}?" }, class: " btn btn-primary edit-btn danger-btn" 
   .col-md-6
     %section
       .plot_photo= image_tag @plot.photo.url(:default)
