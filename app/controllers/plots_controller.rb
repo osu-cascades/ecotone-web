@@ -36,6 +36,7 @@ class PlotsController < ApplicationController
       redirect_to @plot
       flash[:success] = 'Plot was successfully updated.'
     else
+      @plants = Plant.all
       render 'edit'
     end
   end
