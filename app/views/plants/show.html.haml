@@ -18,6 +18,8 @@
           %p
             %strong Tolerance:
             = @plant.tolerance
-  .btn-group
-    = link_to "Edit", edit_plant_path(@plant), class: "btn btn-primary edit-btn right-btn"
-    = link_to "Delete", @plant, method: :delete, data: { confirm: "Delete #{@plant.common_name}?" }, class: " btn btn-primary edit-btn danger-btn"
+    - if logged_in?        
+      - if admin?(current_user)
+        .btn-group
+          = link_to "Edit", edit_plant_path(@plant), class: "btn btn-primary edit-btn right-btn"
+          = link_to "Delete", @plant, method: :delete, data: { confirm: "Delete #{@plant.common_name}?" }, class: " btn btn-primary edit-btn danger-btn"

@@ -152,16 +152,6 @@ RSpec.describe PlotsController, type: :controller do
         allow(controller).to receive(:current_user).and_return(general_user)
       end
 
-      it "#index redirects" do
-        get :index
-        expect(response).to redirect_to :root
-      end
-
-      it "#show redirects" do
-        get :show, params: { id: plot.id }
-        expect(response).to redirect_to :root
-      end
-
       it "#new redirects" do
         get :new
         expect(response).to redirect_to :root

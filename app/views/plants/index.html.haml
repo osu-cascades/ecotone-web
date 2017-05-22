@@ -8,7 +8,9 @@
       .col-md-8
         %h3= link_to plant.common_name, plant
         %h4= plant.scientific_name
-        - if admin?(current_user)
-          %p= link_to "edit", edit_plant_path(plant)
-
-= link_to "Add Plant", new_plant_path, class: "btn btn-primary add-btn"
+        - if logged_in?
+          - if admin?(current_user)
+            %p= link_to "edit", edit_plant_path(plant)
+- if logged_in?
+  - if admin?(current_user)
+    = link_to "Add Plant", new_plant_path, class: "btn btn-primary add-btn"

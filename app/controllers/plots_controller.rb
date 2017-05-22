@@ -1,8 +1,8 @@
 class PlotsController < ApplicationController
 
   before_action :set_plot, only: [:show, :edit, :update, :destroy]
-  before_action :login_required
-  before_action :admin_required
+  before_action :login_required, except: [:index, :show]
+  before_action :admin_required, except: [:index, :show]
 
   def index
     @plots = Plot.all.order(:plot_id)

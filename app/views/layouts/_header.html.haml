@@ -13,10 +13,10 @@
             = link_to "Ecotone", root_path, id: "logo"
         #navbar.navbar-collapse.collapse
           %ul.nav.navbar-nav.navbar-right
+            %li= link_to "Plots", plots_path
+            %li= link_to "Plants", plants_path
             - if logged_in?
               - if admin?(current_user)
-                %li= link_to "Plots", plots_path
-                %li= link_to "Plants", plants_path
                 %li= link_to "Users", users_path
               %li.dropdown
                 %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}

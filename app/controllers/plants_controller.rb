@@ -1,8 +1,8 @@
 class PlantsController < ApplicationController
 
   before_action :set_plant, only: [:show, :edit, :update, :destroy]
-  before_action :login_required
-  before_action :admin_required
+  before_action :login_required, only: [:new, :create, :edit, :update, :destroy]
+  before_action :admin_required, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @plants = Plant.all
