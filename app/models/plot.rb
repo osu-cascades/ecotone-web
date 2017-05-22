@@ -1,7 +1,7 @@
 class Plot < ApplicationRecord
 
   validates :plot_id, presence: true
-  # validates :featured_plant, presence: true
+  validates :featured_plant, presence: true
   validates :latitude, presence: true
   validates :longitude, presence: true
   validates :elevation, presence: true
