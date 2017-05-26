@@ -11,7 +11,10 @@
         .plant_photo= image_tag @plant.photo.url(:default)
       .col-md-8
         %section
-          %p= @plant.description
+          %p
+            %strong Description:
+            = @plant.description
+          .citation= @plant.citation 
           %p
             %strong Habitat type:
             = @plant.habitat_type
