@@ -6,8 +6,8 @@
       .col-md-1
         = link_to image_tag(plant.photo.url(:thumbnail)), plant
       .col-md-8
-        %h3= link_to plant.common_name, plant
-        %h4= plant.scientific_name
+        %h3= link_to plant.common_name.capitalize, plant
+        %h4= plant.scientific_name.capitalize
         - if logged_in?
           - if admin?(current_user)
             %p= link_to "edit", edit_plant_path(plant)

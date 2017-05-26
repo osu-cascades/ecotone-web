@@ -2,9 +2,9 @@
 .row
   %aside.col-md-12
     %section
-      %h1= @plant.common_name
+      %h1= @plant.common_name.capitalize
       %h2
-        %em= @plant.scientific_name
+        %em= @plant.scientific_name.capitalize
       %hr
     %section
       .col-md-3
