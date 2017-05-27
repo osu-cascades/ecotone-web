@@ -12,7 +12,7 @@ class PlotsController < ApplicationController
   end
 
   def download_qr
-    @qr = RQRCode::QRCode.new(plot_path(Plot.find(params[:id])), :size => 5, :level => :h )
+    @qr = RQRCode::QRCode.new(url_for(action: 'show', only_path: false), :size => 5, :level => :h )
     png = @qr.as_png(
           resize_gte_to: false,
           resize_exactly_to: false,
