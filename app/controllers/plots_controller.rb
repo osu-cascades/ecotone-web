@@ -11,6 +11,21 @@ class PlotsController < ApplicationController
   def show
   end
 
+  def download_qr
+    @qr = RQRCode::QRCode.new(plot_path(Plot.find(params[:id])), :size => 5, :level => :h )
+    png = @qr.as_png(
+          resize_gte_to: false,
+          resize_exactly_to: false,
+          fill: 'white',
+          color: 'black',
+          size: 360,
+          border_modules: 4,
+          module_px_size: 6,
+          file: nil # path to write
+          )
+    send_data( png, :filename => "plot-#{Plot.find(params[:id]).id}-qr-code.png" )
+  end
+
   def new
     @plot = Plot.new
     @plants = Plant.all
