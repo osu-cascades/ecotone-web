@@ -21,9 +21,9 @@ class PlotsController < ApplicationController
           size: 360,
           border_modules: 4,
           module_px_size: 6,
-          file: nil # path to write
+          file: nil
           )
-    send_data( png, :filename => "plot-#{Plot.find(params[:id]).id}-qr-code.png" )
+    send_data( png, :filename => "plot-#{Plot.find(params[:id]).plot_id}-qr-code.png" )
   end
 
   def new
