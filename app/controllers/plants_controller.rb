@@ -11,6 +11,21 @@ class PlantsController < ApplicationController
   def show
   end
 
+  def download_qr
+    @qr = RQRCode::QRCode.new(url_for(action: 'show', only_path: false), :size => 10, :level => :h )
+    png = @qr.as_png(
+          resize_gte_to: false,
+          resize_exactly_to: false,
+          fill: 'white',
+          color: 'black',
+          size: 360,
+          border_modules: 4,
+          module_px_size: 6,
+          file: nil
+          )
+    send_data( png, :filename => "#{Plant.find(params[:id]).common_name.parameterize('-')}-qr-code.png" )
+  end
+
   def new
     @plant = Plant.new
   end
