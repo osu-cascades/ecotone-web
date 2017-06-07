@@ -5,6 +5,8 @@
       %h1= @plant.common_name.capitalize
       %h2
         %em= @plant.scientific_name.capitalize
+      - if @plant.invasive
+        %h2.invasive Invasive!
       %hr
     %section
       .col-md-3

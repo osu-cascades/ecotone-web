@@ -12,6 +12,8 @@
       = form.text_area :description, class: 'form-control', rows: 5
       = form.label :citation
       = form.text_field :citation, class: 'form-control'
+      = form.label :invasive, 'Invasive?'
+      = form.check_box(:invasive)
       = form.label :habitat_type
       = form.text_field :habitat_type, class: 'form-control'
       = form.label :tolerance

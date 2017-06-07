@@ -6,6 +6,7 @@ FactoryGirl.define do
     description "Description Example"
     habitat_type "Habitat Example"
     tolerance "Tolerance Example"
+    invasive false
   end
 
   factory :invalid_plant, parent: :plant do |f|

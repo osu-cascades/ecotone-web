@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170526192712) do
+ActiveRecord::Schema.define(version: 20170607154147) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20170526192712) do
     t.datetime "photo_updated_at"
     t.text     "description"
     t.text     "citation"
+    t.boolean  "invasive"
   end
 
   create_table "plots", force: :cascade do |t|

@@ -74,7 +74,7 @@ RSpec.describe PlantsController, type: :controller do
   describe "#update" do
 
     before(:each) do 
-      @plant = create(:plant, common_name: "Example", scientific_name: "Example", habitat_type: "Example", tolerance: "Example")
+      @plant = create(:plant, common_name: "Example", scientific_name: "Example", habitat_type: "Example", tolerance: "Example", invasive: false)
     end
 
     context "with valid attributes" do
@@ -153,7 +153,7 @@ RSpec.describe PlantsController, type: :controller do
       end
 
       before(:each) do 
-        @plant = create(:plant, common_name: "Example", scientific_name: "Example", habitat_type: "Example", tolerance: "Example")
+        @plant = create(:plant, common_name: "Example", scientific_name: "Example", habitat_type: "Example", tolerance: "Example", invasive: false)
       end
 
       it "#update redirects" do
