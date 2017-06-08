@@ -1,4 +1,4 @@
-class BiodiversityReportController < ApplicationController
+class BiodiversityReportsController < ApplicationController
   before_action :login_required
   before_action :admin_required
 
@@ -41,13 +41,12 @@ class BiodiversityReportController < ApplicationController
 
   private
 
-    def set_biodiversity_report
-      @BiodiversityReport = BiodiversityReport.find(params[:id])
-    end
+  def set_biodiversity_report
+    @BiodiversityReport = BiodiversityReport.find(params[:id])
+  end
 
-    def biodiversity_report_params
-      params.require(:biodiversity_report).permit(:date, :time, :temperature, :biomass_estimate, 
-                                                  :species_richness, :photo)
-    end
-
+  def biodiversity_report_params
+    params.require(:biodiversity_report).permit(:date, :time, :temperature, :biomass_estimate, 
+                                                :species_richness, :photo)
+  end
 end
