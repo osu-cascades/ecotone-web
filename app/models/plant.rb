@@ -9,5 +9,5 @@ class Plant < ApplicationRecord
   validates_attachment_content_type :photo, content_type: /\Aimage/
 
   has_many :plots, foreign_key: 'featured_plant_id'
-
+  has_many :plant_samples
 end

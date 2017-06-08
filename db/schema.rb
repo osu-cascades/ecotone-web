@@ -10,10 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170526192712) do
+ActiveRecord::Schema.define(version: 20170607170647) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "biodiversity_reports", force: :cascade do |t|
+    t.date     "date"
+    t.time     "time"
+    t.float    "temperature"
+    t.float    "biomass_estimate"
+    t.integer  "species_richness"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  create_table "plant_samples", force: :cascade do |t|
+    t.integer  "abundance"
+    t.integer  "percent_cover"
+    t.float    "biomass_estimate"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
 
   create_table "plants", force: :cascade do |t|
     t.string   "common_name"
@@ -28,6 +54,7 @@ ActiveRecord::Schema.define(version: 20170526192712) do
     t.datetime "photo_updated_at"
     t.text     "description"
     t.text     "citation"
+    t.boolean  "invasive"
   end
 
   create_table "plots", force: :cascade do |t|
@@ -49,6 +76,13 @@ ActiveRecord::Schema.define(version: 20170526192712) do
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
     t.integer  "featured_plant_id"
+  end
+
+  create_table "soil_samples", force: :cascade do |t|
+    t.float    "ph_level"
+    t.float    "temperature"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "users", force: :cascade do |t|
