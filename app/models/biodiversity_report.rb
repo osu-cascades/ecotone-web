@@ -1,6 +1,6 @@
 class BiodiversityReport < ApplicationRecord
-  belongs_to :user
-  belongs_to :plot
+  belongs_to :user, optional: true
+  belongs_to :plot, optional: true
   has_many :plant_samples
   has_one :soil_sample, through: :plots
 

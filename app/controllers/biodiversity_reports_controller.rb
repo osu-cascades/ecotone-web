@@ -1,6 +1,7 @@
+include SessionsHelper
+
 class BiodiversityReportsController < ApplicationController
   before_action :login_required
-  before_action :admin_required
 
   def index
     @biodiversity_reports = BiodiversityReport.all
@@ -12,10 +13,13 @@ class BiodiversityReportsController < ApplicationController
     @biodiversity_report = BiodiversityReport.new
   end
 
-  def edit; end
+  def edit
+    @biodiversity_report = BiodiversityReport.find(params[:id])
+  end
 
   def create
     @biodiversity_report = BiodiversityReport.new(biodiversity_report_params)
+    @current_user.biodiversity_reports << @biodiversity_report
     if @biodiversity_report.save
       redirect_to biodiversity_reports_path
       flash[:success] = 'Biodiversity report was successfully created.'
