@@ -1,1 +1,18 @@
 - provide(:title, 'Biodiversity Report')
+.row
+  %aside.col-md-6
+    %section
+      %h1= "Biodiversity Report #{@biodiversity_report.date.strftime("%B %d, %Y")}"
+      %hr
+      %p Time: #{@biodiversity_report.time.strftime("%I:%M %p")}
+      %p Temperature: #{@biodiversity_report.temperature}
+      %p Biomass Estimate: #{@biodiversity_report.biomass_estimate}
+      %p Species Richness: #{@biodiversity_report.species_richness}
+      - if logged_in?
+        - if current_user?(@biodiversity_report.user) or admin?(current_user)
+          .btn-group
+            = link_to "Edit", edit_biodiversity_report_path(@biodiversity_report), class: "btn btn-primary edit-btn"
+            = link_to "Delete", @biodiversity_report, method: :delete, data: { confirm: "Delete Report?" }, class: " btn btn-primary edit-btn danger-btn"
+  .col-md-9
+    %section
+      .plot_photo= image_tag @biodiversity_report.photo.url(:default)

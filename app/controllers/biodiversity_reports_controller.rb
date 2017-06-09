@@ -7,7 +7,9 @@ class BiodiversityReportsController < ApplicationController
     @biodiversity_reports = BiodiversityReport.all
   end
 
-  def show; end
+  def show
+    @biodiversity_report = BiodiversityReport.find(params[:id])
+  end
 
   def new
     @biodiversity_report = BiodiversityReport.new
