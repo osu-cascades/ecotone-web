@@ -2,7 +2,8 @@
 .row
   %aside.col-md-6
     %section
-      %h1= "Biodiversity Report #{@biodiversity_report.date.strftime("%B %d, %Y")}"
+      %h1= "Biodiversity Report - #{@biodiversity_report.date.strftime("%B %d, %Y")}"
+      %h2= "- #{@biodiversity_report.user.name}"
       %hr
       %p Time: #{@biodiversity_report.time.strftime("%I:%M %p")}
       %p Temperature: #{@biodiversity_report.temperature}
