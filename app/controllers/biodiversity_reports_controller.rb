@@ -13,11 +13,13 @@ class BiodiversityReportsController < ApplicationController
 
   def new
     @biodiversity_report = BiodiversityReport.new
+    @biodiversity_report.plant_samples.build
     @plots = Plot.all
   end
 
   def edit
     @biodiversity_report = BiodiversityReport.find(params[:id])
+    @plots = Plot.all
   end
 
   def create
@@ -54,6 +56,7 @@ class BiodiversityReportsController < ApplicationController
 
   def biodiversity_report_params
     params.require(:biodiversity_report).permit(:date, :time, :temperature, :biomass_estimate, 
-                                                :species_richness, :photo)
+                                                :species_richness, :photo, :plot_id,
+                                                plant_samples_attributes: [:biodiversity_report_id, :abundance])
   end
 end

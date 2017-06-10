@@ -1,7 +1,10 @@
 class BiodiversityReport < ApplicationRecord
   belongs_to :user, optional: true
   belongs_to :plot, optional: true
+  
   has_many :plant_samples
+  accepts_nested_attributes_for :plant_samples
+
   has_one :soil_sample, through: :plot
   accepts_nested_attributes_for :soil_sample
 
