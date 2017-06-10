@@ -16,4 +16,15 @@
       = form.text_field :species_richness, class: 'form-control'
       = form.label :photo
       = form.file_field :photo, class: 'form-control'
+
+      %h3= form.label :soil_sample
+      %hr
+      = form.label :plot
+      = form.collection_select :plot, @plots, :id, :plot_id, :include_blank => "Choose one"
+      = form.fields_for :plot do |soil_sample_fields|
+        = soil_sample_fields.label :ph_level
+        = soil_sample_fields.text_field :ph_level
+        = soil_sample_fields.label :temperature, 'Soil Temperature'
+        = soil_sample_fields.text_field :temperature
+
       = form.submit "Add biodiversity report", class: "btn btn-primary"

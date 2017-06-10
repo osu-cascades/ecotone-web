@@ -13,6 +13,7 @@ class BiodiversityReportsController < ApplicationController
 
   def new
     @biodiversity_report = BiodiversityReport.new
+    @plots = Plot.all
   end
 
   def edit

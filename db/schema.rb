@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170609170943) do
+ActiveRecord::Schema.define(version: 20170610182956) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20170609170943) do
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.integer  "user_id"
+    t.integer  "plot_id"
   end
 
   create_table "plant_samples", force: :cascade do |t|
@@ -38,8 +39,10 @@ ActiveRecord::Schema.define(version: 20170609170943) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "biodiversity_report_id"
+    t.integer  "plant_id"
   end
 
   create_table "plants", force: :cascade do |t|
@@ -82,8 +85,9 @@ ActiveRecord::Schema.define(version: 20170609170943) do
   create_table "soil_samples", force: :cascade do |t|
     t.float    "ph_level"
     t.float    "temperature"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "biodiversity_report_id"
   end
 
   create_table "users", force: :cascade do |t|
