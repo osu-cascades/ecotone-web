@@ -33,6 +33,11 @@
         = plant_samples_fields.label :photo
         = plant_samples_fields.file_field :photo, class: 'form-control'
 
+      %h3 Soil Sample
+      = form.fields_for :soil_sample do |soil_sample_fields|
+        = soil_sample_fields.label :ph_level
+        = soil_sample_fields.text_field :ph_level, class: 'form-control'
+        = soil_sample_fields.label :temperature
+        = soil_sample_fields.text_field :temperature, class: 'form-control'
         
-
       = form.submit "Add biodiversity report", class: "btn btn-primary"

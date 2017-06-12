@@ -14,6 +14,7 @@ class BiodiversityReportsController < ApplicationController
   def new
     @biodiversity_report = BiodiversityReport.new
     @biodiversity_report.plant_samples.build
+    @biodiversity_report.build_soil_sample
     @plots = Plot.all
     @plants = Plant.all
   end
@@ -60,6 +61,7 @@ class BiodiversityReportsController < ApplicationController
   def biodiversity_report_params
     params.require(:biodiversity_report).permit(:date, :time, :temperature, :biomass_estimate, 
                                                 :species_richness, :photo, :plot_id,
-                                                plant_samples_attributes: [:plant_id, :biodiversity_report_id, :abundance, :biomass_estimate, :photo])
+                                                plant_samples_attributes: [:plant_id, :biodiversity_report_id, :abundance, :biomass_estimate, :photo],
+                                                soil_sample_attributes: [:ph_level, :temperature, :biodiversity_report_id])
   end
 end
