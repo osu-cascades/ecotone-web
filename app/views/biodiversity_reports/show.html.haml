@@ -9,6 +9,8 @@
       %p Temperature: #{@biodiversity_report.temperature}
       %p Biomass Estimate: #{@biodiversity_report.biomass_estimate}
       %p Species Richness: #{@biodiversity_report.species_richness}
+      %hr
+      %h3 Plant samples
       - @biodiversity_report.plant_samples.each do |ps|
         %p Common name: #{ps.plant.common_name}
         %p Abundance: #{ps.abundance}
