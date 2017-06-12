@@ -1,6 +1,6 @@
 class PlotsController < ApplicationController
 
-  before_action :set_plot, only: [:show, :edit, :update, :destroy]
+  before_action :set_plot, only: [:show, :edit, :update, :destroy, :download_qr]
   before_action :login_required, except: [:index, :show]
   before_action :admin_required, except: [:index, :show]
 
@@ -12,18 +12,17 @@ class PlotsController < ApplicationController
   end
 
   def download_qr
-    @qr = RQRCode::QRCode.new(url_for(action: 'show', only_path: false), :size => 10, :level => :h )
-    png = @qr.as_png(
-          resize_gte_to: false,
-          resize_exactly_to: false,
-          fill: 'white',
-          color: 'black',
-          size: 360,
-          border_modules: 4,
-          module_px_size: 6,
-          file: nil
-          )
-    send_data( png, :filename => "plot-#{Plot.find(params[:id]).plot_id}-qr-code.png" )
+    @qr = RQRCode::QRCode.new(plot_path(@plot), size: 10, level: :h)
+    png = @qr.as_png(resize_gte_to: false,
+                     resize_exactly_to: false,
+                     fill: 'white',
+                     color: 'black',
+                     size: 360,
+                     border_modules: 4,
+                     module_px_size: 6,
+                     file: nil)
+    send_data(png, :type => 'image/png', :disposition => 'attachment',
+              :filename => "plot-#{@plot.plot_id}-qr-code.png")
   end
 
   def new
@@ -71,4 +70,5 @@ class PlotsController < ApplicationController
     def plot_params
       params.require(:plot).permit(:plot_id, :featured_plant_id, :latitude, :longitude, :elevation, :area, :location_description, :aspect, :origin, :inoculated, :initial_planting_date, :initial_succession, :photo)
     end
+
 end
