@@ -4,6 +4,8 @@
   .col-md-6.col-md-offset-3
     = form_for(@biodiversity_report, html: {multipart: true}) do |form|
       = render partial: 'shared/error_messages', locals: { object: @biodiversity_report }
+      = form.label :plot
+      = form.collection_select :plot_id, @plots, :id, :name, :include_blank => "Choose one"
       = form.label :date
       = form.date_field :date, class: 'form-control'
       = form.label :time
@@ -17,9 +19,20 @@
       = form.label :photo
       = form.file_field :photo, class: 'form-control'
 
+
       %h3 Plant Samples
+      %hr
       = form.fields_for :plant_samples do |plant_samples_fields|
+        = plant_samples_fields.label :plant
+        = plant_samples_fields.collection_select :plant_id, @plants, :id, :common_name, :include_blank => "Choose one"
+
         = plant_samples_fields.label :abundance
         = plant_samples_fields.text_field :abundance, class: 'form-control'
+        = plant_samples_fields.label :biomass_estimate
+        = plant_samples_fields.text_field :biomass_estimate, class: 'form-control'
+        = plant_samples_fields.label :photo
+        = plant_samples_fields.file_field :photo, class: 'form-control'
+
+        
 
       = form.submit "Add biodiversity report", class: "btn btn-primary"

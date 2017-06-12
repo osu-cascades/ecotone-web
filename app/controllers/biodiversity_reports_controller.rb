@@ -15,6 +15,7 @@ class BiodiversityReportsController < ApplicationController
     @biodiversity_report = BiodiversityReport.new
     @biodiversity_report.plant_samples.build
     @plots = Plot.all
+    @plants = Plant.all
   end
 
   def edit
@@ -29,6 +30,8 @@ class BiodiversityReportsController < ApplicationController
       redirect_to biodiversity_reports_path
       flash[:success] = 'Biodiversity report was successfully created.'
     else
+      @plots = Plot.all
+      @plants = Plant.all
       render :new
     end
   end
@@ -57,6 +60,6 @@ class BiodiversityReportsController < ApplicationController
   def biodiversity_report_params
     params.require(:biodiversity_report).permit(:date, :time, :temperature, :biomass_estimate, 
                                                 :species_richness, :photo, :plot_id,
-                                                plant_samples_attributes: [:biodiversity_report_id, :abundance])
+                                                plant_samples_attributes: [:plant_id, :biodiversity_report_id, :abundance, :biomass_estimate, :photo])
   end
 end
