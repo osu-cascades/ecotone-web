@@ -17,7 +17,6 @@ class Plot < ApplicationRecord
 
   belongs_to :featured_plant, class_name: 'Plant'
   has_many :biodiversity_reports
-  has_many :soil_sample, through: :plot
 
   def featured_plant_name
     featured_plant&.common_name || "Unspecified"
