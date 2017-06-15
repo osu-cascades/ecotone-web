@@ -40,7 +40,6 @@ RSpec.describe Plot, type: :model do
     it "has an unspecified featured plant name" do
       expect(plot.featured_plant_name).to eq('Unspecified')
     end
-
   end
 
   context "with a featured plant" do
