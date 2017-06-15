@@ -16,17 +16,17 @@
           %p
             %strong Description:
             = @plant.description
-          .citation= @plant.citation 
+          .citation= @plant.citation
           %p
             %strong Habitat type:
             = @plant.habitat_type
           %p
             %strong Tolerance:
             = @plant.tolerance
-    - if logged_in?        
+    - if logged_in?
       - if admin?(current_user)
         .btn-group
           = link_to "Edit", edit_plant_path(@plant), class: "btn btn-primary edit-btn right-btn"
           = link_to "Delete", @plant, method: :delete, data: { confirm: "Delete #{@plant.common_name}?" }, class: " btn btn-primary edit-btn danger-btn"
         .btn.download-plant-btn
-          = link_to "Download QR-Code", { :action => "download_qr" }
+          = link_to "Download QR-Code", { :action => "download_qr" }, 'data-turbolinks' => false
