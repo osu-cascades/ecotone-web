@@ -24,7 +24,6 @@ RSpec.describe Plot, type: :model do
 
   describe "validations" do
     it { is_expected.to validate_presence_of(:plot_id) }
-    it { is_expected.to validate_presence_of(:featured_plant) }
     it { is_expected.to validate_presence_of(:latitude) }
     it { is_expected.to validate_presence_of(:longitude) }
     it { is_expected.to validate_presence_of(:elevation) }
@@ -49,5 +48,4 @@ RSpec.describe Plot, type: :model do
       expect(plot.featured_plant_name).to eq(plot.featured_plant.common_name)
     end
   end
-
 end

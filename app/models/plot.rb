@@ -1,7 +1,5 @@
 class Plot < ApplicationRecord
-
   validates :plot_id, presence: true
-  validates :featured_plant, presence: true
   validates :latitude, presence: true
   validates :longitude, presence: true
   validates :elevation, presence: true
@@ -20,5 +18,4 @@ class Plot < ApplicationRecord
   def featured_plant_name
     featured_plant&.common_name || "Unspecified"
   end
-
 end
