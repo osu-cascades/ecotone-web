@@ -1,9 +1,11 @@
 class BiodiversityReport < ApplicationRecord
+  attr_accessor :plant_samples_attributes
+
   belongs_to :user
   belongs_to :plot
   
   has_many :plant_samples
-  accepts_nested_attributes_for :plant_samples
+  accepts_nested_attributes_for :plant_samples, allow_destroy: true
 
   has_one :soil_sample
   accepts_nested_attributes_for :soil_sample
