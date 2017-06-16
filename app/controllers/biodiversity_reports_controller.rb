@@ -39,6 +39,7 @@ class BiodiversityReportsController < ApplicationController
   end
 
   def update
+    @biodiversity_report = BiodiversityReport.find(params[:id])
     if @biodiversity_report.update(biodiversity_report_params)
       redirect_to @biodiversity_report
       flash[:success] = 'Biodiversity report was successfully updated.'
@@ -50,6 +51,7 @@ class BiodiversityReportsController < ApplicationController
   end
 
   def destroy
+    @biodiversity_report = BiodiversityReport.find(params[:id])
     @biodiversity_report.destroy
     redirect_to biodiversity_reports_path
     flash[:success] = 'Biodiversity report was successfully destroyed.'
