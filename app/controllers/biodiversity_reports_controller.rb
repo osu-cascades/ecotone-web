@@ -22,6 +22,7 @@ class BiodiversityReportsController < ApplicationController
   def edit
     @biodiversity_report = BiodiversityReport.find(params[:id])
     @plots = Plot.all
+    @plants = Plant.all
   end
 
   def create
@@ -42,6 +43,8 @@ class BiodiversityReportsController < ApplicationController
       redirect_to @biodiversity_report
       flash[:success] = 'Biodiversity report was successfully updated.'
     else
+      @plots = Plot.all
+      @plants = Plant.all
       render :edit
     end
   end
