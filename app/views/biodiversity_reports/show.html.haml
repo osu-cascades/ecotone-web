@@ -17,8 +17,9 @@
         %p Abundance: #{ps.abundance}
         %p Percent Cover: #{ps.percent_cover}
         %p Biomass Estimate: #{ps.biomass_estimate}
+        .plot_photo= image_tag ps.photo.url(:default)
+        %hr
 
-      %hr
       %h3 Soil sample  
       %p PH Level: #{@biodiversity_report.soil_sample.ph_level}
       %p Temperature: #{@biodiversity_report.soil_sample.temperature}
