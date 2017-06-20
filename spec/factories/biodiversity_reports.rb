@@ -6,5 +6,7 @@ FactoryGirl.define do
     biomass_estimate 1.5
     species_richness 1
     photo ""
+    plot
+    user
   end
 end
