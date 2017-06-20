@@ -15,91 +15,91 @@ ActiveRecord::Schema.define(version: 20170610182956) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "biodiversity_reports", force: :cascade do |t|
-    t.date     "date"
-    t.time     "time"
-    t.float    "temperature"
-    t.float    "biomass_estimate"
-    t.integer  "species_richness"
-    t.string   "photo_file_name"
-    t.string   "photo_content_type"
-    t.integer  "photo_file_size"
+  create_table "biodiversity_reports", id: :serial, force: :cascade do |t|
+    t.date "date"
+    t.time "time"
+    t.float "temperature"
+    t.float "biomass_estimate"
+    t.integer "species_richness"
+    t.string "photo_file_name"
+    t.string "photo_content_type"
+    t.integer "photo_file_size"
     t.datetime "photo_updated_at"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
-    t.integer  "user_id"
-    t.integer  "plot_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.integer "plot_id"
   end
 
-  create_table "plant_samples", force: :cascade do |t|
-    t.integer  "abundance"
-    t.integer  "percent_cover"
-    t.float    "biomass_estimate"
-    t.string   "photo_file_name"
-    t.string   "photo_content_type"
-    t.integer  "photo_file_size"
+  create_table "plant_samples", id: :serial, force: :cascade do |t|
+    t.integer "abundance"
+    t.integer "percent_cover"
+    t.float "biomass_estimate"
+    t.string "photo_file_name"
+    t.string "photo_content_type"
+    t.integer "photo_file_size"
     t.datetime "photo_updated_at"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.integer  "biodiversity_report_id"
-    t.integer  "plant_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "biodiversity_report_id"
+    t.integer "plant_id"
   end
 
-  create_table "plants", force: :cascade do |t|
-    t.string   "common_name"
-    t.string   "scientific_name"
-    t.string   "habitat_type"
-    t.string   "tolerance"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
-    t.string   "photo_file_name"
-    t.string   "photo_content_type"
-    t.integer  "photo_file_size"
+  create_table "plants", id: :serial, force: :cascade do |t|
+    t.string "common_name"
+    t.string "scientific_name"
+    t.string "habitat_type"
+    t.string "tolerance"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "photo_file_name"
+    t.string "photo_content_type"
+    t.integer "photo_file_size"
     t.datetime "photo_updated_at"
-    t.text     "description"
-    t.text     "citation"
-    t.boolean  "invasive"
+    t.text "description"
+    t.text "citation"
+    t.boolean "invasive"
   end
 
-  create_table "plots", force: :cascade do |t|
-    t.integer  "plot_id"
-    t.float    "latitude"
-    t.float    "longitude"
-    t.float    "elevation"
-    t.float    "area"
-    t.text     "location_description"
-    t.string   "aspect"
-    t.string   "origin"
-    t.boolean  "inoculated"
-    t.string   "initial_planting_date"
-    t.string   "initial_succession"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
-    t.string   "photo_file_name"
-    t.string   "photo_content_type"
-    t.integer  "photo_file_size"
+  create_table "plots", id: :serial, force: :cascade do |t|
+    t.integer "plot_id"
+    t.float "latitude"
+    t.float "longitude"
+    t.float "elevation"
+    t.float "area"
+    t.text "location_description"
+    t.string "aspect"
+    t.string "origin"
+    t.boolean "inoculated"
+    t.string "initial_planting_date"
+    t.string "initial_succession"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "photo_file_name"
+    t.string "photo_content_type"
+    t.integer "photo_file_size"
     t.datetime "photo_updated_at"
-    t.integer  "featured_plant_id"
+    t.integer "featured_plant_id"
   end
 
-  create_table "soil_samples", force: :cascade do |t|
-    t.float    "ph_level"
-    t.float    "temperature"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.integer  "biodiversity_report_id"
+  create_table "soil_samples", id: :serial, force: :cascade do |t|
+    t.float "ph_level"
+    t.float "temperature"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "biodiversity_report_id"
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string   "name"
-    t.string   "email"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
-    t.string   "password_digest"
-    t.boolean  "admin",           default: false
-    t.string   "reset_digest"
+  create_table "users", id: :serial, force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "password_digest"
+    t.boolean "admin", default: false
+    t.string "reset_digest"
     t.datetime "reset_sent_at"
-    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
 end
