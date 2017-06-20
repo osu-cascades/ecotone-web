@@ -1,5 +1,3 @@
-include SessionsHelper
-
 class BiodiversityReportsController < ApplicationController
   before_action :login_required
 
@@ -64,7 +62,7 @@ class BiodiversityReportsController < ApplicationController
   end
 
   def biodiversity_report_params
-    params.require(:biodiversity_report).permit(:date, :time, :temperature, :biomass_estimate, 
+    params.require(:biodiversity_report).permit(:date, :time, :temperature, :biomass_estimate,
                                                 :species_richness, :photo, :plot_id,
                                                 plant_samples_attributes: [:plant_id, :biodiversity_report_id, :abundance, :percent_cover, :biomass_estimate, :photo],
                                                 soil_sample_attributes: [:ph_level, :temperature, :biodiversity_report_id])
