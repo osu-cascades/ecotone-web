@@ -11,11 +11,14 @@
       %p Species Richness: #{@biodiversity_report.species_richness}
       %hr
       %h3 Plant samples
-      = render partial: @biodiversity_report.plant_samples
+      = render(@biodiversity_report.plant_samples) || "No plant samples"
       %hr
       %h3 Soil sample
-      %p PH Level: #{@biodiversity_report.soil_sample.ph_level}
-      %p Temperature: #{@biodiversity_report.soil_sample.temperature}
+      - if @biodiversity_report.soil_sample
+        %p PH Level: #{@biodiversity_report.soil_sample.ph_level}
+        %p Temperature: #{@biodiversity_report.soil_sample.temperature}
+      - else
+        %p No soil sample
       - if @biodiversity_report.editable_by?(current_user)
         .btn-group
           = link_to "Edit", edit_biodiversity_report_path(@biodiversity_report), class: "btn btn-primary edit-btn"
