@@ -6,6 +6,6 @@ class PlantSample < ApplicationRecord
   validates_attachment_content_type :photo, content_type: /\Aimage/
 
   validates_numericality_of :abundance, only_integer: true, greater_than: 0
-  validates_numericality_of :percent_cover, greater_than: 0
+  validates_numericality_of :percent_cover, only_integer: true, greater_than: 0
   validates_numericality_of :biomass_estimate, greater_than: 0
 end

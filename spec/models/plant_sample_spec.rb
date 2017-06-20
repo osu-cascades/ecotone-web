@@ -11,7 +11,7 @@ RSpec.describe PlantSample, type: :model do
 
   describe "validations and associations" do
     it { is_expected.to validate_numericality_of(:abundance).only_integer.is_greater_than(0) }
-    it { is_expected.to validate_numericality_of(:percent_cover).is_greater_than(0) }
+    it { is_expected.to validate_numericality_of(:percent_cover).only_integer.is_greater_than(0) }
     it { is_expected.to validate_numericality_of(:biomass_estimate).is_greater_than(0) }
     it { is_expected.to belong_to(:plant) }
     it { is_expected.to belong_to(:biodiversity_report) }
