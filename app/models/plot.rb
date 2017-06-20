@@ -14,8 +14,18 @@ class Plot < ApplicationRecord
   validates_attachment_content_type :photo, content_type: /\Aimage/
 
   belongs_to :featured_plant, class_name: 'Plant', optional: true
+  has_many :biodiversity_reports
 
   def featured_plant_name
     featured_plant&.common_name || "Unspecified"
   end
+
+  def to_s
+    name
+  end
+
+  def name
+    "Plot ##{plot_id}"
+  end
+
 end

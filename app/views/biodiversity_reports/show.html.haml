@@ -1,0 +1,28 @@
+- provide(:title, 'Biodiversity Report')
+.row
+  %aside.col-md-6
+    %section
+      %h1= @biodiversity_report
+      %h2= @biodiversity_report.byline
+      %hr
+      %p Time: #{@biodiversity_report.time.to_s(:ampm)}
+      %p Temperature: #{@biodiversity_report.temperature}
+      %p Biomass Estimate: #{@biodiversity_report.biomass_estimate}
+      %p Species Richness: #{@biodiversity_report.species_richness}
+      %hr
+      %h3 Plant samples
+      = render(@biodiversity_report.plant_samples) || "No plant samples"
+      %hr
+      %h3 Soil sample
+      - if @biodiversity_report.soil_sample
+        %p PH Level: #{@biodiversity_report.soil_sample.ph_level}
+        %p Temperature: #{@biodiversity_report.soil_sample.temperature}
+      - else
+        %p No soil sample
+      - if @biodiversity_report.editable_by?(current_user)
+        .btn-group
+          = link_to "Edit", edit_biodiversity_report_path(@biodiversity_report), class: "btn btn-primary edit-btn"
+          = link_to "Delete", @biodiversity_report, method: :delete, data: { confirm: "Delete Report?" }, class: "btn btn-primary edit-btn danger-btn"
+  .col-md-9
+    %section
+      .plot_photo= image_tag @biodiversity_report.photo.url(:default)

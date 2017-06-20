@@ -16,6 +16,7 @@
             %li= link_to "Plots", plots_path
             %li= link_to "Plants", plants_path
             - if logged_in?
+              %li= link_to "Reports", biodiversity_reports_path
               - if admin?(current_user)
                 %li= link_to "Users", users_path
               %li.dropdown
