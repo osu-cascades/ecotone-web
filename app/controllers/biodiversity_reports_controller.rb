@@ -1,26 +1,22 @@
 class BiodiversityReportsController < ApplicationController
   before_action :login_required
+  before_action :load_plots_and_plants, only: [:new, :edit]
+  before_action :set_biodiversity_report, only: [:show, :edit, :update, :destroy]
 
   def index
     @biodiversity_reports = BiodiversityReport.all
   end
 
   def show
-    @biodiversity_report = BiodiversityReport.find(params[:id])
   end
 
   def new
     @biodiversity_report = BiodiversityReport.new
     @biodiversity_report.plant_samples.build
     @biodiversity_report.build_soil_sample
-    @plots = Plot.all
-    @plants = Plant.all
   end
 
   def edit
-    @biodiversity_report = BiodiversityReport.find(params[:id])
-    @plots = Plot.all
-    @plants = Plant.all
   end
 
   def create
@@ -57,14 +53,21 @@ class BiodiversityReportsController < ApplicationController
 
   private
 
+  def load_plots_and_plants
+    @plots = Plot.all
+    @plants = Plant.all
+  end
+
   def set_biodiversity_report
-    @BiodiversityReport = BiodiversityReport.find(params[:id])
+    @biodiversity_report = BiodiversityReport.find(params[:id])
   end
 
   def biodiversity_report_params
-    params.require(:biodiversity_report).permit(:date, :time, :temperature, :biomass_estimate,
-                                                :species_richness, :photo, :plot_id,
-                                                plant_samples_attributes: [:plant_id, :biodiversity_report_id, :abundance, :percent_cover, :biomass_estimate, :photo],
-                                                soil_sample_attributes: [:ph_level, :temperature, :biodiversity_report_id])
+    params.require(:biodiversity_report).permit(:date, :time, :temperature,
+      :biomass_estimate, :species_richness, :photo, :plot_id,
+      plant_samples_attributes: [:plant_id, :biodiversity_report_id, :abundance,
+        :percent_cover, :biomass_estimate, :photo],
+      soil_sample_attributes: [:ph_level, :temperature, :biodiversity_report_id])
   end
+
 end
