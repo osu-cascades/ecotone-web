@@ -24,4 +24,3 @@ class BiodiversityReport < ApplicationRecord
   end
 
 end
-
