@@ -19,5 +19,9 @@ class BiodiversityReport < ApplicationRecord
     "by #{user} on #{date.to_s(:long)} at #{time.to_s(:ampm)}"
   end
 
+  def editable_by?(user)
+    user.admin? || user == self.user
+  end
+
 end
 
