@@ -4,5 +4,7 @@ FactoryGirl.define do
     percent_cover 1
     biomass_estimate 1.5
     photo ""
+    plant
+    biodiversity_report
   end
 end
