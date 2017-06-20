@@ -4,7 +4,6 @@
   - @biodiversity_reports.each do |report|
     %li.photo_list
       .col-md-8
-        %h3= link_to "Biodiversity Report - #{report.date.strftime("%B %d, %Y")}", report
-        %p= "- #{report.user.name}"
-- if logged_in?
-  = link_to "Add Biodiversity Report", new_biodiversity_report_path, class: "btn btn-primary add-btn"
+        %h3= link_to report.to_s, report
+        %p= report.byline
+= link_to_if logged_in?, "Create a Biodiversity Report", new_biodiversity_report_path, class: "btn btn-primary add-btn"
