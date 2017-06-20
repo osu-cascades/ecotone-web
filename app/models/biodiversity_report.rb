@@ -2,7 +2,7 @@ class BiodiversityReport < ApplicationRecord
   belongs_to :user
   belongs_to :plot
 
-  has_many :plant_samples, :inverse_of => :biodiversity_report
+  has_many :plant_samples
   accepts_nested_attributes_for :plant_samples
 
   has_one :soil_sample
