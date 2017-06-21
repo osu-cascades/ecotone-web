@@ -33,6 +33,8 @@ RSpec.describe Plot, type: :model do
     it { is_expected.to validate_presence_of(:origin) }
     it { is_expected.to validate_presence_of(:initial_planting_date) }
     it { is_expected.to validate_presence_of(:initial_succession) }
+    it { is_expected.to have_attached_file(:photo) }
+    it { is_expected.to validate_attachment_content_type(:photo).allowing('image/jpg', 'image/png') }
   end
 
   context "without a featured plant" do
