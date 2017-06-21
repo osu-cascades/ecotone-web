@@ -2,7 +2,9 @@ require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
 
-  let(:user) { FactoryGirl.create(:user) }
+  let(:user) { create(:user) }
+  let(:other_user) { build(:user) }
+  let(:admin_user) { build(:user, :admin) }
 
   before(:each) do
     allow(controller).to receive(:logged_in?).and_return(true)
@@ -16,11 +18,45 @@ RSpec.describe UsersController, type: :controller do
   end
 
   describe "#show" do
-    it "returns http success" do
-      skip
-      get :show, params: { id: user.id }
-      expect(respose).to have_http_status(:success)
+    context "user views own profile" do
+
+      before do
+        allow(controller).to receive(:current_user).and_return(user)
+      end
+
+      it "returns http success" do
+        get :show, params: { id: user.id }
+        expect(response).to have_http_status(:success)
+      end
+
     end
+
+    context "admin views a profile" do
+
+      before do
+        allow(controller).to receive(:current_user).and_return(admin_user)
+      end
+
+      it "returns http success" do
+        get :show, params: { id: user.id }
+        expect(response).to have_http_status(:success)
+      end
+
+    end
+
+    context "user views another's profile" do
+
+      before do
+        allow(controller).to receive(:current_user).and_return(other_user)
+      end
+
+      it "returns http success" do
+        get :show, params: { id: user.id }
+        expect(response).to redirect_to(root_url)
+      end
+
+    end
+
   end
 
   describe "#new" do
@@ -31,4 +67,3 @@ RSpec.describe UsersController, type: :controller do
   end
 
 end
-
