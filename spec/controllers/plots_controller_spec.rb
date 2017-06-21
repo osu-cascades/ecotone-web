@@ -95,12 +95,12 @@ RSpec.describe PlotsController, type: :controller do
       end
 
       it "redirects to the updated plot" do
-        put :update, params: { id: @plot , plot: FactoryGirl.attributes_for(:plot) }
+        put :update, params: { id: @plot, plot: FactoryGirl.attributes_for(:plot) }
         expect(response).to redirect_to @plot
       end
 
       it "produces correct flash notice" do
-        put :update, params: { id: @plot , plot: FactoryGirl.attributes_for(:plot) }
+        put :update, params: { id: @plot, plot: FactoryGirl.attributes_for(:plot) }
         assert_equal 'Plot was successfully updated.', flash[:success]
       end
 

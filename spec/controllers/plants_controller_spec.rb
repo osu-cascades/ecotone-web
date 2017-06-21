@@ -37,13 +37,13 @@ RSpec.describe PlantsController, type: :controller do
   describe "#create" do
 
     context "with valid attributes" do
-      
+
       it "creates new plant" do
         plant_params = FactoryGirl.attributes_for(:plant)
         expect { post :create, params: { :plant => plant_params } }.to change(Plant, :count).by(1)
       end
 
-      it "redirects to index" do 
+      it "redirects to index" do
         post :create, params: { plant: FactoryGirl.attributes_for(:plant) }
         expect(response).to redirect_to plants_path
       end
@@ -55,7 +55,7 @@ RSpec.describe PlantsController, type: :controller do
 
     end
 
-    context "with invalid attributes" do 
+    context "with invalid attributes" do
 
       it "does not save new plant" do
         plant_params = FactoryGirl.attributes_for(:invalid_plant)
@@ -73,7 +73,7 @@ RSpec.describe PlantsController, type: :controller do
 
   describe "#update" do
 
-    before(:each) do 
+    before(:each) do
       @plant = create(:plant, common_name: "Example", scientific_name: "Example", habitat_type: "Example", tolerance: "Example", invasive: false)
     end
 
@@ -82,11 +82,11 @@ RSpec.describe PlantsController, type: :controller do
       it "updates plant attributes" do
         put :update, params: { id: @plant, plant: FactoryGirl.attributes_for(:plant, common_name: "CHANGED") }
         @plant.reload
-        expect(@plant.common_name).to eq('CHANGED')    
+        expect(@plant.common_name).to eq('CHANGED')
       end
 
       it "redirects to the updated plant" do
-        put :update, params: { id: @plant , plant: FactoryGirl.attributes_for(:plant) }
+        put :update, params: { id: @plant, plant: FactoryGirl.attributes_for(:plant) }
         expect(response).to redirect_to @plant
       end
 
@@ -142,7 +142,7 @@ RSpec.describe PlantsController, type: :controller do
         allow(controller).to receive(:current_user).and_return(general_user)
       end
 
-      it "#new redirects" do 
+      it "#new redirects" do
         get :new
         expect(response).to redirect_to :root
       end
@@ -152,7 +152,7 @@ RSpec.describe PlantsController, type: :controller do
         expect(response).to redirect_to :root
       end
 
-      before(:each) do 
+      before(:each) do
         @plant = create(:plant, common_name: "Example", scientific_name: "Example", habitat_type: "Example", tolerance: "Example", invasive: false)
       end
 
