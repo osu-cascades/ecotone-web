@@ -63,12 +63,12 @@ class PlotsController < ApplicationController
 
   private
 
-    def set_plot
-      @plot = Plot.find(params[:id])
-    end
+  def set_plot
+    @plot = Plot.find(params[:id])
+  end
 
-    def plot_params
-      params.require(:plot).permit(:plot_id, :featured_plant_id, :latitude, :longitude, :elevation, :area, :location_description, :aspect, :origin, :inoculated, :initial_planting_date, :initial_succession, :photo)
-    end
+  def plot_params
+    params.require(:plot).permit(:plot_id, :featured_plant_id, :latitude, :longitude, :elevation, :area, :location_description, :aspect, :origin, :inoculated, :initial_planting_date, :initial_succession, :photo)
+  end
 
 end

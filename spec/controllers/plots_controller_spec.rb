@@ -179,4 +179,3 @@ RSpec.describe PlotsController, type: :controller do
     end
   end
 end
-

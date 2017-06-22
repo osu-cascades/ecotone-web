@@ -169,5 +169,3 @@ RSpec.describe PlantsController, type: :controller do
     end
   end
 end
-
-
