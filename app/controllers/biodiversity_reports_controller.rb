@@ -26,8 +26,7 @@ class BiodiversityReportsController < ApplicationController
       redirect_to biodiversity_reports_path
       flash[:success] = 'Biodiversity report was successfully created.'
     else
-      @plots = Plot.all
-      @plants = Plant.all
+      load_plots_and_plants
       render :new
     end
   end
@@ -38,8 +37,7 @@ class BiodiversityReportsController < ApplicationController
       redirect_to @biodiversity_report
       flash[:success] = 'Biodiversity report was successfully updated.'
     else
-      @plots = Plot.all
-      @plants = Plant.all
+      load_plots_and_plants
       render :edit
     end
   end
