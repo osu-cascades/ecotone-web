@@ -4,10 +4,10 @@
       = render partial: 'shared/error_messages', locals: { object: @biodiversity_report }
       = form.label :plot
       = form.collection_select :plot_id, @plots, :id, :name, :include_blank => "Choose one"
-      = form.label :date
-      = form.date_field :date, class: 'form-control'
-      = form.label :time
-      = form.time_field :time, class: 'form-control'
+      = form.label :measured_on, 'Date'
+      = form.date_field :measured_on, class: 'form-control'
+      = form.label :measured_at, 'Time'
+      = form.time_field :measured_at, class: 'form-control'
       = form.label :temperature
       = form.text_field :temperature, class: 'form-control'
       = form.label :biomass_estimate

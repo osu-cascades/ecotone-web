@@ -6,8 +6,8 @@ RSpec.describe BiodiversityReport, type: :model do
 
   context "when created" do
     it { is_expected.to have_attributes(
-      date: Date.today,
-      time: Date.today,
+      measured_on: Date.today,
+      measured_at: Date.today,
       temperature: 1.5,
       biomass_estimate: 1.5,
       species_richness: 1
@@ -19,7 +19,7 @@ RSpec.describe BiodiversityReport, type: :model do
     end
 
     it "has a byline consisting of the user name, date and time" do
-      expect(report.byline).to eq("by #{report.user} on #{report.date.to_s(:long)} at #{report.time.to_s(:ampm)}")
+      expect(report.byline).to eq("by #{report.user} on #{report.measured_on.to_s(:long)} at #{report.measured_at.to_s(:ampm)}")
     end
   end
 
@@ -27,8 +27,8 @@ RSpec.describe BiodiversityReport, type: :model do
     it { is_expected.to validate_numericality_of(:temperature) }
     it { is_expected.to validate_numericality_of(:biomass_estimate).is_greater_than(0) }
     it { is_expected.to validate_numericality_of(:species_richness).only_integer.is_greater_than(0) }
-    it { is_expected.to validate_presence_of(:date) }
-    it { is_expected.to validate_presence_of(:time) }
+    it { is_expected.to validate_presence_of(:measured_on) }
+    it { is_expected.to validate_presence_of(:measured_at) }
   end
 
   describe "associations" do

@@ -5,7 +5,7 @@
       %h1= @biodiversity_report
       %h2= @biodiversity_report.byline
       %hr
-      %p Time: #{@biodiversity_report.time.to_s(:ampm)}
+      %p Time: #{@biodiversity_report.measured_at.to_s(:ampm)}
       %p Temperature: #{@biodiversity_report.temperature}
       %p Biomass Estimate: #{@biodiversity_report.biomass_estimate}
       %p Species Richness: #{@biodiversity_report.species_richness}

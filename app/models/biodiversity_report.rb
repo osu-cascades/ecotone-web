@@ -11,8 +11,8 @@ class BiodiversityReport < ApplicationRecord
   has_attached_file :photo, default_url: "missing.png", styles: { default: "400x400#", thumbnail: "50x50#" }
   validates_attachment_content_type :photo, content_type: /\Aimage/
 
-  validates_presence_of :date
-  validates_presence_of :time
+  validates_presence_of :measured_on
+  validates_presence_of :measured_at
   validates_numericality_of :temperature
   validates_numericality_of :biomass_estimate, greater_than: 0
   validates_numericality_of :species_richness, only_integer: true, greater_than: 0
@@ -22,7 +22,7 @@ class BiodiversityReport < ApplicationRecord
   end
 
   def byline
-    "by #{user} on #{date.to_s(:long)} at #{time.to_s(:ampm)}"
+    "by #{user} on #{measured_on.to_s(:long)} at #{measured_at.to_s(:ampm)}"
   end
 
   def editable_by?(user)

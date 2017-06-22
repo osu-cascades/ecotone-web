@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170610182956) do
+ActiveRecord::Schema.define(version: 20170622030805) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "biodiversity_reports", id: :serial, force: :cascade do |t|
-    t.date "date"
-    t.time "time"
+    t.date "measured_on"
+    t.time "measured_at"
     t.float "temperature"
     t.float "biomass_estimate"
     t.integer "species_richness"
