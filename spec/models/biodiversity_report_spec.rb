@@ -18,8 +18,8 @@ RSpec.describe BiodiversityReport, type: :model do
       expect(report.to_s).to eq("Biodiversity Report #{report.id}")
     end
 
-    it "has a byline consisting of the user name, date and time" do
-      expect(report.byline).to eq("by #{report.user} on #{report.measured_on.to_s(:long)} at #{report.measured_at.to_s(:ampm)}")
+    it "has a byline consisting of the author name, date and time" do
+      expect(report.byline).to eq("by #{report.author} on #{report.measured_on.to_s(:long)} at #{report.measured_at.to_s(:ampm)}")
     end
   end
 
@@ -32,7 +32,7 @@ RSpec.describe BiodiversityReport, type: :model do
   end
 
   describe "associations" do
-    it { is_expected.to belong_to(:user) }
+    it { is_expected.to belong_to(:author) }
     it { is_expected.to belong_to(:plot) }
     it { is_expected.to have_many(:plant_samples) }
     it { is_expected.to have_one(:soil_sample) }
@@ -42,7 +42,7 @@ RSpec.describe BiodiversityReport, type: :model do
 
   describe "editability" do
 
-    let(:author) { report.user }
+    let(:author) { report.author }
     let(:admin) { build(:user, :admin) }
 
     it "is editable by its author, who is not an admin" do

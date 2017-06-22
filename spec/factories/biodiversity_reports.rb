@@ -7,6 +7,6 @@ FactoryGirl.define do
     species_richness 1
     photo ""
     plot
-    user
+    author factory: :user
   end
 end

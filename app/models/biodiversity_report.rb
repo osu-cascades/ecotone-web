@@ -1,5 +1,5 @@
 class BiodiversityReport < ApplicationRecord
-  belongs_to :user
+  belongs_to :author, class_name: 'User'
   belongs_to :plot
 
   has_many :plant_samples
@@ -22,11 +22,11 @@ class BiodiversityReport < ApplicationRecord
   end
 
   def byline
-    "by #{user} on #{measured_on.to_s(:long)} at #{measured_at.to_s(:ampm)}"
+    "by #{author} on #{measured_on.to_s(:long)} at #{measured_at.to_s(:ampm)}"
   end
 
   def editable_by?(user)
-    user.admin? || user == self.user
+    user.admin? || user == author
   end
 
 end
