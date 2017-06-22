@@ -30,4 +30,18 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    attributes:
+      biodiversity_report:
+        measured_on: "Date"
+        measured_at: "Time"
+    errors:
+      models:
+        biodiversity_report:
+          attributes:
+            plot:
+              required: "must be specified"
+        plant_sample:
+          attributes:
+            plant:
+              required: "must be specified"
