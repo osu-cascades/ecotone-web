@@ -1,7 +1,7 @@
 .row
   .col-md-6.col-md-offset-3
     = form_for(@biodiversity_report, html: {multipart: true}) do |form|
-      = render partial: 'shared/error_messages', locals: { object: @biodiversity_report }
+      = form_errors_for(@biodiversity_report)
       = form.label :plot
       = form.collection_select :plot_id, @plots, :id, :name, :include_blank => "Choose one"
       = form.label :measured_on, 'Date'
