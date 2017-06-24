@@ -24,6 +24,19 @@ RSpec.feature "Creating biodiversity reports" do
       expect(page).to have_content(BiodiversityReport.last.to_s)
     end
 
+    scenario "as a user providing invalid inputs" do
+      click_button('Add biodiversity report')
+      expect(page).to have_selector ".alert", text: "The form contains 6 errors."
+      page.find("#error_explanation").tap do |error_explanations|
+        expect(error_explanations).to have_content("Plot must be specified")
+        expect(error_explanations).to have_content("Date can't be blank")
+        expect(error_explanations).to have_content("Time can't be blank")
+        expect(error_explanations).to have_content("Temperature is not a number")
+        expect(error_explanations).to have_content("Biomass estimate is not a number")
+        expect(error_explanations).to have_content("Species richness is not a number")
+      end
+    end
+
   end
 
 end
