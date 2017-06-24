@@ -10,7 +10,7 @@ RSpec.describe PlotsController, type: :controller do
   let(:plant) { create(:plant) }
   let(:invalid_plot) { FactoryGirl.build(:invalid_plot) }
 
-  before(:each) do
+  before do
     allow(controller).to receive(:current_user).and_return(admin_user)
   end
 
@@ -82,7 +82,7 @@ RSpec.describe PlotsController, type: :controller do
 
   describe "#update" do
 
-    before(:each) do
+    before do
       @plot = create(:plot, plot_id: 1)
     end
 
@@ -125,7 +125,7 @@ RSpec.describe PlotsController, type: :controller do
 
   describe "#destroy" do
 
-    before(:each) do
+    before do
       @plot = create(:plot)
     end
 
@@ -148,7 +148,7 @@ RSpec.describe PlotsController, type: :controller do
   describe "all plants controller methods" do
 
     context "user is not admin" do
-      before(:each) do
+      before do
         allow(controller).to receive(:current_user).and_return(general_user)
       end
 
@@ -162,7 +162,7 @@ RSpec.describe PlotsController, type: :controller do
         expect(response).to redirect_to :root
       end
 
-      before(:each) do
+      before do
         @plot = create(:plot)
       end
 

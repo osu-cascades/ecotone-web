@@ -9,7 +9,7 @@ RSpec.describe PlantsController, type: :controller do
   let(:plant) { FactoryGirl.create(:plant) }
   let(:invalid_plant) { FactoryGirl.build(:invalid_plant) }
 
-  before(:each) do
+  before do
     allow(controller).to receive(:current_user).and_return(admin_user)
   end
 
@@ -73,7 +73,7 @@ RSpec.describe PlantsController, type: :controller do
 
   describe "#update" do
 
-    before(:each) do
+    before do
       @plant = create(:plant, common_name: "Example", scientific_name: "Example", habitat_type: "Example", tolerance: "Example", invasive: false)
     end
 
@@ -116,7 +116,7 @@ RSpec.describe PlantsController, type: :controller do
 
   describe "#destroy" do
 
-    before(:each) do
+    before do
       @plant = create(:plant)
     end
 
@@ -138,7 +138,7 @@ RSpec.describe PlantsController, type: :controller do
 
   describe "all plants controller methods" do
     context "user is not admin" do
-      before(:each) do
+      before do
         allow(controller).to receive(:current_user).and_return(general_user)
       end
 
@@ -152,7 +152,7 @@ RSpec.describe PlantsController, type: :controller do
         expect(response).to redirect_to :root
       end
 
-      before(:each) do
+      before do
         @plant = create(:plant, common_name: "Example", scientific_name: "Example", habitat_type: "Example", tolerance: "Example", invasive: false)
       end
 

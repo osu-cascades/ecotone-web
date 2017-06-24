@@ -6,7 +6,7 @@ RSpec.describe UsersController, type: :controller do
   let(:other_user) { build(:user) }
   let(:admin_user) { build(:user, :admin) }
 
-  before(:each) do
+  before do
     allow(controller).to receive(:logged_in?).and_return(true)
   end
 

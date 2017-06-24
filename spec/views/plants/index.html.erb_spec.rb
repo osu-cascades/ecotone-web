@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "plants/index", type: :view do
-  before(:each) do
+  before do
     assign(:plants, [
       Plant.create!(
         :common_name => "Common Name",
