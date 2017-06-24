@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "admin create plot" do
+RSpec.feature "admin create plot" do
 
   let(:user) { create(:user, :admin) }
 

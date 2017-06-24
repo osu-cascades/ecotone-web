@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "admin create plant" do
+RSpec.feature "admin create plant" do
 
   context "admin logged in" do
 
