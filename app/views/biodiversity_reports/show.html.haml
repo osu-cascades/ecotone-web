@@ -23,6 +23,6 @@
         .btn-group
           = link_to "Edit", edit_biodiversity_report_path(@biodiversity_report), class: "btn btn-primary edit-btn"
           = link_to "Delete", @biodiversity_report, method: :delete, data: { confirm: "Delete Report?" }, class: "btn btn-primary edit-btn danger-btn"
-  .col-md-9
+  .col-md-6
     %section
       .plot_photo= image_tag @biodiversity_report.photo.url(:default)
