@@ -11,9 +11,9 @@
       %p Species Richness: #{@biodiversity_report.species_richness}
       %hr
       %h3 Soil Sample
-      - if @biodiversitysoil_sample
-        %p PH Level: #{soil_sample.ph_level}
-        %p Temperature: #{soil_sample.temperature}
+      - if @biodiversity_report.soil_sample
+        %p pH Level: #{@biodiversity_report.soil_sample.ph_level}
+        %p Temperature: #{@biodiversity_report.soil_sample.temperature}
       - else
         %p No soil sample
       %hr
