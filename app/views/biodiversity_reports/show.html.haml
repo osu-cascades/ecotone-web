@@ -10,15 +10,15 @@
       %p Biomass Estimate: #{@biodiversity_report.biomass_estimate}
       %p Species Richness: #{@biodiversity_report.species_richness}
       %hr
-      %h3 Plant samples
-      = render(@biodiversity_report.plant_samples) || "No plant samples"
-      %hr
-      %h3 Soil sample
-      - if @biodiversity_report.soil_sample
-        %p PH Level: #{@biodiversity_report.soil_sample.ph_level}
-        %p Temperature: #{@biodiversity_report.soil_sample.temperature}
+      %h3 Soil Sample
+      - if @biodiversitysoil_sample
+        %p PH Level: #{soil_sample.ph_level}
+        %p Temperature: #{soil_sample.temperature}
       - else
         %p No soil sample
+      %hr
+      %h3 Plant Samples
+      = render(@biodiversity_report.plant_samples) || "No plant samples"
       - if @biodiversity_report.editable_by?(current_user)
         .btn-group
           = link_to "Edit", edit_biodiversity_report_path(@biodiversity_report), class: "btn btn-primary edit-btn"
