@@ -11,7 +11,7 @@ RSpec.describe "admin create plot" do
       create(:plant)
     end
 
-    it "creates a new plot" do
+    scenario "Admin creates a new plot" do
       visit new_plot_path
       fill_in('Plot', :with => 1)
       select('Plant Example', :from => 'Featured plant')
