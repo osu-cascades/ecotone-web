@@ -18,7 +18,7 @@
         %p No soil sample
       %hr
       %h3 Plant Samples
-      = render(@biodiversity_report.plant_samples) || "No plant samples"
+      = render(@biodiversity_report.plant_samples) || "<p>No plant samples</p>".html_safe
       - if @biodiversity_report.editable_by?(current_user)
         .btn-group
           = link_to "Edit", edit_biodiversity_report_path(@biodiversity_report), class: "btn btn-primary edit-btn"
