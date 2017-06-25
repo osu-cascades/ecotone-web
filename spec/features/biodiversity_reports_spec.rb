@@ -10,7 +10,7 @@ RSpec.feature "Creating biodiversity reports" do
     visit new_biodiversity_report_path
   end
 
-  context "without a soil sample or a plant sample" do
+  context "without a soil sample nor a plant sample" do
 
     scenario "as a user providing valid report data" do
       fill_in_report_fields
@@ -59,7 +59,9 @@ RSpec.feature "Creating biodiversity reports" do
       expect(page).to have_selector ".alert", text: "The form contains 2 errors."
       expect(page.find("#error_explanation")).to have_content("Soil sample ph level must be greater than or equal to 0")
       expect(page.find("#error_explanation")).to have_content("Soil sample temperature is not a number")
-      # TODO: soil sample fields should be visible, with values
+      expect(page).to have_css('#soil_sample_fields.collapse.in')
+      expect(page).to have_field('pH level', with: '-1')
+      expect(page).to have_field('biodiversity_report_soil_sample_attributes_temperature', with: 'fake')
     end
 
   end

@@ -18,8 +18,8 @@
       = form.file_field :photo, class: 'form-control'
       %hr
       %h3 Soil Sample
-      %p= link_to 'Add soil sample', '#soil_sample_fields', {id: 'lnk-toggle-soil-sample-fields', 'data-toggle': 'collapse'}
-      #soil_sample_fields.collapse
+      %p= link_to_toggle_soil_sample_fields(@biodiversity_report.soil_sample)
+      #soil_sample_fields.collapse{ class: show_css_class(@biodiversity_report.soil_sample) }
         = form.fields_for :soil_sample do |fields|
           = render partial: 'soil_sample_fields', locals: { f: fields }
       %hr

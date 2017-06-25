@@ -27,6 +27,7 @@ class BiodiversityReportsController < ApplicationController
       flash[:success] = 'Biodiversity report was successfully created.'
     else
       load_plots_and_plants
+      @biodiversity_report.build_soil_sample unless @biodiversity_report.soil_sample
       render :new
     end
   end
