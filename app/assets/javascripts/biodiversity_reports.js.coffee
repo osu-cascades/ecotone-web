@@ -10,11 +10,9 @@ $(document).on "turbolinks:load", ->
     $(this).before($(this).data('fields').replace(regexp, time))
     event.preventDefault()
 
-  $('#lnk-show-soil-sample-fields').click ->
-    $('#soil_sample_fields input').val('')
-    $('#soil_sample_fields').collapse('toggle')
-    if @.text == 'Add soil sample'
-      $(@).text('Omit soil sample')
-    else
-      $(@).text('Add soil sample')
-    false
+  $('#soil_sample_fields').on 'shown.bs.collapse', (event) ->
+    $('#lnk-toggle-soil-sample-fields').text('Omit')
+
+  $('#soil_sample_fields').on 'hidden.bs.collapse', (event) ->
+    $(@).find('input').val('')
+    $('#lnk-toggle-soil-sample-fields').text('Add')

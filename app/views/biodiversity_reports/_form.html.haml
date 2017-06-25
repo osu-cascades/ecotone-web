@@ -18,7 +18,7 @@
       = form.file_field :photo, class: 'form-control'
       %hr
       %h3 Soil Sample
-      %p= link_to "Add soil sample", "#", {id: 'lnk-show-soil-sample-fields'}
+      %p= link_to 'Add soil sample', '#soil_sample_fields', {id: 'lnk-toggle-soil-sample-fields', 'data-toggle': 'collapse'}
       #soil_sample_fields.collapse
         = form.fields_for :soil_sample do |fields|
           = render partial: 'soil_sample_fields', locals: { f: fields }
