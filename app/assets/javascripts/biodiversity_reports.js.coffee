@@ -11,8 +11,8 @@ $(document).on "turbolinks:load", ->
     event.preventDefault()
 
   $('#soil_sample_fields').on 'shown.bs.collapse', (event) ->
-    $('#lnk-toggle-soil-sample-fields').text('Omit')
+    $('#lnk-toggle-soil-sample-fields').text('Omit soil sample')
 
   $('#soil_sample_fields').on 'hidden.bs.collapse', (event) ->
     $(@).find('input').val('')
-    $('#lnk-toggle-soil-sample-fields').text('Add')
+    $('#lnk-toggle-soil-sample-fields').text('Add soil sample')
