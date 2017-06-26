@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "Creating biodiversity reports" do
+RSpec.feature "User creates a biodiversity report" do
 
   let(:user) { create(:user) }
 
@@ -10,9 +10,9 @@ RSpec.feature "Creating biodiversity reports" do
     visit new_biodiversity_report_path
   end
 
-  context "without a soil sample nor a plant sample" do
+  describe "without a soil sample nor a plant sample" do
 
-    scenario "as a user providing valid report data" do
+    scenario "providing valid report data" do
       fill_in_report_fields
       click_button('Add biodiversity report')
       expect(page).to have_selector ".alert", text: "Biodiversity report was successfully created."
@@ -21,7 +21,7 @@ RSpec.feature "Creating biodiversity reports" do
       expect(page).to have_content('No soil sample')
     end
 
-    scenario "as a user providing invalid report data" do
+    scenario "providing invalid report data" do
       click_button('Add biodiversity report')
       expect(page).to have_selector ".alert", text: "The form contains 6 errors."
       page.find("#error_explanation").tap do |error_explanations|
@@ -36,11 +36,11 @@ RSpec.feature "Creating biodiversity reports" do
 
   end
 
-  context "with a soil sample" do
+  describe "with a soil sample" do
 
     before { fill_in_report_fields }
 
-    scenario "as a user providing valid soil sample data" do
+    scenario "providing valid soil sample data" do
       fill_in('pH level', :with => '10')
       fill_in('biodiversity_report_soil_sample_attributes_temperature', :with => '100')
       click_button('Add biodiversity report')
@@ -52,7 +52,7 @@ RSpec.feature "Creating biodiversity reports" do
       expect(page).to have_content('Temperature: 100')
     end
 
-    scenario "as a user providing invalid soil sample data" do
+    scenario "providing invalid soil sample data" do
       fill_in('pH level', :with => '-1')
       fill_in('biodiversity_report_soil_sample_attributes_temperature', :with => 'fake')
       click_button('Add biodiversity report')

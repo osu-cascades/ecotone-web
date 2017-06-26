@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.feature "admin create plant" do
+RSpec.feature "Admin creates a plant" do
 
-  context "admin logged in" do
+  context "when logged in" do
 
     let(:user) { create(:user, :admin) }
 
@@ -10,7 +10,7 @@ RSpec.feature "admin create plant" do
       sign_in(user)
     end
 
-    scenario "Admin creates a new plant" do
+    scenario "providing valid plant attributes" do
       visit new_plant_path
       fill_in('Common name', :with => 'Common Name Example')
       fill_in('Scientific name', :with => 'Species Name example')

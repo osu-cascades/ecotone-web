@@ -1,17 +1,17 @@
 require 'rails_helper'
 
-RSpec.feature "admin create plot" do
+RSpec.feature "Admin creates a plot" do
 
-  let(:user) { create(:user, :admin) }
+  context "when logged in" do
 
-  context "admin logged in" do
+    let(:user) { create(:user, :admin) }
 
     before do
       sign_in(user)
       create(:plant)
     end
 
-    scenario "Admin creates a new plot" do
+    scenario "providing valid plot attributes" do
       visit new_plot_path
       fill_in('Plot', :with => 1)
       select('Plant Example', :from => 'Featured plant')

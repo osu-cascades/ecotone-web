@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-RSpec.feature "Logging in" do
+RSpec.feature "User logs in" do
 
   let(:user) { create(:user) }
 
-  scenario "User provides invalid credentials" do
+  scenario "fails when providing invalid credentials" do
     visit login_path
     fill_in('Email', :with => '')
     fill_in('Password', :with => '')
@@ -16,7 +16,7 @@ RSpec.feature "Logging in" do
     expect(page).to_not have_selector ".alert"
   end
 
-  scenario "User provides valid credentials" do
+  scenario "succeeds providing valid credentials" do
     sign_in(user)
     expect(page).to have_selector ".alert", text: "Welcome back, #{user.name}"
   end
