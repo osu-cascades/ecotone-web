@@ -47,7 +47,7 @@ RSpec.feature "User creates a biodiversity report" do
       expect(page).to have_selector ".alert", text: "Biodiversity report was successfully created."
       expect(page).to have_content(BiodiversityReport.last.to_s)
       click_link(BiodiversityReport.last.to_s)
-      expect(page).to_not have_content('No soil sample')
+      expect(page).to have_no_content('No soil sample')
       expect(page).to have_content('pH Level: 10')
       expect(page).to have_content('Temperature: 100')
     end

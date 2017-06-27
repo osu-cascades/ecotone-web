@@ -13,7 +13,7 @@ RSpec.feature "User logs in" do
     expect(page).to have_selector ".alert", text: "Invalid email/password combination"
     # ensure the flash does not persist after visiting any subsequent screens
     visit root_path
-    expect(page).to_not have_selector ".alert"
+    expect(page).to have_no_selector ".alert"
   end
 
   scenario "succeeds providing valid credentials" do
