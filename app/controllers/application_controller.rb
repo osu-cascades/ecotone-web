@@ -25,4 +25,15 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def build_qr_code_image(qr_object, size)
+    qr_object.as_png(resize_gte_to: false,
+                     resize_exactly_to: false,
+                     fill: 'white',
+                     color: 'black',
+                     size: size,
+                     border_modules: 4,
+                     module_px_size: 6,
+                     file: nil)
+  end
+
 end
