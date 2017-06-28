@@ -14,5 +14,6 @@ $(document).on "turbolinks:load", ->
     $('#lnk-toggle-soil-sample-fields').text('Omit soil sample')
 
   $('#soil_sample_fields').on 'hidden.bs.collapse', (event) ->
-    $(@).find('input').val('')
+    $(@).find(':input:not([type=hidden])').val('')
+    $(@).find('#biodiversity_report_soil_sample_attributes__destroy').val('1')
     $('#lnk-toggle-soil-sample-fields').text('Add soil sample')

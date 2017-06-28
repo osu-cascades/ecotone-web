@@ -17,6 +17,7 @@ class BiodiversityReportsController < ApplicationController
   end
 
   def edit
+    @biodiversity_report.build_soil_sample unless @biodiversity_report.soil_sample
   end
 
   def create

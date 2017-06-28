@@ -2,11 +2,11 @@ class BiodiversityReport < ApplicationRecord
   belongs_to :author, class_name: 'User'
   belongs_to :plot
 
-  has_many :plant_samples
-  accepts_nested_attributes_for :plant_samples, allow_destroy: true, reject_if: :all_blank
-
   has_one :soil_sample
   accepts_nested_attributes_for :soil_sample, allow_destroy: true, reject_if: :all_blank
+
+  has_many :plant_samples
+  accepts_nested_attributes_for :plant_samples, allow_destroy: true, reject_if: :all_blank
 
   has_attached_file :photo, default_url: "missing.png", styles: { default: "400x400#", thumbnail: "50x50#" }
   validates_attachment_content_type :photo, content_type: /\Aimage/

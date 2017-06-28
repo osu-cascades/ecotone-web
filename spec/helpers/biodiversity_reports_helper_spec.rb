@@ -4,7 +4,7 @@ RSpec.describe BiodiversityReportsHelper, type: :helper do
 
   let(:soil_sample) { build(:soil_sample) }
   let(:empty_soil_sample) { double }
-  before { allow(empty_soil_sample).to receive(:has_any_attribute_values?).and_return(false) }
+  before { allow(empty_soil_sample).to receive(:has_temperature_or_ph_level?).and_return(false) }
 
   describe "#link_to_toggle_soil_sample_fields" do
     context "when the soil sample has attribute values" do
