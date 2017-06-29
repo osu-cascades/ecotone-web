@@ -5,7 +5,7 @@ RSpec.describe PlantSample, type: :model do
   subject(:plant_sample) { build :plant_sample }
 
   context "when created" do
-    it { is_expected.to have_attributes(abundance: 1, percent_cover: 1, biomass_estimate: 1.5) }
+    it { is_expected.to have_attributes(abundance: 1, percent_cover: 1, biomass_estimate: 1.0) }
     it { is_expected.to be_valid }
   end
 
