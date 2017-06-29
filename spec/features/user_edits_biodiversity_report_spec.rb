@@ -112,6 +112,15 @@ RSpec.feature "User edits a biodiversity report" do
       visit edit_biodiversity_report_path(biodiversity_report)
     end
 
+    scenario "omitting the existing soil sample" do
+      skip 'remove plant sample not deleting plant sample after update'
+      click_link('Remove plant sample')
+      click_button('Update Biodiversity report')
+      expect(page).to have_selector '.alert', text: 'Biodiversity report was successfully updated.'
+      expect(page).to have_content(BiodiversityReport.last.to_s)
+      expect(page).to have_content('No plant samples')
+    end
+
     scenario 'modifying the existing plant sample with valid data' do
       within('.plant_sample') do
         fill_in('Abundance', :with => '2')
