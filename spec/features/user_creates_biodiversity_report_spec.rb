@@ -6,6 +6,7 @@ RSpec.feature "User creates a biodiversity report" do
 
   before do
     create(:plot)
+    # create(:plant)
     sign_in(user)
     visit new_biodiversity_report_path
   end
@@ -62,6 +63,30 @@ RSpec.feature "User creates a biodiversity report" do
       expect(page).to have_css('#soil_sample_fields.collapse.in')
       expect(page).to have_field('pH level', with: '-1')
       expect(page).to have_field('biodiversity_report_soil_sample_attributes_temperature', with: 'fake')
+    end
+
+  end
+
+  describe "with one plant sample" do
+    
+    before { fill_in_report_fields }
+
+    scenario "providing valid plant sample data" do
+      within(".plant_sample") do
+        select('Plant Example', from: 'Plant')
+        fill_in('Abundance', :with => '1')
+        fill_in('Percent cover', :with => '50')
+        fill_in('Biomass estimate', :with => '100')
+      end
+      click_button('Create Biodiversity report')
+      expect(page).to have_selector '.alert', text: 'Biodiversity report was successfully created.'
+      expect(page).to have_content(BiodiversityReport.last.to_s)
+      click_link(BiodiversityReport.last.to_s)
+      expect(page).to have_no_content('No plant samples')
+      expect(page).to have_content('Common name: Plant Example')
+      expect(page).to have_content('Abundance: 1')
+      expect(page).to have_content('Percent Cover: 50')
+      expect(page).to have_content('Biomass Estimate: 100.0')
     end
 
   end
