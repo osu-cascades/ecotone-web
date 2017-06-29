@@ -104,4 +104,46 @@ RSpec.feature "User edits a biodiversity report" do
 
   end
 
+  context 'with an existing plant sample' do
+
+    let!(:plant_sample) { create(:plant_sample, biodiversity_report: biodiversity_report) }
+
+    before do
+      visit edit_biodiversity_report_path(biodiversity_report)
+    end
+
+    scenario 'modifying the existing plant sample with valid data' do
+      within('.plant_sample') do
+        fill_in('Abundance', :with => '2')
+        fill_in('Percent cover', :with => '3')
+        fill_in('Biomass estimate', :with => '4')
+      end
+      click_button('Update Biodiversity report')
+      expect(page).to have_selector '.alert', text: 'Biodiversity report was successfully updated.'
+      expect(page).to have_content(BiodiversityReport.last.to_s)
+      expect(page).to have_no_content('No plant samples')
+      expect(page).to have_content('Common name: Plant Example')
+      expect(page).to have_content('Abundance: 2')
+      expect(page).to have_content('Percent Cover: 3')
+      expect(page).to have_content('Biomass Estimate: 4.0')
+    end
+
+    scenario "modifying the existing plant sample providing invalid data" do
+      within('.plant_sample') do
+        fill_in('Abundance', :with => '-1')
+        fill_in('Percent cover', :with => '-1')
+        fill_in('Biomass estimate', :with => '-1')
+      end
+      click_button('Update Biodiversity report')
+      expect(page).to have_selector ".alert", text: /The form contains .* errors./
+      expect(page.find('#error_explanation')).to have_content('Plant samples abundance must be greater than 0')
+      expect(page.find('#error_explanation')).to have_content('Plant samples percent cover must be greater than 0')
+      expect(page.find('#error_explanation')).to have_content('Plant samples biomass estimate must be greater than 0')
+      expect(page).to have_field('Abundance', :with => '-1')
+      expect(page).to have_field('Percent cover', :with => '-1')
+      expect(page).to have_field('Biomass estimate', :with => '-1')
+    end
+
+  end
+
 end
