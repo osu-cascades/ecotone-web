@@ -1,4 +1,4 @@
-%fieldset
+%fieldset.plant_sample
   = f.label :plant_id
   = f.collection_select :plant_id, @plants, :id, :common_name, :include_blank => "Choose one"
   = f.label :abundance

@@ -36,6 +36,7 @@ group :development, :test do
   gem 'capybara'
   gem 'factory_girl_rails'
   gem 'dotenv-rails'
+  gem 'poltergeist'
 end
 
 group :development do
