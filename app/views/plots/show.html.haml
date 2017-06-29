@@ -12,7 +12,7 @@
       %p Area: #{@plot.area}
       %p Aspect: #{@plot.aspect}
       %p Origin: #{@plot.origin}
-      %p Inoculated? #{@plot.inoculated}
+      %p Inoculated? #{@plot.inoculated ? "Yes" : "No"}
       %p Initial planting date: #{@plot.initial_planting_date}
       %p Initial succession: #{@plot.initial_succession}
       - if logged_in?
