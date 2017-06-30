@@ -64,7 +64,7 @@ RSpec.feature 'User creates a biodiversity report' do
 
   end
 
-  describe 'with one plant sample' do
+  describe 'with one existing plant sample' do
 
     before { fill_in_report_fields }
 
@@ -105,7 +105,7 @@ RSpec.feature 'User creates a biodiversity report' do
 
   end
 
-  context 'with two plant samples' do
+  context 'with two existing plant samples' do
 
     before { fill_in_report_fields }
 

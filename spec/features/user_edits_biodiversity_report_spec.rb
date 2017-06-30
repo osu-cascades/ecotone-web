@@ -104,7 +104,7 @@ RSpec.feature "User edits a biodiversity report" do
 
   end
 
-  context 'with an existing plant sample' do
+  context 'with one existing plant sample' do
 
     let!(:plant_sample) { create(:plant_sample, biodiversity_report: biodiversity_report) }
 
@@ -151,6 +151,36 @@ RSpec.feature "User edits a biodiversity report" do
       expect(page).to have_field('Abundance', :with => '-1')
       expect(page).to have_field('Percent cover', :with => '-1')
       expect(page).to have_field('Biomass estimate', :with => '-1')
+    end
+
+  end
+
+  context 'with two existing plant samples' do
+
+    let!(:plant_sample_1) { create(:plant_sample, biodiversity_report: biodiversity_report) }
+    let!(:plant_sample_2) { create(:plant_sample, biodiversity_report: biodiversity_report) }
+
+    before do
+      visit edit_biodiversity_report_path(biodiversity_report)
+    end
+
+    scenario 'modifying the existing plant sample with valid data' do
+      within all('.plant_sample').first do
+        fill_in('Abundance', :with => '2')
+        fill_in('Percent cover', :with => '2')
+        fill_in('Biomass estimate', :with => '2')
+      end
+      within all('.plant_sample').last do
+        fill_in('Abundance', :with => '3')
+        fill_in('Percent cover', :with => '3')
+        fill_in('Biomass estimate', :with => '3')
+      end
+      click_button('Update Biodiversity report')
+      expect(page).to have_selector '.alert', text: 'Biodiversity report was successfully updated.'
+      expect(page).to have_content(BiodiversityReport.last.to_s)
+      expect(page).to have_no_content('No plant samples')
+      expect(page).to have_content('Abundance: 2')
+      expect(page).to have_content('Abundance: 3')
     end
 
   end
