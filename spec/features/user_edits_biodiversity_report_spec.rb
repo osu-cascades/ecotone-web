@@ -112,7 +112,7 @@ RSpec.feature "User edits a biodiversity report" do
       visit edit_biodiversity_report_path(biodiversity_report)
     end
 
-    scenario "omitting the existing soil sample" do
+    scenario "remove the existing plant sample" do
       skip 'remove plant sample not deleting plant sample after update'
       click_link('Remove plant sample')
       click_button('Update Biodiversity report')
