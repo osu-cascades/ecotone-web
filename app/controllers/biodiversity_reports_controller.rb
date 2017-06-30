@@ -4,8 +4,8 @@ class BiodiversityReportsController < ApplicationController
   before_action :set_biodiversity_report, only: [:show, :edit, :update, :destroy]
 
   def index
-    @biodiversity_reports = BiodiversityReport.all
-  end
+    @biodiversity_reports = BiodiversityReport.order(measured_on: :desc)
+  end 
 
   def show
   end
