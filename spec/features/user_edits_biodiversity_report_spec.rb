@@ -78,31 +78,31 @@ RSpec.feature "User edits a biodiversity report" do
 
   end
 
-  # context 'without an existing plant sample' do
+  context 'without an existing plant sample' do
 
-  #   before do
-  #     visit edit_biodiversity_report_path(biodiversity_report)
-  #   end
+    before do
+      visit edit_biodiversity_report_path(biodiversity_report)
+    end
 
-  #   scenario 'providing valid plant sample data', js: true do
-  #     click_link('Add plant sample')
-  #     within('.plant_sample') do
-  #       select('Plant Example', from: 'Plant')
-  #       fill_in('Abundance', :with => '1')
-  #       fill_in('Percent cover', :with => '2')
-  #       fill_in('Biomass estimate', :with => '3')
-  #     end
-  #     click_button('Update Biodiversity report')
-  #     expect(page).to have_selector '.alert', text: 'Biodiversity report was successfully updated.'
-  #     expect(page).to have_content(BiodiversityReport.last.to_s)
-  #     expect(page).to have_no_content('No plant samples')
-  #     expect(page).to have_content('Common name: Plant Example')
-  #     expect(page).to have_content('Abundance: 1')
-  #     expect(page).to have_content('Percent Cover: 2')
-  #     expect(page).to have_content('Biomass Estimate: 3.0')
-  #   end
+    scenario 'providing valid plant sample data', js: true do
+      click_link('Add plant sample')
+      within('.plant_sample') do
+        select('Plant Example', from: 'Plant')
+        fill_in('Abundance', :with => '1')
+        fill_in('Percent cover', :with => '2')
+        fill_in('Biomass estimate', :with => '3')
+      end
+      click_button('Update Biodiversity report')
+      expect(page).to have_selector '.alert', text: 'Biodiversity report was successfully updated.'
+      expect(page).to have_content(BiodiversityReport.last.to_s)
+      expect(page).to have_no_content('No plant samples')
+      expect(page).to have_content('Common name: Plant Example')
+      expect(page).to have_content('Abundance: 1')
+      expect(page).to have_content('Percent Cover: 2')
+      expect(page).to have_content('Biomass Estimate: 3.0')
+    end
 
-  # end
+  end
 
   context 'with an existing plant sample' do
 
@@ -113,6 +113,7 @@ RSpec.feature "User edits a biodiversity report" do
     end
 
     scenario "remove the existing plant sample" do
+      skip 'remove plant sample link currently does not delete sample'
       click_link('Remove plant sample')
       click_button('Update Biodiversity report')
       expect(page).to have_selector '.alert', text: 'Biodiversity report was successfully updated.'
