@@ -17,6 +17,8 @@ class BiodiversityReport < ApplicationRecord
   validates_numericality_of :biomass_estimate, greater_than: 0, allow_nil: true
   validates_numericality_of :species_richness, only_integer: true, greater_than: 0
 
+  paginates_per 10
+
   def to_s
     "Biodiversity Report #{id}"
   end

@@ -9,5 +9,6 @@
   = f.text_field :biomass_estimate, class: 'form-control'
   = f.label :photo
   = f.file_field :photo, class: 'form-control'
+  = f.hidden_field :_destroy
   %p= link_to 'Remove plant sample', '#', class: 'remove_fields'
   %hr
