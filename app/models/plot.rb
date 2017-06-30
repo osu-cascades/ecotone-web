@@ -1,9 +1,9 @@
 class Plot < ApplicationRecord
   validates :plot_id, presence: true
-  validates :latitude, presence: true
-  validates :longitude, presence: true
-  validates :elevation, presence: true
-  validates :area, presence: true
+  validates_numericality_of :latitude, greater_than: 0, allow_nil: true
+  validates_numericality_of :longitude, greater_than: 0, allow_nil: true
+  validates_numericality_of :elevation, greater_than: 0, allow_nil: true
+  validates_numericality_of :area, greater_than: 0, allow_nil: true
   validates :location_description, presence: true
   validates :aspect, presence: true
   validates :origin, presence: true

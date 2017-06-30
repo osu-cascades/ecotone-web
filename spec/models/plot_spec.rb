@@ -24,10 +24,10 @@ RSpec.describe Plot, type: :model do
 
   describe "validations" do
     it { is_expected.to validate_presence_of(:plot_id) }
-    it { is_expected.to validate_presence_of(:latitude) }
-    it { is_expected.to validate_presence_of(:longitude) }
-    it { is_expected.to validate_presence_of(:elevation) }
-    it { is_expected.to validate_presence_of(:area) }
+    it { is_expected.to validate_numericality_of(:latitude).is_greater_than(0).allow_nil }
+    it { is_expected.to validate_numericality_of(:longitude).is_greater_than(0).allow_nil }
+    it { is_expected.to validate_numericality_of(:elevation).is_greater_than(0).allow_nil }
+    it { is_expected.to validate_numericality_of(:area).is_greater_than(0).allow_nil }
     it { is_expected.to validate_presence_of(:location_description) }
     it { is_expected.to validate_presence_of(:aspect) }
     it { is_expected.to validate_presence_of(:origin) }
