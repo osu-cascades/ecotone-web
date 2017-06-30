@@ -1,7 +1,7 @@
 $(document).on "turbolinks:load", ->
   $('form').on 'click', '.remove_fields', (event) ->
     $(this).prev('input[type=hidden]').val('1')
-    $(this).closest('fieldset').hide()
+    $(this).closest('fieldset').hide('fast')
     event.preventDefault()
 
   $('form').on 'click', '.add_fields', (event) ->
@@ -17,3 +17,4 @@ $(document).on "turbolinks:load", ->
     $(@).find(':input:not([type=hidden])').val('')
     $(@).find('#biodiversity_report_soil_sample_attributes__destroy').val('1')
     $('#lnk-toggle-soil-sample-fields').text('Add soil sample')
+    
