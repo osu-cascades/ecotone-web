@@ -24,8 +24,8 @@ RSpec.describe BiodiversityReport, type: :model do
   end
 
   describe "validations" do
-    it { is_expected.to validate_numericality_of(:temperature) }
-    it { is_expected.to validate_numericality_of(:biomass_estimate).is_greater_than(0) }
+    it { is_expected.to validate_numericality_of(:temperature).allow_nil }
+    it { is_expected.to validate_numericality_of(:biomass_estimate).is_greater_than(0).allow_nil }
     it { is_expected.to validate_numericality_of(:species_richness).only_integer.is_greater_than(0) }
     it { is_expected.to validate_presence_of(:measured_on) }
     it { is_expected.to validate_presence_of(:measured_at) }
