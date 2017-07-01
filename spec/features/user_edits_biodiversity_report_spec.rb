@@ -112,8 +112,7 @@ RSpec.feature "User edits a biodiversity report" do
       visit edit_biodiversity_report_path(biodiversity_report)
     end
 
-    scenario "remove the existing plant sample" do
-      skip 'remove plant sample link currently does not delete sample'
+    scenario 'removes the existing plant sample', js: true do
       click_link('Remove plant sample')
       click_button('Update Biodiversity report')
       expect(page).to have_selector '.alert', text: 'Biodiversity report was successfully updated.'
