@@ -20,7 +20,7 @@ RSpec.feature "User edits a biodiversity report" do
       fill_in('biodiversity_report_soil_sample_attributes_temperature', :with => '100')
       click_button('Update Biodiversity report')
       expect(page).to have_selector ".alert", text: "Biodiversity report was successfully updated."
-      expect(page).to have_content(BiodiversityReport.last.to_s)
+      expect(page).to have_content(biodiversity_report.to_s)
       expect(page).to have_no_content('No soil sample')
       expect(page).to have_content('pH Level: 10')
       expect(page).to have_content('Temperature: 100')
@@ -47,7 +47,7 @@ RSpec.feature "User edits a biodiversity report" do
       page.find('#biodiversity_report_soil_sample_attributes__destroy', visible: false).set('1')
       click_button('Update Biodiversity report')
       expect(page).to have_selector ".alert", text: "Biodiversity report was successfully updated."
-      expect(page).to have_content(BiodiversityReport.last.to_s)
+      expect(page).to have_content(biodiversity_report.to_s)
       expect(page).to have_content('No soil sample')
       expect(page).to have_no_content('pH Level: 1.5') # Set by soil_sample factory
       expect(page).to have_no_content('Temperature: 20.5') # Set by soil_sample factory
@@ -58,7 +58,7 @@ RSpec.feature "User edits a biodiversity report" do
       fill_in('biodiversity_report_soil_sample_attributes_temperature', :with => '99')
       click_button('Update Biodiversity report')
       expect(page).to have_selector ".alert", text: "Biodiversity report was successfully updated."
-      expect(page).to have_content(BiodiversityReport.last.to_s)
+      expect(page).to have_content(biodiversity_report.to_s)
       expect(page).to have_no_content('No soil sample')
       expect(page).to have_content('pH Level: 2')
       expect(page).to have_content('Temperature: 99')
@@ -94,7 +94,7 @@ RSpec.feature "User edits a biodiversity report" do
       end
       click_button('Update Biodiversity report')
       expect(page).to have_selector '.alert', text: 'Biodiversity report was successfully updated.'
-      expect(page).to have_content(BiodiversityReport.last.to_s)
+      expect(page).to have_content(biodiversity_report.to_s)
       expect(page).to have_no_content('No plant samples')
       expect(page).to have_content('Common name: Plant Example')
       expect(page).to have_content('Abundance: 1')
@@ -116,7 +116,7 @@ RSpec.feature "User edits a biodiversity report" do
       click_link('Remove plant sample')
       click_button('Update Biodiversity report')
       expect(page).to have_selector '.alert', text: 'Biodiversity report was successfully updated.'
-      expect(page).to have_content(BiodiversityReport.last.to_s)
+      expect(page).to have_content(biodiversity_report.to_s)
       expect(page).to have_content('No plant samples')
     end
 
@@ -128,7 +128,7 @@ RSpec.feature "User edits a biodiversity report" do
       end
       click_button('Update Biodiversity report')
       expect(page).to have_selector '.alert', text: 'Biodiversity report was successfully updated.'
-      expect(page).to have_content(BiodiversityReport.last.to_s)
+      expect(page).to have_content(biodiversity_report.to_s)
       expect(page).to have_no_content('No plant samples')
       expect(page).to have_content('Common name: Plant Example')
       expect(page).to have_content('Abundance: 2')
@@ -176,7 +176,7 @@ RSpec.feature "User edits a biodiversity report" do
       end
       click_button('Update Biodiversity report')
       expect(page).to have_selector '.alert', text: 'Biodiversity report was successfully updated.'
-      expect(page).to have_content(BiodiversityReport.last.to_s)
+      expect(page).to have_content(biodiversity_report.to_s)
       expect(page).to have_no_content('No plant samples')
       expect(page).to have_content('Abundance: 2')
       expect(page).to have_content('Abundance: 3')
