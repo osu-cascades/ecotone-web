@@ -1,4 +1,5 @@
 - provide(:title, "Plot ##{@plot.plot_id}")
+= link_to '« Back to plots', plots_path, class: 'btn btn-primary back'
 .row
   %aside.col-md-3
     %section
@@ -18,10 +19,10 @@
       - if logged_in?
         - if admin?(current_user)
           .btn-group
-            = link_to "Edit", edit_plot_path(@plot), class: "btn btn-primary edit-btn"
-            = link_to "Delete", @plot, method: :delete, data: { confirm: "Delete Plot ##{@plot.plot_id}?" }, class: " btn btn-primary edit-btn danger-btn"
+            = link_to 'Edit', edit_plot_path(@plot), class: 'btn btn-primary edit-btn'
+            = link_to 'Delete', @plot, method: :delete, data: { confirm: "Delete Plot ##{@plot.plot_id}?" }, class: 'btn btn-primary edit-btn danger-btn'
           .btn.download-btn
-            = link_to "Download QR-Code", { :action => "download_qr" }, 'data-turbolinks' => false
+            = link_to 'Download QR-Code', { :action => 'download_qr' }, 'data-turbolinks' => false
   .col-md-9
     %section
       .plot_photo= image_tag @plot.photo.url(:default)
