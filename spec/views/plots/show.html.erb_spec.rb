@@ -21,4 +21,29 @@ RSpec.describe "plots/show", type: :view do
     end
 
   end
+
+  describe "displaying latitude, longitude, area and elevation" do
+    context "when present" do
+      it "displays the values" do
+        assign(:plot, build(:plot))
+        render
+        expect(rendered).to have_content("Latitude: 44.0582")
+        expect(rendered).to have_content("Longitude: 121.3153")
+        expect(rendered).to have_content("Elevation: 3623")
+        expect(rendered).to have_content("Area: 100")
+      end
+    end
+
+    context "when nil" do
+      it "displays 'unmeasured'" do
+        assign(:plot, build(:plot, latitude: nil, longitude: nil, elevation: nil, area: nil))
+        render
+        expect(rendered).to have_content("Latitude: unmeasured")
+        expect(rendered).to have_content("Longitude: unmeasured")
+        expect(rendered).to have_content("Elevation: unmeasured")
+        expect(rendered).to have_content("Area: unmeasured")
+      end
+    end
+  end
+
 end

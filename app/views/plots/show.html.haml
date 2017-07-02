@@ -7,13 +7,13 @@
       %hr
       %p Featured Plant: #{ link_to_featured_plant(@plot) }
       %p Description: #{@plot.location_description}
-      %p Latitude: #{@plot.latitude}
-      %p Longitude: #{@plot.longitude}
-      %p Elevation: #{@plot.elevation}
-      %p Area: #{@plot.area}
+      %p Latitude: #{@plot.latitude || 'unmeasured'}
+      %p Longitude: #{@plot.longitude || 'unmeasured'}
+      %p Elevation: #{@plot.elevation || 'unmeasured'}
+      %p Area: #{@plot.area || 'unmeasured'}
       %p Aspect: #{@plot.aspect}
       %p Origin: #{@plot.origin}
-      %p Inoculated? #{@plot.inoculated ? "Yes" : "No"}
+      %p Inoculated? #{@plot.inoculated ? 'Yes' : 'No'}
       %p Initial planting date: #{@plot.initial_planting_date}
       %p Initial succession: #{@plot.initial_succession}
       - if logged_in?
