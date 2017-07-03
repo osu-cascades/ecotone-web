@@ -54,7 +54,7 @@ class UsersController < ApplicationController
   end
 
   def prevent_normal_users_from_editing_and_viewing_other_users
-    redirect_to(root_url) unless current_user.id == params[:id].to_i || admin?(current_user)
+    redirect_to(root_url) unless current_user.id == params[:id].to_i || current_user.admin?
   end
 
 end

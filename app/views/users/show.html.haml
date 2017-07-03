@@ -12,5 +12,4 @@
           %li.user_list
             .col-md-8
               %h2= link_to report.to_s, report
-      - if admin?(current_user) || current_user?(@user)
-        = link_to "Edit", edit_user_path(params[:id]), class: "btn btn-primary edit-btn"
+      = edit_user_link(current_user, @user)

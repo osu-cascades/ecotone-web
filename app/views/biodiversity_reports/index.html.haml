@@ -7,4 +7,4 @@
         %h3= link_to report.to_s, report
         %p= report.byline
 = paginate @biodiversity_reports
-= link_to_if logged_in?, "Create a Biodiversity Report", new_biodiversity_report_path, class: "btn btn-primary add-btn"
+= link_to("Create a Biodiversity Report", new_biodiversity_report_path, class: "btn btn-primary add-btn") if logged_in?

@@ -17,7 +17,7 @@
             %li= link_to "Plants", plants_path
             - if logged_in?
               %li= link_to "Reports", biodiversity_reports_path
-              - if admin?(current_user)
+              - if current_user.admin?
                 %li= link_to "Users", users_path
               %li.dropdown
                 %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}

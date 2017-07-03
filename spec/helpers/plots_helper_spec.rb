@@ -9,8 +9,7 @@ RSpec.describe PlotsHelper, type: :helper do
 
     context "plot has no featured plant and admin is logged in" do
       before { plot.featured_plant = nil }
-      before { allow(helper).to receive(:logged_in?).and_return(true) }
-      before { allow(helper).to receive(:admin?).and_return(true) }
+      before { allow(helper).to receive(:current_user).and_return(current_user) }
       it "returns 'Unassigned' with a link to edit the plot" do
         expect(helper.link_to_featured_plant(plot)).to match "Unassigned. <a href=\"/plots/1/edit\">Add one?</a>"
       end

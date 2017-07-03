@@ -42,6 +42,11 @@ RSpec.describe SessionsHelper, type: :helper do
       expect(helper.current_user?(build(:user))).to be false
     end
 
+    it "returns false when both the user and current_user are nil" do
+      allow(helper).to receive(:current_user) { nil }
+      expect(helper.current_user?(nil)).to be false
+    end
+
   end
 
   describe "#logged_in?" do
@@ -72,18 +77,6 @@ RSpec.describe SessionsHelper, type: :helper do
     it "sets the current user to nil" do
       helper.log_out
       expect(helper.instance_variable_get(:@current_user)).to be_nil
-    end
-
-  end
-
-  describe "#admin?" do
-
-    it "returns true when user is an admin" do
-      expect(helper.admin?(build(:user, :admin))).to be true
-    end
-
-    it "returns false when the user is not an admin" do
-      expect(helper.admin?(build(:user))).to be false
     end
 
   end

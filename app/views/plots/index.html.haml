@@ -8,9 +8,5 @@
       .col-md-8
         %h3= link_to "Plot ##{plot.plot_id}", plot
         %h4= plot.location_description
-        - if logged_in?
-          - if admin?(current_user)
-            %p= link_to "edit", edit_plot_path(plot)
-- if logged_in?
-  - if admin?(current_user)
-    = link_to "Add Plot", new_plot_path, class: "btn btn-primary add-btn"
+        %p= link_to("edit", edit_plot_path(plot)) if current_user&.admin?
+= link_to("Add Plot", new_plot_path, class: "btn btn-primary add-btn") if current_user&.admin?
