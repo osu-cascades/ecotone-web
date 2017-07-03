@@ -5,7 +5,7 @@
       %h1= @user.name
       %h2= @user.email
       %br
-      %h3= "#{@user.name}'s Biodiversity Reports"
+      %h3= "#{@user}'s Biodiversity Reports"
       %hr
       %ul.index
         - @user.biodiversity_reports.each do |report|
