@@ -48,6 +48,15 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe "sending a password reset email" do
+    it "is expected to send" do
+      delivery = double # ActionMailer::MessageDelivery
+      allow(delivery).to receive(:deliver_now).and_return('fake')
+      expect(UserMailer).to receive(:password_reset).with(user).and_return(delivery)
+      expect(user.send_password_reset_email).to eq 'fake'
+    end
+  end
+
   describe "password reset expiration" do
     it "is expired when the reset was sent over two hours ago" do
       allow(user).to receive(:reset_sent_at).and_return(2.hours.ago - 1)
