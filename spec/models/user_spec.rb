@@ -32,4 +32,8 @@ RSpec.describe User, type: :model do
 
   end
 
+  describe "associations" do
+    it { is_expected.to have_many(:biodiversity_reports) }
+  end
+
 end
