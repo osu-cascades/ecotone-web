@@ -36,8 +36,16 @@ RSpec.describe User, type: :model do
     it { is_expected.to have_many(:biodiversity_reports) }
   end
 
-  it "has a string representation consisting of its name" do
-    expect(user.to_s).to eq(user.name)
+  describe "::digest" do
+    it "returns a BCrypt::Password instance" do
+      expect(User.digest('fake')).to be_a BCrypt::Password
+    end
+  end
+
+  describe "::new_token" do
+    it "returns a url-safe base64 string consisting of A-Z, a-z, 0-9, - and _" do
+      expect(User.new_token).to match /[A-Za-z0-9\-_]{22}/
+    end
   end
 
   describe "password reset expiration" do
@@ -51,16 +59,8 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe "::new_token" do
-    it "returns a url-safe base64 string consisting of A-Z, a-z, 0-9, - and _" do
-      expect(User.new_token).to match /[A-Za-z0-9\-_]{22}/
-    end
-  end
-
-  describe "::digest" do
-    it "returns a BCrypt::Password instance" do
-      expect(User.digest('fake')).to be_a BCrypt::Password
-    end
+  it "has a string representation consisting of its name" do
+    expect(user.to_s).to eq(user.name)
   end
 
 end
