@@ -40,4 +40,15 @@ RSpec.describe User, type: :model do
     expect(user.to_s).to eq(user.name)
   end
 
+  describe "password reset expiration" do
+    it "is expired when the reset was sent over two hours ago" do
+      allow(user).to receive(:reset_sent_at).and_return(2.hours.ago - 1)
+      expect(user.password_reset_expired?).to be true
+    end
+    it "is not expired when the reset was sent less than two hours ago" do
+      allow(user).to receive(:reset_sent_at).and_return(2.hours.ago + 1)
+      expect(user.password_reset_expired?).to be false
+    end
+  end
+
 end
