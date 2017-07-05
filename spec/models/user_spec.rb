@@ -36,4 +36,8 @@ RSpec.describe User, type: :model do
     it { is_expected.to have_many(:biodiversity_reports) }
   end
 
+  it "has a string representation consisting of its name" do
+    expect(user.to_s).to eq(user.name)
+  end
+
 end
