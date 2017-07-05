@@ -142,6 +142,7 @@ RSpec.feature 'User creates a biodiversity report' do
     fill_in('biodiversity_report_temperature', with: '72')
     fill_in('biodiversity_report_biomass_estimate', with: '50')
     fill_in('Species richness', with: '10')
+    fill_in('Shannon-Wiener Diversity Index', with: '5.0')
   end
 
 end
