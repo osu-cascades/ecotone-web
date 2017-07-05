@@ -51,4 +51,10 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe "::new_token" do
+    it "returns a url-safe base64 string consisting of A-Z, a-z, 0-9, - and _" do
+      expect(User.new_token).to match /[A-Za-z0-9\-_]{22}/
+    end
+  end
+
 end
