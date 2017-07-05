@@ -23,12 +23,13 @@ RSpec.feature 'User creates a biodiversity report' do
 
     scenario 'providing invalid report data' do
       click_button('Create Biodiversity report')
-      expect(page).to have_selector '.alert', text: 'The form contains 4 errors.'
+      expect(page).to have_selector '.alert', text: 'The form contains 5 errors.'
       page.find('#error_explanation').tap do |error_explanations|
         expect(error_explanations).to have_content('Plot must be specified')
         expect(error_explanations).to have_content("Date can't be blank")
         expect(error_explanations).to have_content("Time can't be blank")
         expect(error_explanations).to have_content('Species richness is not a number')
+        expect(error_explanations).to have_content('Diversity index is not a number')
       end
     end
 
@@ -142,7 +143,7 @@ RSpec.feature 'User creates a biodiversity report' do
     fill_in('biodiversity_report_temperature', with: '72')
     fill_in('biodiversity_report_biomass_estimate', with: '50')
     fill_in('Species richness', with: '10')
-    fill_in('Shannon-Wiener Diversity Index', with: '5.0')
+    fill_in('Shannon-Wiener diversity index', with: '5.0')
   end
 
 end
