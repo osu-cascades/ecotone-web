@@ -57,4 +57,10 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe "::digest" do
+    it "returns a BCrypt::Password instance" do
+      expect(User.digest('fake')).to be_a BCrypt::Password
+    end
+  end
+
 end
