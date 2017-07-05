@@ -12,11 +12,11 @@ RSpec.feature "Admin creates a plant" do
 
     scenario "providing valid plant attributes" do
       visit new_plant_path
-      fill_in('Common name', :with => 'Common Name Example')
-      fill_in('Scientific name', :with => 'Species Name example')
-      fill_in('Description', :with => 'Description example')
-      fill_in('Habitat type', :with => 'Jungle')
-      fill_in('Tolerance', :with => 'Very low')
+      fill_in('Common name', with: 'Common Name Example')
+      fill_in('Scientific name', with: 'Species Name example')
+      fill_in('Description', with: 'Description example')
+      fill_in('Habitat type', with: 'Jungle')
+      fill_in('Tolerance', with: 'Very low')
       check('Invasive?')
       click_on("Add plant")
       expect(page).to have_content("Plant was successfully created.")

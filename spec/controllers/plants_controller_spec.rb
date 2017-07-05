@@ -40,7 +40,7 @@ RSpec.describe PlantsController, type: :controller do
 
       it "creates new plant" do
         plant_params = FactoryGirl.attributes_for(:plant)
-        expect { post :create, params: { :plant => plant_params } }.to change(Plant, :count).by(1)
+        expect { post :create, params: { plant: plant_params } }.to change(Plant, :count).by(1)
       end
 
       it "redirects to index" do
@@ -59,7 +59,7 @@ RSpec.describe PlantsController, type: :controller do
 
       it "does not save new plant" do
         plant_params = FactoryGirl.attributes_for(:invalid_plant)
-        expect { post :create, params: { :plant => plant_params } }.to_not change(Plant, :count)
+        expect { post :create, params: { plant: plant_params } }.to_not change(Plant, :count)
       end
 
       it "does not redirect to index" do

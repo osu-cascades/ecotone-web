@@ -16,8 +16,8 @@ RSpec.feature "User edits a biodiversity report" do
     end
 
     scenario "providing valid soil sample data" do
-      fill_in('pH level', :with => '10')
-      fill_in('biodiversity_report_soil_sample_attributes_temperature', :with => '100')
+      fill_in('pH level', with: '10')
+      fill_in('biodiversity_report_soil_sample_attributes_temperature', with: '100')
       click_button('Update Biodiversity report')
       expect(page).to have_selector ".alert", text: "Biodiversity report was successfully updated."
       expect(page).to have_content(biodiversity_report.to_s)
@@ -42,8 +42,8 @@ RSpec.feature "User edits a biodiversity report" do
     end
 
     scenario "omitting the existing soil sample" do
-      fill_in('pH level', :with => '')
-      fill_in('biodiversity_report_soil_sample_attributes_temperature', :with => '')
+      fill_in('pH level', with: '')
+      fill_in('biodiversity_report_soil_sample_attributes_temperature', with: '')
       page.find('#biodiversity_report_soil_sample_attributes__destroy', visible: false).set('1')
       click_button('Update Biodiversity report')
       expect(page).to have_selector ".alert", text: "Biodiversity report was successfully updated."
@@ -54,8 +54,8 @@ RSpec.feature "User edits a biodiversity report" do
     end
 
     scenario "modifying the existing soil sample providing valid data" do
-      fill_in('pH level', :with => '2')
-      fill_in('biodiversity_report_soil_sample_attributes_temperature', :with => '99')
+      fill_in('pH level', with: '2')
+      fill_in('biodiversity_report_soil_sample_attributes_temperature', with: '99')
       click_button('Update Biodiversity report')
       expect(page).to have_selector ".alert", text: "Biodiversity report was successfully updated."
       expect(page).to have_content(biodiversity_report.to_s)
@@ -65,8 +65,8 @@ RSpec.feature "User edits a biodiversity report" do
     end
 
     scenario "modifying the existing soil sample providing invalid data" do
-      fill_in('pH level', :with => '-1')
-      fill_in('biodiversity_report_soil_sample_attributes_temperature', :with => 'fake')
+      fill_in('pH level', with: '-1')
+      fill_in('biodiversity_report_soil_sample_attributes_temperature', with: 'fake')
       click_button('Update Biodiversity report')
       expect(page).to have_selector ".alert", text: /The form contains .* errors./
       expect(page.find("#error_explanation")).to have_content("Soil sample ph level must be greater than or equal to 0")
@@ -88,9 +88,9 @@ RSpec.feature "User edits a biodiversity report" do
       click_link('Add plant sample')
       within('.plant_sample') do
         select('Plant Example', from: 'Plant')
-        fill_in('Abundance', :with => '1')
-        fill_in('Percent cover', :with => '2')
-        fill_in('Biomass estimate', :with => '3')
+        fill_in('Abundance', with: '1')
+        fill_in('Percent cover', with: '2')
+        fill_in('Biomass estimate', with: '3')
       end
       click_button('Update Biodiversity report')
       expect(page).to have_selector '.alert', text: 'Biodiversity report was successfully updated.'
@@ -122,9 +122,9 @@ RSpec.feature "User edits a biodiversity report" do
 
     scenario 'modifying the existing plant sample with valid data' do
       within('.plant_sample') do
-        fill_in('Abundance', :with => '2')
-        fill_in('Percent cover', :with => '3')
-        fill_in('Biomass estimate', :with => '4')
+        fill_in('Abundance', with: '2')
+        fill_in('Percent cover', with: '3')
+        fill_in('Biomass estimate', with: '4')
       end
       click_button('Update Biodiversity report')
       expect(page).to have_selector '.alert', text: 'Biodiversity report was successfully updated.'
@@ -138,18 +138,18 @@ RSpec.feature "User edits a biodiversity report" do
 
     scenario "modifying the existing plant sample providing invalid data" do
       within('.plant_sample') do
-        fill_in('Abundance', :with => '-1')
-        fill_in('Percent cover', :with => '-1')
-        fill_in('Biomass estimate', :with => '-1')
+        fill_in('Abundance', with: '-1')
+        fill_in('Percent cover', with: '-1')
+        fill_in('Biomass estimate', with: '-1')
       end
       click_button('Update Biodiversity report')
       expect(page).to have_selector ".alert", text: /The form contains .* errors./
       expect(page.find('#error_explanation')).to have_content('Plant samples abundance must be greater than 0')
       expect(page.find('#error_explanation')).to have_content('Plant samples percent cover must be greater than 0')
       expect(page.find('#error_explanation')).to have_content('Plant samples biomass estimate must be greater than 0')
-      expect(page).to have_field('Abundance', :with => '-1')
-      expect(page).to have_field('Percent cover', :with => '-1')
-      expect(page).to have_field('Biomass estimate', :with => '-1')
+      expect(page).to have_field('Abundance', with: '-1')
+      expect(page).to have_field('Percent cover', with: '-1')
+      expect(page).to have_field('Biomass estimate', with: '-1')
     end
 
   end
@@ -165,14 +165,14 @@ RSpec.feature "User edits a biodiversity report" do
 
     scenario 'modifying the existing plant samples with valid data' do
       within all('.plant_sample').first do
-        fill_in('Abundance', :with => '2')
-        fill_in('Percent cover', :with => '2')
-        fill_in('Biomass estimate', :with => '2')
+        fill_in('Abundance', with: '2')
+        fill_in('Percent cover', with: '2')
+        fill_in('Biomass estimate', with: '2')
       end
       within all('.plant_sample').last do
-        fill_in('Abundance', :with => '3')
-        fill_in('Percent cover', :with => '3')
-        fill_in('Biomass estimate', :with => '3')
+        fill_in('Abundance', with: '3')
+        fill_in('Percent cover', with: '3')
+        fill_in('Biomass estimate', with: '3')
       end
       click_button('Update Biodiversity report')
       expect(page).to have_selector '.alert', text: 'Biodiversity report was successfully updated.'

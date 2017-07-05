@@ -3,10 +3,10 @@ require 'rails_helper'
 RSpec.describe "plants/new", type: :view do
   before do
     assign(:plant, Plant.new(
-      :common_name => "MyString",
-      :scientific_name => "MyString",
-      :habitat_type => "MyString",
-      :tolerance => "MyString"
+      common_name: "MyString",
+      scientific_name: "MyString",
+      habitat_type: "MyString",
+      tolerance: "MyString"
     ))
   end
 

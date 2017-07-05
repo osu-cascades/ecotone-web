@@ -1,13 +1,13 @@
 !!!
 %html
   %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    %meta{content: 'text/html; charset=UTF-8', 'http-equiv': 'Content-Type'}/
+    %meta{content: 'width=device-width, initial-scale=1', name: 'viewport'}/
     %title= full_title(yield(:title))
     = favicon_link_tag 'favicon.ico'
-    %link{:href => "https://fonts.googleapis.com/css?family=Gudea", :rel => "stylesheet"}/
+    %link{href: 'https://fonts.googleapis.com/css?family=Gudea', rel: 'stylesheet'}/
     = csrf_meta_tags
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = render 'layouts/shim'
   %body{class: "#{controller.controller_name} #{controller.action_name}"}

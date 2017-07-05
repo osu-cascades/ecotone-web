@@ -49,7 +49,7 @@ RSpec.describe PlotsController, type: :controller do
 
       it "creates new plot" do
         plot_params = FactoryGirl.attributes_for(:plot, featured_plant_id: plant.id)
-        expect { post :create, params: { :plot => plot_params } }.to change(Plot, :count).by(1)
+        expect { post :create, params: { plot: plot_params } }.to change(Plot, :count).by(1)
       end
 
       it "redirects to index" do
@@ -68,7 +68,7 @@ RSpec.describe PlotsController, type: :controller do
 
       it "does not save new plot" do
         plot_params = FactoryGirl.attributes_for(:invalid_plot)
-        expect { post :create, params: { :plot => plot_params } }.to_not change(Plot, :count)
+        expect { post :create, params: { plot: plot_params } }.to_not change(Plot, :count)
       end
 
       it "does not redirect to index" do

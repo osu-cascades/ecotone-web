@@ -3,7 +3,7 @@
     %nav.navbar.navbar-fixed-top.navbar-inverse
       .container
         .navbar-header
-          %button.navbar-toggle.collapsed{"aria-controls" => "navbar", "aria-expanded" => "false", "data-target" => "#navbar", "data-toggle" => "collapse", :type => "button"}
+          %button.navbar-toggle.collapsed{'aria-controls': 'navbar', 'aria-expanded': 'false', 'data-target': '#navbar', 'data-toggle': 'collapse', type: 'button'}
             %span.sr-only Toggle navigation
             %span.icon-bar
             %span.icon-bar
@@ -20,7 +20,7 @@
               - if current_user.admin?
                 %li= link_to "Users", users_path
               %li.dropdown
-                %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+                %a.dropdown-toggle{'aria-expanded': 'false', 'aria-haspopup': 'true', 'data-toggle': 'dropdown', href: '#', role: 'button'}
                   = current_user.name
                   %span.caret
                 %ul.dropdown-menu

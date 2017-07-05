@@ -7,12 +7,12 @@ RSpec.feature 'Resetting password' do
   context 'user supplies their email' do
     before { visit new_password_reset_path }
     scenario 'provides invalid email' do
-      fill_in('Email', :with => '')
+      fill_in('Email', with: '')
       click_button('Submit')
       expect(page).to have_selector '.alert', text: 'Email address not found'
     end
     scenario 'provides valid email' do
-      fill_in('Email', :with => user.email)
+      fill_in('Email', with: user.email)
       click_button('Submit')
       expect(page).to have_selector '.alert', text: 'Email sent with password reset instructions'
     end
@@ -24,16 +24,16 @@ RSpec.feature 'Resetting password' do
 
     scenario 'with mismatched passwords' do
       skip 'need to push shared/error partial update to staging to test'
-      fill_in('Password', :with => 'foo')
-      fill_in('Confirmation', :with => 'bar')
+      fill_in('Password', with: 'foo')
+      fill_in('Confirmation', with: 'bar')
       click_button('Update password')
       expect(page).to have_selector '.alert', text: 'The form contains 2 errors.'
     end
 
     scenario 'with matching passwords' do
       skip 'need to push shared/error partial update to staging to test'
-      fill_in('Password', :with => 'foo')
-      fill_in('Confirmation', :with => 'foo')
+      fill_in('Password', with: 'foo')
+      fill_in('Confirmation', with: 'foo')
       click_button('Update password')
       expect(page).to have_selector '.alert', text: 'Password has been reset.'
     end
