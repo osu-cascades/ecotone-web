@@ -33,7 +33,24 @@ RSpec.describe User, type: :model do
   end
 
   describe "associations" do
-    it { is_expected.to have_many(:biodiversity_reports) }
+    it { is_expected.to have_many(:biodiversity_reports).with_foreign_key(:author_id) }
+  end
+
+  describe "accessible attributes" do
+    it { is_expected.to respond_to :reset_token }
+    it { is_expected.to respond_to :reset_token= }
+  end
+
+  describe "downcasing email address" do
+    it "triggers downcasing upon save" do
+      expect(user).to receive(:downcase_email)
+      user.save
+    end
+    it "successfully downcases upon save" do
+      user.email = "FaKE@eXaMpLe.CoM"
+      user.save
+      expect(user.email).to eq "fake@example.com"
+    end
   end
 
   describe "::digest" do
