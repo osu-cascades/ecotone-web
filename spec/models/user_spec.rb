@@ -48,6 +48,19 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe "creating a reset digest" do
+    it "changes the reset_token" do
+      expect { user.create_reset_digest }.to change(user, :reset_token)
+    end
+    it "changes the reset_digest" do
+      expect { user.create_reset_digest }.to change(user, :reset_digest)
+    end
+    it "sets reset_sent_at to the current time" do
+      # We should verify the time value, but that's a pain in the ass.
+      expect { user.create_reset_digest }.to change(user, :reset_sent_at)
+    end
+  end
+
   describe "sending a password reset email" do
     it "is expected to send" do
       delivery = double # ActionMailer::MessageDelivery
