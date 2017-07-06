@@ -33,8 +33,13 @@ RSpec.describe Plot, type: :model do
     it { is_expected.to validate_presence_of(:origin) }
     it { is_expected.to validate_presence_of(:initial_planting_date) }
     it { is_expected.to validate_presence_of(:initial_succession) }
-    it { is_expected.to have_attached_file(:photo) }
     it { is_expected.to validate_attachment_content_type(:photo).allowing('image/jpg', 'image/png') }
+  end
+
+  describe "associations" do
+    it { is_expected.to belong_to(:featured_plant).class_name('Plant') }
+    it { is_expected.to have_many :biodiversity_reports }
+    it { is_expected.to have_attached_file(:photo) }
   end
 
   context "without a featured plant" do
@@ -49,4 +54,13 @@ RSpec.describe Plot, type: :model do
       expect(plot.featured_plant_name).to eq(plot.featured_plant.common_name)
     end
   end
+
+  it "has a name consisting of its user-provided plot id" do
+    expect(plot.name).to eq("Plot ##{plot.plot_id}")
+  end
+
+  it "has a string representation consisting of its name" do
+    expect(plot.to_s).to eq(plot.name)
+  end
+
 end

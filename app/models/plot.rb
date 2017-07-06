@@ -20,12 +20,12 @@ class Plot < ApplicationRecord
     featured_plant&.common_name || "Unspecified"
   end
 
-  def to_s
-    name
-  end
-
   def name
     "Plot ##{plot_id}"
+  end
+
+  def to_s
+    name
   end
 
 end
