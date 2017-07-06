@@ -30,17 +30,17 @@ RSpec.describe BiodiversityReport, type: :model do
     it { is_expected.to validate_numericality_of(:diversity_index).is_greater_than(0) }
     it { is_expected.to validate_presence_of(:measured_on) }
     it { is_expected.to validate_presence_of(:measured_at) }
+    it { is_expected.to validate_attachment_content_type(:photo).allowing('image/jpg', 'image/png') }
   end
 
   describe "associations" do
-    it { is_expected.to belong_to(:author) }
+    it { is_expected.to belong_to(:author).class_name('User') }
     it { is_expected.to belong_to(:plot) }
     it { is_expected.to have_one(:soil_sample) }
     it { is_expected.to accept_nested_attributes_for(:soil_sample).allow_destroy(true) }
     it { is_expected.to have_many(:plant_samples) }
     it { is_expected.to accept_nested_attributes_for(:plant_samples).allow_destroy(true) }
     it { is_expected.to have_attached_file(:photo) }
-    it { is_expected.to validate_attachment_content_type(:photo).allowing('image/jpg', 'image/png') }
   end
 
   describe "editability" do
