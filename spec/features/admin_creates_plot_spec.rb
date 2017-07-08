@@ -25,7 +25,7 @@ RSpec.feature "Admin creates a plot" do
       check('Inoculated')
       fill_in('Initial planting date', with: 'Spring 2016')
       fill_in('Initial succession', with: 'example succession')
-      click_on("Add plot")
+      click_on("Create Plot")
       expect(page).to have_content("Plot was successfully created.")
     end
   end
