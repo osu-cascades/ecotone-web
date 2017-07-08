@@ -45,3 +45,8 @@ en:
           attributes:
             plant:
               required: "must be specified"
+  helpers:
+    submit:
+      user:
+        create: "Create my account"
+        update: "Update my account"
