@@ -10,4 +10,9 @@ class Plant < ApplicationRecord
 
   has_many :plots, foreign_key: 'featured_plant_id'
   has_many :plant_samples
+
+  def to_s
+    "#{common_name} (#{scientific_name})"
+  end
+
 end

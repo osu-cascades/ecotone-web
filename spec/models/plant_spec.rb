@@ -29,4 +29,9 @@ RSpec.describe Plant, type: :model do
     it { is_expected.to have_many(:plots).with_foreign_key(:featured_plant_id) }
     it { is_expected.to have_many(:plant_samples) }
   end
+
+  it "has a string representation consisting of its common and scientific names" do
+    expect(plant.to_s).to eq "#{plant.common_name} (#{plant.scientific_name})"
+  end
+
 end
