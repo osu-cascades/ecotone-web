@@ -29,7 +29,7 @@
       = form.label :initial_succession
       = form.text_field :initial_succession, class: 'form-control'
       = form.label :photo
-      = image_tag @plot.photo.url(:default)
+      = image_tag @plot.photo.url(:default), alt: "Photo of #{@plot}"
       = form.file_field :photo, class: 'form-control'
 
       = form.submit "Save changes", class: "btn btn-primary"

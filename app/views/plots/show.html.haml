@@ -24,4 +24,4 @@
           = link_to 'Download QR-Code', { action: 'download_qr' }, 'data-turbolinks': false
   .col-md-9
     %section
-      .plot_photo= image_tag @plot.photo.url(:default)
+      .plot_photo= image_tag @plot.photo.url(:default), alt: "Photo of #{@plot}"

@@ -11,7 +11,7 @@
       %hr
     %section
       .col-md-3
-        .plant_photo= image_tag @plant.photo.url(:default)
+        .plant_photo= image_tag @plant.photo.url(:default), alt: "Photo of #{@plant}"
       .col-md-8
         %section
           %p

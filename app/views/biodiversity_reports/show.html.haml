@@ -26,4 +26,4 @@
           = link_to "Delete", @biodiversity_report, method: :delete, data: { confirm: "Delete Report?" }, class: "btn btn-primary edit-btn danger-btn"
   .col-md-6
     %section
-      .plot_photo= image_tag @biodiversity_report.photo.url(:default)
+      .plot_photo= image_tag @biodiversity_report.photo.url(:default), alt: "Photo of #{@biodiversity_report.plot}"
