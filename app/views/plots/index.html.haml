@@ -4,9 +4,9 @@
   - @plots.each do |plot|
     %li.photo_list
       .col-md-1
-        = link_to image_tag(plot.photo.url(:thumbnail), alt: "Photo of #{plot}"), plot
+        = link_to image_tag(plot.photo.url(:thumbnail), alt: "Photo of #{plot}"), plot, title: "Details of #{plot}"
       .col-md-8
-        %h3= link_to "Plot ##{plot.plot_id}", plot
+        %h3= link_to "Plot ##{plot.plot_id}", plot, title: "Details of #{plot}"
         %h4= plot.location_description
-        %p= link_to("edit", edit_plot_path(plot)) if current_user&.admin?
-= link_to("Add Plot", new_plot_path, class: "btn btn-primary add-btn") if current_user&.admin?
+        %p= link_to("edit", edit_plot_path(plot), title: "Edit #{plot}") if current_user&.admin?
+= link_to("Add Plot", new_plot_path, class: "btn btn-primary add-btn", title: "Add a new plot") if current_user&.admin?

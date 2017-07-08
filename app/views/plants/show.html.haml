@@ -1,5 +1,5 @@
 - provide(:title, @plant.common_name)
-= link_to '« Back to plants', plants_path, class: 'btn btn-primary'
+= link_to '« Back to plants', plants_path, class: 'btn btn-primary', title: 'List of all plants'
 .row
   %aside.col-md-12
     %section
@@ -26,7 +26,7 @@
             = @plant.tolerance
     - if current_user&.admin?
       .btn-group
-        = link_to 'Edit', edit_plant_path(@plant), class: 'btn btn-primary edit-btn right-btn'
-        = link_to 'Delete', @plant, method: :delete, data: { confirm: "Delete #{@plant.common_name}?" }, class: 'btn btn-primary edit-btn danger-btn'
+        = link_to 'Edit', edit_plant_path(@plant), class: 'btn btn-primary edit-btn right-btn', title: "Edit #{@plant}"
+        = link_to 'Delete', @plant, method: :delete, data: { confirm: "Delete #{@plant.common_name}?" }, class: 'btn btn-primary edit-btn danger-btn', title: "Delete #{@plant}"
       .btn.download-plant-btn
-        = link_to 'Download QR-Code', { action: 'download_qr' }, 'data-turbolinks': false
+        = link_to 'Download QR-Code', { action: 'download_qr' }, 'data-turbolinks': false, title: "QR-Code for #{@plant}"

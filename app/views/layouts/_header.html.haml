@@ -10,21 +10,21 @@
             %span.icon-bar
           %a.navbar-brand
             = image_tag 'osu_crest_256x256.png', alt: 'OSU'
-            = link_to "Ecotone", root_path, id: "logo"
+            = link_to 'Ecotone', root_path, id: 'logo', title: 'Ecotone home page'
         #navbar.navbar-collapse.collapse
           %ul.nav.navbar-nav.navbar-right
-            %li= link_to "Plots", plots_path
-            %li= link_to "Plants", plants_path
+            %li= link_to 'Plots', plots_path, title: 'List of all plots'
+            %li= link_to 'Plants', plants_path, title: 'List of all plants'
             - if logged_in?
-              %li= link_to "Reports", biodiversity_reports_path
+              %li= link_to 'Reports', biodiversity_reports_path, title: 'List of all biodiversity reports'
               - if current_user.admin?
-                %li= link_to "Users", users_path
+                %li= link_to 'Users', users_path, title: 'List of all users'
               %li.dropdown
                 %a.dropdown-toggle{'aria-expanded': 'false', 'aria-haspopup': 'true', 'data-toggle': 'dropdown', href: '#', role: 'button'}
                   = current_user.name
                   %span.caret
                 %ul.dropdown-menu
-                  %li= link_to "My Account", current_user
+                  %li= link_to 'My Account', current_user, title: 'User account details'
                   %li.divider
                   %li= link_to "Log out", logout_path, method: "delete"
             - else

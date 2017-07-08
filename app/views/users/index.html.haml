@@ -3,6 +3,6 @@
 %ul.indexing
   - @users.each do |user|
     %li
-      = link_to user.name, user
+      = link_to user.name, user, title: "Details of #{user}"
       = "(admin)" if user.admin?
       = delete_user_link(current_user, user)

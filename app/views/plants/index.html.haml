@@ -4,10 +4,10 @@
   - @plants.each do |plant|
     %li.photo_list
       .col-md-1
-        = link_to image_tag(plant.photo.url(:thumbnail), alt: "Photo of #{plant}"), plant
+        = link_to image_tag(plant.photo.url(:thumbnail), alt: "Photo of #{plant}"), plant, title: "Details of #{plant}"
       .col-md-8
-        %h3= link_to plant.common_name.capitalize, plant
+        %h3= link_to plant.common_name.capitalize, plant, title: "Details of #{plant}"
         %h4
           %em= plant.scientific_name.capitalize
-        %p= link_to("edit", edit_plant_path(plant)) if current_user&.admin?
-= link_to("Add Plant", new_plant_path, class: "btn btn-primary add-btn") if current_user&.admin?
+        %p= link_to("edit", edit_plant_path(plant), title: "Edit #{plant}") if current_user&.admin?
+= link_to("Add Plant", new_plant_path, class: "btn btn-primary add-btn", title: "Add a new plant") if current_user&.admin?
