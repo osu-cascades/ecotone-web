@@ -1,0 +1,24 @@
+- provide(:title, "Plant Samples")
+%h1 Plant Samples
+.table-responsive
+  %table.table.table-striped
+    %thead
+      %tr
+        %th Plot
+        %th Species
+        %th Date
+        %th Time
+        %th Abundance
+        %th Percent Cover
+        %th Biomass Estimate
+    %tbody
+      - @biodiversity_reports.each do |report|
+        - report.plant_samples.each do |sample|
+          %tr
+            %td
+            %td
+            %td
+            %td
+            %td
+            %td
+            %td
