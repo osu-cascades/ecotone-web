@@ -8,16 +8,20 @@
         %th Species
         %th Date
         %th Time
+        %th Temperature
+        %th Species Richness
+        %th Diversity Index
         %th Abundance
         %th Percent Cover
-        %th Biomass Estimate
     %tbody
       - @plant_samples.each do |sample|
         %tr
           %td= sample.biodiversity_report.plot.name unless sample.biodiversity_report.nil?
           %td= sample.plant.common_name unless sample.plant.nil?
-          %td= sample.biodiversity_report.measured_on unless sample.biodiversity_report.nil?
-          %td= sample.biodiversity_report.measured_at unless sample.biodiversity_report.nil?
+          %td= sample.biodiversity_report.measured_on.to_s(:long) unless sample.biodiversity_report.nil?
+          %td= sample.biodiversity_report.measured_at.to_s(:ampm) unless sample.biodiversity_report.nil?
+          %td= sample.biodiversity_report.temperature unless sample.biodiversity_report.nil?
+          %td= sample.biodiversity_report.species_richness unless sample.biodiversity_report.nil?
+          %td= sample.biodiversity_report.diversity_index unless sample.biodiversity_report.nil?
           %td= sample.abundance
           %td= sample.percent_cover
-          %td= sample.biomass_estimate
