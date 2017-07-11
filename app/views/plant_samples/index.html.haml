@@ -12,13 +12,12 @@
         %th Percent Cover
         %th Biomass Estimate
     %tbody
-      - @biodiversity_reports.each do |report|
-        - report.plant_samples.each do |sample|
-          %tr
-            %td
-            %td
-            %td
-            %td
-            %td
-            %td
-            %td
+      - @plant_samples.each do |sample|
+        %tr
+          %td= sample.biodiversity_report.plot.name unless sample.biodiversity_report.nil?
+          %td= sample.plant.common_name unless sample.plant.nil?
+          %td= sample.biodiversity_report.measured_on unless sample.biodiversity_report.nil?
+          %td= sample.biodiversity_report.measured_at unless sample.biodiversity_report.nil?
+          %td= sample.abundance
+          %td= sample.percent_cover
+          %td= sample.biomass_estimate

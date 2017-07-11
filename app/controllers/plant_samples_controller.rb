@@ -1,7 +1,7 @@
 class PlantSamplesController < ApplicationController
 
   def index
-    @biodiversity_reports = BiodiversityReport.all
+    @plant_samples = PlantSample.all
   end
 
 end

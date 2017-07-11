@@ -18,6 +18,8 @@ class BiodiversityReport < ApplicationRecord
   validates_numericality_of :species_richness, only_integer: true, greater_than: 0
   validates_numericality_of :diversity_index, greater_than: 0
 
+  after_destroy :destroy_plant_samples
+
   paginates_per 10
 
   def to_s
@@ -30,6 +32,12 @@ class BiodiversityReport < ApplicationRecord
 
   def editable_by?(user)
     user.admin? || user == author
+  end
+
+  def destroy_plant_samples
+    self.plant_samples.each do |sample|
+      sample.destroy
+    end
   end
 
 end
