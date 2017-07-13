@@ -17,6 +17,7 @@
             %li= link_to 'Plants', plants_path, title: 'List of all plants'
             - if logged_in?
               %li= link_to 'Reports', biodiversity_reports_path, title: 'List of all biodiversity reports'
+              %li= link_to 'Samples', plant_samples_path, title: 'List of all plant samples'
               - if current_user.admin?
                 %li= link_to 'Users', users_path, title: 'List of all users'
               %li.dropdown
