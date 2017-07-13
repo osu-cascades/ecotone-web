@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   delete  'logout'  => 'sessions#destroy'
 
   get     'plant_samples' => 'plant_samples#index'
+  get     'export'        => 'plant_samples#export'
 
   resources :users
   resources :biodiversity_reports

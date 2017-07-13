@@ -1,5 +1,6 @@
 - provide(:title, "Plant Samples")
 %h1 Plant Samples
+= link_to "Generate Report", export_path(format: "csv"), class: 'btn btn-primary'
 .table-responsive
   %table.table.table-striped
     %thead
