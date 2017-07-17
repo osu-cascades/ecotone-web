@@ -4,7 +4,8 @@
     %section.user-info
       %h1= @user.name
       %h2= @user.email
-      %br
+      = edit_user_link(current_user, @user)
+
       %h3= "#{@user}'s Biodiversity Reports"
       %hr
       %ul.index
@@ -12,4 +13,4 @@
           %li.user_list
             .col-md-8
               %h2= link_to report.to_s, report, title: "Details of #{report}"
-      = edit_user_link(current_user, @user)
+      

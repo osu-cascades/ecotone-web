@@ -18,7 +18,7 @@ RSpec.feature "Admin creates a plant" do
       fill_in('Habitat type', with: 'Jungle')
       fill_in('Tolerance', with: 'Very low')
       check('Invasive?')
-      click_on("Add plant")
+      click_on("Create Plant")
       expect(page).to have_content("Plant was successfully created.")
     end
   end
