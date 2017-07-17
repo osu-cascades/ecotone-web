@@ -12,7 +12,7 @@ RSpec.describe UserMailer, type: :mailer do
     it "renders the headers" do
       expect(mail.subject).to eq("Ecotone Password Reset")
       expect(mail.to).to eq([user.email])
-      expect(mail.from).to eq(["noreply@example.com"])
+      expect(mail.from).to eq(["no-reply@ecotone.osucascades.edu"])
     end
 
     it "renders the body" do
