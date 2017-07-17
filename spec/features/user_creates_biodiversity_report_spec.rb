@@ -74,7 +74,6 @@ RSpec.feature 'User creates a biodiversity report' do
         select('Plant Example', from: 'Plant')
         fill_in('Abundance', with: '1')
         fill_in('Percent cover', with: '50')
-        fill_in('Biomass estimate', with: '100')
       end
       click_button('Create Biodiversity report')
       expect(page).to have_selector '.alert', text: 'Biodiversity report was successfully created.'
@@ -84,7 +83,6 @@ RSpec.feature 'User creates a biodiversity report' do
       expect(page).to have_content('Common name: Plant Example')
       expect(page).to have_content('Abundance: 1')
       expect(page).to have_content('Percent Cover: 50')
-      expect(page).to have_content('Biomass Estimate: 100.0')
     end
 
     scenario 'providing invalid plant sample data' do
@@ -92,16 +90,13 @@ RSpec.feature 'User creates a biodiversity report' do
         select('Plant Example', from: 'Plant')
         fill_in('Abundance', with: '-1')
         fill_in('Percent cover', with: '-1')
-        fill_in('Biomass estimate', with: '-1')
       end
       click_button('Create Biodiversity report')
-      expect(page).to have_selector '.alert', text: 'The form contains 3 errors.'
+      expect(page).to have_selector '.alert', text: 'The form contains 2 errors.'
       expect(page.find('#error_explanation')).to have_content('Plant samples abundance must be greater than 0')
       expect(page.find('#error_explanation')).to have_content('Plant samples percent cover must be greater than 0')
-      expect(page.find('#error_explanation')).to have_content('Plant samples biomass estimate must be greater than 0')
       expect(page).to have_field('Abundance', with: '-1')
       expect(page).to have_field('Percent cover', with: '-1')
-      expect(page).to have_field('Biomass estimate', with: '-1')
     end
 
   end
@@ -115,14 +110,12 @@ RSpec.feature 'User creates a biodiversity report' do
         select('Plant Example', from: 'Plant')
         fill_in('Abundance', with: '1')
         fill_in('Percent cover', with: '2')
-        fill_in('Biomass estimate', with: '3')
       end
       click_link('Add plant sample')
       within all('.plant_sample').last do
         select('Plant Example', from: 'Plant')
         fill_in('Abundance', with: '4')
         fill_in('Percent cover', with: '5')
-        fill_in('Biomass estimate', with: '6')
       end
       click_button('Create Biodiversity report')
       expect(page).to have_selector '.alert', text: 'Biodiversity report was successfully created.'
@@ -141,7 +134,6 @@ RSpec.feature 'User creates a biodiversity report' do
     fill_in('Date', with: '09/11/2001')
     fill_in('Time', with: '04:45 PM')
     fill_in('biodiversity_report_temperature', with: '72')
-    fill_in('biodiversity_report_biomass_estimate', with: '50')
     fill_in('Species richness', with: '10')
     fill_in('Shannon-Wiener diversity index', with: '5.0')
   end

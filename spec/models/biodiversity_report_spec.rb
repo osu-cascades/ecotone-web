@@ -9,7 +9,6 @@ RSpec.describe BiodiversityReport, type: :model do
       measured_on: Date.today,
       measured_at: Date.today,
       temperature: 1.5,
-      biomass_estimate: 1.5,
       species_richness: 1
     ) }
     it { is_expected.to be_valid }
@@ -25,7 +24,6 @@ RSpec.describe BiodiversityReport, type: :model do
 
   describe "validations" do
     it { is_expected.to validate_numericality_of(:temperature).allow_nil }
-    it { is_expected.to validate_numericality_of(:biomass_estimate).is_greater_than(0).allow_nil }
     it { is_expected.to validate_numericality_of(:species_richness).only_integer.is_greater_than(0) }
     it { is_expected.to validate_numericality_of(:diversity_index).is_greater_than(0) }
     it { is_expected.to validate_presence_of(:measured_on) }

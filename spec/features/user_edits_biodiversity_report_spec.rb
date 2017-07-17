@@ -90,7 +90,6 @@ RSpec.feature "User edits a biodiversity report" do
         select('Plant Example', from: 'Plant')
         fill_in('Abundance', with: '1')
         fill_in('Percent cover', with: '2')
-        fill_in('Biomass estimate', with: '3')
       end
       click_button('Update Biodiversity report')
       expect(page).to have_selector '.alert', text: 'Biodiversity report was successfully updated.'
@@ -99,7 +98,6 @@ RSpec.feature "User edits a biodiversity report" do
       expect(page).to have_content('Common name: Plant Example')
       expect(page).to have_content('Abundance: 1')
       expect(page).to have_content('Percent Cover: 2')
-      expect(page).to have_content('Biomass Estimate: 3.0')
     end
 
   end
@@ -124,7 +122,6 @@ RSpec.feature "User edits a biodiversity report" do
       within('.plant_sample') do
         fill_in('Abundance', with: '2')
         fill_in('Percent cover', with: '3')
-        fill_in('Biomass estimate', with: '4')
       end
       click_button('Update Biodiversity report')
       expect(page).to have_selector '.alert', text: 'Biodiversity report was successfully updated.'
@@ -133,23 +130,19 @@ RSpec.feature "User edits a biodiversity report" do
       expect(page).to have_content('Common name: Plant Example')
       expect(page).to have_content('Abundance: 2')
       expect(page).to have_content('Percent Cover: 3')
-      expect(page).to have_content('Biomass Estimate: 4.0')
     end
 
     scenario "modifying the existing plant sample providing invalid data" do
       within('.plant_sample') do
         fill_in('Abundance', with: '-1')
         fill_in('Percent cover', with: '-1')
-        fill_in('Biomass estimate', with: '-1')
       end
       click_button('Update Biodiversity report')
       expect(page).to have_selector ".alert", text: /The form contains .* errors./
       expect(page.find('#error_explanation')).to have_content('Plant samples abundance must be greater than 0')
       expect(page.find('#error_explanation')).to have_content('Plant samples percent cover must be greater than 0')
-      expect(page.find('#error_explanation')).to have_content('Plant samples biomass estimate must be greater than 0')
       expect(page).to have_field('Abundance', with: '-1')
       expect(page).to have_field('Percent cover', with: '-1')
-      expect(page).to have_field('Biomass estimate', with: '-1')
     end
 
   end
@@ -167,12 +160,10 @@ RSpec.feature "User edits a biodiversity report" do
       within all('.plant_sample').first do
         fill_in('Abundance', with: '2')
         fill_in('Percent cover', with: '2')
-        fill_in('Biomass estimate', with: '2')
       end
       within all('.plant_sample').last do
         fill_in('Abundance', with: '3')
         fill_in('Percent cover', with: '3')
-        fill_in('Biomass estimate', with: '3')
       end
       click_button('Update Biodiversity report')
       expect(page).to have_selector '.alert', text: 'Biodiversity report was successfully updated.'

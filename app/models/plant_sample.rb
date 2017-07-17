@@ -7,7 +7,6 @@ class PlantSample < ApplicationRecord
 
   validates_numericality_of :abundance, only_integer: true, greater_than: 0
   validates_numericality_of :percent_cover, only_integer: true, greater_than: 0, less_than_or_equal_to: 100
-  validates_numericality_of :biomass_estimate, greater_than: 0
 
   # source - https://www.lockyy.com/posts/rails-4/exporting-csv-files-in-rails
   def self.to_csv(attributes = column_names,
