@@ -22,7 +22,8 @@
       - if @biodiversity_report.editable_by?(current_user)
         .btn-group
           = link_to "Edit", edit_biodiversity_report_path(@biodiversity_report), class: "btn btn-primary edit-btn", title: "Edit #{@biodiversity_report}"
-          = link_to "Delete", @biodiversity_report, method: :delete, data: { confirm: "Delete Report?" }, class: "btn btn-primary edit-btn danger-btn", title: "Delete #{@biodiversity_report}"
+          - if current_user&.admin?
+            = link_to "Delete", @biodiversity_report, method: :delete, data: { confirm: "Delete Report?" }, class: "btn btn-primary edit-btn danger-btn", title: "Delete #{@biodiversity_report}"
   .col-md-6
     %section
       .plot_photo= image_tag @biodiversity_report.photo.url(:default), alt: "Photo of #{@biodiversity_report.plot}"
