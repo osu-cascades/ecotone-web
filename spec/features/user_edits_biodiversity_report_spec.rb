@@ -18,12 +18,14 @@ RSpec.feature "User edits a biodiversity report" do
     scenario "providing valid soil sample data" do
       fill_in('pH level', with: '10')
       fill_in('biodiversity_report_soil_sample_attributes_temperature', with: '100')
+      fill_in('Moisture', with: '3')
       click_button('Update Biodiversity report')
       expect(page).to have_selector ".alert", text: "Biodiversity report was successfully updated."
       expect(page).to have_content(biodiversity_report.to_s)
       expect(page).to have_no_content('No soil sample')
       expect(page).to have_content('pH Level: 10')
       expect(page).to have_content('Temperature: 100')
+      expect(page).to have_content('Moisture: 3.0')
     end
 
   end
@@ -44,6 +46,7 @@ RSpec.feature "User edits a biodiversity report" do
     scenario "omitting the existing soil sample" do
       fill_in('pH level', with: '')
       fill_in('biodiversity_report_soil_sample_attributes_temperature', with: '')
+      fill_in('Moisture', with: '')
       page.find('#biodiversity_report_soil_sample_attributes__destroy', visible: false).set('1')
       click_button('Update Biodiversity report')
       expect(page).to have_selector ".alert", text: "Biodiversity report was successfully updated."
@@ -51,22 +54,26 @@ RSpec.feature "User edits a biodiversity report" do
       expect(page).to have_content('No soil sample')
       expect(page).to have_no_content('pH Level: 1.5') # Set by soil_sample factory
       expect(page).to have_no_content('Temperature: 20.5') # Set by soil_sample factory
+      expect(page).to have_no_content('Moisture: 3.5') # Set by soil_sample factory
     end
 
     scenario "modifying the existing soil sample providing valid data" do
       fill_in('pH level', with: '2')
       fill_in('biodiversity_report_soil_sample_attributes_temperature', with: '99')
+      fill_in('Moisture', with: '1')
       click_button('Update Biodiversity report')
       expect(page).to have_selector ".alert", text: "Biodiversity report was successfully updated."
       expect(page).to have_content(biodiversity_report.to_s)
       expect(page).to have_no_content('No soil sample')
       expect(page).to have_content('pH Level: 2')
       expect(page).to have_content('Temperature: 99')
+      expect(page).to have_content('Moisture: 1.0')
     end
 
     scenario "modifying the existing soil sample providing invalid data" do
       fill_in('pH level', with: '-1')
       fill_in('biodiversity_report_soil_sample_attributes_temperature', with: 'fake')
+      fill_in('Moisture', with: '-1')
       click_button('Update Biodiversity report')
       expect(page).to have_selector ".alert", text: /The form contains .* errors./
       expect(page.find("#error_explanation")).to have_content("Soil sample ph level must be greater than or equal to 0")
@@ -74,6 +81,7 @@ RSpec.feature "User edits a biodiversity report" do
       expect(page).to have_css('#soil_sample_fields.collapse.in')
       expect(page).to have_field('pH level', with: '-1')
       expect(page).to have_field('biodiversity_report_soil_sample_attributes_temperature', with: 'fake')
+      expect(page).to have_field('Moisture', with: '-1')
     end
 
   end

@@ -50,6 +50,7 @@ RSpec.feature 'User creates a biodiversity report' do
       expect(page).to have_no_content('No soil sample')
       expect(page).to have_content('pH Level: 10')
       expect(page).to have_content('Temperature: 100')
+      expect(page).to have_content('Moisture: 10')
     end
 
     scenario 'providing invalid soil sample data' do
@@ -57,9 +58,10 @@ RSpec.feature 'User creates a biodiversity report' do
       fill_in('biodiversity_report_soil_sample_attributes_temperature', with: 'fake')
       fill_in('Moisture', with: '-1')
       click_button('Create Biodiversity report')
-      expect(page).to have_selector '.alert', text: 'The form contains 2 errors.'
+      expect(page).to have_selector '.alert', text: 'The form contains 3 errors.'
       expect(page.find('#error_explanation')).to have_content('Soil sample ph level must be greater than or equal to 0')
       expect(page.find('#error_explanation')).to have_content('Soil sample temperature is not a number')
+      expect(page.find('#error_explanation')).to have_content('Soil sample moisture must be greater than or equal to 0')
       expect(page).to have_css('#soil_sample_fields.collapse.in')
       expect(page).to have_field('pH level', with: '-1')
       expect(page).to have_field('biodiversity_report_soil_sample_attributes_temperature', with: 'fake')

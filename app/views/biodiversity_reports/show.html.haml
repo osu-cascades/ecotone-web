@@ -14,6 +14,7 @@
       - if @biodiversity_report.soil_sample
         %p pH Level: #{@biodiversity_report.soil_sample.ph_level}
         %p Temperature: #{@biodiversity_report.soil_sample.temperature}
+        %p Moisture: #{@biodiversity_report.soil_sample.moisture}
       - else
         %p No soil sample
       %hr
