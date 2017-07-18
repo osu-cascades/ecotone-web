@@ -42,6 +42,7 @@ RSpec.feature 'User creates a biodiversity report' do
     scenario 'providing valid soil sample data' do
       fill_in('pH level', with: '10')
       fill_in('biodiversity_report_soil_sample_attributes_temperature', with: '100')
+      fill_in('Moisture', with: '10')
       click_button('Create Biodiversity report')
       expect(page).to have_selector '.alert', text: 'Biodiversity report was successfully created.'
       expect(page).to have_content(BiodiversityReport.last.to_s)
@@ -54,6 +55,7 @@ RSpec.feature 'User creates a biodiversity report' do
     scenario 'providing invalid soil sample data' do
       fill_in('pH level', with: '-1')
       fill_in('biodiversity_report_soil_sample_attributes_temperature', with: 'fake')
+      fill_in('Moisture', with: '-1')
       click_button('Create Biodiversity report')
       expect(page).to have_selector '.alert', text: 'The form contains 2 errors.'
       expect(page.find('#error_explanation')).to have_content('Soil sample ph level must be greater than or equal to 0')
