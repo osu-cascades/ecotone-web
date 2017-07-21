@@ -1,6 +1,6 @@
 %fieldset.plant_sample
   = f.label :plant_id
-  = f.collection_select :plant_id, @plants, :id, :common_name, include_blank: 'Choose one'
+  = f.collection_select :plant_id, @plants.order('LOWER(common_name) ASC'), :id, :common_name, include_blank: 'Choose one'
   = f.label :abundance
   = f.text_field :abundance, class: 'form-control'
   = f.label :percent_cover
