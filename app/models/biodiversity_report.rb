@@ -34,7 +34,7 @@ class BiodiversityReport < ApplicationRecord
   end
 
   def destroy_plant_samples
-    self.plant_samples.each {|sample| sample.destroy }
+    self.plant_samples.each(&:destroy)
   end
 
 end
