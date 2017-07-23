@@ -28,4 +28,14 @@ class Plot < ApplicationRecord
     name
   end
 
+  def humanize_location_description
+    add_period(location_description.humanize.strip)
+  end
+
+  private
+
+  def add_period(str)
+    str << '.' unless str[-1] == '.'
+  end
+
 end

@@ -6,7 +6,7 @@
       %h1 Plot ##{@plot.plot_id}
       %hr
       %p Featured Plant: #{ link_to_featured_plant(@plot) }
-      %p Description: #{@plot.location_description}
+      %p Description: #{@plot.humanize_location_description}
       %p Latitude: #{@plot.latitude || 'unmeasured'}
       %p Longitude: #{@plot.longitude || 'unmeasured'}
       %p Elevation: #{@plot.elevation || 'unmeasured'}
