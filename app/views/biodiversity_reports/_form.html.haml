@@ -3,7 +3,7 @@
     = form_for(@biodiversity_report, html: {multipart: true}) do |form|
       = form_errors_for(@biodiversity_report)
       = form.label :plot_id, 'Plot'
-      = form.collection_select :plot_id, @plots.order('plot_id ASC'), :id, :name, include_blank: 'Choose one'
+      = form.collection_select :plot_id, @plots, :id, :name, include_blank: 'Choose one'
       = form.label :measured_on, 'Date'
       = form.date_field :measured_on, class: 'form-control'
       = form.label :measured_at, 'Time'

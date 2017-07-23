@@ -20,7 +20,7 @@ class PlotsController < ApplicationController
 
   def new
     @plot = Plot.new
-    @plants = Plant.all
+    @plants = Plant.all.order('LOWER(common_name) ASC')
   end
 
   def edit
