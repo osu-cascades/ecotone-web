@@ -18,11 +18,11 @@
       - @plant_samples.each do |sample|
         %tr
           %td= sample.biodiversity_report.plot.name unless sample.biodiversity_report.nil?
-          %td= sample.plant.common_name unless sample.plant.nil?
-          %td= sample.biodiversity_report.measured_on.to_s(:long) unless sample.biodiversity_report.nil?
-          %td= sample.biodiversity_report.measured_at.to_s(:ampm) unless sample.biodiversity_report.nil?
-          %td= sample.biodiversity_report.temperature unless sample.biodiversity_report.nil?
-          %td= sample.biodiversity_report.species_richness unless sample.biodiversity_report.nil?
-          %td= sample.biodiversity_report.diversity_index unless sample.biodiversity_report.nil?
+          %td= sample&.plant.common_name
+          %td= sample&.biodiversity_report.measured_on.to_s(:long)
+          %td= sample&.biodiversity_report.measured_at.to_s(:ampm)
+          %td= sample&.biodiversity_report.temperature
+          %td= sample&.biodiversity_report.species_richness
+          %td= sample&.biodiversity_report.diversity_index
           %td= sample.abundance
           %td= sample.percent_cover
