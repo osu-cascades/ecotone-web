@@ -1,0 +1,2 @@
+class FungiSample < ApplicationRecord
+end

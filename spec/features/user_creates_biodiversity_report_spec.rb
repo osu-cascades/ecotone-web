@@ -69,7 +69,7 @@ RSpec.feature 'User creates a biodiversity report' do
 
   end
 
-  describe 'with one existing plant sample' do
+  describe 'with one plant sample' do
 
     before { fill_in_report_fields }
 
@@ -105,12 +105,12 @@ RSpec.feature 'User creates a biodiversity report' do
 
   end
 
-  context 'with two existing plant samples' do
+  context 'with two plant samples' do
 
     before { fill_in_report_fields }
 
     scenario 'providing valid plant sample data', js: true do
-      within ('.plant_sample') do
+      within('.plant_sample') do
         select('Plant Example', from: 'Plant')
         fill_in('Abundance', with: '1')
         fill_in('Percent cover', with: '2')
@@ -129,6 +129,28 @@ RSpec.feature 'User creates a biodiversity report' do
       expect(page).to have_content('Common name: Plant Example')
       expect(page).to have_content('Abundance: 1')
       expect(page).to have_content('Abundance: 4')
+    end
+
+  end
+
+  context 'with a fungi sample' do
+
+    before { fill_in_report_fields }
+
+    scenario 'providing valid fungi sample data' do
+      within('.fungi_sample') do
+        fill_in('Location within plot', with: 'on a rock')
+        fill_in('Size', with: '1.5')
+        fill_in('Description', with: 'description of fungi')
+      end
+      click_button('Create Biodiversity report')
+      expect(page).to have_selector '.alert', text: 'Biodiversity report was successfully created.'
+      expect(page).to have_content(BiodiversityReport.last.to_s)
+      click_link(BiodiversityReport.last.to_s)
+      expect(page).to have_no_content('No fungi sample')
+      expect(page).to have_content('Location within plot: on a rock')
+      expect(page).to have_content('Size: 1.5')
+      expect(page).to have_content('Description: description of fungi')
     end
 
   end
