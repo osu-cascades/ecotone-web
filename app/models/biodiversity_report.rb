@@ -5,6 +5,9 @@ class BiodiversityReport < ApplicationRecord
   has_one :soil_sample
   accepts_nested_attributes_for :soil_sample, allow_destroy: true, reject_if: :all_blank
 
+  has_one :fungi_sample
+  accepts_nested_attributes_for: :fungi_sample, allow_destroy: true, reject_if: :all_blank
+
   has_many :plant_samples
   accepts_nested_attributes_for :plant_samples, allow_destroy: true, reject_if: :all_blank
 
