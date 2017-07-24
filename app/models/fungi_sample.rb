@@ -1,5 +1,4 @@
 class FungiSample < ApplicationRecord
-
   belongs_to :biodiversity_report
 
   validates :location_within_plot, presence: true
@@ -8,5 +7,4 @@ class FungiSample < ApplicationRecord
 
   has_attached_file :photo, default_url: "missing.png", styles: { default: "200x200#", thumbnail: "50x50#" }
   validates_attachment_content_type :photo, content_type: /\Aimage/
-
 end
