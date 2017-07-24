@@ -28,8 +28,8 @@ class Plot < ApplicationRecord
     name
   end
 
-  def humanize_location_description
-    add_period(location_description.humanize.strip)
+  def formatted_location_description
+    add_period(location_description.slice(0,1).capitalize + location_description.strip.slice(1..-1))
   end
 
   private

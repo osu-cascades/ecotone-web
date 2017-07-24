@@ -7,7 +7,7 @@ FactoryGirl.define do
       longitude 121.3153
       elevation 3623
       area 100
-      location_description "South wall of Tykson Hall"
+      location_description "south wall of Tykson Hall"
       aspect "North"
       origin "Salvage"
       inoculated true

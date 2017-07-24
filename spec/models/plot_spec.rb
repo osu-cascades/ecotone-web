@@ -12,7 +12,7 @@ RSpec.describe Plot, type: :model do
       longitude: 121.3153,
       elevation: 3623.0,
       area: 100,
-      location_description: "South wall of Tykson Hall",
+      location_description: "south wall of Tykson Hall",
       aspect: "North",
       origin: "Salvage",
       inoculated: true,
@@ -61,6 +61,10 @@ RSpec.describe Plot, type: :model do
 
   it "has a string representation consisting of its name" do
     expect(plot.to_s).to eq(plot.name)
+  end
+
+  it "formats location description" do
+    expect(plot.formatted_location_description).to eq('South wall of Tykson Hall.')
   end
 
 end
