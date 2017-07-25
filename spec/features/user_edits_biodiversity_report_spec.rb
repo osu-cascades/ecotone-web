@@ -78,7 +78,7 @@ RSpec.feature "User edits a biodiversity report" do
       expect(page).to have_selector ".alert", text: /The form contains .* errors./
       expect(page.find("#error_explanation")).to have_content("Soil sample ph level must be greater than or equal to 0")
       expect(page.find("#error_explanation")).to have_content("Soil sample temperature is not a number")
-      expect(page).to have_css('#soil_sample_fields.collapse.in')
+      expect(page).to have_css('#soil_fields.collapse.in')
       expect(page).to have_field('pH level', with: '-1')
       expect(page).to have_field('biodiversity_report_soil_sample_attributes_temperature', with: 'fake')
       expect(page).to have_field('Moisture', with: '-1')
