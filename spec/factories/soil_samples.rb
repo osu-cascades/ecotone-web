@@ -5,4 +5,11 @@ FactoryGirl.define do
     moisture 3.5
     biodiversity_report
   end
+
+  factory :empty_soil_sample, class: SoilSample do
+    ph_level ''
+    temperature ''
+    moisture ''
+    biodiversity_report nil
+  end
 end

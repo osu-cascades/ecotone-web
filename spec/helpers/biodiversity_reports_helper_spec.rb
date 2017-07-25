@@ -3,23 +3,23 @@ require 'rails_helper'
 RSpec.describe BiodiversityReportsHelper, type: :helper do
 
   let(:soil_sample) { build(:soil_sample) }
-  let(:empty_soil_sample) { double }
-  before { allow(empty_soil_sample).to receive(:has_temperature_or_ph_level?).and_return(false) }
+  # ```let(:empty_soil_sample) { double }```
+  let(:empty_soil_sample) { build(:empty_soil_sample) }
 
-  describe "#link_to_toggle_soil_sample_fields" do
+  describe "#link_to_toggle_sample_fields" do
     context "when the soil sample has attribute values" do
       it "returns an Omit link" do
-        expect(helper.link_to_toggle_soil_sample_fields(soil_sample)).to match "<a.*>Omit soil sample</a>"
+        expect(helper.link_to_toggle_sample_fields(soil_sample)).to match "<a.*>Omit soil sample</a>"
       end
     end
     context "when the soil sample does not have attribute values" do
       it "returns an Add link" do
-        expect(helper.link_to_toggle_soil_sample_fields(empty_soil_sample)).to match "<a.*>Add soil sample</a>"
+        expect(helper.link_to_toggle_sample_fields(empty_soil_sample)).to match "<a.*>Add soil sample</a>"
       end
     end
     context "when the soil sample is nil" do
       it "returns nil" do
-        expect(helper.link_to_toggle_soil_sample_fields(nil)).to be_nil
+        expect(helper.link_to_toggle_sample_fields(nil)).to be_nil
       end
     end
   end

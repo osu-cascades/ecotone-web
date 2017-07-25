@@ -17,3 +17,11 @@ $(document).on "turbolinks:load", ->
     $(@).find(':input:not([type=hidden])').val('')
     $(@).find('#biodiversity_report_soil_sample_attributes__destroy').val('1')
     $('#lnk-toggle-soil-sample-fields').text('Add soil sample')
+
+  $('#fungi_fields').on 'shown.bs.collapse', (event) ->
+    $('#lnk-toggle-fungi-fields').text('Omit soil sample')
+
+  $('#fungi_fields').on 'hidden.bs.collapse', (event) ->
+    $(@).find(':input:not([type=hidden])').val('')
+    $(@).find('#biodiversity_report_fungi_sample_attributes__destroy').val('1')
+    $('#lnk-toggle-fungi-fields').text('Add soil sample')

@@ -13,6 +13,7 @@ class BiodiversityReportsController < ApplicationController
     @biodiversity_report = BiodiversityReport.new
     @biodiversity_report.plant_samples.build
     @biodiversity_report.build_soil_sample
+    @biodiversity_report.build_fungi_sample
     @plots = Plot.all.order(plot_id: :asc)
     @plants = Plant.all.order('LOWER(common_name) asc')
   end
