@@ -19,9 +19,9 @@ $(document).on "turbolinks:load", ->
     $('#lnk-toggle-soil-sample-fields').text('Add soil sample')
 
   $('#fungi_fields').on 'shown.bs.collapse', (event) ->
-    $('#lnk-toggle-fungi-fields').text('Omit soil sample')
+    $('#lnk-toggle-fungi-fields').text('Omit fungi sample')
 
   $('#fungi_fields').on 'hidden.bs.collapse', (event) ->
     $(@).find(':input:not([type=hidden])').val('')
     $(@).find('#biodiversity_report_fungi_sample_attributes__destroy').val('1')
-    $('#lnk-toggle-fungi-fields').text('Add soil sample')
+    $('#lnk-toggle-fungi-fields').text('Add fungi sample')
