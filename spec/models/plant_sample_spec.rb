@@ -18,4 +18,8 @@ RSpec.describe PlantSample, type: :model do
     it { is_expected.to belong_to(:biodiversity_report) }
   end
 
+  it 'generates a valid csv representation' do
+    skip 'TODO: test me'
+  end
+
 end
