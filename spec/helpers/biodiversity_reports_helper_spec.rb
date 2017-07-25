@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe BiodiversityReportsHelper, type: :helper do
 
   let(:soil_sample) { build(:soil_sample) }
-  # ```let(:empty_soil_sample) { double }```
   let(:empty_soil_sample) { build(:empty_soil_sample) }
 
   describe "#link_to_toggle_sample_fields" do

@@ -16,22 +16,4 @@ RSpec.describe SoilSample, type: :model do
     it { is_expected.to belong_to(:biodiversity_report) }
   end
 
-  describe "#has_temperature_or_ph_level?" do
-
-    it "returns false when all attributes are nil" do
-      soil_sample.ph_level = nil
-      soil_sample.temperature = nil
-      soil_sample.moisture = nil
-      soil_sample.biodiversity_report_id = nil
-      expect(soil_sample.has_temperature_or_ph_level?).to be(false)
-    end
-
-    it "returns true when one or more attributes are present" do
-      soil_sample.temperature = nil
-      soil_sample.biodiversity_report_id = nil
-      expect(soil_sample.has_temperature_or_ph_level?).to be(true)
-    end
-
-  end
-
 end
