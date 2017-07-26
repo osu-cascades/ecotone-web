@@ -22,18 +22,21 @@
       #soil_fields.collapse{ class: show_css_class(@biodiversity_report.soil_sample) }
         = form.fields_for :soil_sample do |fields|
           = render partial: 'soil_sample_fields', locals: { f: fields }
+
       %hr
       %h3 Fungi Sample
       %p= link_to_toggle_sample_fields_for @biodiversity_report.fungi_sample
       #fungi_fields.collapse{ class: show_css_class(@biodiversity_report.fungi_sample) }
         = form.fields_for :fungi_sample do |fields|
           = render partial: 'fungi_sample_fields', locals: { f: fields }
+
       %hr
       %h3 Lichen Sample
       %p= link_to_toggle_sample_fields_for @biodiversity_report.lichen_sample
       #lichen_fields.collapse{ class: show_css_class(@biodiversity_report.lichen_sample) }
         = form.fields_for :lichen_sample do |fields|
           = render partial: 'lichen_sample_fields', locals: { f: fields }
+          
       %hr
       %h3 Plant Samples
       = form.fields_for :plant_samples do |plant_fields|
