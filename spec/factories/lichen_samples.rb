@@ -1,8 +1,8 @@
 FactoryGirl.define do
   factory :lichen_sample do
-    location_within_plot "MyString"
-    description "MyString"
+    location_within_plot "on a twig"
+    description "description of a lichen"
     photo ""
-    biodiversity_report_id 1
+    biodiversity_report_id
   end
 end
