@@ -1,6 +1,6 @@
 module BiodiversityReportsHelper
 
-  def link_to_toggle_sample_fields(sample)
+  def link_to_toggle_sample_fields_for(sample)
     return unless sample
     verb = has_any_present_attributes?(sample) ? 'Omit' : 'Add'
     link_to "#{verb} #{format_class_name(sample.class.name)} sample", "##{format_class_name(sample.class.name)}_fields",
