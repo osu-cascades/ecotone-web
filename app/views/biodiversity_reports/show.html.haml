@@ -27,6 +27,14 @@
       - else
         %p No fungi sample
       %hr
+      %h3 lichen Sample
+      - if @biodiversity_report.lichen_sample
+        %p Location within plot: #{@biodiversity_report.lichen_sample.location_within_plot}
+        %p Description: #{@biodiversity_report.lichen_sample.description}
+        .plot_photo= image_tag @biodiversity_report.lichen_sample.photo.url(:default), alt: "Photo of lichen sample"
+      - else
+        %p No lichen sample
+      %hr
       %h3 Plant Samples
       = render(@biodiversity_report.plant_samples) || "<p>No plant samples</p>".html_safe
       - if @biodiversity_report.editable_by?(current_user)
