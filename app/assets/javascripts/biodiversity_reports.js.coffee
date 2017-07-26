@@ -25,3 +25,11 @@ $(document).on "turbolinks:load", ->
     $(@).find(':input:not([type=hidden])').val('')
     $(@).find('#biodiversity_report_fungi_sample_attributes__destroy').val('1')
     $('#lnk-toggle-fungi-fields').text('Add fungi sample')
+
+  $('#lichen_fields').on 'shown.bs.collapse', (event) ->
+    $('#lnk-toggle-lichen-fields').text('Omit lichen sample')
+
+  $('#lichen_fields').on 'hidden.bs.collapse', (event) ->
+    $(@).find(':input:not([type=hidden])').val('')
+    $(@).find('#biodiversity_report_lichen_sample_attributes__destroy').val('1')
+    $('#lnk-toggle-lichen-fields').text('Add lichen sample')
