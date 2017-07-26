@@ -155,6 +155,26 @@ RSpec.feature 'User creates a biodiversity report' do
 
   end
 
+  context 'with a lichen sample' do
+
+    before { fill_in_report_fields }
+
+    scenario 'providing valid lichen smaple data' do
+      within('.lichen_sample') do
+        fill_in('Location within plot', with: 'on a rock')
+        fill_in('Description', with: 'description of lichen')
+      end
+      click_button('Create Biodiversity report')
+      expect(page).to have_selector '.alert', text: 'Biodiversity report was successfully created.'
+      expect(page).to have_content(BiodiversityReport.last.to_s)
+      click_link(BiodiversityReport.last.to_s)
+      expect(page).to have_no_content('No fungi sample')
+      expect(page).to have_content('Location within plot: on a rock')
+      expect(page).to have_content('Description: description of lichen')
+    end
+
+  end
+
   def fill_in_report_fields
     select('Plot #1', from: 'Plot')
     fill_in('Date', with: '09/11/2001')

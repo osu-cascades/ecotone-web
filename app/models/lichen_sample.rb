@@ -1,0 +1,2 @@
+class LichenSample < ApplicationRecord
+end
