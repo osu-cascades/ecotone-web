@@ -86,6 +86,159 @@ RSpec.feature "User edits a biodiversity report" do
 
   end
 
+  context "without an existing fungi sample" do
+
+    before do
+      visit edit_biodiversity_report_path(biodiversity_report)
+    end
+
+    scenario "providing valid fungi sample data" do
+      within('.fungi_sample') do
+        fill_in('Location within plot', with: 'on a rock')
+        fill_in('Size', with: '1.5')
+        fill_in('Description', with: 'description of fungi')
+      end
+      click_button('Update Biodiversity report')
+      expect(page).to have_selector ".alert", text: "Biodiversity report was successfully updated."
+      expect(page).to have_content(biodiversity_report.to_s)
+      expect(page).to have_no_content('No fungi sample')
+      expect(page).to have_content('Location within plot: on a rock')
+      expect(page).to have_content('Size: 1.5')
+      expect(page).to have_content('Description: description of fungi')
+    end
+
+  end
+
+  context "with an existing fungi sample" do
+
+    let!(:fungi_sample) { create(:fungi_sample, biodiversity_report: biodiversity_report) }
+
+    before do
+      visit edit_biodiversity_report_path(biodiversity_report)
+    end
+
+    scenario "omitting the existing fungi sample" do
+      within('.fungi_sample') do
+        fill_in('Location within plot', with: '')
+        fill_in('Size', with: '')
+        fill_in('Description', with: '')
+      end
+      page.find('#biodiversity_report_fungi_sample_attributes__destroy', visible: false).set('1')
+      click_button('Update Biodiversity report')
+      expect(page).to have_selector ".alert", text: "Biodiversity report was successfully updated."
+      expect(page).to have_content(biodiversity_report.to_s)
+      expect(page).to have_content('No fungi sample')
+      expect(page).to have_no_content('Location_within_plot: on a rock') # Set by fungi_sample factory
+      expect(page).to have_no_content('Size: 1.5') # Set by fungi_sample factory
+      expect(page).to have_no_content('Description: description of fungi sample') # Set by fungi_sample factory
+    end
+
+    scenario "modifying the existing fungi sample providing valid data" do
+      within('.fungi_sample') do
+        fill_in('Location within plot', with: 'on a rock')
+        fill_in('Size', with: '1.5')
+        fill_in('Description', with: 'description of fungi')
+      end
+      click_button('Update Biodiversity report')
+      expect(page).to have_selector ".alert", text: "Biodiversity report was successfully updated."
+      expect(page).to have_content(biodiversity_report.to_s)
+      expect(page).to have_no_content('No fungi sample')
+      expect(page).to have_content('Location within plot: on a rock')
+      expect(page).to have_content('Size: 1.5')
+      expect(page).to have_content('Description: description of fungi')
+    end
+
+    scenario "modifying the existing fungi sample providing invalid data" do
+      within('.fungi_sample') do
+        fill_in('Location within plot', with: '')
+        fill_in('Size', with: '-1')
+        fill_in('Description', with: '')
+      end
+      click_button('Update Biodiversity report')
+      expect(page).to have_selector ".alert", text: /The form contains .* errors./
+      expect(page.find('#error_explanation')).to have_content("Fungi sample location within plot can't be blank")
+      expect(page.find('#error_explanation')).to have_content('Fungi sample size must be greater than or equal to 0')
+      expect(page.find('#error_explanation')).to have_content("Fungi sample description can't be blank")
+      expect(page).to have_css('#fungi_fields.collapse.in')
+      expect(page).to have_field('Location within plot', with: '')
+      expect(page).to have_field('Size', with: '-1')
+      expect(page).to have_field('Description', with: '')
+    end
+
+  end
+
+  context "without an existing lichen sample" do
+
+    before do
+      visit edit_biodiversity_report_path(biodiversity_report)
+    end
+
+    scenario "providing valid lichen sample data" do
+      within('.lichen_sample') do
+        fill_in('Location within plot', with: 'on a rock')
+        fill_in('Description', with: 'description of lichen')
+      end
+      click_button('Update Biodiversity report')
+      expect(page).to have_selector ".alert", text: "Biodiversity report was successfully updated."
+      expect(page).to have_content(biodiversity_report.to_s)
+      expect(page).to have_no_content('No lichen sample')
+      expect(page).to have_content('Location within plot: on a rock')
+      expect(page).to have_content('Description: description of lichen')
+    end
+
+  end
+
+  context "with an existing lichen sample" do
+
+    let!(:lichen_sample) { create(:lichen_sample, biodiversity_report: biodiversity_report) }
+
+    before do
+      visit edit_biodiversity_report_path(biodiversity_report)
+    end
+
+    scenario "omitting the existing lichen sample" do
+      within('.lichen_sample') do
+        fill_in('Location within plot', with: '')
+        fill_in('Description', with: '')
+      end
+      page.find('#biodiversity_report_lichen_sample_attributes__destroy', visible: false).set('1')
+      click_button('Update Biodiversity report')
+      expect(page).to have_selector ".alert", text: "Biodiversity report was successfully updated."
+      expect(page).to have_content(biodiversity_report.to_s)
+      expect(page).to have_content('No lichen sample')
+      expect(page).to have_no_content('Location_within_plot: on a rock') # Set by lichen_sample factory
+      expect(page).to have_no_content('Description: description of lichen sample') # Set by lichen_sample factory
+    end
+
+    scenario "modifying the existing lichen sample providing valid data" do
+      within('.lichen_sample') do
+        fill_in('Location within plot', with: 'on a rock')
+        fill_in('Description', with: 'description of lichen')
+      end
+      click_button('Update Biodiversity report')
+      expect(page).to have_selector ".alert", text: "Biodiversity report was successfully updated."
+      expect(page).to have_content(biodiversity_report.to_s)
+      expect(page).to have_no_content('No lichen sample')
+      expect(page).to have_content('Location within plot: on a rock')
+      expect(page).to have_content('Description: description of lichen')
+    end
+
+    scenario "modifying the existing lichen sample providing invalid data" do
+      within('.lichen_sample') do
+        fill_in('Location within plot', with: '')
+        fill_in('Description', with: '')
+      end
+      click_button('Update Biodiversity report')
+      expect(page).to have_selector ".alert", text: /The form contains .* errors./
+      expect(page.find('#error_explanation')).to have_content("Lichen sample location within plot can't be blank")
+      expect(page.find('#error_explanation')).to have_content("Lichen sample description can't be blank")
+      expect(page).to have_css('#lichen_fields.collapse.in')
+      expect(page).to have_field('Location within plot', with: '')
+      expect(page).to have_field('Description', with: '')
+    end
+
+  end
+
   context 'without an existing plant sample' do
 
     before do

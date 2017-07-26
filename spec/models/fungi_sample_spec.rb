@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe FungiSample, type: :model do
-
   subject(:fungi_sample) { build :fungi_sample }
 
   context 'when created' do

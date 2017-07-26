@@ -153,6 +153,43 @@ RSpec.feature 'User creates a biodiversity report' do
       expect(page).to have_content('Description: description of fungi')
     end
 
+    scenario 'providing invalid fungi sample data' do
+      within('.fungi_sample') do
+        fill_in('Location within plot', with: '')
+        fill_in('Size', with: '-1')
+        fill_in('Description', with: '')
+      end
+      click_button('Create Biodiversity report')
+      expect(page).to have_selector ".alert", text: /The form contains .* errors./
+      expect(page.find('#error_explanation')).to have_content("Fungi sample location within plot can't be blank")
+      expect(page.find('#error_explanation')).to have_content('Fungi sample size must be greater than or equal to 0')
+      expect(page.find('#error_explanation')).to have_content("Fungi sample description can't be blank")
+      expect(page).to have_css('#fungi_fields.collapse.in')
+      expect(page).to have_field('Location within plot', with: '')
+      expect(page).to have_field('Size', with: '-1')
+      expect(page).to have_field('Description', with: '')
+    end
+
+  end
+
+  context 'with a lichen sample' do
+
+    before { fill_in_report_fields }
+
+    scenario 'providing valid lichen smaple data' do
+      within('.lichen_sample') do
+        fill_in('Location within plot', with: 'on a rock')
+        fill_in('Description', with: 'description of lichen')
+      end
+      click_button('Create Biodiversity report')
+      expect(page).to have_selector '.alert', text: 'Biodiversity report was successfully created.'
+      expect(page).to have_content(BiodiversityReport.last.to_s)
+      click_link(BiodiversityReport.last.to_s)
+      expect(page).to have_no_content('No lichen sample')
+      expect(page).to have_content('Location within plot: on a rock')
+      expect(page).to have_content('Description: description of lichen')
+    end
+
   end
 
   def fill_in_report_fields

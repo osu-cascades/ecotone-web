@@ -14,12 +14,15 @@ class BiodiversityReportsController < ApplicationController
     @biodiversity_report.plant_samples.build
     @biodiversity_report.build_soil_sample
     @biodiversity_report.build_fungi_sample
+    @biodiversity_report.build_lichen_sample
     @plots = Plot.all.order(plot_id: :asc)
     @plants = Plant.all.order('LOWER(common_name) asc')
   end
 
   def edit
     @biodiversity_report.build_soil_sample unless @biodiversity_report.soil_sample
+    @biodiversity_report.build_fungi_sample unless @biodiversity_report.fungi_sample
+    @biodiversity_report.build_lichen_sample unless @biodiversity_report.lichen_sample
   end
 
   def create
@@ -71,6 +74,8 @@ class BiodiversityReportsController < ApplicationController
         :percent_cover, :photo, :_destroy, :id],
       soil_sample_attributes: [:ph_level, :temperature, :moisture, :biodiversity_report_id, :_destroy, :id],
       fungi_sample_attributes: [:location_within_plot, :size, :description, :photo, 
+        :biodiversity_report_id, :_destroy, :id],
+      lichen_sample_attributes: [:location_within_plot, :description, :photo,
         :biodiversity_report_id, :_destroy, :id])
   end
 
