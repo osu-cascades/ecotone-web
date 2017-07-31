@@ -22,15 +22,19 @@ RSpec.describe PlantSample, type: :model do
 
   describe '#to_csv' do
 
-    skip 'TODO: create proper .csv file, check generated_csv and csv_file are equivalent'
-
     it 'generates a valid csv representation' do
+
+      skip 'TODO: add a plant sample to expected.csv and figure out how to test #to_csv on actual
+                  plant sample objects. Current implementation only tests the csv header row'
 
       plant_sample_attributes = %w(abundance percent_cover)
       bd_attributes = %w(measured_on measured_at temperature species_richness diversity_index)
       plant_attributes = %w(common_name scientific_name)
 
-      generated_csv = PlantSample.to_csv(plant_sample_attributes, bd_attributes, plant_attributes)
+      expected_csv = File.read(File.dirname(__FILE__) + '/expected.csv')
+      generated_csv = PlantSample.all.to_csv(plant_sample_attributes, bd_attributes, plant_attributes)
+
+      expect(generated_csv).to eq(expected_csv.gsub(/\r/, ''))
     end
   end
 
