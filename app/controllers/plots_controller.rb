@@ -12,7 +12,7 @@ class PlotsController < ApplicationController
   end
 
   def download_qr
-    @qr = RQRCode::QRCode.new(plot_path(@plot), size: 10, level: :h)
+    @qr = RQRCode::QRCode.new(plot_url(@plot), size: 10, level: :h)
     png = build_qr_code_image(@qr, 360)
     send_data(png, type: 'image/png', disposition: 'attachment',
       filename: "plot-#{@plot.plot_id}-qr-code.png")
