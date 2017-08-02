@@ -12,7 +12,7 @@ class PlantsController < ApplicationController
   end
 
   def download_qr
-    @qr = RQRCode::QRCode.new(plant_path(@plant), size: 10, level: :h)
+    @qr = RQRCode::QRCode.new(plant_url(@plant), size: 10, level: :h)
     png = build_qr_code_image(@qr, 360)
     send_data(png, type: 'image/png', disposition: 'attachment',
               filename: "#{@plant.common_name.parameterize(separator: '-')}-qr-code.png")
