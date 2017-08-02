@@ -16,6 +16,10 @@ module BiodiversityReportsHelper
     has_any_present_attributes?(sample) && 'in'
   end
 
+  def show_css_class_multi(samples)
+    check_all(samples) && 'in'
+  end
+
   def link_to_add_fields(link_text, form_builder, association)
     new_object = form_builder.object.send(association).klass.new
     id = new_object.object_id
@@ -36,10 +40,17 @@ module BiodiversityReportsHelper
     return nil if obj.nil?
     obj.attributes.each do |_, attr_value|
       if attr_value.present?
+        puts attr_value
         return true
       end
     end
     false
+  end
+
+  def check_all(samples)
+    samples.each do |sample|
+      if has_any_present_attributes?(sample) then return true end
+    end
   end
 
 end
