@@ -12,12 +12,8 @@ module BiodiversityReportsHelper
   # create, failed update, or edit, the fields should be visible by default,
   # rather than collapsed.
   # Note: In Bootstrap 4, 'in' has changed to 'show'.
-  def show_css_class(sample)
-    has_any_present_attributes?(sample) && 'in'
-  end
-
-  def show_css_class_multi(samples)
-    check_all(samples) && 'in'
+  def show_css_class(samples)
+    has_any_present_attributes?(samples) && 'in'
   end
 
   def link_to_add_fields(link_text, form_builder, association)
@@ -36,21 +32,17 @@ module BiodiversityReportsHelper
     object[0].downcase
   end
 
-  def has_any_present_attributes?(obj)
+  def present_attributes?(obj)
     return nil if obj.nil?
-    obj.attributes.each do |_, attr_value|
-      if attr_value.present?
-        puts attr_value
-        return true
-      end
-    end
+    obj.attributes.each { |_, attr_value| return true if attr_value.present? }
     false
   end
 
-  def check_all(samples)
-    samples.each do |sample|
-      if has_any_present_attributes?(sample) then return true end
-    end
+  def has_any_present_attributes?(samples)
+    return nil if samples.nil?
+    arr = Array.wrap(samples)
+    arr.each { |sample| return true if present_attributes?(sample) }
+    false
   end
 
 end
