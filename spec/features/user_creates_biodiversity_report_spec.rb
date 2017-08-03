@@ -177,7 +177,7 @@ RSpec.feature 'User creates a biodiversity report' do
 
     before { fill_in_report_fields }
 
-    scenario 'providing valid lichen smaple data' do
+    scenario 'providing valid lichen sample data' do
       within('.lichen_sample') do
         fill_in('Location within plot', with: 'on a rock')
         fill_in('Description', with: 'description of lichen')
@@ -189,6 +189,30 @@ RSpec.feature 'User creates a biodiversity report' do
       expect(page).to have_no_content('No lichen sample')
       expect(page).to have_content('Location within plot: on a rock')
       expect(page).to have_content('Description: description of lichen')
+    end
+
+  end
+
+  context 'with a macroinvertebrate sample' do
+
+    before { fill_in_report_fields }
+
+    scenario 'providing valid macroinvertebrate sample data' do
+      within('.macroinvertebrate_sample') do
+        fill_in('Phylum', with: 'Example phylum')
+        fill_in('Location within plot', with: 'on a rock')
+        fill_in('Quantity', with: '1')
+        select('Pollinator', from: 'Ecosystem service')
+      end
+      click_button('Create Biodiversity report')
+      expect(page).to have_selector '.alert', text: 'Biodiversity report was successfully created.'
+      expect(page).to have_content(BiodiversityReport.last.to_s)
+      click_link(BiodiversityReport.last.to_s)
+      expect(page).to have_no_content('No macroinvertebrate sample')
+      expect(page).to have_content('Phylum: Example phylum')
+      expect(page).to have_content('Location within plot: on a rock')
+      expect(page).to have_content('Quantity: 1')
+      expect(page).to have_content('Ecosystem service: Pollinator')
     end
 
   end
