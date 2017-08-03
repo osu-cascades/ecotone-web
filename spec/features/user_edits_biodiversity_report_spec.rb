@@ -239,6 +239,93 @@ RSpec.feature "User edits a biodiversity report" do
 
   end
 
+  context "without an existing macroinvertebrate sample" do
+
+    before do
+      visit edit_biodiversity_report_path(biodiversity_report)
+    end
+
+    scenario "providing valid macroinvertebrate sample data" do
+      within('.macroinvertebrate_sample') do
+        fill_in('Phylum', with: 'Example phylum')
+        fill_in('Location within plot', with: 'on a rock')
+        fill_in('Quantity', with: '1')
+        select('Pollinator', from: 'Ecosystem service')
+      end
+      click_button('Update Biodiversity report')
+      expect(page).to have_selector ".alert", text: "Biodiversity report was successfully updated."
+      expect(page).to have_content(biodiversity_report.to_s)
+      expect(page).to have_no_content('No macroinvertebrate sample')
+      expect(page).to have_content('Phylum: Example phylum')
+      expect(page).to have_content('Location within plot: on a rock')
+      expect(page).to have_content('Quantity: 1')
+      expect(page).to have_content('Ecosystem service: Pollinator')
+    end
+
+  end
+
+  context "with an existing macroinvertebrate sample" do
+
+    let!(:macroinvertebrate_sample) { create(:macroinvertebrate_sample, biodiversity_report: biodiversity_report) }
+
+    before do
+      visit edit_biodiversity_report_path(biodiversity_report)
+    end
+
+    scenario "omitting the existing macroinvertebrate sample" do
+      within('.macroinvertebrate_sample') do
+        fill_in('Phylum', with: 'Example phylum')
+        fill_in('Location within plot', with: 'on a rock')
+        fill_in('Quantity', with: '1')
+        select('Pollinator', from: 'Ecosystem service')
+      end
+      page.find('#biodiversity_report_macroinvertebrate_sample_attributes__destroy', visible: false).set('1')
+      click_button('Update Biodiversity report')
+      expect(page).to have_selector ".alert", text: "Biodiversity report was successfully updated."
+      expect(page).to have_content(biodiversity_report.to_s)
+      expect(page).to have_content('No macroinvertebrate sample')
+      expect(page).to have_no_content('Phylum: Example phylum')
+      expect(page).to have_no_content('Location within plot: on a rock')
+      expect(page).to have_no_content('Quantity: 1')
+      expect(page).to have_no_content('Ecosystem service: Pollinator')
+    end
+
+    scenario "modifying the existing macroinvertebrate sample providing valid data" do
+      within('.macroinvertebrate_sample') do
+        fill_in('Phylum', with: 'Example phylum')
+        fill_in('Location within plot', with: 'on a rock')
+        fill_in('Quantity', with: '1')
+        select('Pollinator', from: 'Ecosystem service')
+      end
+      click_button('Update Biodiversity report')
+      expect(page).to have_selector ".alert", text: "Biodiversity report was successfully updated."
+      expect(page).to have_content(biodiversity_report.to_s)
+      expect(page).to have_no_content('No macroinvertebrate sample')
+      expect(page).to have_content('Phylum: Example phylum')
+      expect(page).to have_content('Location within plot: on a rock')
+      expect(page).to have_content('Quantity: 1')
+      expect(page).to have_content('Ecosystem service: Pollinator')
+    end
+
+    scenario "modifying the existing macroinvertebrate sample providing invalid data" do
+      within('.macroinvertebrate_sample') do
+        fill_in('Phylum', with: '')
+        fill_in('Location within plot', with: '')
+        fill_in('Quantity', with: '-1')
+      end
+      click_button('Update Biodiversity report')
+      expect(page).to have_selector ".alert", text: /The form contains .* errors./
+      expect(page.find('#error_explanation')).to have_content("Macroinvertebrate sample phylum can't be blank")
+      expect(page.find('#error_explanation')).to have_content("Macroinvertebrate sample location within plot can't be blank")
+      expect(page.find('#error_explanation')).to have_content("Macroinvertebrate sample quantity must be greater than or equal to 0")
+      expect(page).to have_css('#macroinvertebrate_fields.collapse.in')
+      expect(page).to have_field('Phylum', with: '')
+      expect(page).to have_field('Location within plot', with: '')
+      expect(page).to have_field('Quantity', with: '-1')
+    end
+
+  end
+
   context 'without an existing plant sample' do
 
     before do
