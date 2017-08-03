@@ -15,6 +15,7 @@ class BiodiversityReportsController < ApplicationController
     @biodiversity_report.build_soil_sample
     @biodiversity_report.build_fungi_sample
     @biodiversity_report.build_lichen_sample
+    @biodiversity_report.build_macroinvertebrate_sample
     @plots = Plot.all.order(plot_id: :asc)
     @plants = Plant.all.order('LOWER(common_name) asc')
   end
@@ -23,6 +24,7 @@ class BiodiversityReportsController < ApplicationController
     @biodiversity_report.build_soil_sample unless @biodiversity_report.soil_sample
     @biodiversity_report.build_fungi_sample unless @biodiversity_report.fungi_sample
     @biodiversity_report.build_lichen_sample unless @biodiversity_report.lichen_sample
+    @biodiversity_report.build_macroinvertebrate_sample unless @biodiversity_report.macroinvertebrate_sample
   end
 
   def create
@@ -76,7 +78,9 @@ class BiodiversityReportsController < ApplicationController
       fungi_sample_attributes: [:location_within_plot, :size, :description, :photo, 
         :biodiversity_report_id, :_destroy, :id],
       lichen_sample_attributes: [:location_within_plot, :description, :photo,
-        :biodiversity_report_id, :_destroy, :id])
+        :biodiversity_report_id, :_destroy, :id],
+      macroinvertebrate_sample_attributes: [:phylum, :location_within_plot, :quantity,
+        :ecosystem_service, :photo, :biodiversity_report_id, :_destroy, :id])
   end
 
 end
