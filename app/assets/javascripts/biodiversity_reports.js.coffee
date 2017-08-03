@@ -33,3 +33,11 @@ $(document).on "turbolinks:load", ->
     $(@).find(':input:not([type=hidden])').val('')
     $(@).find('#biodiversity_report_lichen_sample_attributes__destroy').val('1')
     $('#lnk-toggle-lichen-fields').text('Add lichen sample')
+
+  $('#macroinvertebrate_fields').on 'shown.bs.collapse', (event) ->
+    $('#lnk-toggle-macroinvertebrate-fields').text('Omit macroinvertebrate sample')
+
+  $('#macroinvertebrate_fields').on 'hidden.bs.collapse', (event) ->
+    $(@).find(':input:not([type=hidden])').val('')
+    $(@).find('#biodiversity_report_macroinvertebrate_sample_attributes__destroy').val('1')
+    $('#lnk-toggle-macroinvertebrate-fields').text('Add macroinvertebrate sample')
