@@ -36,6 +36,13 @@
       #lichen_fields.collapse{ class: show_css_class(@biodiversity_report.lichen_sample) }
         = form.fields_for :lichen_sample do |fields|
           = render partial: 'lichen_sample_fields', locals: { f: fields }
+
+      %hr
+      %h3 Macroinvertebrate Sample
+      %p= link_to_toggle_sample_fields_for @biodiversity_report.macroinvertebrate_sample
+      #macroinvertebrate_fields.collapse{ class: show_css_class(@biodiversity_report.macroinvertebrate_sample) }
+        = form.fields_for :macroinvertebrate_sample do |fields|
+          = render partial: 'macroinvertebrate_sample_fields', locals: { f: fields }
           
       %hr
       %h3 Plant Samples
