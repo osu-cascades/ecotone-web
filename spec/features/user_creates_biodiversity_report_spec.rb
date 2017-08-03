@@ -215,6 +215,25 @@ RSpec.feature 'User creates a biodiversity report' do
       expect(page).to have_content('Ecosystem service: Pollinator')
     end
 
+    scenario 'providing invalid macroinvertebrate sample data' do
+      within('.macroinvertebrate_sample') do
+        fill_in('Phylum', with: '')
+        fill_in('Location within plot', with: '')
+        fill_in('Quantity', with: '-1')
+      end
+      click_button('Create Biodiversity report')
+      expect(page).to have_selector ".alert", text: /The form contains .* errors./
+      expect(page.find('#error_explanation')).to have_content("Macroinvertebrate sample phylum can't be blank")
+      expect(page.find('#error_explanation')).to have_content("Macroinvertebrate sample location within plot can't be blank")
+      expect(page.find('#error_explanation')).to have_content("Macroinvertebrate sample quantity must be greater than or equal to 0")
+      expect(page.find('#error_explanation')).to have_content("Macroinvertebrate sample ecosystem service can't be blank")
+      expect(page.find('#error_explanation')).to have_content("Macroinvertebrate sample ecosystem service is not a valid ecosystem service")
+      expect(page).to have_css('#macroinvertebrate_fields.collapse.in')
+      expect(page).to have_field('Phylum', with: '')
+      expect(page).to have_field('Location within plot', with: '')
+      expect(page).to have_field('Quantity', with: '-1')
+    end
+
   end
 
   def fill_in_report_fields

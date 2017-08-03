@@ -5,7 +5,7 @@
   = f.label :location_within_plot
   = f.text_field :location_within_plot, class: 'form-control'
   = f.label :quantity
-  = f.text_field :quantity
+  = f.text_field :quantity, class: 'form-control'
   = f.label :ecosystem_service
   = f.select(:ecosystem_service, MacroinvertebrateSample::ECOSYSTEM_SERVICES, include_blank: 'Choose one')
   = f.label :photo
