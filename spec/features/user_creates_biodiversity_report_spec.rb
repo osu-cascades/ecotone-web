@@ -110,6 +110,7 @@ RSpec.feature 'User creates a biodiversity report' do
     before { fill_in_report_fields }
 
     scenario 'providing valid plant sample data', js: true do
+      click_link('Add plant sample')
       within('.plant_sample') do
         select('Plant Example', from: 'Plant')
         fill_in('Abundance', with: '1')

@@ -32,16 +32,12 @@ module BiodiversityReportsHelper
     object[0].downcase
   end
 
-  def present_attributes?(obj)
-    return nil if obj.nil?
-    obj.attributes.each { |_, attr_value| return true if attr_value.present? }
-    false
-  end
-
   def has_any_present_attributes?(samples)
     return nil if samples.nil?
     arr = Array.wrap(samples)
-    arr.each { |sample| return true if present_attributes?(sample) }
+    arr.each do |sample| 
+      sample.attributes.each { |_, attr_value| return true if attr_value.present? }
+    end
     false
   end
 

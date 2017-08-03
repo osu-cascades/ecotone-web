@@ -39,7 +39,7 @@
           
       %hr
       %h3 Plant Samples
-      .plant_sample.collapse{ class: show_css_class(@biodiversity_report.plant_samples) }
+      .plant_fields.collapse{ class: show_css_class(@biodiversity_report.plant_samples) }
         = form.fields_for :plant_samples do |plant_fields|
           = render partial: 'plant_sample_fields', locals: { f: plant_fields }
       %p= link_to_add_fields 'Add plant sample', form, :plant_samples
