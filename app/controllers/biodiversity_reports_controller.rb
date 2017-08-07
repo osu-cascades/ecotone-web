@@ -11,7 +11,6 @@ class BiodiversityReportsController < ApplicationController
 
   def new
     @biodiversity_report = BiodiversityReport.new
-    @biodiversity_report.plant_samples.build
     @biodiversity_report.build_soil_sample
     @biodiversity_report.build_fungi_sample
     @biodiversity_report.build_lichen_sample

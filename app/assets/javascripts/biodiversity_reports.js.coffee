@@ -1,13 +1,13 @@
 $(document).on "turbolinks:load", ->
   $('form').on 'click', '.remove_fields', (event) ->
-    $(this).parent().prev('input[type=hidden]').val('1')
+    $(this).parent().next('input[type=hidden]').val('1')
     $(this).closest('fieldset').hide('fast')
     event.preventDefault()
 
   $('form').on 'click', '.add_fields', (event) ->
     time = new Date().getTime()
     regexp = new RegExp($(this).data('id'), 'g')
-    $(this).before($(this).data('fields').replace(regexp, time))
+    $(this).parent().before($(this).data('fields').replace(regexp, time))
     event.preventDefault()
 
   $('#soil_sample_fields').on 'shown.bs.collapse', (event) ->

@@ -372,7 +372,7 @@ RSpec.feature "User edits a biodiversity report" do
     end
 
     scenario 'removing the existing plant sample', js: true do
-      click_link('Remove plant sample')
+      click_link('Omit plant sample')
       click_button('Update Biodiversity report')
       expect(page).to have_selector '.alert', text: 'Biodiversity report was successfully updated.'
       expect(page).to have_content(biodiversity_report.to_s)
@@ -436,9 +436,9 @@ RSpec.feature "User edits a biodiversity report" do
 
     scenario 'removing both existing plant samples', js: true do
       within all('.plant_sample').first do
-        click_link('Remove plant sample')
+        click_link('Omit plant sample')
       end
-      click_link('Remove plant sample')
+      click_link('Omit plant sample')
       click_button('Update Biodiversity report')
       expect(page).to have_selector '.alert', text: 'Biodiversity report was successfully updated.'
       expect(page).to have_content(biodiversity_report.to_s)

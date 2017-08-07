@@ -76,7 +76,8 @@ RSpec.feature 'User creates a biodiversity report' do
 
     before { fill_in_report_fields }
 
-    scenario 'providing valid plant sample data' do
+    scenario 'providing valid plant sample data', js: true do
+      click_link('Add plant sample')
       within('.plant_sample') do
         select('Plant Example', from: 'Plant')
         fill_in('Abundance', with: '1')
@@ -92,7 +93,8 @@ RSpec.feature 'User creates a biodiversity report' do
       expect(page).to have_content('Percent Cover: 50')
     end
 
-    scenario 'providing invalid plant sample data' do
+    scenario 'providing invalid plant sample data', js: true do
+      click_link('Add plant sample')
       within('.plant_sample') do
         select('Plant Example', from: 'Plant')
         fill_in('Abundance', with: '-1')
