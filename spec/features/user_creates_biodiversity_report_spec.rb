@@ -31,6 +31,9 @@ RSpec.feature 'User creates a biodiversity report' do
         expect(error_explanations).to have_content('Species richness is not a number')
         expect(error_explanations).to have_content('Diversity index is not a number')
       end
+      %w{ soil fungi lichen macroinvertebrate plant }.each do |sample_type|
+        expect(page).to have_content("Add #{sample_type} sample")
+      end
     end
 
   end
