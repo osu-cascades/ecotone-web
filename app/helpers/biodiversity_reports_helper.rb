@@ -12,7 +12,7 @@ module BiodiversityReportsHelper
   # create, failed update, or edit, the fields should be visible by default,
   # rather than collapsed.
   # Note: In Bootstrap 4, 'in' has changed to 'show'.
-  def show_css_class(samples)
+  def visibility_class(samples)
     has_any_present_attributes?(samples) && 'in'
   end
 

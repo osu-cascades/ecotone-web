@@ -23,20 +23,20 @@ RSpec.describe BiodiversityReportsHelper, type: :helper do
     end
   end
 
-  describe "#show_css_class" do
+  describe "#visibility_class" do
     context "when the soil sample has attribute values" do
       it "returns 'in'" do
-        expect(helper.show_css_class(soil_sample)).to eq('in')
+        expect(helper.visibility_class(soil_sample)).to eq('in')
       end
     end
     context "when the soil sample does not have attribute values" do
       it "returns false" do
-        expect(helper.show_css_class(empty_soil_sample)).to be(false)
+        expect(helper.visibility_class(empty_soil_sample)).to be(false)
       end
     end
     context "when the soil sample is nil" do
       it "returns false" do
-        expect(helper.show_css_class(nil)).to be(false)
+        expect(helper.visibility_class(nil)).to be(false)
       end
     end
   end
