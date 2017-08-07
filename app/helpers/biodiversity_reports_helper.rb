@@ -12,8 +12,8 @@ module BiodiversityReportsHelper
   # create, failed update, or edit, the fields should be visible by default,
   # rather than collapsed.
   # Note: In Bootstrap 4, 'in' has changed to 'show'.
-  def visibility_class(samples)
-    has_any_present_attributes?(samples) && 'in'
+  def visibility_class(sample)
+    has_any_present_attributes?(sample) && 'in'
   end
 
   def link_to_add_fields(link_text, form_builder, association)
@@ -27,13 +27,10 @@ module BiodiversityReportsHelper
 
   private
 
-  def has_any_present_attributes?(samples)
-    return false if samples.nil?
-    arr = Array.wrap(samples)
-    arr.each do |sample|
-      sample.attributes.each { |name, value| return true if name != "biodiversity_report_id" && value.present? }
-    end
-    false
+  def has_any_present_attributes?(sample)
+    return false if sample.nil?
+    sample.attributes.each { |name, value| return true if name != "biodiversity_report_id" && value.present? }
+    return false
   end
 
 end
