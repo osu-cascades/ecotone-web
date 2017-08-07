@@ -35,8 +35,8 @@ RSpec.describe BiodiversityReportsHelper, type: :helper do
       end
     end
     context "when the soil sample is nil" do
-      it "returns nil" do
-        expect(helper.show_css_class(nil)).to be_nil
+      it "returns false" do
+        expect(helper.show_css_class(nil)).to be(false)
       end
     end
   end

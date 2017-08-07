@@ -28,10 +28,10 @@ module BiodiversityReportsHelper
   private
 
   def has_any_present_attributes?(samples)
-    return nil if samples.nil?
+    return false if samples.nil?
     arr = Array.wrap(samples)
     arr.each do |sample|
-      sample.attributes.each { |_, attr_value| return true if attr_value.present? }
+      sample.attributes.each { |name, value| return true if name != "biodiversity_report_id" && value.present? }
     end
     false
   end
