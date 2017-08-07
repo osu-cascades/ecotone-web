@@ -36,6 +36,9 @@ class BiodiversityReportsController < ApplicationController
     else
       load_plots_and_plants
       @biodiversity_report.build_soil_sample unless @biodiversity_report.soil_sample
+      @biodiversity_report.build_fungi_sample unless @biodiversity_report.fungi_sample
+      @biodiversity_report.build_lichen_sample unless @biodiversity_report.lichen_sample
+      @biodiversity_report.build_macroinvertebrate_sample unless @biodiversity_report.macroinvertebrate_sample
       render :new
     end
   end
@@ -75,7 +78,7 @@ class BiodiversityReportsController < ApplicationController
       plant_samples_attributes: [:plant_id, :biodiversity_report_id, :abundance,
         :percent_cover, :photo, :_destroy, :id],
       soil_sample_attributes: [:ph_level, :temperature, :moisture, :biodiversity_report_id, :_destroy, :id],
-      fungi_sample_attributes: [:location_within_plot, :size, :description, :photo, 
+      fungi_sample_attributes: [:location_within_plot, :size, :description, :photo,
         :biodiversity_report_id, :_destroy, :id],
       lichen_sample_attributes: [:location_within_plot, :description, :photo,
         :biodiversity_report_id, :_destroy, :id],
