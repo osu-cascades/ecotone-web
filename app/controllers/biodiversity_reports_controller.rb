@@ -50,6 +50,10 @@ class BiodiversityReportsController < ApplicationController
       flash[:success] = 'Biodiversity report was successfully updated.'
     else
       load_plots_and_plants
+      @biodiversity_report.build_soil_sample unless @biodiversity_report.soil_sample
+      @biodiversity_report.build_fungi_sample unless @biodiversity_report.fungi_sample
+      @biodiversity_report.build_lichen_sample unless @biodiversity_report.lichen_sample
+      @biodiversity_report.build_macroinvertebrate_sample unless @biodiversity_report.macroinvertebrate_sample
       render :edit
     end
   end
