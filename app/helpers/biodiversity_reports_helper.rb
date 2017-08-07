@@ -3,8 +3,8 @@ module BiodiversityReportsHelper
   def link_to_toggle_sample_fields_for(sample)
     return unless sample
     verb = has_any_present_attributes?(sample) ? 'Omit' : 'Add'
-    link_to "#{verb} #{format_class_name(sample.class.name)} sample", "##{format_class_name(sample.class.name)}_fields",
-      { id: "lnk-toggle-#{format_class_name(sample.class.name)}-fields", 'data-toggle': 'collapse' }
+    link_to "#{verb} #{sample.model_name.human.downcase}", "##{sample.class.name.underscore}_fields",
+      { id: "lnk-toggle-#{sample.class.name.underscore.dasherize}-fields", 'data-toggle': 'collapse' }
   end
 
   # Append the 'in' class so that the initial state of the collapse is visible.
@@ -27,15 +27,10 @@ module BiodiversityReportsHelper
 
   private
 
-  def format_class_name(str)
-    object = str.split /(?=[A-Z])/
-    object[0].downcase
-  end
-
   def has_any_present_attributes?(samples)
     return nil if samples.nil?
     arr = Array.wrap(samples)
-    arr.each do |sample| 
+    arr.each do |sample|
       sample.attributes.each { |_, attr_value| return true if attr_value.present? }
     end
     false
