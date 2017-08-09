@@ -19,25 +19,25 @@
       %hr
       %h3 Soil Sample
       %p= link_to_toggle_sample_fields_for @biodiversity_report.soil_sample
-      #soil_sample_fields.collapse{ class: visibility_class(@biodiversity_report.soil_sample) }
+      #soil_sample_fields.collapse{ class: @biodiversity_report.soil_sample.visibility_class }
         = form.fields_for :soil_sample do |fields|
           = render partial: 'soil_sample_fields', locals: { f: fields }
       %hr
       %h3 Fungi Sample
       %p= link_to_toggle_sample_fields_for @biodiversity_report.fungi_sample
-      #fungi_sample_fields.collapse{ class: visibility_class(@biodiversity_report.fungi_sample) }
+      #fungi_sample_fields.collapse{ class: @biodiversity_report.fungi_sample.visibility_class }
         = form.fields_for :fungi_sample do |fields|
           = render partial: 'fungi_sample_fields', locals: { f: fields }
       %hr
       %h3 Lichen Sample
       %p= link_to_toggle_sample_fields_for @biodiversity_report.lichen_sample
-      #lichen_sample_fields.collapse{ class: visibility_class(@biodiversity_report.lichen_sample) }
+      #lichen_sample_fields.collapse{ class: @biodiversity_report.lichen_sample.visibility_class }
         = form.fields_for :lichen_sample do |fields|
           = render partial: 'lichen_sample_fields', locals: { f: fields }
       %hr
       %h3 Macroinvertebrate Sample
       %p= link_to_toggle_sample_fields_for @biodiversity_report.macroinvertebrate_sample
-      #macroinvertebrate_sample_fields.collapse{ class: visibility_class(@biodiversity_report.macroinvertebrate_sample) }
+      #macroinvertebrate_sample_fields.collapse{ class: @biodiversity_report.macroinvertebrate_sample.visibility_class }
         = form.fields_for :macroinvertebrate_sample do |fields|
           = render partial: 'macroinvertebrate_sample_fields', locals: { f: fields }
       %hr

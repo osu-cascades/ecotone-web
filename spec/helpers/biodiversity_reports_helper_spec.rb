@@ -23,24 +23,6 @@ RSpec.describe BiodiversityReportsHelper, type: :helper do
     end
   end
 
-  describe "#visibility_class" do
-    context "when the soil sample has attribute values" do
-      it "returns 'in'" do
-        expect(helper.visibility_class(soil_sample)).to eq('in')
-      end
-    end
-    context "when the soil sample does not have attribute values" do
-      it "returns false" do
-        expect(helper.visibility_class(empty_soil_sample)).to be(false)
-      end
-    end
-    context "when the soil sample is nil" do
-      it "returns false" do
-        expect(helper.visibility_class(nil)).to be(false)
-      end
-    end
-  end
-
   # link_to_add_fields 'Add plant sample', form, :plant_samples
   describe "#link_to_add_fields" do
     pending
