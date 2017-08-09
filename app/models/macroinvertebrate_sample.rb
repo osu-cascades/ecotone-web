@@ -11,4 +11,6 @@ class MacroinvertebrateSample < ApplicationRecord
 
   has_attached_file :photo, default_url: "missing.png", styles: { default: "200x200#", thumbnail: "50x50#" }
   validates_attachment_content_type :photo, content_type: /\Aimage/
+
+  communicate_present_attributes excluding: 'biodiversity_report_id'
 end

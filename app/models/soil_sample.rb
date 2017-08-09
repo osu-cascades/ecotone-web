@@ -3,4 +3,6 @@ class SoilSample < ApplicationRecord
   validates_numericality_of :ph_level, greater_than_or_equal_to: 0, less_than_or_equal_to: 14
   validates_numericality_of :temperature
   validates_numericality_of :moisture, greater_than_or_equal_to: 0
+
+  communicate_present_attributes excluding: 'biodiversity_report_id'
 end

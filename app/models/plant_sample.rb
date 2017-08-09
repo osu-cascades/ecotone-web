@@ -10,6 +10,8 @@ class PlantSample < ApplicationRecord
   validates_numericality_of :abundance, only_integer: true, greater_than: 0
   validates_numericality_of :percent_cover, only_integer: true, greater_than: 0, less_than_or_equal_to: 100
 
+  communicate_present_attributes excluding: 'biodiversity_report_id'
+
   # source - https://www.lockyy.com/posts/rails-4/exporting-csv-files-in-rails
   def self.to_csv(plant_sample_attributes = column_names,
                   report_attributes = biodiversity_report.column_names,

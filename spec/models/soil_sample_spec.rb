@@ -16,20 +16,4 @@ RSpec.describe SoilSample, type: :model do
     it { is_expected.to belong_to(:biodiversity_report) }
   end
 
-  describe 'AttributePresence::visibilty_class' do
-    let(:soil_sample) { build(:soil_sample) }
-    let(:empty_soil_sample) { build(:empty_soil_sample) }
-
-    context "when the soil sample has attribute values" do
-      it "returns 'in'" do
-        expect(soil_sample.visibility_class).to eq('in')
-      end
-    end
-    context "when the soil sample does not have attribute values" do
-      it "returns false" do
-        expect(empty_soil_sample.visibility_class).to be(false)
-      end
-    end
-  end
-
 end
