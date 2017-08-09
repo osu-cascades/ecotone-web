@@ -5,11 +5,11 @@ module AttributePresence
   # rather than collapsed.
   # Note: In Bootstrap 4, 'in' has changed to 'show'.
   def visibility_class
+    return false if self.nil?
     has_any_present_attributes? && 'in'
   end
 
   def has_any_present_attributes?
-    return false if self.nil?
     attributes.each { |name, value| return true if name != "biodiversity_report_id" && value.present? }
     return false
   end
