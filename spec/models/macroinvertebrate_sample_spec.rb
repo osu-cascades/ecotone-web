@@ -22,4 +22,20 @@ RSpec.describe MacroinvertebrateSample, type: :model do
     it { is_expected.to belong_to(:biodiversity_report) }
   end
 
+  describe 'ApplicationRecord#visibility_class' do
+    let(:macroinvertebrate_sample) { build(:macroinvertebrate_sample) }
+    let(:empty_macroinvertebrate_sample) { build(:empty_macroinvertebrate_sample) }
+
+    context 'when the macroinvertebrate sample has attribute values' do
+      it "returns 'in'" do
+        expect(macroinvertebrate_sample.visibility_class).to eq('in')
+      end
+    end
+    context 'when the macroinvertebrate sample does not have attribute values' do
+      it 'returns false' do
+        expect(empty_macroinvertebrate_sample.visibility_class).to be(false)
+      end
+    end
+  end
+
 end
