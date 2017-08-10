@@ -43,9 +43,9 @@ $(document).on "turbolinks:load", ->
     $('#lnk-toggle-macroinvertebrate-sample-fields').text('Add macroinvertebrate sample')
 
   $('#nonvascular_plant_sample_fields').on 'shown.bs.collapse', (event) ->
-    $('#lnk-toggle-nonvascular_plant-sample-fields').text('Omit lichen sample')
+    $('#lnk-toggle-nonvascular-plant-sample-fields').text('Omit non-vascular plant sample')
 
   $('#nonvascular_plant_sample_fields').on 'hidden.bs.collapse', (event) ->
     $(@).find(':input:not([type=hidden])').val('')
     $(@).find('#biodiversity_report_nonvascular_plant_sample_attributes__destroy').val('1')
-    $('#lnk-toggle-nonvascular_plant-sample-fields').text('Add non-vascular plant sample')
+    $('#lnk-toggle-nonvascular-plant-sample-fields').text('Add non-vascular plant sample')
