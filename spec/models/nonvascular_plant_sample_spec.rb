@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-RSpec.describe LichenSample, type: :model do
-  subject(:lichen_sample) { build :lichen_sample }
+RSpec.describe NonvascularPlantSample, type: :model do
+  subject(:nonvascular_plant_sample) { build :nonvascular_plant_sample }
 
   context 'when created' do
     it { is_expected.to have_attributes(location_within_plot: 'on a twig',
-                                        description: 'description of a lichen') }
+                                        description: 'description of a nonvascular plant') }
     it { is_expected.to be_valid }
   end
 

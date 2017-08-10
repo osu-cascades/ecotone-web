@@ -1,0 +1,2 @@
+class NonvascularPlantSample < ApplicationRecord
+end
