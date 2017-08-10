@@ -14,6 +14,9 @@ class BiodiversityReport < ApplicationRecord
   has_one :macroinvertebrate_sample
   accepts_nested_attributes_for :macroinvertebrate_sample, allow_destroy: true, reject_if: :all_blank
 
+  has_one :nonvascular_plant_sample
+  accepts_nested_attributes_for :nonvascular_plant_sample, allow_destroy: true, reject_if: :all_blank
+
   has_many :plant_samples
   accepts_nested_attributes_for :plant_samples, allow_destroy: true, reject_if: :all_blank
 
