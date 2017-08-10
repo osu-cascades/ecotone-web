@@ -198,6 +198,26 @@ RSpec.feature 'User creates a biodiversity report' do
 
   end
 
+  context 'with a nonvascular plant sample' do
+
+    before { fill_in_report_fields }
+
+    scenario 'providing valid nonvascular plant sample data' do
+      within('.nonvascular_plant_sample') do
+        fill_in('Location within plot', with: 'on a rock')
+        fill_in('Description', with: 'description of nonvascular plant')
+      end
+      click_button('Create Biodiversity report')
+      expect(page).to have_selector '.alert', text: 'Biodiversity report was successfully created.'
+      expect(page).to have_content(BiodiversityReport.last.to_s)
+      click_link(BiodiversityReport.last.to_s)
+      expect(page).to have_no_content('No nonvascular plant sample')
+      expect(page).to have_content('Location within plot: on a rock')
+      expect(page).to have_content('Description: description of nonvascular plant')
+    end
+
+  end
+
   context 'with a macroinvertebrate sample' do
 
     before { fill_in_report_fields }
