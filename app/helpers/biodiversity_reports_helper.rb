@@ -16,4 +16,9 @@ module BiodiversityReportsHelper
     link_to(link_text, '#', class: "add_fields", data: {id: id, fields: fields.gsub("\n", "")})
   end
 
+  def visibility_class(sample)
+    return false if sample.nil?
+    sample.has_any_present_attributes? && 'in'
+  end
+
 end

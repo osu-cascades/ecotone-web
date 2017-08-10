@@ -8,9 +8,4 @@ class ApplicationRecord < ActiveRecord::Base
     end
   end
 
-  def visibility_class
-    return false if self.nil?
-    has_any_present_attributes? && 'in'
-  end
-
 end
