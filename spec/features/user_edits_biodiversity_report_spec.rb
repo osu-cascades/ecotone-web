@@ -363,6 +363,78 @@ RSpec.feature "User edits a biodiversity report" do
 
   end
 
+  context 'without an existing nonvascular plant sample' do
+
+    before do
+      visit edit_biodiversity_report_path(biodiversity_report)
+    end
+
+    scenario 'providing valid nonvascular_plant sample data' do
+      within('.nonvascular_plant_sample') do
+        fill_in('Location within plot', with: 'on a rock')
+        fill_in('Description', with: 'description of nonvascular plant')
+      end
+      click_button('Update Biodiversity report')
+      expect(page).to have_selector '.alert', text: 'Biodiversity report was successfully updated.'
+      expect(page).to have_content(biodiversity_report.to_s)
+      expect(page).to have_no_content('No nonvascular plant sample')
+      expect(page).to have_content('Location within plot: on a rock')
+      expect(page).to have_content('Description: description of nonvascular plant')
+    end
+
+  end
+
+  context 'with an existing nonvascular plant sample' do
+
+    let!(:nonvascular_plant_sample) { create(:nonvascular_plant_sample, biodiversity_report: biodiversity_report) }
+
+    before do
+      visit edit_biodiversity_report_path(biodiversity_report)
+    end
+
+    scenario 'omitting the existing nonvascular_plant sample' do
+      within('.nonvascular_plant_sample') do
+        fill_in('Location within plot', with: '')
+        fill_in('Description', with: '')
+      end
+      page.find('#biodiversity_report_nonvascular_plant_sample_attributes__destroy', visible: false).set('1')
+      click_button('Update Biodiversity report')
+      expect(page).to have_selector '.alert', text: 'Biodiversity report was successfully updated.'
+      expect(page).to have_content(biodiversity_report.to_s)
+      expect(page).to have_content('No non-vascular plant sample')
+      expect(page).to have_no_content('Location_within_plot: on a rock')
+      expect(page).to have_no_content('Description: description of non-vascular plant')
+    end
+
+    scenario 'modifying the existing non-vascular plant sample providing valid data' do
+      within('.nonvascular_plant_sample') do
+        fill_in('Location within plot', with: 'on a rock')
+        fill_in('Description', with: 'description of non-vascular plant')
+      end
+      click_button('Update Biodiversity report')
+      expect(page).to have_selector '.alert', text: 'Biodiversity report was successfully updated.'
+      expect(page).to have_content(biodiversity_report.to_s)
+      expect(page).to have_no_content('No non-vascular plant sample')
+      expect(page).to have_content('Location within plot: on a rock')
+      expect(page).to have_content('Description: description of non-vascular plant')
+    end
+
+    scenario 'modifying the existing non-vascular plant sample providing invalid data' do
+      within('.nonvascular_plant_sample') do
+        fill_in('Location within plot', with: '')
+        fill_in('Description', with: '')
+      end
+      click_button('Update Biodiversity report')
+      expect(page).to have_selector '.alert', text: /The form contains .* errors./
+      expect(page.find('#error_explanation')).to have_content("Nonvascular plant sample location within plot can't be blank")
+      expect(page.find('#error_explanation')).to have_content("Nonvascular plant sample description can't be blank")
+      expect(page).to have_css('#nonvascular_plant_sample_fields.collapse.in')
+      expect(page).to have_field('Location within plot', with: '')
+      expect(page).to have_field('Description', with: '')
+    end
+
+  end
+
   context 'with one existing plant sample' do
 
     let!(:plant_sample) { create(:plant_sample, biodiversity_report: biodiversity_report) }
