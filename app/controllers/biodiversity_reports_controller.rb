@@ -15,6 +15,7 @@ class BiodiversityReportsController < ApplicationController
     @biodiversity_report.build_fungi_sample
     @biodiversity_report.build_lichen_sample
     @biodiversity_report.build_macroinvertebrate_sample
+    @biodiversity_report.build_nonvascular_plant_sample
     @plots = Plot.all.order(plot_id: :asc)
     @plants = Plant.all.order('LOWER(common_name) asc')
   end
@@ -24,6 +25,7 @@ class BiodiversityReportsController < ApplicationController
     @biodiversity_report.build_fungi_sample unless @biodiversity_report.fungi_sample
     @biodiversity_report.build_lichen_sample unless @biodiversity_report.lichen_sample
     @biodiversity_report.build_macroinvertebrate_sample unless @biodiversity_report.macroinvertebrate_sample
+    @biodiversity_report.build_nonvascular_plant_sample unless @biodiversity_report.nonvascular_plant_sample
   end
 
   def create
@@ -38,6 +40,7 @@ class BiodiversityReportsController < ApplicationController
       @biodiversity_report.build_fungi_sample unless @biodiversity_report.fungi_sample
       @biodiversity_report.build_lichen_sample unless @biodiversity_report.lichen_sample
       @biodiversity_report.build_macroinvertebrate_sample unless @biodiversity_report.macroinvertebrate_sample
+      @biodiversity_report.build_nonvascular_plant_sample unless @biodiversity_report.nonvascular_plant_sample
       render :new
     end
   end
@@ -53,6 +56,7 @@ class BiodiversityReportsController < ApplicationController
       @biodiversity_report.build_fungi_sample unless @biodiversity_report.fungi_sample
       @biodiversity_report.build_lichen_sample unless @biodiversity_report.lichen_sample
       @biodiversity_report.build_macroinvertebrate_sample unless @biodiversity_report.macroinvertebrate_sample
+      @biodiversity_report.build_nonvascular_plant_sample unless @biodiversity_report.nonvascular_plant_sample
       render :edit
     end
   end
@@ -86,7 +90,9 @@ class BiodiversityReportsController < ApplicationController
       lichen_sample_attributes: [:location_within_plot, :description, :photo,
         :biodiversity_report_id, :_destroy, :id],
       macroinvertebrate_sample_attributes: [:phylum, :location_within_plot, :quantity,
-        :ecosystem_service, :photo, :biodiversity_report_id, :_destroy, :id])
+        :ecosystem_service, :photo, :biodiversity_report_id, :_destroy, :id],
+      nonvascular_plant_sample_attributes: [:location_within_plot, :description, :photo,
+        :biodiversity_report_id, :_destroy, :id])
   end
 
 end
