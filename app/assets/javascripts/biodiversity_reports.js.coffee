@@ -34,14 +34,6 @@ $(document).on "turbolinks:load", ->
     $(@).find('#biodiversity_report_lichen_sample_attributes__destroy').val('1')
     $('#lnk-toggle-lichen-sample-fields').text('Add lichen sample')
 
-  $('#macroinvertebrate_sample_fields').on 'shown.bs.collapse', (event) ->
-    $('#lnk-toggle-macroinvertebrate-sample-fields').text('Omit macroinvertebrate sample')
-
-  $('#macroinvertebrate_sample_fields').on 'hidden.bs.collapse', (event) ->
-    $(@).find(':input:not([type=hidden])').val('')
-    $(@).find('#biodiversity_report_macroinvertebrate_sample_attributes__destroy').val('1')
-    $('#lnk-toggle-macroinvertebrate-sample-fields').text('Add macroinvertebrate sample')
-
   $('#nonvascular_plant_sample_fields').on 'shown.bs.collapse', (event) ->
     $('#lnk-toggle-nonvascular-plant-sample-fields').text('Omit non-vascular plant sample')
 
