@@ -41,7 +41,7 @@
         = form.fields_for :nonvascular_plant_sample do |fields|
           = render partial: 'nonvascular_plant_sample_fields', locals: { f: fields }
       %hr
-      %h3 Macroinvertebrate Sample
+      %h3 Macroinvertebrate Samples
       = form.fields_for :macroinvertebrate_samples do |macroinvertebrate_fields|
         = render partial: 'macroinvertebrate_sample_fields', locals: { f: macroinvertebrate_fields }
       %p= link_to_add_fields 'Add macroinvertebrate sample', form, :macroinvertebrate_samples
