@@ -29,7 +29,7 @@ class BiodiversityReport < ApplicationRecord
   validates_numericality_of :species_richness, only_integer: true, greater_than: 0
   validates_numericality_of :diversity_index, greater_than: 0
 
-  after_destroy :destroy_plant_samples
+  after_destroy :destroy_associated_samples
 
   paginates_per 10
 
@@ -45,8 +45,10 @@ class BiodiversityReport < ApplicationRecord
     user.admin? || user == author
   end
 
-  def destroy_plant_samples
-    self.plant_samples.each(&:destroy)
+  def destroy_associated_samples
+    [ soil_sample, fungi_sample, lichen_sample, macroinvertebrate_sample,
+      nonvascular_plant_sample ].each { |sample| sample.destroy }
+    plant_samples.each(&:destroy)
   end
 
 end

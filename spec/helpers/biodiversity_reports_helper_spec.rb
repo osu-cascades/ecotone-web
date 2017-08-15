@@ -44,8 +44,10 @@ RSpec.describe BiodiversityReportsHelper, type: :helper do
 
   # link_to_add_fields 'Add plant sample', form, :plant_samples
   describe "#link_to_add_fields" do
-    subject(:link) { link_to_add_fields('Fake', builder, :soil_sample) }
-    it { is_expected.to match /<a href="#" class="add_fields" data-id=".*" data-fields=".*">Fake<\/a>/ }
+    skip 'extract builder object' do
+      subject(:link) { link_to_add_fields('Fake', builder, :soil_sample) }
+      it { is_expected.to match /<a href="#" class="add_fields" data-id=".*" data-fields=".*">Fake<\/a>/ }
+    end
   end
 
 end
