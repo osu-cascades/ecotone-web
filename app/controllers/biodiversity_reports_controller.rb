@@ -14,7 +14,6 @@ class BiodiversityReportsController < ApplicationController
     @biodiversity_report.build_soil_sample
     @biodiversity_report.build_fungi_sample
     @biodiversity_report.build_lichen_sample
-    @biodiversity_report.build_macroinvertebrate_sample
     @biodiversity_report.build_nonvascular_plant_sample
     @plots = Plot.all.order(plot_id: :asc)
     @plants = Plant.all.order('LOWER(common_name) asc')
@@ -24,7 +23,6 @@ class BiodiversityReportsController < ApplicationController
     @biodiversity_report.build_soil_sample unless @biodiversity_report.soil_sample
     @biodiversity_report.build_fungi_sample unless @biodiversity_report.fungi_sample
     @biodiversity_report.build_lichen_sample unless @biodiversity_report.lichen_sample
-    @biodiversity_report.build_macroinvertebrate_sample unless @biodiversity_report.macroinvertebrate_sample
     @biodiversity_report.build_nonvascular_plant_sample unless @biodiversity_report.nonvascular_plant_sample
   end
 
@@ -39,7 +37,6 @@ class BiodiversityReportsController < ApplicationController
       @biodiversity_report.build_soil_sample unless @biodiversity_report.soil_sample
       @biodiversity_report.build_fungi_sample unless @biodiversity_report.fungi_sample
       @biodiversity_report.build_lichen_sample unless @biodiversity_report.lichen_sample
-      @biodiversity_report.build_macroinvertebrate_sample unless @biodiversity_report.macroinvertebrate_sample
       @biodiversity_report.build_nonvascular_plant_sample unless @biodiversity_report.nonvascular_plant_sample
       render :new
     end
@@ -55,7 +52,6 @@ class BiodiversityReportsController < ApplicationController
       @biodiversity_report.build_soil_sample unless @biodiversity_report.soil_sample
       @biodiversity_report.build_fungi_sample unless @biodiversity_report.fungi_sample
       @biodiversity_report.build_lichen_sample unless @biodiversity_report.lichen_sample
-      @biodiversity_report.build_macroinvertebrate_sample unless @biodiversity_report.macroinvertebrate_sample
       @biodiversity_report.build_nonvascular_plant_sample unless @biodiversity_report.nonvascular_plant_sample
       render :edit
     end
