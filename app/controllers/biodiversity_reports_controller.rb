@@ -78,14 +78,16 @@ class BiodiversityReportsController < ApplicationController
   def biodiversity_report_params
     params.require(:biodiversity_report).permit(:measured_on, :measured_at, :temperature,
       :species_richness, :photo, :plot_id, :diversity_index,
+
       plant_samples_attributes: [:plant_id, :biodiversity_report_id, :abundance,
         :percent_cover, :photo, :_destroy, :id],
+
       soil_sample_attributes: [:ph_level, :temperature, :moisture, :biodiversity_report_id, :_destroy, :id],
       fungi_sample_attributes: [:location_within_plot, :size, :description, :photo,
         :biodiversity_report_id, :_destroy, :id],
       lichen_sample_attributes: [:location_within_plot, :description, :photo,
         :biodiversity_report_id, :_destroy, :id],
-      macroinvertebrate_sample_attributes: [:phylum, :location_within_plot, :quantity,
+      macroinvertebrate_samples_attributes: [:phylum, :location_within_plot, :quantity,
         :ecosystem_service, :photo, :biodiversity_report_id, :_destroy, :id],
       nonvascular_plant_sample_attributes: [:location_within_plot, :description, :photo,
         :biodiversity_report_id, :_destroy, :id])

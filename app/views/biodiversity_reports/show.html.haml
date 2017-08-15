@@ -35,16 +35,6 @@
       - else
         %p No lichen sample
       %hr
-      %h3 Macroinvertebrate Sample
-      - if @biodiversity_report.macroinvertebrate_sample
-        %p Phylum: #{@biodiversity_report.macroinvertebrate_sample.phylum}
-        %p Location within plot: #{@biodiversity_report.macroinvertebrate_sample.location_within_plot}
-        %p Quantity: #{@biodiversity_report.macroinvertebrate_sample.quantity}
-        %p Ecosystem service: #{@biodiversity_report.macroinvertebrate_sample.ecosystem_service}
-        .plot_photo= image_tag @biodiversity_report.macroinvertebrate_sample.photo.url(:default), alt: "Photo of macroinvertebrate sample"
-      - else
-        %p No macroinvertebrate sample
-      %hr
       %h3 Non-vascular Plant Sample
       - if @biodiversity_report.nonvascular_plant_sample
         %p Location within plot: #{@biodiversity_report.nonvascular_plant_sample.location_within_plot}
@@ -52,6 +42,9 @@
         .plot_photo= image_tag @biodiversity_report.nonvascular_plant_sample.photo.url(:default), alt: "Photo of non-vascular plant sample"
       - else
         %p No non-vascular plant sample
+      %hr
+      %h3 Macroinvertebrate Sample
+      = render(@biodiversity_report.macroinvertebrate_samples) || "<p>No macroinvertebrate samples</p>".html_safe
       %hr
       %h3 Plant Samples
       = render(@biodiversity_report.plant_samples) || "<p>No plant samples</p>".html_safe

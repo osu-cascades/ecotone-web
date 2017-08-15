@@ -46,7 +46,7 @@ class BiodiversityReport < ApplicationRecord
   end
 
   def destroy_associated_samples
-    [ soil_sample, fungi_sample, lichen_sample, nonvascular_plant_sample ].each { |sample| sample.destroy }
+    [soil_sample, fungi_sample, lichen_sample, nonvascular_plant_sample].each { |sample| sample.destroy }
     macroinvertebrate_samples.each(&:destroy)
     plant_samples.each(&:destroy)
   end

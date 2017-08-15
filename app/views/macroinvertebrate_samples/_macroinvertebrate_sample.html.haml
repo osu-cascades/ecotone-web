@@ -1,0 +1,5 @@
+%p Phylum: #{macroinvertebrate_sample.phylum}
+%p Location within plot: #{macroinvertebrate_sample.location_within_plot}
+%p Quantity: #{macroinvertebrate_sample.quantity}
+%p Ecosystem service: #{macroinvertebrate_sample.ecosystem_service}
+.plot_photo= image_tag macroinvertebrate_sample.photo.url(:default), alt: "Photo of macroinvertebrate sample"
