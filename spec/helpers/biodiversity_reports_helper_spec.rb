@@ -5,6 +5,12 @@ RSpec.describe BiodiversityReportsHelper, type: :helper do
   let(:soil_sample) { build(:soil_sample) }
   let(:empty_soil_sample) { build(:empty_soil_sample) }
 
+  @template = Object.new
+  @template.extend ActionView::Helpers::FormHelper
+  @template.extend ActionView::Helpers::FormOptionsHelper
+  let(:biodiversity_report) { build(:biodiversity_report)}
+  let(:builder) { FormBuilder.new :biodiversity_report, biodiversity_report, @template, html: {multipart: true} }
+
   describe "#link_to_toggle_sample_fields" do
     context "when the soil sample has attribute values" do
       it "returns an Omit link" do
@@ -38,9 +44,8 @@ RSpec.describe BiodiversityReportsHelper, type: :helper do
 
   # link_to_add_fields 'Add plant sample', form, :plant_samples
   describe "#link_to_add_fields" do
-    pending
-    # subject(:link) { link_to_add_fields('Fake', "TODO: BiodiversityReport form builder object", :soil_sample) }
-    # it { is_expected.to match /<a href="#" class="add_fields" data-id=".*" data-fields=".*">Fake<\/a>/ }
+    subject(:link) { link_to_add_fields('Fake', builder, :soil_sample) }
+    it { is_expected.to match /<a href="#" class="add_fields" data-id=".*" data-fields=".*">Fake<\/a>/ }
   end
 
 end

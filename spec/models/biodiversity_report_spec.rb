@@ -36,6 +36,14 @@ RSpec.describe BiodiversityReport, type: :model do
     it { is_expected.to belong_to(:plot) }
     it { is_expected.to have_one(:soil_sample) }
     it { is_expected.to accept_nested_attributes_for(:soil_sample).allow_destroy(true) }
+    it { is_expected.to have_one(:fungi_sample) }
+    it { is_expected.to accept_nested_attributes_for(:fungi_sample).allow_destroy(true) }
+    it { is_expected.to have_one(:lichen_sample) }
+    it { is_expected.to accept_nested_attributes_for(:lichen_sample).allow_destroy(true) }
+    it { is_expected.to have_one(:macroinvertebrate_sample) }
+    it { is_expected.to accept_nested_attributes_for(:macroinvertebrate_sample).allow_destroy(true) }
+    it { is_expected.to have_one(:nonvascular_plant_sample) }
+    it { is_expected.to accept_nested_attributes_for(:nonvascular_plant_sample).allow_destroy(true) }
     it { is_expected.to have_many(:plant_samples) }
     it { is_expected.to accept_nested_attributes_for(:plant_samples).allow_destroy(true) }
     it { is_expected.to have_attached_file(:photo) }
@@ -70,3 +78,4 @@ RSpec.describe BiodiversityReport, type: :model do
   end
 
 end
+
