@@ -1,5 +1,4 @@
 class PlotsController < ApplicationController
-
   before_action :set_plot, only: [:show, :edit, :update, :destroy, :download_qr]
   before_action :login_required, except: [:index, :show]
   before_action :admin_required, except: [:index, :show]
@@ -8,15 +7,7 @@ class PlotsController < ApplicationController
     @plots = Plot.all.order(:plot_id)
   end
 
-  def show
-  end
-
-  def download_qr
-    @qr = RQRCode::QRCode.new(plot_url(@plot), size: 10, level: :h)
-    png = build_qr_code_image(@qr, 360)
-    send_data(png, type: 'image/png', disposition: 'attachment',
-      filename: "plot-#{@plot.plot_id}-qr-code.png")
-  end
+  def show; end
 
   def new
     @plot = Plot.new
@@ -54,6 +45,17 @@ class PlotsController < ApplicationController
     flash[:success] = 'Plot was successfully destroyed.'
   end
 
+  def download_qr
+    @qr = RQRCode::QRCode.new(plot_url(@plot), size: 10, level: :h)
+    png = build_qr_code_image(@qr, 360)
+    send_data(
+      png,
+      type: 'image/png',
+      disposition: 'attachment',
+      filename: "plot-#{@plot.plot_id}-qr-code.png"
+    )
+  end
+
   private
 
   def set_plot
@@ -61,7 +63,8 @@ class PlotsController < ApplicationController
   end
 
   def plot_params
-    params.require(:plot).permit(:plot_id, :featured_plant_id, :latitude, :longitude, :elevation, :area, :location_description, :aspect, :origin, :inoculated, :initial_planting_date, :initial_succession, :photo)
+    params.require(:plot).permit(:plot_id, :featured_plant_id, :latitude, :longitude,
+      :elevation, :area, :location_description, :aspect, :origin, :inoculated,
+      :initial_planting_date, :initial_succession, :photo)
   end
-
 end
