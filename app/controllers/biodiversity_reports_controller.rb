@@ -11,19 +11,13 @@ class BiodiversityReportsController < ApplicationController
 
   def new
     @biodiversity_report = BiodiversityReport.new
-    @biodiversity_report.build_soil_sample
-    @biodiversity_report.build_fungi_sample
-    @biodiversity_report.build_lichen_sample
-    @biodiversity_report.build_nonvascular_plant_sample
+    build_samples_unless_exist
     @plots = Plot.all.order(plot_id: :asc)
     @plants = Plant.all.order('LOWER(common_name) asc')
   end
 
   def edit
-    @biodiversity_report.build_soil_sample unless @biodiversity_report.soil_sample
-    @biodiversity_report.build_fungi_sample unless @biodiversity_report.fungi_sample
-    @biodiversity_report.build_lichen_sample unless @biodiversity_report.lichen_sample
-    @biodiversity_report.build_nonvascular_plant_sample unless @biodiversity_report.nonvascular_plant_sample
+    build_samples_unless_exist
   end
 
   def create
@@ -34,10 +28,7 @@ class BiodiversityReportsController < ApplicationController
       flash[:success] = 'Biodiversity report was successfully created.'
     else
       load_plots_and_plants
-      @biodiversity_report.build_soil_sample unless @biodiversity_report.soil_sample
-      @biodiversity_report.build_fungi_sample unless @biodiversity_report.fungi_sample
-      @biodiversity_report.build_lichen_sample unless @biodiversity_report.lichen_sample
-      @biodiversity_report.build_nonvascular_plant_sample unless @biodiversity_report.nonvascular_plant_sample
+      build_samples_unless_exist
       render :new
     end
   end
@@ -49,10 +40,7 @@ class BiodiversityReportsController < ApplicationController
       flash[:success] = 'Biodiversity report was successfully updated.'
     else
       load_plots_and_plants
-      @biodiversity_report.build_soil_sample unless @biodiversity_report.soil_sample
-      @biodiversity_report.build_fungi_sample unless @biodiversity_report.fungi_sample
-      @biodiversity_report.build_lichen_sample unless @biodiversity_report.lichen_sample
-      @biodiversity_report.build_nonvascular_plant_sample unless @biodiversity_report.nonvascular_plant_sample
+      build_samples_unless_exist
       render :edit
     end
   end
@@ -71,6 +59,13 @@ class BiodiversityReportsController < ApplicationController
     @plants = Plant.all
   end
 
+  def build_samples_unless_exist
+    @biodiversity_report.build_soil_sample unless @biodiversity_report.soil_sample
+    @biodiversity_report.build_fungi_sample unless @biodiversity_report.fungi_sample
+    @biodiversity_report.build_lichen_sample unless @biodiversity_report.lichen_sample
+    @biodiversity_report.build_nonvascular_plant_sample unless @biodiversity_report.nonvascular_plant_sample
+  end
+
   def set_biodiversity_report
     @biodiversity_report = BiodiversityReport.find(params[:id])
   end
@@ -79,18 +74,22 @@ class BiodiversityReportsController < ApplicationController
     params.require(:biodiversity_report).permit(:measured_on, :measured_at, :temperature,
       :species_richness, :photo, :plot_id, :diversity_index,
 
-      plant_samples_attributes: [:plant_id, :biodiversity_report_id, :abundance,
-        :percent_cover, :photo, :_destroy, :id],
+      soil_sample_attributes: [:biodiversity_report_id, :_destroy, :id,
+        :ph_level, :temperature, :moisture],
 
-      soil_sample_attributes: [:ph_level, :temperature, :moisture, :biodiversity_report_id, :_destroy, :id],
-      fungi_sample_attributes: [:location_within_plot, :size, :description, :photo,
-        :biodiversity_report_id, :_destroy, :id],
-      lichen_sample_attributes: [:location_within_plot, :description, :photo,
-        :biodiversity_report_id, :_destroy, :id],
-      macroinvertebrate_samples_attributes: [:phylum, :location_within_plot, :quantity,
-        :ecosystem_service, :photo, :biodiversity_report_id, :_destroy, :id],
-      nonvascular_plant_sample_attributes: [:location_within_plot, :description, :photo,
-        :biodiversity_report_id, :_destroy, :id])
+      fungi_sample_attributes: [:biodiversity_report_id, :_destroy, :id,
+        :location_within_plot, :size, :description, :photo],
+
+      lichen_sample_attributes: [:biodiversity_report_id, :_destroy, :id,
+        :location_within_plot, :description, :photo],
+
+      nonvascular_plant_sample_attributes: [:biodiversity_report_id, :_destroy, :id,
+        :location_within_plot, :description, :photo],
+
+      macroinvertebrate_samples_attributes: [:biodiversity_report_id, :_destroy, :id,
+        :phylum, :location_within_plot, :quantity, :ecosystem_service, :photo],
+
+      plant_samples_attributes: [:biodiversity_report_id, :_destroy, :id,
+        :plant_id, :abundance,:percent_cover, :photo])
   end
-
 end
