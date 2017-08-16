@@ -1,5 +1,4 @@
 module BiodiversityReportsHelper
-
   def link_to_toggle_sample_fields_for(sample)
     return unless sample
     verb = sample.has_any_present_attributes? ? 'Omit' : 'Add'
@@ -20,5 +19,4 @@ module BiodiversityReportsHelper
     return false if sample.nil?
     sample.has_any_present_attributes? && 'in'
   end
-
 end

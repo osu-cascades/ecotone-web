@@ -1,6 +1,5 @@
 module ApplicationHelper
-
-  BASE_TITLE = "Ecotone | OSU Cascades"
+  BASE_TITLE = 'Ecotone | OSU Cascades'.freeze
 
   def full_title(page_title = '')
     page_title.empty? ? BASE_TITLE : "#{page_title} | #{BASE_TITLE}"
@@ -9,5 +8,4 @@ module ApplicationHelper
   def form_errors_for(object)
     render partial: 'shared/form_errors', locals: { object: object }
   end
-  
 end
