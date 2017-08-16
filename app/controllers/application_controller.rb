@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-
   protect_from_forgery with: :exception
   include SessionsHelper
 
@@ -12,17 +11,15 @@ class ApplicationController < ActionController::Base
   end
 
   def login_required
-    unless logged_in?
-      flash[:danger] = "Please sign in."
-      redirect_to login_path
-    end
+    return if logged_in?
+    flash[:danger] = 'Please sign in.'
+    redirect_to login_path
   end
 
   def admin_required
-    unless current_user.admin?
-      flash[:danger] = "Admin permissions required."
-      redirect_back(fallback_location: root_url)
-    end
+    return if current_user.admin?
+    flash[:danger] = 'Admin permissions required.'
+    redirect_back(fallback_location: root_url)
   end
 
   def build_qr_code_image(qr_object, size)
@@ -35,5 +32,4 @@ class ApplicationController < ActionController::Base
                      module_px_size: 6,
                      file: nil)
   end
-
 end
