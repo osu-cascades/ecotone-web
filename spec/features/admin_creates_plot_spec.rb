@@ -1,9 +1,7 @@
 require 'rails_helper'
 
-RSpec.feature "Admin creates a plot" do
-
-  context "when logged in" do
-
+RSpec.feature 'Admin creates a plot' do
+  context 'when logged in' do
     let(:user) { create(:user, :admin) }
 
     before do
@@ -11,7 +9,7 @@ RSpec.feature "Admin creates a plot" do
       create(:plant)
     end
 
-    scenario "providing valid plot attributes" do
+    scenario 'providing valid plot attributes' do
       visit new_plot_path
       fill_in('Plot', with: 1)
       select('Plant Example', from: 'Featured plant')
@@ -25,8 +23,8 @@ RSpec.feature "Admin creates a plot" do
       check('Inoculated')
       fill_in('Initial planting date', with: 'Spring 2016')
       fill_in('Initial succession', with: 'example succession')
-      click_on("Create Plot")
-      expect(page).to have_content("Plot was successfully created.")
+      click_on('Create Plot')
+      expect(page).to have_content('Plot was successfully created.')
     end
   end
 end

@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.feature 'Resetting password' do
-
   let(:user) { create(:user, :resetting_password) }
 
   context 'user supplies their email' do
@@ -19,7 +18,6 @@ RSpec.feature 'Resetting password' do
   end
 
   context 'user submits a new password' do
-
     before { visit edit_password_reset_path(user.id, user.reset_token, email: user.email) }
 
     scenario 'with mismatched passwords' do

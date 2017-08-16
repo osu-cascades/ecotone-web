@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.feature 'User creates a biodiversity report' do
-
   let(:user) { create(:user) }
 
   before do
@@ -11,7 +10,6 @@ RSpec.feature 'User creates a biodiversity report' do
   end
 
   describe 'without a soil sample nor a plant sample' do
-
     scenario 'providing valid report data' do
       fill_in_report_fields
       click_button('Create Biodiversity report')
@@ -31,15 +29,13 @@ RSpec.feature 'User creates a biodiversity report' do
         expect(error_explanations).to have_content('Species richness is not a number')
         expect(error_explanations).to have_content('Diversity index is not a number')
       end
-      %w{ soil fungi lichen macroinvertebrate plant }.each do |sample_type|
+      %w[soil fungi lichen macroinvertebrate plant].each do |sample_type|
         expect(page).to have_content("Add #{sample_type} sample")
       end
     end
-
   end
 
   describe 'with a soil sample' do
-
     before { fill_in_report_fields }
 
     scenario 'providing valid soil sample data' do
@@ -69,11 +65,9 @@ RSpec.feature 'User creates a biodiversity report' do
       expect(page).to have_field('pH level', with: '-1')
       expect(page).to have_field('biodiversity_report_soil_sample_attributes_temperature', with: 'fake')
     end
-
   end
 
   describe 'with one plant sample' do
-
     before { fill_in_report_fields }
 
     scenario 'providing valid plant sample data', js: true do
@@ -107,11 +101,9 @@ RSpec.feature 'User creates a biodiversity report' do
       expect(page).to have_field('Abundance', with: '-1')
       expect(page).to have_field('Percent cover', with: '-1')
     end
-
   end
 
   context 'with two plant samples' do
-
     before { fill_in_report_fields }
 
     scenario 'providing valid plant sample data', js: true do
@@ -136,11 +128,9 @@ RSpec.feature 'User creates a biodiversity report' do
       expect(page).to have_content('Abundance: 1')
       expect(page).to have_content('Abundance: 4')
     end
-
   end
 
   context 'with one macroinvertebrate sample' do
-
     before { fill_in_report_fields }
 
     scenario 'providing valid macroinvertebrate sample data', js: true do
@@ -170,21 +160,19 @@ RSpec.feature 'User creates a biodiversity report' do
         fill_in('Quantity', with: '-1')
       end
       click_button('Create Biodiversity report')
-      expect(page).to have_selector ".alert", text: /The form contains .* errors./
+      expect(page).to have_selector '.alert', text: /The form contains .* errors./
       expect(page.find('#error_explanation')).to have_content("Macroinvertebrate samples phylum can't be blank")
       expect(page.find('#error_explanation')).to have_content("Macroinvertebrate samples location within plot can't be blank")
-      expect(page.find('#error_explanation')).to have_content("Macroinvertebrate samples quantity must be greater than or equal to 0")
+      expect(page.find('#error_explanation')).to have_content('Macroinvertebrate samples quantity must be greater than or equal to 0')
       expect(page.find('#error_explanation')).to have_content("Macroinvertebrate samples ecosystem service can't be blank")
-      expect(page.find('#error_explanation')).to have_content("Macroinvertebrate samples ecosystem service is not a valid ecosystem service")
+      expect(page.find('#error_explanation')).to have_content('Macroinvertebrate samples ecosystem service is not a valid ecosystem service')
       expect(page).to have_field('Phylum', with: '')
       expect(page).to have_field('Location within plot', with: '')
       expect(page).to have_field('Quantity', with: '-1')
     end
-
   end
 
   context 'with two macroinvertebrate samples', js: true do
-
     before { fill_in_report_fields }
 
     scenario 'providing valid macroinvertebrate sample data' do
@@ -212,11 +200,9 @@ RSpec.feature 'User creates a biodiversity report' do
       expect(page).to have_content('Quantity: 1')
       expect(page).to have_content('Ecosystem service: Pollinator')
     end
-
   end
 
   context 'with a fungi sample' do
-
     before { fill_in_report_fields }
 
     scenario 'providing valid fungi sample data' do
@@ -242,7 +228,7 @@ RSpec.feature 'User creates a biodiversity report' do
         fill_in('Description', with: '')
       end
       click_button('Create Biodiversity report')
-      expect(page).to have_selector ".alert", text: /The form contains .* errors./
+      expect(page).to have_selector '.alert', text: /The form contains .* errors./
       expect(page.find('#error_explanation')).to have_content("Fungi sample location within plot can't be blank")
       expect(page.find('#error_explanation')).to have_content('Fungi sample size must be greater than or equal to 0')
       expect(page.find('#error_explanation')).to have_content("Fungi sample description can't be blank")
@@ -251,11 +237,9 @@ RSpec.feature 'User creates a biodiversity report' do
       expect(page).to have_field('Size', with: '-1')
       expect(page).to have_field('Description', with: '')
     end
-
   end
 
   context 'with a lichen sample' do
-
     before { fill_in_report_fields }
 
     scenario 'providing valid lichen sample data' do
@@ -271,11 +255,9 @@ RSpec.feature 'User creates a biodiversity report' do
       expect(page).to have_content('Location within plot: on a rock')
       expect(page).to have_content('Description: description of lichen')
     end
-
   end
 
   context 'with a nonvascular plant sample' do
-
     before { fill_in_report_fields }
 
     scenario 'providing valid nonvascular plant sample data' do
@@ -291,7 +273,6 @@ RSpec.feature 'User creates a biodiversity report' do
       expect(page).to have_content('Location within plot: on a rock')
       expect(page).to have_content('Description: description of nonvascular plant')
     end
-
   end
 
   def fill_in_report_fields
@@ -302,6 +283,4 @@ RSpec.feature 'User creates a biodiversity report' do
     fill_in('Species richness', with: '10')
     fill_in('Shannon-Wiener diversity index', with: '5.0')
   end
-
 end
-
