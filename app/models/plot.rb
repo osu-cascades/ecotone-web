@@ -10,7 +10,7 @@ class Plot < ApplicationRecord
   validates :initial_planting_date, presence: true
   validates :initial_succession, presence: true
 
-  has_attached_file :photo, default_url: "missing.png", styles: { default: "400x400#", thumbnail: "50x50#" }
+  has_attached_file :photo, default_url: 'missing.png', styles: { default: '400x400#', thumbnail: '50x50#' }
   validates_attachment_content_type :photo, content_type: /\Aimage/
 
   belongs_to :featured_plant, class_name: 'Plant', optional: true
@@ -37,5 +37,4 @@ class Plot < ApplicationRecord
   def add_period(str)
     str << '.' unless str[-1] == '.'
   end
-
 end

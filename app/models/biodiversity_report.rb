@@ -20,7 +20,7 @@ class BiodiversityReport < ApplicationRecord
   has_many :plant_samples
   accepts_nested_attributes_for :plant_samples, allow_destroy: true, reject_if: :all_blank
 
-  has_attached_file :photo, default_url: "missing.png", styles: { default: "400x400#", thumbnail: "50x50#" }
+  has_attached_file :photo, default_url: 'missing.png', styles: { default: '400x400#', thumbnail: '50x50#' }
   validates_attachment_content_type :photo, content_type: /\Aimage/
 
   validates_presence_of :measured_on
@@ -46,9 +46,8 @@ class BiodiversityReport < ApplicationRecord
   end
 
   def destroy_associated_samples
-    [soil_sample, fungi_sample, lichen_sample, nonvascular_plant_sample].each { |sample| sample.destroy }
+    [soil_sample, fungi_sample, lichen_sample, nonvascular_plant_sample].each(&:destroy)
     macroinvertebrate_samples.each(&:destroy)
     plant_samples.each(&:destroy)
   end
-
 end

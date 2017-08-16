@@ -9,12 +9,12 @@ class User < ApplicationRecord
 
   has_many :biodiversity_reports, foreign_key: 'author_id'
 
-  def User.digest(string)
+  def self.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
   end
 
-  def User.new_token
+  def self.new_token
     SecureRandom.urlsafe_base64
   end
 
@@ -42,5 +42,4 @@ class User < ApplicationRecord
   def downcase_email
     self.email = email.downcase
   end
-
 end
