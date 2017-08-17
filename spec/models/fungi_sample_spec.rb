@@ -18,5 +18,4 @@ RSpec.describe FungiSample, type: :model do
     it { is_expected.to belong_to(:biodiversity_report) }
     it { is_expected.to have_attached_file(:photo) }
   end
-
 end

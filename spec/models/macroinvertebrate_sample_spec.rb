@@ -21,5 +21,4 @@ RSpec.describe MacroinvertebrateSample, type: :model do
     it { is_expected.to have_attached_file(:photo) }
     it { is_expected.to belong_to(:biodiversity_report) }
   end
-
 end
