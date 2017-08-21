@@ -27,4 +27,5 @@ spec/examples.txt
 
 /public/system
 /coverage
+/public/packs*
 /node_modules
