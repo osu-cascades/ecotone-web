@@ -11,6 +11,8 @@
     "coffee-script": "^1.12.7",
     "compression-webpack-plugin": "^1.0.0",
     "css-loader": "^0.28.5",
+    "elm": "^0.18.0",
+    "elm-webpack-loader": "^4.3.1",
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^0.11.2",
     "glob": "^7.1.2",
@@ -29,6 +31,7 @@
     "webpack-merge": "^4.1.0"
   },
   "devDependencies": {
+    "elm-hot-loader": "^0.5.4",
     "webpack-dev-server": "^2.7.1"
   }
 }

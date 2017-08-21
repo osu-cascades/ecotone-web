@@ -28,4 +28,5 @@ spec/examples.txt
 /public/system
 /coverage
 /public/packs*
+/elm-stuff
 /node_modules
