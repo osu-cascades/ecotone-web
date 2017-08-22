@@ -39,6 +39,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'dotenv-rails'
   gem 'poltergeist'
+  gem 'foreman'
 end
 
 group :development do
