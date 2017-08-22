@@ -23,7 +23,7 @@ gem 'paperclip', '~> 5.1.0'
 gem 'aws-sdk', '~> 2.9.0'
 gem 'rqrcode', '~> 0.10.1'
 gem 'kaminari'
-gem 'webpacker'
+gem 'webpacker', '>= 2.0.0'
 
 group :test do
   gem 'simplecov'
@@ -39,7 +39,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'dotenv-rails'
   gem 'poltergeist'
-  gem 'foreman'
+  gem 'foreman', '~> 0.84.0'
 end
 
 group :development do

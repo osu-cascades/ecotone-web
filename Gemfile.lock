@@ -307,7 +307,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   dotenv-rails
   factory_girl_rails
-  foreman
+  foreman (~> 0.84.0)
   guard
   guard-rspec
   haml
@@ -334,7 +334,7 @@ DEPENDENCIES
   tzinfo-data
   uglifier (>= 1.3.0)
   web-console (>= 3.3.0)
-  webpacker
+  webpacker (>= 2.0.0)
 
 RUBY VERSION
    ruby 2.4.1p111
