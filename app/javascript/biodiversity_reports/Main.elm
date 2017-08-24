@@ -1,22 +1,43 @@
 module Main exposing (..)
 
-import Html exposing (Html, p, text)
+import Html exposing (Html, div, input, span, text)
+import Html.Attributes as H exposing (..)
+import Html.Events exposing (onInput)
+
+
+--  MAIN
+
+
+main =
+    Html.beginnerProgram
+        { model = { value = "50" }
+        , view = view
+        , update = update
+        }
+
 
 
 -- MODEL
 
 
 type alias Model =
-    {}
+    { value : String
+    }
 
 
 
--- INIT
+-- UPDATE
 
 
-init : ( Model, Cmd Msg )
-init =
-    ( Model, Cmd.none )
+type Msg
+    = SlideTemperature String
+
+
+update : Msg -> Model -> Model
+update msg model =
+    case msg of
+        SlideTemperature temperature ->
+            { model | value = temperature }
 
 
 
@@ -25,44 +46,16 @@ init =
 
 view : Model -> Html Msg
 view model =
-    p [] [ text "Slider here (hello from elm)." ]
-
-
-
--- MESSAGE
-
-
-type Msg
-    = None
-
-
-
--- UPDATE
-
-
-update : Msg -> Model -> ( Model, Cmd Msg )
-update message model =
-    ( model, Cmd.none )
-
-
-
--- SUBSCRIPTIONS
-
-
-subscriptions : Model -> Sub Msg
-subscriptions model =
-    Sub.none
-
-
-
--- MAIN
-
-
-main : Program Never Model Msg
-main =
-    Html.program
-        { init = init
-        , view = view
-        , update = update
-        , subscriptions = subscriptions
-        }
+    div [ id "temperature_wrapper" ]
+        [ input
+            [ type_ "range"
+            , H.min "-40"
+            , H.max "120"
+            , onInput SlideTemperature
+            , name "biodiversity_report[temperature]"
+            , id "biodiversity_report_temperature"
+            ]
+            []
+        , div [ id "temperature_value" ]
+            [ text (model.value ++ "°F") ]
+        ]
