@@ -1,72 +1,61 @@
 module Main exposing (..)
 
-import Html exposing (Html, h1, text)
-import Html.Attributes exposing (style)
+import Html exposing (Html, div, input, span, text)
+import Html.Attributes as H exposing (..)
+import Html.Events exposing (onInput)
+
+
+--  MAIN
+
+
+main =
+    Html.beginnerProgram
+        { model = { value = "50" }
+        , view = view
+        , update = update
+        }
+
 
 
 -- MODEL
 
 
 type alias Model =
-    {}
-
-
-
--- INIT
-
-
-init : ( Model, Cmd Message )
-init =
-    ( Model, Cmd.none )
-
-
-
--- VIEW
-
-
-view : Model -> Html Message
-view model =
-    -- The inline style is being used for example purposes in order to keep this example simple and
-    -- avoid loading additional resources. Use a proper stylesheet when building your own app.
-    h1 [ style [ ( "display", "flex" ), ( "justify-content", "center" ) ] ]
-        [ text "Hello Elm!" ]
-
-
-
--- MESSAGE
-
-
-type Message
-    = None
+    { value : String
+    }
 
 
 
 -- UPDATE
 
 
-update : Message -> Model -> ( Model, Cmd Message )
-update message model =
-    ( model, Cmd.none )
+type Msg
+    = SlideTemperature String
+
+
+update : Msg -> Model -> Model
+update msg model =
+    case msg of
+        SlideTemperature temperature ->
+            { model | value = temperature }
 
 
 
--- SUBSCRIPTIONS
+-- VIEW
 
 
-subscriptions : Model -> Sub Message
-subscriptions model =
-    Sub.none
-
-
-
--- MAIN
-
-
-main : Program Never Model Message
-main =
-    Html.program
-        { init = init
-        , view = view
-        , update = update
-        , subscriptions = subscriptions
-        }
+view : Model -> Html Msg
+view model =
+    div [ id "temperature_wrapper" ]
+        [ input
+            [ type_ "range"
+            , H.min "-40"
+            , H.max "120"
+            , onInput SlideTemperature
+            , name "biodiversity_report[temperature]"
+            , id "biodiversity_report_temperature"
+            ]
+            []
+        , div [ id "temperature_value" ]
+            [ text (model.value ++ "°F") ]
+        ]

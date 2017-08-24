@@ -4,8 +4,7 @@
 import Elm from './Main'
 
 document.addEventListener('DOMContentLoaded', () => {
-  const target = document.createElement('div')
+  const target = document.getElementById('temperature_slider_input')
 
-  document.body.appendChild(target)
   Elm.Main.embed(target)
 })

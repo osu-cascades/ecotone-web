@@ -371,3 +371,15 @@ ul.indexing {
   text-decoration-color: red;
   font-size: 1.2em;
 }
+
+
+// Slider
+
+#temperature_wrapper {
+  display: flex;
+}
+
+#temperature_value {
+  flex: 1;
+  margin-left: 15px;
+}
