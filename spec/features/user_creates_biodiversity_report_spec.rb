@@ -279,7 +279,8 @@ RSpec.feature 'User creates a biodiversity report' do
     select('Plot #1', from: 'Plot')
     fill_in('Date', with: '09/11/2001')
     fill_in('Time', with: '04:45 PM')
-    fill_in('biodiversity_report_temperature', with: '72')
+    # fill_in('biodiversity_report_temperature', with: '72')
+    find(:xpath, "//*[@id='biodiversity_report_temperature']").set 72
     fill_in('Species richness', with: '10')
     fill_in('Shannon-Wiener diversity index', with: '5.0')
   end

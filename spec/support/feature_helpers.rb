@@ -7,5 +7,5 @@ module FeatureHelpers
     fill_in('Password', with: user.password)
     click_button("login-btn")
   end
-
+  
 end
