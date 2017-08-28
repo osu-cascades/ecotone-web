@@ -8,9 +8,10 @@ import Html.Events exposing (onInput)
 --  MAIN
 
 
+main : Program Never { value : String } Msg
 main =
     Html.beginnerProgram
-        { model = { value = "50" }
+        { model = { value = "20" }
         , view = view
         , update = update
         }
@@ -49,13 +50,14 @@ view model =
     div [ id "temperature_wrapper" ]
         [ input
             [ type_ "range"
-            , H.min "-40"
-            , H.max "120"
+            , H.min "-30"
+            , H.max "40"
+            , H.defaultValue "20"
             , onInput SlideTemperature
             , name "biodiversity_report[temperature]"
             , id "biodiversity_report_temperature"
             ]
             []
         , div [ id "temperature_value" ]
-            [ text (model.value ++ "°F") ]
+            [ text (model.value ++ "°C") ]
         ]
