@@ -22,13 +22,13 @@ main =
 
 
 type alias Model =
-    { value : String
+    { temperature : String
     }
 
 
 initialModel : Model
 initialModel =
-    { value = "20" }
+    { temperature = "20" }
 
 
 
@@ -42,8 +42,8 @@ type Msg
 update : Msg -> Model -> Model
 update msg model =
     case msg of
-        SlideTemperature temperature ->
-            { model | value = temperature }
+        SlideTemperature newTemperature ->
+            { model | temperature = newTemperature }
 
 
 
@@ -64,5 +64,5 @@ view model =
             ]
             []
         , div [ id "temperature_value" ]
-            [ text (model.value ++ " °C") ]
+            [ text (model.temperature ++ " °C") ]
         ]
