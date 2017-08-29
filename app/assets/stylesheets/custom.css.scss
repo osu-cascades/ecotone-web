@@ -373,13 +373,17 @@ ul.indexing {
 }
 
 
-// Slider
+// Biodiversity Report temperature slider / input range.
+// See app/javascript/biodiversiy_reports
 
-#temperature_wrapper {
-  display: flex;
+#temperature_wrapper input {
+  width: 90%;
+  display: inline;
 }
 
 #temperature_value {
-  flex: 1;
-  margin-left: 15px;
+  display: inline-block;
+  width: 10%;
+  text-align: right;
+  font-size: 1.1em;
 }

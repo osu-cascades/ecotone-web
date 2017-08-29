@@ -64,5 +64,5 @@ view model =
             ]
             []
         , div [ id "temperature_value" ]
-            [ text (model.value ++ "°C") ]
+            [ text (model.value ++ " °C") ]
         ]
