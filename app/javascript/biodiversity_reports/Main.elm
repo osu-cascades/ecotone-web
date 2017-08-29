@@ -8,10 +8,10 @@ import Html.Events exposing (onInput)
 --  MAIN
 
 
-main : Program Never { value : String } Msg
+main : Program Never Model Msg
 main =
     Html.beginnerProgram
-        { model = { value = "20" }
+        { model = initialModel
         , view = view
         , update = update
         }
@@ -24,6 +24,11 @@ main =
 type alias Model =
     { value : String
     }
+
+
+initialModel : Model
+initialModel =
+    { value = "20" }
 
 
 
