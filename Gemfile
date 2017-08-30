@@ -26,7 +26,7 @@ gem 'kaminari'
 gem 'webpacker', '>= 2.0.0'
 
 group :test do
-  gem 'simplecov'
+  gem 'simplecov', require: false
   gem 'codeclimate-test-reporter', '~> 1.0.8'
 end
 
