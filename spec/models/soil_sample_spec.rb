@@ -15,4 +15,15 @@ RSpec.describe SoilSample, type: :model do
     it { is_expected.to belong_to(:biodiversity_report) }
     it { is_expected.to have_many(:nutrients) }
   end
+
+  describe '#build_default_nutrients' do
+    before { soil_sample.build_default_nutrients }
+    it 'associates three nutrients' do
+      expect(soil_sample.nutrients.length).to equal(3)
+    end
+    it 'uses Nitrogen, Phosphorus and Potassium for the nutrient names' do
+      expect(soil_sample.nutrients.collect(&:name) - SoilSample::DEFAULT_NUTRIENT_NAMES).to be_empty
+    end
+  end
+
 end
