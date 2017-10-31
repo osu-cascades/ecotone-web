@@ -13,5 +13,6 @@ RSpec.describe SoilSample, type: :model do
     it { is_expected.to validate_numericality_of(:temperature) }
     it { is_expected.to validate_numericality_of(:moisture).is_greater_than_or_equal_to(0) }
     it { is_expected.to belong_to(:biodiversity_report) }
+    it { is_expected.to have_many(:nutrients) }
   end
 end
