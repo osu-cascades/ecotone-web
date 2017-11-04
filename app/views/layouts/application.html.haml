@@ -14,8 +14,7 @@
   %body{class: "#{controller.controller_name} #{controller.action_name}"}
     = render 'layouts/navbar'
     .container
-      %nav.subnav
-        = yield(:subnav)
+      %nav.subnav= yield(:subnav)
       = yield(:screen_title)
       - flash.each do |message_type, message|
         .alert{class: "alert-#{message_type}"}= message
