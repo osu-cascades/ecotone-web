@@ -1,11 +1,10 @@
-- provide(:title, @user.name)
+- content_for_title(@user.name)
+- content_for(:subnav) do
+  = edit_user_link(current_user, @user)
 .row
   %aside.col-md-6
     %section.user-info
-      %h1= @user.name
       %h2= @user.email
-      = edit_user_link(current_user, @user)
-
       %h3= "#{@user}'s Biodiversity Reports"
       %hr
       %ul.index
@@ -13,4 +12,4 @@
           %li.user_list
             .col-md-8
               %h2= link_to report.to_s, report, title: "Details of #{report}"
-      
+

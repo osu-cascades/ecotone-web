@@ -13,9 +13,12 @@
     = render 'layouts/shim'
   %body{class: "#{controller.controller_name} #{controller.action_name}"}
     = render 'layouts/navbar'
-    - flash.each do |message_type, message|
-      .alert{class: "alert-#{message_type}"}= message
     .container
+      %nav.subnav
+        = yield(:subnav)
+      = yield(:screen_title)
+      - flash.each do |message_type, message|
+        .alert{class: "alert-#{message_type}"}= message
       = yield
       = render 'layouts/footer'
       = debug(params) if Rails.env.development?

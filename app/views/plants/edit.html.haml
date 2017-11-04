@@ -1,3 +1,2 @@
-- provide(:title, "Edit #{@plant.common_name}")
-%h1 Edit Plant
+- content_for_title("Edit #{@plant.common_name}")
 = render partial: 'form'

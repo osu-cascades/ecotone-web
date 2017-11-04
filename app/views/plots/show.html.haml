@@ -1,10 +1,8 @@
-- provide(:title, "Plot ##{@plot.plot_id}")
+- content_for_title("Plot ##{@plot.plot_id}")
 = link_to '« Back to plots', plots_path, class: 'btn btn-primary back', title: 'List of all plots'
 .row
   %aside.col-md-3
     %section
-      %h1 Plot ##{@plot.plot_id}
-      %hr
       %p Featured Plant: #{ link_to_featured_plant(@plot) }
       %p Description: #{@plot.formatted_location_description}
       %p Latitude: #{@plot.latitude || 'unmeasured'}

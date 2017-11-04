@@ -33,6 +33,7 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
   font-size: 3em;
   margin-bottom: 30px;
+  text-align: center;
 }
 
 p {
@@ -99,6 +100,9 @@ a.navbar-brand img {
   }
 }
 
+.subnav {
+  height: 40px;
+}
 
 // Footer
 
@@ -299,10 +303,6 @@ ul.indexing {
   }
 }
 
-.btn-user-edit {
-  margin-bottom: 40px;
-}
-
 .lnk-show-delete {
   display: block;
   margin-top: 48px;
@@ -363,7 +363,7 @@ ul.indexing {
 }
 
 .alert {
-  margin: 25px 45px 25px 45px;
+  margin: 25px 0px;
 }
 
 .back {

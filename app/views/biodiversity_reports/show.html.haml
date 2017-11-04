@@ -1,8 +1,7 @@
-- provide(:title, 'Biodiversity Report')
+- content_for_title(@biodiversity_report.to_s)
 .row
   %aside.col-md-6
     %section
-      %h1= @biodiversity_report
       %h2= @biodiversity_report.byline
       %hr
       %h3= @biodiversity_report.plot

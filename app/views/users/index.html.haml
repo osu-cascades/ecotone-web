@@ -1,8 +1,7 @@
-- provide(:title, "All Users")
-%h1 All Users
+- content_for_title('All Users')
 %ul.indexing
   - @users.each do |user|
     %li
       = link_to user.name, user, title: "Details of #{user}"
-      = "(admin)" if user.admin?
+      = '(admin)' if user.admin?
       = delete_user_link(current_user, user)

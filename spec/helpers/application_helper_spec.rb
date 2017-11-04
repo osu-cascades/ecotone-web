@@ -41,4 +41,15 @@ RSpec.describe ApplicationHelper, type: :helper do
       end
     end
   end
+
+  describe '#content_for_title' do
+    before { helper.content_for_title('Fake') }
+    it 'uses the title for the page title tag' do
+      expect(view.content_for(:title)).to include('Fake')
+    end
+    it 'uses the title for the screen_title' do
+      expect(view.content_for(:screen_title)).to include('Fake')
+    end
+  end
+
 end

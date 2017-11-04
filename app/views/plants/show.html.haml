@@ -1,9 +1,8 @@
-- provide(:title, @plant.common_name)
+- content_for_title(@plant.common_name.capitalize)
 = link_to '« Back to plants', plants_path, class: 'btn btn-primary', title: 'List of all plants'
 .row
   %aside.col-md-12
     %section
-      %h1= @plant.common_name.capitalize
       %h2
         %em= @plant.scientific_name.capitalize
       - if @plant.invasive
