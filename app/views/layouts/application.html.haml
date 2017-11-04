@@ -12,7 +12,7 @@
     = yield :javascript
     = render 'layouts/shim'
   %body{class: "#{controller.controller_name} #{controller.action_name}"}
-    = render 'layouts/header'
+    = render 'layouts/navbar'
     - flash.each do |message_type, message|
       .alert{class: "alert-#{message_type}"}= message
     .container
