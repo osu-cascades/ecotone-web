@@ -1,6 +1,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+
 // Variables & Mixins
 
 $osu-orange: #C34500;
@@ -11,6 +12,7 @@ $gray-medium-light: #eaeaea;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
+
 
 // Universal
 
@@ -24,16 +26,22 @@ section {
   margin-bottom: 10px;
 }
 
-textarea {
-  resize: vertical;
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+
+h1 {
+  font-size: 3em;
+  margin-bottom: 30px;
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
 }
 
 .center {
   text-align: center;
-}
-
-.center h1 {
-  margin-bottom: 10px;
 }
 
 .btn {
@@ -41,9 +49,19 @@ textarea {
   border-color: $osu-orange;
   color: white;
   &:hover {
-    background-color: darken($osu-orange, 5%);
-    border-color: darken($osu-orange, 5%);
+    background-color: lighten($osu-orange, 5%);
+    border-color: lighten($osu-orange, 5%);
   }
+}
+
+.btn.btn-primary:active {
+  background-color: lighten($osu-orange, 10%);
+  border-color: lighten($osu-orange, 10%);
+}
+
+.btn.btn-primary[disabled], .btn.btn-primary:disabled {
+  background-color: lighten($osu-orange, 10%);
+  border-color: lighten($osu-orange, 10%);
 }
 
 .danger-btn {
@@ -56,30 +74,6 @@ textarea {
   }
 }
 
-// Typography
-
-h1, h2, h3, h4, h5, h6 {
-  line-height: 1;
-}
-
-h1 {
-  font-size: 3em;
-  margin-bottom: 30px;
-  text-align: center;
-}
-
-h2 {
-  font-size: 1.2em;
-  margin-bottom: 20px;
-  text-align: center;
-  font-weight: normal;
-  color: $gray-light;
-}
-
-p {
-  font-size: 1.1em;
-  line-height: 1.7em;
-}
 
 // Header
 
@@ -88,23 +82,53 @@ a.navbar-brand img {
   margin-top: -14px;
 }
 
-
 #logo {
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
-  color: white;
-  text-transform: uppercase;
+  color: #DDD;
   letter-spacing: -1px;
   padding-top: 9px;
   font-weight: bold;
   &:hover {
-    color: white;
+    color: #EEE;
     text-decoration: none;
+  }
+  &:active {
+    color: #FFF;
   }
 }
 
+
+// Footer
+
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid $gray-medium-light;
+  color: $gray-light;
+  a {
+    color: $gray;
+    &:hover {
+      color: $gray-darker;
+    }
+  }
+  ul {
+    float: right;
+    list-style: none;
+    li {
+      float: left;
+      margin-left: 15px;
+    }
+  }
+}
+
+
 // Homepage
+
+.jumbotron {
+  background-image: url("/assets/osucascades_sketch.jpg");
+}
 
 .img-circle {
   margin: auto;
@@ -112,6 +136,7 @@ a.navbar-brand img {
   height: 200;
   width: 200;
 }
+
 
 // Sidebar
 
@@ -145,28 +170,6 @@ aside {
   }
 }
 
-// Footer
-
-footer {
-  margin-top: 45px;
-  padding-top: 5px;
-  border-top: 1px solid $gray-medium-light;
-  color: $gray-light;
-  a {
-    color: $gray;
-    &:hover {
-      color: $gray-darker;
-    }
-  }
-  ul {
-    float: right;
-    list-style: none;
-    li {
-      float: left;
-      margin-left: 15px;
-    }
-  }
-}
 
 // Forms
 
@@ -184,6 +187,10 @@ input {
 input[type="checkbox"] {
   margin-bottom: 15px;
   box-shadow: none !important;
+}
+
+textarea {
+  resize: vertical;
 }
 
 #error_explanation {
@@ -213,7 +220,9 @@ label.form-label-photo {
   display: block;
 }
 
+
 // Model indexes
+
 .pagination {
   a {
     color: $osu-orange !important;
