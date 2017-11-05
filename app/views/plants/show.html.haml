@@ -5,7 +5,7 @@
     .btn-group
       = link_to 'Edit', edit_plant_path(@plant), class: 'btn', title: "Edit #{@plant}"
       = link_to 'Delete', @plant, method: :delete, data: { confirm: "Delete #{@plant.common_name}?" }, class: 'btn btn-danger', title: "Delete #{@plant}"
-    = link_to 'Download QR-Code', { action: 'download_qr' }, 'data-turbolinks': false, class: 'btn', title: "QR-Code for #{@plant}"
+    = link_to 'Download QR Code', { action: 'download_qr' }, 'data-turbolinks': false, class: 'btn', title: "QR Code for #{@plant}"
 .row
   %aside.col-md-12
     %section
