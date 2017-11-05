@@ -111,7 +111,17 @@ ul.pagination {
 }
 
 .alert {
-  margin: 25px 0px;
+  ul {
+    margin: 0 0 30px 0;
+  }
+}
+
+.alert .alert-heading {
+  margin: 0 0 10px 0;
+}
+
+.alert ul {
+  margin: 0px;
 }
 
 
@@ -234,14 +244,6 @@ input[type="checkbox"] {
 
 textarea {
   resize: vertical;
-}
-
-#error_explanation {
-  color: red;
-  ul {
-    color: red;
-    margin: 0 0 30px 0;
-  }
 }
 
 .field_with_errors {
