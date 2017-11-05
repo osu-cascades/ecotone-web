@@ -1,5 +1,6 @@
 - content_for_title('Plant Samples')
-= link_to "Generate Report", export_path(format: "csv"), class: 'btn btn-primary'
+- content_for(:subnav) do
+  = link_to 'Generate Report', export_path(format: 'csv'), class: 'btn btn-primary'
 .table-responsive
   %table.table.table-striped
     %thead
