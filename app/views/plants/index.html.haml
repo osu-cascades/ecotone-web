@@ -1,4 +1,6 @@
 - content_for_title('All Plants')
+- content_for(:subnav) do
+  = link_to('Add Plant', new_plant_path, class: 'btn btn-primary', title: 'Add a new plant') if current_user&.admin?
 %ul.indexing
   - @plants.each do |plant|
     %li.photo_list
@@ -8,5 +10,4 @@
         %h3= link_to plant.common_name.capitalize, plant, title: "Details of #{plant}"
         %h4
           %em= plant.scientific_name.capitalize
-        %p= link_to("edit", edit_plant_path(plant), title: "Edit #{plant}") if current_user&.admin?
-= link_to("Add Plant", new_plant_path, class: "btn btn-primary", title: "Add a new plant") if current_user&.admin?
+        %p= link_to('edit', edit_plant_path(plant), title: "Edit #{plant}") if current_user&.admin?

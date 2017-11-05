@@ -1,5 +1,11 @@
 - content_for_title(@plant.common_name.capitalize)
-= link_to '« Back to plants', plants_path, class: 'btn btn-primary', title: 'List of all plants'
+- content_for(:subnav) do
+  = link_to '« Back to plants', plants_path, class: 'btn btn-primary', title: 'List of all plants'
+  - if current_user&.admin?
+    .btn-group
+      = link_to 'Edit', edit_plant_path(@plant), class: 'btn', title: "Edit #{@plant}"
+      = link_to 'Delete', @plant, method: :delete, data: { confirm: "Delete #{@plant.common_name}?" }, class: 'btn btn-danger', title: "Delete #{@plant}"
+    = link_to 'Download QR-Code', { action: 'download_qr' }, 'data-turbolinks': false, class: 'btn', title: "QR-Code for #{@plant}"
 .row
   %aside.col-md-12
     %section
@@ -23,9 +29,3 @@
           %p
             %strong Tolerance:
             = @plant.tolerance
-    - if current_user&.admin?
-      .btn-group
-        = link_to 'Edit', edit_plant_path(@plant), class: 'btn btn-primary right-btn', title: "Edit #{@plant}"
-        = link_to 'Delete', @plant, method: :delete, data: { confirm: "Delete #{@plant.common_name}?" }, class: 'btn btn-primary btn-danger', title: "Delete #{@plant}"
-      .btn.download-plant-btn
-        = link_to 'Download QR-Code', { action: 'download_qr' }, 'data-turbolinks': false, title: "QR-Code for #{@plant}"
