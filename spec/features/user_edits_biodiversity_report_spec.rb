@@ -13,7 +13,7 @@ RSpec.feature 'User edits a biodiversity report' do
     fill_in('Species richness', with: 'invalid value')
     click_button('Update Biodiversity report')
     expect(page).to have_selector '.alert', text: 'The form contains 1 error.'
-    page.find('#error_explanation').tap do |error_explanations|
+    page.find('.alert').tap do |error_explanations|
       expect(error_explanations).to have_content('Species richness is not a number')
     end
     %w[soil fungi lichen macroinvertebrate plant].each do |sample_type|
@@ -85,8 +85,8 @@ RSpec.feature 'User edits a biodiversity report' do
       fill_in('Moisture', with: '-1')
       click_button('Update Biodiversity report')
       expect(page).to have_selector '.alert', text: /The form contains .* errors./
-      expect(page.find('#error_explanation')).to have_content('Soil sample ph level must be greater than or equal to 0')
-      expect(page.find('#error_explanation')).to have_content('Soil sample temperature is not a number')
+      expect(page.find('.alert')).to have_content('Soil sample ph level must be greater than or equal to 0')
+      expect(page.find('.alert')).to have_content('Soil sample temperature is not a number')
       expect(page).to have_css('#soil_sample_fields.collapse.in')
       expect(page).to have_field('pH level', with: '-1')
       expect(page).to have_field('biodiversity_report_soil_sample_attributes_temperature', with: 'fake')
@@ -161,9 +161,9 @@ RSpec.feature 'User edits a biodiversity report' do
       end
       click_button('Update Biodiversity report')
       expect(page).to have_selector '.alert', text: /The form contains .* errors./
-      expect(page.find('#error_explanation')).to have_content("Fungi sample location within plot can't be blank")
-      expect(page.find('#error_explanation')).to have_content('Fungi sample size must be greater than or equal to 0')
-      expect(page.find('#error_explanation')).to have_content("Fungi sample description can't be blank")
+      expect(page.find('.alert')).to have_content("Fungi sample location within plot can't be blank")
+      expect(page.find('.alert')).to have_content('Fungi sample size must be greater than or equal to 0')
+      expect(page.find('.alert')).to have_content("Fungi sample description can't be blank")
       expect(page).to have_css('#fungi_sample_fields.collapse.in')
       expect(page).to have_field('Location within plot', with: '')
       expect(page).to have_field('Size', with: '-1')
@@ -231,8 +231,8 @@ RSpec.feature 'User edits a biodiversity report' do
       end
       click_button('Update Biodiversity report')
       expect(page).to have_selector '.alert', text: /The form contains .* errors./
-      expect(page.find('#error_explanation')).to have_content("Lichen sample location within plot can't be blank")
-      expect(page.find('#error_explanation')).to have_content("Lichen sample description can't be blank")
+      expect(page.find('.alert')).to have_content("Lichen sample location within plot can't be blank")
+      expect(page.find('.alert')).to have_content("Lichen sample description can't be blank")
       expect(page).to have_css('#lichen_sample_fields.collapse.in')
       expect(page).to have_field('Location within plot', with: '')
       expect(page).to have_field('Description', with: '')
@@ -321,8 +321,8 @@ RSpec.feature 'User edits a biodiversity report' do
       end
       click_button('Update Biodiversity report')
       expect(page).to have_selector '.alert', text: /The form contains .* errors./
-      expect(page.find('#error_explanation')).to have_content("Nonvascular plant sample location within plot can't be blank")
-      expect(page.find('#error_explanation')).to have_content("Nonvascular plant sample description can't be blank")
+      expect(page.find('.alert')).to have_content("Nonvascular plant sample location within plot can't be blank")
+      expect(page.find('.alert')).to have_content("Nonvascular plant sample description can't be blank")
       expect(page).to have_css('#nonvascular_plant_sample_fields.collapse.in')
       expect(page).to have_field('Location within plot', with: '')
       expect(page).to have_field('Description', with: '')
@@ -369,9 +369,9 @@ RSpec.feature 'User edits a biodiversity report' do
       end
       click_button('Update Biodiversity report')
       expect(page).to have_selector '.alert', text: /The form contains .* errors./
-      expect(page.find('#error_explanation')).to have_content("Macroinvertebrate samples phylum can't be blank")
-      expect(page.find('#error_explanation')).to have_content("Macroinvertebrate samples location within plot can't be blank")
-      expect(page.find('#error_explanation')).to have_content('Macroinvertebrate samples quantity must be greater than or equal to 0')
+      expect(page.find('.alert')).to have_content("Macroinvertebrate samples phylum can't be blank")
+      expect(page.find('.alert')).to have_content("Macroinvertebrate samples location within plot can't be blank")
+      expect(page.find('.alert')).to have_content('Macroinvertebrate samples quantity must be greater than or equal to 0')
       expect(page).to have_field('Phylum', with: '')
       expect(page).to have_field('Location within plot', with: '')
       expect(page).to have_field('Quantity', with: '-1')
@@ -457,8 +457,8 @@ RSpec.feature 'User edits a biodiversity report' do
       end
       click_button('Update Biodiversity report')
       expect(page).to have_selector '.alert', text: /The form contains .* errors./
-      expect(page.find('#error_explanation')).to have_content('Plant samples abundance must be greater than 0')
-      expect(page.find('#error_explanation')).to have_content('Plant samples percent cover must be greater than 0')
+      expect(page.find('.alert')).to have_content('Plant samples abundance must be greater than 0')
+      expect(page.find('.alert')).to have_content('Plant samples percent cover must be greater than 0')
       expect(page).to have_field('Abundance', with: '-1')
       expect(page).to have_field('Percent cover', with: '-1')
     end

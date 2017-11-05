@@ -15,7 +15,7 @@
     %p= @plot.formatted_location_description
     %table.table
       %thead
-        %th{colspan: '2'} Updated #{@plot.updated_at.to_formatted_s(:long)  }
+        %th{colspan: '2'} Updated #{@plot.updated_at&.to_formatted_s(:long)  }
       %tbody
         %tr
           %th.col-md-4{scope: 'row'} Featured Plant
