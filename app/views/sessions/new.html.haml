@@ -5,8 +5,8 @@
       = form.label :email
       = form.email_field :email, class: 'form-control'
       = form.label :password
-      = link_to "(forgot password?)", new_password_reset_path, title: 'Reset your password'
+      = link_to '(forgot password?)', new_password_reset_path, title: 'Reset your password'
       = form.password_field :password, class: 'form-control'
-      = form.submit "Log in", class: "btn btn-primary", id: "login-btn"
+      = form.submit 'Log in', class: 'btn btn-primary', id: 'login-btn'
     %p
-      New user? #{ link_to "Sign up", signup_path, title: 'Create an Ecotone account' }
+      New user? #{ link_to 'Sign up', signup_path, title: 'Create an Ecotone account' }
