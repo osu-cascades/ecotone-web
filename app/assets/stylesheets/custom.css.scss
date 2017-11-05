@@ -248,24 +248,11 @@ label.form-label-photo {
 
 // Model indexes
 
-ul.index {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  li {
-    overflow: auto;
-    border-bottom: 1px solid $gray-lighter;
-    padding-bottom: 10px;
-  }
-}
-
 ul.indexing {
-  margin-bottom: 25px;
-}
-
-.indexing {
   list-style: none;
   margin: 0;
+  padding: 0;
+  margin-bottom: 25px;
   li {
     overflow: auto;
     padding: 10px 0;

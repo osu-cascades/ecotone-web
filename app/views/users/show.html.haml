@@ -5,7 +5,7 @@
 %hr
 %section
   %h2 My Biodiversity Reports
-  %ul.index
+  %ul.indexing
     - @user.biodiversity_reports.each do |report|
       %li
         %h3= link_to report.to_s, report, title: "Details of #{report}"

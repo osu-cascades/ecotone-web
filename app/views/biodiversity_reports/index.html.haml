@@ -4,8 +4,7 @@
 = paginate @biodiversity_reports
 %ul.indexing
   - @biodiversity_reports.each do |report|
-    %li.photo_list
-      .col-md-8
-        %h3= link_to report.to_s, report, title: "Details of #{report}"
-        %p= report.byline
+    %li
+      %h3= link_to report.to_s, report, title: "Details of #{report}"
+      %p= report.byline
 = paginate @biodiversity_reports
