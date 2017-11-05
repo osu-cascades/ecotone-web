@@ -81,10 +81,6 @@ p {
   }
 }
 
-.btn-group .btn {
-  width: 80px;
-}
-
 nav.paginator {
   display: block;
   margin: 0 0 2em 0;
@@ -152,6 +148,15 @@ a.navbar-brand img {
 .subnav {
   height: 36px;
 }
+
+.btn-group .btn {
+  width: 80px;
+}
+
+.subnav .btn-primary {
+  min-width: 130px;
+}
+
 
 // Footer
 
