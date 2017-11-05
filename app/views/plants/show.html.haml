@@ -6,26 +6,26 @@
       = link_to 'Edit', edit_plant_path(@plant), class: 'btn', title: "Edit #{@plant}"
       = link_to 'Delete', @plant, method: :delete, data: { confirm: "Delete #{@plant.common_name}?" }, class: 'btn btn-danger', title: "Delete #{@plant}"
     = link_to 'Download QR Code', { action: 'download_qr' }, 'data-turbolinks': false, class: 'btn', title: "QR Code for #{@plant}"
-.row
-  %aside.col-md-12
-    %section
-      %h2
-        %em= @plant.scientific_name.capitalize
+%section
+  .col-md-5
+    %h2 Photo
+    = image_tag @plant.photo.url(:default), alt: "Photo of #{@plant}"
+  .col-md-7
+    %h2
+      %em
+        = @plant.scientific_name.capitalize
       - if @plant.invasive
-        %h2.invasive Invasive!
-      %hr
-    %section
-      .col-md-3
-        .plant_photo= image_tag @plant.photo.url(:default), alt: "Photo of #{@plant}"
-      .col-md-8
-        %section
-          %p
-            %strong Description:
-            = @plant.description
-          .citation= @plant.citation
-          %p
-            %strong Habitat type:
-            = @plant.habitat_type
-          %p
-            %strong Tolerance:
-            = @plant.tolerance
+        (invasive)
+    %p= @plant.description
+    %p.citation= @plant.citation
+    %table.table
+      %thead
+        %tr
+          %th{scope: 'col'} Habitat Type
+          %th{scope: 'col'} Tolerance
+          %th{scope: 'col'} Invasive?
+      %tbody
+        %tr
+          %td= @plant.habitat_type
+          %td= @plant.tolerance
+          %td{class: ('bg-danger' if @plant.invasive)}= @plant.invasive? ? 'Yes' : 'No'

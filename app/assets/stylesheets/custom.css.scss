@@ -176,6 +176,14 @@ footer {
   }
 }
 
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  @include box-sizing;
+}
+
 
 // Homepage
 
@@ -188,39 +196,6 @@ footer {
   display: block;
   height: 200;
   width: 200;
-}
-
-
-// Sidebar
-
-aside {
-  section.user_info {
-    margin-top: 20px;
-  }
-  section {
-    padding: 10px 0;
-    margin-top: 20px;
-    &:first-child {
-      border: 0;
-      padding-top: 0;
-    }
-    span {
-      display: block;
-      margin-bottom: 3px;
-      line-height: 1;
-    }
-    h1 {
-      font-size: 1.6em;
-      text-align: left;
-      letter-spacing: -1px;
-      margin-bottom: 3px;
-      margin-top: 0px;
-    }
-    h2 {
-      font-size: 1.3em;
-      text-align: left;
-    }
-  }
 }
 
 
@@ -270,7 +245,7 @@ label.form-label-photo {
 
 ul.index {
   list-style: none;
-  padding-left: 0;
+  padding: 0;
   margin: 0;
   li {
     overflow: auto;
@@ -305,18 +280,9 @@ ul.indexing {
   }
 }
 
-.plant_photo {
-  margin-top: 20px;
-}
-
-.plot_photo {
-  margin-top: 20px;
-}
-
 .citation {
   color: #4C4C4C;
-  margin-bottom: 20px;
-  font-size: 0.9em;
+  font-size: 0.8em;
 }
 
 .qr {
@@ -336,31 +302,9 @@ ul.indexing {
   width: 0px;
   height: 10px;
 }
-
 .qr td.black { background-color: #000; }
 .qr td.white { background-color: #fff; }
 
-
-// Miscellaneous
-
-.debug_dump {
-  clear: both;
-  float: left;
-  width: 100%;
-  margin-top: 45px;
-  @include box-sizing;
-}
-
-.col-md-3 {
-  padding-left: 0;
-}
-
-.invasive {
-  color: black;
-  text-decoration: underline;
-  text-decoration-color: red;
-  font-size: 1.2em;
-}
 
 
 // Biodiversity Report temperature slider / input range.
