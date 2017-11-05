@@ -1,5 +1,11 @@
 - content_for_title("Plot ##{@plot.plot_id}")
-= link_to '« Back to plots', plots_path, class: 'btn btn-primary back', title: 'List of all plots'
+- content_for(:subnav) do
+  = link_to '« Back to plots', plots_path, class: 'btn btn-primary', title: 'List of all plots'
+  - if current_user&.admin?
+    .btn-group
+      = link_to 'Edit', edit_plot_path(@plot), class: 'btn', title: "Edit #{@plot}"
+      = link_to 'Delete', @plot, method: :delete, data: { confirm: "Delete Plot ##{@plot.plot_id}?" }, class: 'btn btn-danger', title: "Delete #{@plot}"
+    = link_to 'Download QR-Code', { action: 'download_qr' }, 'data-turbolinks': false, class: 'btn', title: "QR-Code for #{@plot}"
 .row
   %aside.col-md-3
     %section
@@ -14,12 +20,6 @@
       %p Inoculated? #{@plot.inoculated ? 'Yes' : 'No'}
       %p Initial planting date: #{@plot.initial_planting_date}
       %p Initial succession: #{@plot.initial_succession}
-      - if current_user&.admin?
-        .btn-group
-          = link_to 'Edit', edit_plot_path(@plot), class: 'btn btn-primary edit-btn', title: "Edit #{@plot}"
-          = link_to 'Delete', @plot, method: :delete, data: { confirm: "Delete Plot ##{@plot.plot_id}?" }, class: 'btn btn-primary edit-btn danger-btn', title: "Delete #{@plot}"
-        .btn.download-btn
-          = link_to 'Download QR-Code', { action: 'download_qr' }, 'data-turbolinks': false, title: "QR-Code for #{@plot}"
   .col-md-9
     %section
       .plot_photo= image_tag @plot.photo.url(:default), alt: "Photo of #{@plot}"

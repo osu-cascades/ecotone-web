@@ -1,4 +1,6 @@
 - content_for_title('Plots on Campus')
+- content_for(:subnav) do
+  = link_to('Add Plot', new_plot_path, class: 'btn btn-primary', title: 'Add a new plot') if current_user&.admin?
 %ul.indexing
   - @plots.each do |plot|
     %li.photo_list
@@ -8,4 +10,3 @@
         %h3= link_to "Plot ##{plot.plot_id}", plot, title: "Details of #{plot}"
         %h4= plot.formatted_location_description
         %p= link_to("edit", edit_plot_path(plot), title: "Edit #{plot}") if current_user&.admin?
-= link_to("Add Plot", new_plot_path, class: "btn btn-primary add-btn", title: "Add a new plot") if current_user&.admin?

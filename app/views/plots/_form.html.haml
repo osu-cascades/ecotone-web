@@ -29,4 +29,4 @@
       = form.label :photo
       = image_tag(@plot.photo.url(:default), alt: "Photo of #{@plot}") unless @plot.new_record?
       = form.file_field :photo, class: 'form-control'
-      = form.submit class: "btn btn-primary"
+      = form.submit class: 'btn btn-primary'

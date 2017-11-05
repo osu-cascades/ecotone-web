@@ -25,7 +25,7 @@
             = @plant.tolerance
     - if current_user&.admin?
       .btn-group
-        = link_to 'Edit', edit_plant_path(@plant), class: 'btn btn-primary edit-btn right-btn', title: "Edit #{@plant}"
-        = link_to 'Delete', @plant, method: :delete, data: { confirm: "Delete #{@plant.common_name}?" }, class: 'btn btn-primary edit-btn danger-btn', title: "Delete #{@plant}"
+        = link_to 'Edit', edit_plant_path(@plant), class: 'btn btn-primary right-btn', title: "Edit #{@plant}"
+        = link_to 'Delete', @plant, method: :delete, data: { confirm: "Delete #{@plant.common_name}?" }, class: 'btn btn-primary btn-danger', title: "Delete #{@plant}"
       .btn.download-plant-btn
         = link_to 'Download QR-Code', { action: 'download_qr' }, 'data-turbolinks': false, title: "QR-Code for #{@plant}"

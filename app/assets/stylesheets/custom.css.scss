@@ -46,33 +46,69 @@ p {
 }
 
 .btn {
-  background-color: $osu-orange;
-  border-color: $osu-orange;
-  color: white;
-  &:hover {
+  background-color: #FFF;
+  color: lighten($osu-orange, 5%);
+  &:hover, &:focus {
     background-color: lighten($osu-orange, 5%);
     border-color: lighten($osu-orange, 5%);
+    color: #FFF;
+  }
+  &:active {
+    background-color: lighten($osu-orange, 10%) !important;
+    border-color: lighten($osu-orange, 10%) !important;
+  }
+  &:disabled {
+    background-color: lighten($osu-orange, 10%) !important;
+    border-color: lighten($osu-orange, 10%) !important;
   }
 }
 
-.btn.btn-primary:active {
-  background-color: lighten($osu-orange, 10%);
-  border-color: lighten($osu-orange, 10%);
+.btn-primary {
+  background-color: $osu-orange;
+  border-color: $osu-orange;
+  color: #FFF;
 }
 
-.btn.btn-primary[disabled], .btn.btn-primary:disabled {
-  background-color: lighten($osu-orange, 10%);
-  border-color: lighten($osu-orange, 10%);
-}
-
-.danger-btn {
-  background-color:  #D00;
-  border-color:  #D00;
-  color: white;
+.btn-danger {
+  border-color: #FFF;
   &:hover {
-    background-color: darken( #D00, 5%);
-    border-color: darken( #D00, 5%);
+    background-color: #F0F0F0;
+    border-color: #D00;
+    color: #D00;
   }
+  &:active, &:focus {
+    background-color: #D00 !important;
+  }
+}
+
+.inline-btn {
+  margin-right: 15px;
+}
+
+.btn-group .btn {
+  width: 80px;
+}
+
+.download-plant-btn {
+    display: block;
+    width: 150px;
+  a {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+.lnk-show-delete {
+  display: block;
+  margin-top: 48px;
+}
+
+.lnk-danger {
+  color: #D00;
+}
+
+.alert {
+  margin: 25px 0px;
 }
 
 
@@ -101,7 +137,7 @@ a.navbar-brand img {
 }
 
 .subnav {
-  height: 40px;
+  height: 36px;
 }
 
 // Footer
@@ -276,46 +312,6 @@ ul.indexing {
   }
 }
 
-.btn-group > .btn:first-child {
-  margin-right: 5px;
-}
-
-.edit-btn {
-  margin-top: 40px;
-  width: 80px;
-}
-
-.download-btn {
-  margin-top: 40px;
-  a {
-    color: white;
-    text-decoration: none;
-  }
-}
-
-.download-plant-btn {
-    display: block;
-    width: 150px;
-    margin-top: 40px;
-  a {
-    color: white;
-    text-decoration: none;
-  }
-}
-
-.lnk-show-delete {
-  display: block;
-  margin-top: 48px;
-}
-
-.inline-btn {
-  margin-right: 15px;
-}
-
-.lnk-danger {
-  color: #D00;
-}
-
 .plant_photo {
   margin-top: 20px;
 }
@@ -360,14 +356,6 @@ ul.indexing {
   width: 100%;
   margin-top: 45px;
   @include box-sizing;
-}
-
-.alert {
-  margin: 25px 0px;
-}
-
-.back {
-  margin-left: -15px;
 }
 
 .col-md-3 {
