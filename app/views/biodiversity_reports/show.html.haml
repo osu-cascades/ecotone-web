@@ -1,4 +1,11 @@
 - content_for_title(@biodiversity_report.to_s)
+- content_for(:subnav) do
+  = link_to '« Back to reports', :back, class: 'btn btn-primary', title: 'List of biodiversity reports'
+  - if @biodiversity_report.editable_by?(current_user)
+    .btn-group
+      = link_to 'Edit', edit_biodiversity_report_path(@biodiversity_report), class: 'btn', title: "Edit #{@biodiversity_report}"
+      - if current_user&.admin?
+        = link_to 'Delete', @biodiversity_report, method: :delete, data: { confirm: 'Delete Report?' }, class: 'btn btn-danger', title: "Delete #{@biodiversity_report}"
 .row
   %aside.col-md-6
     %section
@@ -22,7 +29,7 @@
         %p Location within plot: #{@biodiversity_report.fungi_sample.location_within_plot}
         %p Size: #{@biodiversity_report.fungi_sample.size}
         %p Description: #{@biodiversity_report.fungi_sample.description}
-        .plot_photo= image_tag @biodiversity_report.fungi_sample.photo.url(:default), alt: "Photo of fungi sample"
+        .plot_photo= image_tag @biodiversity_report.fungi_sample.photo.url(:default), alt: 'Photo of fungi sample'
       - else
         %p No fungi sample
       %hr
@@ -30,7 +37,7 @@
       - if @biodiversity_report.lichen_sample
         %p Location within plot: #{@biodiversity_report.lichen_sample.location_within_plot}
         %p Description: #{@biodiversity_report.lichen_sample.description}
-        .plot_photo= image_tag @biodiversity_report.lichen_sample.photo.url(:default), alt: "Photo of lichen sample"
+        .plot_photo= image_tag @biodiversity_report.lichen_sample.photo.url(:default), alt: 'Photo of lichen sample'
       - else
         %p No lichen sample
       %hr
@@ -38,20 +45,15 @@
       - if @biodiversity_report.nonvascular_plant_sample
         %p Location within plot: #{@biodiversity_report.nonvascular_plant_sample.location_within_plot}
         %p Description: #{@biodiversity_report.nonvascular_plant_sample.description}
-        .plot_photo= image_tag @biodiversity_report.nonvascular_plant_sample.photo.url(:default), alt: "Photo of non-vascular plant sample"
+        .plot_photo= image_tag @biodiversity_report.nonvascular_plant_sample.photo.url(:default), alt: 'Photo of non-vascular plant sample'
       - else
         %p No non-vascular plant sample
       %hr
       %h3 Macroinvertebrate Samples
-      = render(@biodiversity_report.macroinvertebrate_samples) || "<p>No macroinvertebrate samples</p>".html_safe
+      = render(@biodiversity_report.macroinvertebrate_samples) || '<p>No macroinvertebrate samples</p>'.html_safe
       %hr
       %h3 Plant Samples
-      = render(@biodiversity_report.plant_samples) || "<p>No plant samples</p>".html_safe
-      - if @biodiversity_report.editable_by?(current_user)
-        .btn-group
-          = link_to "Edit", edit_biodiversity_report_path(@biodiversity_report), class: "btn btn-primary", title: "Edit #{@biodiversity_report}"
-          - if current_user&.admin?
-            = link_to "Delete", @biodiversity_report, method: :delete, data: { confirm: "Delete Report?" }, class: "btn btn-primary btn-danger", title: "Delete #{@biodiversity_report}"
+      = render(@biodiversity_report.plant_samples) || '<p>No plant samples</p>'.html_safe
   .col-md-6
     %section
       .plot_photo= image_tag @biodiversity_report.photo.url(:default), alt: "Photo of #{@biodiversity_report.plot}"
