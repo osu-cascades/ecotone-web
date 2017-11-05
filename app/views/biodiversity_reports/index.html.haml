@@ -1,4 +1,7 @@
 - content_for_title('Biodiversity Reports')
+- content_for(:subnav) do
+  = link_to('Create a Biodiversity Report', new_biodiversity_report_path, class: 'btn btn-primary') if logged_in?
+= paginate @biodiversity_reports
 %ul.indexing
   - @biodiversity_reports.each do |report|
     %li.photo_list
@@ -6,4 +9,3 @@
         %h3= link_to report.to_s, report, title: "Details of #{report}"
         %p= report.byline
 = paginate @biodiversity_reports
-= link_to("Create a Biodiversity Report", new_biodiversity_report_path, class: "btn btn-primary") if logged_in?

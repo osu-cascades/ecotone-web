@@ -89,6 +89,32 @@ p {
   width: 80px;
 }
 
+nav.pagination {
+  display: block;
+  text-align: center;
+  margin: 0 0 2em 0;
+}
+
+ul.pagination {
+  margin: 0px;
+}
+
+.pagination li a {
+  color: $osu-orange;
+  &:hover {
+    color: lighten($osu-orange, 5%);
+  }
+}
+
+.pagination li.active a {
+  background-color: $osu-orange;
+  border-color: $osu-orange;
+  &:hover {
+    background-color: $osu-orange;
+    border-color: $osu-orange;
+  }
+}
+
 .lnk-show-delete {
   display: block;
   margin-top: 48px;
@@ -253,18 +279,6 @@ label.form-label-photo {
 
 
 // Model indexes
-
-.pagination {
-  a {
-    color: $osu-orange !important;
-  }
-}
-
-.pagination > .active > a {
-  color: white !important;
-  background-color: $osu-orange !important;
-  border-color: #ddd;
-}
 
 ul.index {
   list-style: none;
