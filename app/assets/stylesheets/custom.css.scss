@@ -46,7 +46,7 @@ p {
 }
 
 .btn {
-  background-color: #FFF;
+  background-color: #F0F0F0;
   color: lighten($osu-orange, 5%);
   &:hover, &:focus {
     background-color: lighten($osu-orange, 5%);
@@ -70,9 +70,9 @@ p {
 }
 
 .btn-danger {
-  border-color: #FFF;
+  border-color: #F0F0F0;
   &:hover {
-    background-color: #F0F0F0;
+    background-color: #FFF0F0;
     border-color: #D00;
     color: #D00;
   }
