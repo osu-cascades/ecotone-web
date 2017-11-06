@@ -25,6 +25,11 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   config.include FeatureHelpers, type: :feature
   config.include Paperclip::Shoulda::Matchers
+  # https://github.com/rails/webpacker/issues/59
+  config.before :suite do
+    `bin/webpack`
+    Webpacker::Manifest.load
+  end
 end
 
 Shoulda::Matchers.configure do |config|
