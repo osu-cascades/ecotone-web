@@ -47,3 +47,28 @@
         %tr
           %th.col-md-4{scope: 'row'} Initial succession
           %td= @plot.initial_succession
+- if @plot.featured_plant
+  %section
+    %h2 Featured Plant: #{@plot.featured_plant.common_name}
+    .col-md-5
+      %h3 Photo
+      = image_tag @plot.featured_plant.photo.url(:default), alt: "Photo of #{@plot.featured_plant}"
+    .col-md-7
+      %h3
+        %em
+          = @plot.featured_plant.scientific_name.capitalize
+        - if @plot.featured_plant.invasive
+          (invasive)
+      %p= @plot.featured_plant.description
+      %p.citation= @plot.featured_plant.citation
+      %table.table
+        %thead
+          %tr
+            %th{scope: 'col'} Habitat Type
+            %th{scope: 'col'} Tolerance
+            %th{scope: 'col'} Invasive?
+        %tbody
+          %tr
+            %td= @plot.featured_plant.habitat_type
+            %td= @plot.featured_plant.tolerance
+            %td{class: ('bg-danger' if @plot.featured_plant.invasive)}= @plot.featured_plant.invasive? ? 'Yes' : 'No'
