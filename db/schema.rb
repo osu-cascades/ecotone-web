@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170905143547) do
+ActiveRecord::Schema.define(version: 20171107071451) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20170905143547) do
     t.integer "author_id"
     t.integer "plot_id"
     t.float "diversity_index"
+    t.float "species_evenness"
   end
 
   create_table "fungi_samples", force: :cascade do |t|

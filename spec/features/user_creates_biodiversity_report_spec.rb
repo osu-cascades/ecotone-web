@@ -283,5 +283,6 @@ RSpec.feature 'User creates a biodiversity report' do
     find(:xpath, "//*[@id='biodiversity_report_temperature']").set 72
     fill_in('Species richness', with: '10')
     fill_in('Shannon-Wiener diversity index', with: '5.0')
+    fill_in('Species evenness', with: '0.5')
   end
 end
