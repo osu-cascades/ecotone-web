@@ -20,6 +20,7 @@
     %hr
     %h3 Soil Sample
     - if @biodiversity_report.soil_sample
+      %p Collection Method: #{@biodiversity_report.soil_sample.collection_method}
       %p pH Level: #{@biodiversity_report.soil_sample.ph_level}
       %p Temperature: #{@biodiversity_report.soil_sample.temperature}
       %p Moisture: #{@biodiversity_report.soil_sample.moisture}

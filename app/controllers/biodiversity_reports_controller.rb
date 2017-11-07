@@ -75,7 +75,7 @@ class BiodiversityReportsController < ApplicationController
       :species_richness, :photo, :plot_id, :diversity_index,
 
       soil_sample_attributes: [:biodiversity_report_id, :_destroy, :id,
-        :ph_level, :temperature, :moisture],
+        :collection_method, :ph_level, :temperature, :moisture],
 
       fungi_sample_attributes: [:biodiversity_report_id, :_destroy, :id,
         :location_within_plot, :size, :description, :photo],

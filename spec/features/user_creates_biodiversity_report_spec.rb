@@ -39,6 +39,7 @@ RSpec.feature 'User creates a biodiversity report' do
     before { fill_in_report_fields }
 
     scenario 'providing valid soil sample data' do
+      select('composite', from: 'Collection method')
       fill_in('pH level', with: '10')
       fill_in('biodiversity_report_soil_sample_attributes_temperature', with: '100')
       fill_in('Moisture', with: '10')
@@ -57,10 +58,11 @@ RSpec.feature 'User creates a biodiversity report' do
       fill_in('biodiversity_report_soil_sample_attributes_temperature', with: 'fake')
       fill_in('Moisture', with: '-1')
       click_button('Create Biodiversity report')
-      expect(page).to have_selector '.alert', text: 'The form contains 3 errors.'
+      expect(page).to have_selector '.alert', text: 'The form contains 4 errors.'
       expect(page.find('.alert')).to have_content('Soil sample ph level must be greater than or equal to 0')
       expect(page.find('.alert')).to have_content('Soil sample temperature is not a number')
       expect(page.find('.alert')).to have_content('Soil sample moisture must be greater than or equal to 0')
+      expect(page.find('.alert')).to have_content("Soil sample collection method can't be blank")
       expect(page).to have_css('#soil_sample_fields.collapse.in')
       expect(page).to have_field('pH level', with: '-1')
       expect(page).to have_field('biodiversity_report_soil_sample_attributes_temperature', with: 'fake')

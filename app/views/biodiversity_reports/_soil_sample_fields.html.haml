@@ -1,5 +1,7 @@
 %fieldset
   = f.hidden_field :_destroy
+  = f.label :collection_method
+  = f.select :collection_method, SoilSample.collection_methods.keys, include_blank: true
   = f.label :ph_level, 'pH level'
   = f.text_field :ph_level, class: 'form-control'
   = f.label :temperature
