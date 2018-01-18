@@ -1,10 +1,29 @@
+# The build script and install config accommodate elm-make on Travis CI.
+# Without the sysconfcpus stuff, elm-make hangs / runs super-slow.
+# See https://github.com/elm-lang/elm-compiler/issues/1473.
+
 language: ruby
 rvm:
  - 2.4.2
-script: bundle exec rspec
+script: $TRAVIS_BUILD_DIR/sysconfcpus/bin/sysconfcpus -n 2 bundle exec rspec
 
 services:
   - postgresql
+cache:
+  directories:
+    - sysconfcpus
+install:
+  - bundle install
+  - yarn install
+  - |
+    if [ ! -d sysconfcpus/bin ];
+    then
+      git clone https://github.com/obmarg/libsysconfcpus.git;
+      cd libsysconfcpus;
+      ./configure --prefix=$TRAVIS_BUILD_DIR/sysconfcpus;
+      make && make install;
+      cd ..;
+    fi
 
 before_install:
   - "export PATH=$PWD/travis_phantomjs/phantomjs-2.1.1-linux-x86_64/bin:$PATH"
@@ -13,10 +32,8 @@ before_install:
   - "if [ $(phantomjs --version) != '2.1.1' ]; then tar -xvf $PWD/travis_phantomjs/phantomjs-2.1.1-linux-x86_64.tar.bz2 -C $PWD/travis_phantomjs; fi"
   - "phantomjs --version"
 
-
 before_script:
   - psql -c 'create database ecotone_web_test;' -U postgres
-  - yarn install
 
 test:
   adapter: postgresql
