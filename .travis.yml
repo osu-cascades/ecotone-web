@@ -16,6 +16,7 @@ before_install:
 
 before_script:
   - psql -c 'create database ecotone_web_test;' -U postgres
+  - yarn install
 
 test:
   adapter: postgresql
