@@ -53,6 +53,7 @@ RSpec.describe UsersController, type: :controller do
 
   describe '#new' do
     it 'returns http success' do
+      skip 'user login temporarily disabled'
       get :new
       expect(response).to have_http_status(:success)
     end

@@ -4,6 +4,7 @@ RSpec.feature 'User signs up' do
   before { visit signup_path }
 
   scenario 'providing invalid signup information' do
+    skip 'user login temporarily disabled'
     fill_in('Name', with: '')
     fill_in('Email', with: 'user@invalid')
     fill_in('Password', with: 'a')
@@ -13,6 +14,7 @@ RSpec.feature 'User signs up' do
   end
 
   scenario 'providing valid signup information' do
+    skip 'user login temporarily disabled'
     fill_in('Name', with: 'Valid User')
     fill_in('Email', with: 'example@example.com')
     fill_in('Password', with: 'password')
