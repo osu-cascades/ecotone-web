@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   resources :users
   resources :biodiversity_reports
-  
+
   resources :plots
   get     'plots/:id/download_qr' => 'plots#download_qr'
 
@@ -18,4 +18,10 @@ Rails.application.routes.draw do
   get     'plants/:id/download_qr' => 'plants#download_qr'
 
   resources :password_resets, only: [:new, :create, :edit, :update]
+
+  resources :fungi_samples
+  resources :lichen_samples
+  resources :macroinvertebrate_samples
+  resources :non_vascular_plant_samples
+  resources :soil_samples
 end
