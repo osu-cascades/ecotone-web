@@ -15,8 +15,13 @@
           %li= link_to 'Plots', plots_path, title: 'List of all plots'
           %li= link_to 'Plants', plants_path, title: 'List of all plants'
           - if logged_in?
+            %li.dropdown
+              %a.dropdown-toggle{'aria-expanded': 'false', 'aria-haspopup': 'true', 'data-toggle': 'dropdown', href: '#', role: 'button'}
+                Data Samples
+                %span.caret
+              %ul.dropdown-menu
+                %li= link_to 'Plant Samples', plant_samples_path, title: 'List of all plant samples'
             %li= link_to 'Reports', biodiversity_reports_path, title: 'List of all biodiversity reports'
-            %li= link_to 'Samples', plant_samples_path, title: 'List of all plant samples'
             - if current_user.admin?
               %li= link_to 'Users', users_path, title: 'List of all users'
             %li.dropdown
