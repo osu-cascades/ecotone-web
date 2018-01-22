@@ -5,9 +5,6 @@ Rails.application.routes.draw do
   post    'login'   => 'sessions#create'
   delete  'logout'  => 'sessions#destroy'
 
-  get     'plant_samples' => 'plant_samples#index'
-  get     'export'        => 'plant_samples#export'
-
   resources :users
   resources :biodiversity_reports
 
@@ -19,6 +16,8 @@ Rails.application.routes.draw do
 
   resources :password_resets, only: [:new, :create, :edit, :update]
 
+  resources :plant_samples
+  get 'export' => 'plant_samples#export'
   resources :fungi_samples
   resources :lichen_samples
   resources :macroinvertebrate_samples
