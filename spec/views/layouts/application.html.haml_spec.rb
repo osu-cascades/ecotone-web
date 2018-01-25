@@ -23,7 +23,7 @@ RSpec.describe "layouts/application", type: :view do
     it { is_expected.to_not have_link "Log in" }
     it { is_expected.to have_link user.name }
     it { is_expected.to have_link "Log out" }
-    it { is_expected.to have_link "My Account" }
+    it { is_expected.to have_link "My Profile" }
 
   end
 
