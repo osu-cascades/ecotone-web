@@ -1,11 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe PlantSamplesController, type: :controller do
-  describe '#index' do
-    it 'returns http success' do
-      get :index
-      expect(response).to have_http_status(:success)
-    end
+  let(:user) { FactoryGirl.build(:user) }
+
+  before do
+    allow(controller).to receive(:current_user).and_return(user)
   end
 
   describe '#export' do
