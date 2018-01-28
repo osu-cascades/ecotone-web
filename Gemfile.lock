@@ -165,7 +165,7 @@ GEM
     notiffany (0.1.1)
       nenv (~> 0.1)
       shellany (~> 0.0)
-    paperclip (5.1.0)
+    paperclip (5.2.1)
       activemodel (>= 4.2.0)
       activesupport (>= 4.2.0)
       cocaine (~> 0.5.5)
@@ -315,7 +315,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   listen (~> 3.0.5)
-  paperclip (~> 5.1.0)
+  paperclip (~> 5.2.1)
   pg
   poltergeist
   puma (~> 3.0)
