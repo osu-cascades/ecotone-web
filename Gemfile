@@ -40,6 +40,7 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'poltergeist'
   gem 'foreman', '~> 0.84.0'
+  gem 'haml-rails'
 end
 
 group :development do
