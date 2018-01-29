@@ -1,14 +1,19 @@
 FactoryGirl.define do
   factory :mycorrhizal_fungi_sample do
-    collected_on "2018-01-28"
+    collected_on Date.today
     length 1
-    magnification 1
-    vesicle_count 1
-    arbuscule_count 1
-    visible_hyphae false
-    hyphae_coverage 1
-    user_id nil
-    plot_id nil
-    plant_id nil
+    magnification 4
+    vesicle_count 100
+    arbuscule_count 0
+    visible_hyphae true
+    hyphae_coverage 10
+    user
+    plot
+    plant
+
+    trait :without_visible_hyphae do
+      visible_hyphae false
+      hyphae_coverage nil
+    end
   end
 end
