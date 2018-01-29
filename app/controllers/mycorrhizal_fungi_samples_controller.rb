@@ -18,6 +18,7 @@ class MycorrhizalFungiSamplesController < ApplicationController
 
   def create
     @mycorrhizal_fungi_sample = MycorrhizalFungiSample.new(mycorrhizal_fungi_sample_params)
+    @mycorrhizal_fungi_sample.user = current_user
     respond_to do |format|
       if @mycorrhizal_fungi_sample.save
         format.html { redirect_to @mycorrhizal_fungi_sample, notice: 'Mycorrhizal fungi sample was successfully created.' }
