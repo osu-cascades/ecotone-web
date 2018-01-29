@@ -22,7 +22,7 @@ class BiodiversityReportsController < ApplicationController
 
   def create
     @biodiversity_report = BiodiversityReport.new(biodiversity_report_params)
-    @current_user.biodiversity_reports << @biodiversity_report
+    current_user.biodiversity_reports << @biodiversity_report
     if @biodiversity_report.save
       redirect_to biodiversity_reports_path
       flash[:success] = 'Biodiversity report was successfully created.'
