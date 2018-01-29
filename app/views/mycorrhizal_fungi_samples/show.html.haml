@@ -1,0 +1,34 @@
+%p#notice= notice
+%p
+  %strong Collected on:
+  = @mycorrhizal_fungi_sample.collected_on
+%p
+  %strong Length:
+  = @mycorrhizal_fungi_sample.length
+%p
+  %strong Magnification:
+  = @mycorrhizal_fungi_sample.magnification
+%p
+  %strong Vesicle count:
+  = @mycorrhizal_fungi_sample.vesicle_count
+%p
+  %strong Arbuscule count:
+  = @mycorrhizal_fungi_sample.arbuscule_count
+%p
+  %strong Visible hyphae:
+  = @mycorrhizal_fungi_sample.visible_hyphae
+%p
+  %strong Hyphae coverage:
+  = @mycorrhizal_fungi_sample.hyphae_coverage
+%p
+  %strong User:
+  = @mycorrhizal_fungi_sample.user
+%p
+  %strong Plot:
+  = @mycorrhizal_fungi_sample.plot
+%p
+  %strong Plant:
+  = @mycorrhizal_fungi_sample.plant
+= link_to 'Edit', edit_mycorrhizal_fungi_sample_path(@mycorrhizal_fungi_sample)
+|
+= link_to 'Back', mycorrhizal_fungi_samples_path

@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   resources :fungi_samples
   resources :lichen_samples
   resources :macroinvertebrate_samples
+  resources :mycorrhizal_fungi_samples
   resources :non_vascular_plant_samples
   resources :soil_samples
 end

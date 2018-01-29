@@ -1,0 +1,34 @@
+%p#notice= notice
+%h1 Mycorrhizal Fungi Samples
+%table
+  %thead
+    %tr
+      %th Collected on
+      %th Length
+      %th Magnification
+      %th Vesicle count
+      %th Arbuscule count
+      %th Visible hyphae
+      %th Hyphae coverage
+      %th User
+      %th Plot
+      %th Plant
+      %th{:colspan => "3"}
+  %tbody
+    - @mycorrhizal_fungi_samples.each do |mycorrhizal_fungi_sample|
+      %tr
+        %td= mycorrhizal_fungi_sample.collected_on
+        %td= mycorrhizal_fungi_sample.length
+        %td= mycorrhizal_fungi_sample.magnification
+        %td= mycorrhizal_fungi_sample.vesicle_count
+        %td= mycorrhizal_fungi_sample.arbuscule_count
+        %td= mycorrhizal_fungi_sample.visible_hyphae
+        %td= mycorrhizal_fungi_sample.hyphae_coverage
+        %td= mycorrhizal_fungi_sample.user
+        %td= mycorrhizal_fungi_sample.plot
+        %td= mycorrhizal_fungi_sample.plant
+        %td= link_to 'Show', mycorrhizal_fungi_sample
+        %td= link_to 'Edit', edit_mycorrhizal_fungi_sample_path(mycorrhizal_fungi_sample)
+        %td= link_to 'Destroy', mycorrhizal_fungi_sample, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Mycorrhizal Fungi Sample', new_mycorrhizal_fungi_sample_path

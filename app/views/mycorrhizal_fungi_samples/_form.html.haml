@@ -1,0 +1,23 @@
+.row
+  .col-md-6.col-md-offset-3
+    = form_for(@mycorrhizal_fungi_sample) do |form|
+      = form_errors_for(@mycorrhizal_fungi_sample)
+      = form.label :collected_on
+      = form.date_field :collected_on, id: :mycorrhizal_fungi_sample_collected_on, class: 'form-control'
+      = form.label :plot_id, 'Plot'
+      = form.collection_select :plot_id, @plots, :id, :id, include_blank: 'Choose...'
+      = form.label :plant_id, 'Plant'
+      = form.collection_select :plant_id, @plants, :id, :common_name, include_blank: 'Choose...'
+      = form.label :length
+      = form.number_field :length, id: :mycorrhizal_fungi_sample_length, class: 'form-control'
+      = form.label :magnification
+      = form.number_field :magnification, id: :mycorrhizal_fungi_sample_magnification, class: 'form-control'
+      = form.label :vesicle_count
+      = form.number_field :vesicle_count, id: :mycorrhizal_fungi_sample_vesicle_count, class: 'form-control'
+      = form.label :arbuscule_count
+      = form.number_field :arbuscule_count, id: :mycorrhizal_fungi_sample_arbuscule_count, class: 'form-control'
+      = form.label :visible_hyphae
+      = form.check_box :visible_hyphae, id: :mycorrhizal_fungi_sample_visible_hyphae, class: 'form-control'
+      = form.label :hyphae_coverage
+      = form.number_field :hyphae_coverage, id: :mycorrhizal_fungi_sample_hyphae_coverage, class: 'form-control'
+      = form.submit class: 'btn btn-primary'

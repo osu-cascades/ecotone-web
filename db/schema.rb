@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171107080037) do
+ActiveRecord::Schema.define(version: 20180128232955) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,24 @@ ActiveRecord::Schema.define(version: 20171107080037) do
     t.datetime "photo_updated_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "mycorrhizal_fungi_samples", force: :cascade do |t|
+    t.date "collected_on", null: false
+    t.integer "length", null: false
+    t.integer "magnification", null: false
+    t.integer "vesicle_count", null: false
+    t.integer "arbuscule_count", null: false
+    t.boolean "visible_hyphae", null: false
+    t.integer "hyphae_coverage"
+    t.bigint "user_id", null: false
+    t.bigint "plot_id", null: false
+    t.bigint "plant_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["plant_id"], name: "index_mycorrhizal_fungi_samples_on_plant_id"
+    t.index ["plot_id"], name: "index_mycorrhizal_fungi_samples_on_plot_id"
+    t.index ["user_id"], name: "index_mycorrhizal_fungi_samples_on_user_id"
   end
 
   create_table "nonvascular_plant_samples", force: :cascade do |t|
@@ -167,5 +185,8 @@ ActiveRecord::Schema.define(version: 20171107080037) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "mycorrhizal_fungi_samples", "plants"
+  add_foreign_key "mycorrhizal_fungi_samples", "plots"
+  add_foreign_key "mycorrhizal_fungi_samples", "users"
   add_foreign_key "nutrients", "soil_samples"
 end
