@@ -1,5 +1,2 @@
-%h1 Editing Mycorrhizal Fungi Sample
-= render 'form', mycorrhizal_fungi_sample: @mycorrhizal_fungi_sample
-= link_to 'Show', @mycorrhizal_fungi_sample
-|
-= link_to 'Back', mycorrhizal_fungi_samples_path
+- content_for_title('Edit Mycorrhizal Fungi Sample')
+= render partial: 'form'

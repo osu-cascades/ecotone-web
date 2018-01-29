@@ -14,14 +14,17 @@ class MycorrhizalFungiSamplesController < ApplicationController
     @plants = Plant.all
   end
 
-  def edit; end
+  def edit
+    @plots = Plot.all
+    @plants = Plant.all
+  end
 
   def create
     @mycorrhizal_fungi_sample = MycorrhizalFungiSample.new(mycorrhizal_fungi_sample_params)
     @mycorrhizal_fungi_sample.user = current_user
     respond_to do |format|
       if @mycorrhizal_fungi_sample.save
-        format.html { redirect_to @mycorrhizal_fungi_sample, notice: 'Mycorrhizal fungi sample was successfully created.' }
+        format.html { redirect_to @mycorrhizal_fungi_sample, flash: {success: 'Mycorrhizal fungi sample was successfully created.'} }
         format.json { render :show, status: :created, location: @mycorrhizal_fungi_sample }
       else
         @plots = Plot.all
@@ -35,7 +38,7 @@ class MycorrhizalFungiSamplesController < ApplicationController
   def update
     respond_to do |format|
       if @mycorrhizal_fungi_sample.update(mycorrhizal_fungi_sample_params)
-        format.html { redirect_to @mycorrhizal_fungi_sample, notice: 'Mycorrhizal fungi sample was successfully updated.' }
+        format.html { redirect_to @mycorrhizal_fungi_sample, flash: {success: 'Mycorrhizal fungi sample was successfully updated.'} }
         format.json { render :show, status: :ok, location: @mycorrhizal_fungi_sample }
       else
         @plots = Plot.all
@@ -49,7 +52,7 @@ class MycorrhizalFungiSamplesController < ApplicationController
   def destroy
     @mycorrhizal_fungi_sample.destroy
     respond_to do |format|
-      format.html { redirect_to mycorrhizal_fungi_samples_url, notice: 'Mycorrhizal fungi sample was successfully destroyed.' }
+      format.html { redirect_to mycorrhizal_fungi_samples_url, flash: {success: 'Mycorrhizal fungi sample was successfully destroyed.'} }
       format.json { head :no_content }
     end
   end

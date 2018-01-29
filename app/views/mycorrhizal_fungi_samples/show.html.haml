@@ -1,34 +1,38 @@
-%p#notice= notice
-%p
-  %strong Collected on:
-  = @mycorrhizal_fungi_sample.collected_on
-%p
-  %strong Length:
-  = @mycorrhizal_fungi_sample.length
-%p
-  %strong Magnification:
-  = @mycorrhizal_fungi_sample.magnification
-%p
-  %strong Vesicle count:
-  = @mycorrhizal_fungi_sample.vesicle_count
-%p
-  %strong Arbuscule count:
-  = @mycorrhizal_fungi_sample.arbuscule_count
-%p
-  %strong Visible hyphae:
-  = @mycorrhizal_fungi_sample.visible_hyphae
-%p
-  %strong Hyphae coverage:
-  = @mycorrhizal_fungi_sample.hyphae_coverage
-%p
-  %strong User:
-  = @mycorrhizal_fungi_sample.user
-%p
-  %strong Plot:
-  = @mycorrhizal_fungi_sample.plot
-%p
-  %strong Plant:
-  = @mycorrhizal_fungi_sample.plant
-= link_to 'Edit', edit_mycorrhizal_fungi_sample_path(@mycorrhizal_fungi_sample)
-|
-= link_to 'Back', mycorrhizal_fungi_samples_path
+- content_for_title("Mycorrhizal Fungi Sample ##{@mycorrhizal_fungi_sample.id}")
+- content_for(:subnav) do
+  = link_to '« Back to Mycorrhizal fungi samples', mycorrhizal_fungi_samples_path, class: 'btn btn-primary', title: 'Mycorrhizal fungi samples'
+  - if current_user&.admin?
+    .btn-group
+      = link_to 'Edit', edit_mycorrhizal_fungi_sample_path(@mycorrhizal_fungi_sample), class: 'btn', title: 'Edit sample'
+      = link_to 'Delete', @plant, method: :delete, data: { confirm: "Delete mycorrhizal fungi sample #{@mycorrhizal_fungi_sample.id}?" }, class: 'btn btn-danger', title: 'Delete sample'
+%section
+  .col-md-5
+    %h2 Photo
+    %p None
+  .col-md-7
+    %h2 Sample Information
+    %table.table
+      %thead
+        %th{colspan: '2'}= @mycorrhizal_fungi_sample
+      %tbody
+        %tr
+          %th.col-md-4{scope: 'row'} Collection date
+          %td= @mycorrhizal_fungi_sample.collected_on
+        %tr
+          %th.col-md-4{scope: 'row'} Sample length
+          %td= @mycorrhizal_fungi_sample.length
+        %tr
+          %th.col-md-4{scope: 'row'} Magnification
+          %td= @mycorrhizal_fungi_sample.magnification
+        %tr
+          %th.col-md-4{scope: 'row'} Vesicle Count
+          %td= @mycorrhizal_fungi_sample.vesicle_count
+        %tr
+          %th.col-md-4{scope: 'row'} Arbuscule Count
+          %td= @mycorrhizal_fungi_sample.arbuscule_count
+        %tr
+          %th.col-md-4{scope: 'row'} Visible Hyphae
+          %td= @mycorrhizal_fungi_sample.visible_hyphae ? 'Yes' : 'No'
+        %tr
+          %th.col-md-4{scope: 'row'} Hyphae Coverage
+          %td= @mycorrhizal_fungi_sample.hyphae_coverage || 'unmeasured'

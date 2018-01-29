@@ -11,7 +11,7 @@
       = form.label :length
       = form.number_field :length, id: :mycorrhizal_fungi_sample_length, class: 'form-control'
       = form.label :magnification
-      = form.select :magnification, options_for_select(MycorrhizalFungiSample::MAGNIFICATIONS), {include_blank: 'Choose...'}, id: :mycorrhizal_fungi_sample_magnification, class: 'form-control'
+      = form.select :magnification, options_for_select(MycorrhizalFungiSample::MAGNIFICATIONS, @mycorrhizal_fungi_sample.magnification), {include_blank: 'Choose...'}, id: :mycorrhizal_fungi_sample_magnification, class: 'form-control'
       = form.label :vesicle_count
       = form.number_field :vesicle_count, id: :mycorrhizal_fungi_sample_vesicle_count, class: 'form-control'
       = form.label :arbuscule_count
