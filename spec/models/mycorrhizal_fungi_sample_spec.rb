@@ -5,9 +5,8 @@ RSpec.describe MycorrhizalFungiSample, type: :model do
   subject(:mf_sample) { build :mycorrhizal_fungi_sample }
 
   describe 'validations' do
-    it { is_expected.to validate_presence_of(:collected_on) }
+    it { is_expected.to validate_presence_of(:collected_on).with_message("Collection date can't be blank") }
     it { is_expected.to validate_numericality_of(:length).only_integer.is_greater_than(0) }
-    it { is_expected.to validate_numericality_of(:magnification).only_integer }
     it { is_expected.to validate_inclusion_of(:magnification).in_array([4, 10, 40]) }
     it { is_expected.to validate_numericality_of(:vesicle_count).only_integer.is_greater_than_or_equal_to(0) }
     it { is_expected.to validate_numericality_of(:arbuscule_count).only_integer.is_greater_than_or_equal_to(0) }
