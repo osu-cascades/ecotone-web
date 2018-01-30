@@ -18,39 +18,4 @@
       = form.text_field :diversity_index, class: 'form-control'
       = form.label :photo
       = form.file_field :photo, class: 'form-control'
-      %hr
-      %h3 Soil Sample
-      %p= link_to_toggle_sample_fields_for @biodiversity_report.soil_sample
-      #soil_sample_fields.collapse{ class: visibility_class(@biodiversity_report.soil_sample) }
-        = form.fields_for :soil_sample do |fields|
-          = render partial: 'soil_sample_fields', locals: { f: fields }
-      %hr
-      %h3 Fungi Sample
-      %p= link_to_toggle_sample_fields_for @biodiversity_report.fungi_sample
-      #fungi_sample_fields.collapse{ class: visibility_class(@biodiversity_report.fungi_sample) }
-        = form.fields_for :fungi_sample do |fields|
-          = render partial: 'fungi_sample_fields', locals: { f: fields }
-      %hr
-      %h3 Lichen Sample
-      %p= link_to_toggle_sample_fields_for @biodiversity_report.lichen_sample
-      #lichen_sample_fields.collapse{ class: visibility_class(@biodiversity_report.lichen_sample) }
-        = form.fields_for :lichen_sample do |fields|
-          = render partial: 'lichen_sample_fields', locals: { f: fields }
-      %hr
-      %h3 Non-vascular Plant Sample
-      %p= link_to_toggle_sample_fields_for @biodiversity_report.nonvascular_plant_sample
-      #nonvascular_plant_sample_fields.collapse{ class: visibility_class(@biodiversity_report.nonvascular_plant_sample) }
-        = form.fields_for :nonvascular_plant_sample do |fields|
-          = render partial: 'nonvascular_plant_sample_fields', locals: { f: fields }
-      %hr
-      %h3 Macroinvertebrate Samples
-      = form.fields_for :macroinvertebrate_samples do |macroinvertebrate_fields|
-        = render partial: 'macroinvertebrate_sample_fields', locals: { f: macroinvertebrate_fields }
-      %p= link_to_add_fields 'Add macroinvertebrate sample', form, :macroinvertebrate_samples
-      %hr
-      %h3 Plant Samples
-      = form.fields_for :plant_samples do |plant_fields|
-        = render partial: 'plant_sample_fields', locals: { f: plant_fields }
-      %p= link_to_add_fields 'Add plant sample', form, :plant_samples
-      %hr
       = form.submit class: 'btn btn-primary'
