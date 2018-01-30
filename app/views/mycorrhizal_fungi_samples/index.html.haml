@@ -1,9 +1,32 @@
 - content_for_title('Mycorrhizal Fungi Samples')
 - content_for(:subnav) do
   = link_to('Add Mycorrhizal Fungi Sample', new_mycorrhizal_fungi_sample_path, class: 'btn btn-primary', title: 'Add a new mycorrhizal fungi sample')
-%ul.indexing
-  - @mycorrhizal_fungi_samples.each do |sample|
-    %li
-      %h3= link_to "Sample ##{sample.id}", sample, title: "Details of mycorrhizal fungi sample #{sample.id}"
-      %h4= sample.to_s
-      %p= link_to('edit', edit_mycorrhizal_fungi_sample_path(sample), title: 'Edit sample') if current_user&.admin?
+
+%section
+  %h2 Sample Information
+  %table.table
+    %thead
+      %tr
+        %th{scope: 'col'} id
+        %th{scope: 'col'} Collection date
+        %th{scope: 'col'} Sample length (cm)
+        %th{scope: 'col'} Magnification
+        %th{scope: 'col'} Vesicle count
+        %th{scope: 'col'} Arbuscule count
+        %th{scope: 'col'} Visible hyphae?
+        %th{scope: 'col'} Hyphae coverage
+        %th{scope: 'col'}
+    %tbody
+      - @mycorrhizal_fungi_samples.each do |sample|
+        %tr
+          %td= sample.id
+          %td= sample.collected_on
+          %td= "#{sample.length}cm"
+          %td= sample.magnification
+          %td= sample.vesicle_count
+          %td= sample.arbuscule_count
+          %td= sample.visible_hyphae ? 'Yes' : 'No'
+          %td= sample.hyphae_coverage ? "#{sample.hyphae_coverage}%" : 'unmeasured'
+          %td
+            = link_to 'view', sample, title: "Details of mycorrhizal fungi sample #{sample.id}"
+            = link_to('edit', edit_mycorrhizal_fungi_sample_path(sample), title: 'Edit sample') if current_user&.admin?
