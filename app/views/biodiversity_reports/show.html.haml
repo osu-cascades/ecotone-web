@@ -35,14 +35,6 @@
     - else
       %p No lichen sample
     %hr
-    %h3 Non-vascular Plant Sample
-    - if @biodiversity_report.nonvascular_plant_sample
-      %p Location within plot: #{@biodiversity_report.nonvascular_plant_sample.location_within_plot}
-      %p Description: #{@biodiversity_report.nonvascular_plant_sample.description}
-      = image_tag @biodiversity_report.nonvascular_plant_sample.photo.url(:default), alt: 'Photo of non-vascular plant sample'
-    - else
-      %p No non-vascular plant sample
-    %hr
     %h3 Macroinvertebrate Samples
     = render(@biodiversity_report.macroinvertebrate_samples) || '<p>No macroinvertebrate samples</p>'.html_safe
     %hr

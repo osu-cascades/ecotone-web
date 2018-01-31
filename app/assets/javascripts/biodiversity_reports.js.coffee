@@ -18,14 +18,6 @@ $(document).on "turbolinks:load", ->
     $(@).find('#biodiversity_report_soil_sample_attributes__destroy').val('1')
     $('#lnk-toggle-soil-sample-fields').text('Add soil sample')
 
-  $('#fungi_sample_fields').on 'shown.bs.collapse', (event) ->
-    $('#lnk-toggle-fungi-sample-fields').text('Omit fungi sample')
-
-  $('#fungi_sample_fields').on 'hidden.bs.collapse', (event) ->
-    $(@).find(':input:not([type=hidden])').val('')
-    $(@).find('#biodiversity_report_fungi_sample_attributes__destroy').val('1')
-    $('#lnk-toggle-fungi-sample-fields').text('Add fungi sample')
-
   $('#lichen_sample_fields').on 'shown.bs.collapse', (event) ->
     $('#lnk-toggle-lichen-sample-fields').text('Omit lichen sample')
 
@@ -34,10 +26,3 @@ $(document).on "turbolinks:load", ->
     $(@).find('#biodiversity_report_lichen_sample_attributes__destroy').val('1')
     $('#lnk-toggle-lichen-sample-fields').text('Add lichen sample')
 
-  $('#nonvascular_plant_sample_fields').on 'shown.bs.collapse', (event) ->
-    $('#lnk-toggle-nonvascular-plant-sample-fields').text('Omit non-vascular plant sample')
-
-  $('#nonvascular_plant_sample_fields').on 'hidden.bs.collapse', (event) ->
-    $(@).find(':input:not([type=hidden])').val('')
-    $(@).find('#biodiversity_report_nonvascular_plant_sample_attributes__destroy').val('1')
-    $('#lnk-toggle-nonvascular-plant-sample-fields').text('Add non-vascular plant sample')
