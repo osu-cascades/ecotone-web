@@ -1,0 +1,32 @@
+- content_for_title("Fungi Sample ##{@fungi_sample.id}")
+- content_for(:subnav) do
+  = link_to '« Back to Fungi samples', fungi_samples_path, class: 'btn btn-primary', title: 'Fungi samples'
+  - if current_user&.admin?
+    .btn-group
+      = link_to 'Edit', edit_fungi_sample_path(@fungi_sample), class: 'btn', title: 'Edit sample'
+      = link_to 'Delete', @fungi_sample, method: :delete, data: { confirm: "Delete fungi sample #{@fungi_sample.id}?" }, class: 'btn btn-danger', title: 'Delete sample'
+%section
+  .col-md-5
+    %h2 Photo
+    = image_tag @fungi_sample.photo.url(:default), alt: "Photo of #{@fungi_sample}"
+  .col-md-7
+    %h2 Sample Information
+    %table.table
+      %thead
+        %th{colspan: '2'}= @fungi_sample
+      %tbody
+        %tr
+          %th.col-md-4{scope: 'row'} Collection date
+          %td= @fungi_sample.collected_on
+        %tr
+          %th.col-md-4{scope: 'row'} Plot
+          %td= @fungi_sample.plot
+        %tr
+          %th.col-md-4{scope: 'row'} Location within plot
+          %td= @fungi_sample.location_within_plot
+        %tr
+          %th.col-md-4{scope: 'row'} Size
+          %td= @fungi_sample.size
+        %tr
+          %th.col-md-4{scope: 'row'} Description
+          %td= @fungi_sample.description

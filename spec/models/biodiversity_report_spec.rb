@@ -38,8 +38,6 @@ RSpec.describe BiodiversityReport, type: :model do
     it { is_expected.to belong_to(:plot) }
     it { is_expected.to have_one(:soil_sample) }
     it { is_expected.to accept_nested_attributes_for(:soil_sample).allow_destroy(true) }
-    it { is_expected.to have_one(:fungi_sample) }
-    it { is_expected.to accept_nested_attributes_for(:fungi_sample).allow_destroy(true) }
     it { is_expected.to have_one(:lichen_sample) }
     it { is_expected.to accept_nested_attributes_for(:lichen_sample).allow_destroy(true) }
     it { is_expected.to have_one(:nonvascular_plant_sample) }
@@ -57,13 +55,11 @@ RSpec.describe BiodiversityReport, type: :model do
 
     it 'destroys associated samples when destroyed' do
       create(:soil_sample, biodiversity_report: report)
-      create(:fungi_sample, biodiversity_report: report)
       create(:lichen_sample, biodiversity_report: report)
       create(:nonvascular_plant_sample, biodiversity_report: report)
       create(:macroinvertebrate_sample, biodiversity_report: report)
       create(:plant_sample, biodiversity_report: report)
       expect { report.destroy }.to change { SoilSample.count &&
-                                            FungiSample.count &&
                                             LichenSample.count &&
                                             NonvascularPlantSample.count &&
                                             MacroinvertebrateSample.count &&

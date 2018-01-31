@@ -61,7 +61,6 @@ class BiodiversityReportsController < ApplicationController
 
   def build_samples_unless_exist
     @biodiversity_report.build_soil_sample unless @biodiversity_report.soil_sample
-    @biodiversity_report.build_fungi_sample unless @biodiversity_report.fungi_sample
     @biodiversity_report.build_lichen_sample unless @biodiversity_report.lichen_sample
     @biodiversity_report.build_nonvascular_plant_sample unless @biodiversity_report.nonvascular_plant_sample
   end
@@ -76,9 +75,6 @@ class BiodiversityReportsController < ApplicationController
 
       soil_sample_attributes: [:biodiversity_report_id, :_destroy, :id,
         :collection_method, :ph_level, :temperature, :moisture],
-
-      fungi_sample_attributes: [:biodiversity_report_id, :_destroy, :id,
-        :location_within_plot, :size, :description, :photo],
 
       lichen_sample_attributes: [:biodiversity_report_id, :_destroy, :id,
         :location_within_plot, :description, :photo],
