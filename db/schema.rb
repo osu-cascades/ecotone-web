@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180131045633) do
+ActiveRecord::Schema.define(version: 20180131140104) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,15 +95,19 @@ ActiveRecord::Schema.define(version: 20180131045633) do
   end
 
   create_table "nonvascular_plant_samples", force: :cascade do |t|
-    t.string "location_within_plot"
-    t.string "description"
+    t.date "collected_on", null: false
+    t.bigint "plot_id", null: false
+    t.string "location_within_plot", null: false
+    t.string "description", null: false
     t.string "photo_file_name"
     t.string "photo_content_type"
     t.integer "photo_file_size"
     t.datetime "photo_updated_at"
-    t.integer "biodiversity_report_id"
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["plot_id"], name: "index_nonvascular_plant_samples_on_plot_id"
+    t.index ["user_id"], name: "index_nonvascular_plant_samples_on_user_id"
   end
 
   create_table "nutrients", force: :cascade do |t|
@@ -194,5 +198,7 @@ ActiveRecord::Schema.define(version: 20180131045633) do
   add_foreign_key "mycorrhizal_fungi_samples", "plants"
   add_foreign_key "mycorrhizal_fungi_samples", "plots"
   add_foreign_key "mycorrhizal_fungi_samples", "users"
+  add_foreign_key "nonvascular_plant_samples", "plots"
+  add_foreign_key "nonvascular_plant_samples", "users"
   add_foreign_key "nutrients", "soil_samples"
 end
