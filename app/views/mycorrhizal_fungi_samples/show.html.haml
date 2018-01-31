@@ -4,7 +4,7 @@
   - if current_user&.admin?
     .btn-group
       = link_to 'Edit', edit_mycorrhizal_fungi_sample_path(@mycorrhizal_fungi_sample), class: 'btn', title: 'Edit sample'
-      = link_to 'Delete', @plant, method: :delete, data: { confirm: "Delete mycorrhizal fungi sample #{@mycorrhizal_fungi_sample.id}?" }, class: 'btn btn-danger', title: 'Delete sample'
+      = link_to 'Delete', @mycorrhizal_fungi_sample, method: :delete, data: { confirm: "Delete mycorrhizal fungi sample #{@mycorrhizal_fungi_sample.id}?" }, class: 'btn btn-danger', title: 'Delete sample'
 %section
   .col-md-5
     %h2 Photo
