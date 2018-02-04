@@ -7,9 +7,10 @@ null: false
     end
     reversible do |direction|
       direction.up do
-        LichenSample.includes(:biodiversity_report).each do |ls|
-          unless ls.biodiversity_report.nil?
-            ls.biodiversity_reports << ls.biodiversity_report
+        LichenSample.all.each do |ls|
+          biodiversity_report = BiodiversityReport.find(ls.biodiversity_report_id)
+          if biodiversity_report
+            ls.biodiversity_reports << biodiversity_report
           end
         end
       end
