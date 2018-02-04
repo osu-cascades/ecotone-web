@@ -8,11 +8,12 @@ class AddCollectedOnPlotAndUserToLichenSample < ActiveRecord::Migration[5.1]
       direction.up do
         # Initialize new field values in existing records, using values from
         # the the associated BiodiversityReport.
-        LichenSample.includes(:biodiversity_report).each do |ls|
-          unless ls.biodiversity_report.nil?
-            ls.collected_on = ls.biodiversity_report.measured_on
-            ls.user = ls.biodiversity_report.author
-            ls.plot = ls.biodiversity_report.plot
+        LichenSample.all.each do |ls|
+          biodiversity_report = BiodiversityReport.find(ls.biodiversity_report_id)
+          if biodiversity_report
+            ls.collected_on = biodiversity_report.measured_on
+            ls.user = biodiversity_report.author
+            ls.plot = biodiversity_report.plot
             ls.save!
           end
         end
