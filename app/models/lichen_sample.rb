@@ -1,6 +1,9 @@
 class LichenSample < ApplicationRecord
   belongs_to :biodiversity_report
+  belongs_to :plot
+  belongs_to :user
 
+  validates :collected_on, presence: true
   validates :location_within_plot, presence: true
   validates :description, presence: true
 
@@ -8,4 +11,5 @@ class LichenSample < ApplicationRecord
   validates_attachment_content_type :photo, content_type: /\Aimage/
 
   ignores_present_attributes exclude: 'biodiversity_report_id'
+
 end
