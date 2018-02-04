@@ -2,6 +2,7 @@ class LichenSample < ApplicationRecord
   belongs_to :biodiversity_report
   belongs_to :plot
   belongs_to :user
+  has_and_belongs_to_many :biodiversity_reports
 
   validates :collected_on, presence: true
   validates :location_within_plot, presence: true

@@ -40,6 +40,7 @@ RSpec.describe BiodiversityReport, type: :model do
     it { is_expected.to accept_nested_attributes_for(:soil_sample).allow_destroy(true) }
     it { is_expected.to have_one(:lichen_sample) }
     it { is_expected.to accept_nested_attributes_for(:lichen_sample).allow_destroy(true) }
+    it { is_expected.to have_and_belong_to_many(:lichen_samples) }
     it { is_expected.to have_many(:macroinvertebrate_samples) }
     it { is_expected.to accept_nested_attributes_for(:macroinvertebrate_samples).allow_destroy(true) }
     it { is_expected.to have_many(:plant_samples) }

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180204195852) do
+ActiveRecord::Schema.define(version: 20180204205003) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,13 @@ ActiveRecord::Schema.define(version: 20180204195852) do
     t.integer "plot_id"
     t.float "diversity_index"
     t.float "species_evenness"
+  end
+
+  create_table "biodiversity_reports_lichen_samples", id: false, force: :cascade do |t|
+    t.bigint "biodiversity_report_id", null: false
+    t.bigint "lichen_sample_id", null: false
+    t.index ["biodiversity_report_id"], name: "index_biodiversity_reports_lichen_samples_on_bd_report_id"
+    t.index ["lichen_sample_id"], name: "index_biodiversity_reports_lichen_samples_on_lichen_sample_id"
   end
 
   create_table "fungi_samples", force: :cascade do |t|
@@ -198,6 +205,8 @@ ActiveRecord::Schema.define(version: 20180204195852) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "biodiversity_reports_lichen_samples", "biodiversity_reports"
+  add_foreign_key "biodiversity_reports_lichen_samples", "lichen_samples"
   add_foreign_key "fungi_samples", "plots"
   add_foreign_key "fungi_samples", "users"
   add_foreign_key "lichen_samples", "plots"

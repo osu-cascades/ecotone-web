@@ -8,6 +8,8 @@ class BiodiversityReport < ApplicationRecord
   has_one :lichen_sample
   accepts_nested_attributes_for :lichen_sample, allow_destroy: true, reject_if: :all_blank
 
+  has_and_belongs_to_many :lichen_samples
+
   has_many :macroinvertebrate_samples
   accepts_nested_attributes_for :macroinvertebrate_samples, allow_destroy: true, reject_if: :all_blank
 
