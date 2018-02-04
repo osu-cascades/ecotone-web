@@ -1,5 +1,4 @@
 class LichenSample < ApplicationRecord
-  belongs_to :biodiversity_report
   belongs_to :plot
   belongs_to :user
   has_and_belongs_to_many :biodiversity_reports
@@ -10,7 +9,5 @@ class LichenSample < ApplicationRecord
 
   has_attached_file :photo, default_url: 'missing.png', styles: { default: '200x200#', thumbnail: '50x50#' }
   validates_attachment_content_type :photo, content_type: /\Aimage/
-
-  ignores_present_attributes exclude: 'biodiversity_report_id'
 
 end

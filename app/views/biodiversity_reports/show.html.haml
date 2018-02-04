@@ -27,13 +27,8 @@
     - else
       %p No soil sample
     %hr
-    %h3 Lichen Sample
-    - if @biodiversity_report.lichen_sample
-      %p Location within plot: #{@biodiversity_report.lichen_sample.location_within_plot}
-      %p Description: #{@biodiversity_report.lichen_sample.description}
-      = image_tag @biodiversity_report.lichen_sample.photo.url(:default), alt: 'Photo of lichen sample'
-    - else
-      %p No lichen sample
+    %h3 Lichen Samples
+    = render(@biodiversity_report.lichen_samples) || '<p>No lichen samples</p>'.html_safe
     %hr
     %h3 Macroinvertebrate Samples
     = render(@biodiversity_report.macroinvertebrate_samples) || '<p>No macroinvertebrate samples</p>'.html_safe
