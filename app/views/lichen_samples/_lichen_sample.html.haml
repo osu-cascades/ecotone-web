@@ -3,4 +3,4 @@
 %p Collected by: #{lichen_sample.user}
 %p Location within plot: #{lichen_sample.location_within_plot}
 %p Description: #{lichen_sample.description}
-= image_tag @biodiversity_report.lichen_sample.photo.url(:default), alt: 'Photo of lichen sample'
+= image_tag lichen_sample.photo.url(:default), alt: 'Photo of lichen sample'

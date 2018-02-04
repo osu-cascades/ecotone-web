@@ -1,0 +1,24 @@
+- content_for_title('Lichen Samples')
+- content_for(:subnav) do
+  = link_to('Add Lichen Sample', new_lichen_sample_path, class: 'btn btn-primary', title: 'Add a new lichen sample')
+
+%section
+  %h2 Sample Information
+  %table.table
+    %thead
+      %tr
+        %th{scope: 'col'} Id
+        %th{scope: 'col'} Collection date
+        %th{scope: 'col'} Location within plot
+        %th{scope: 'col'} Description
+        %th{scope: 'col'}
+    %tbody
+      - @lichen_samples.each do |sample|
+        %tr
+          %td= sample.id
+          %td= sample.collected_on
+          %td= sample.location_within_plot
+          %td= sample.description
+          %td
+            = link_to 'view', sample, title: "Details of lichen sample #{sample.id}"
+            = link_to('edit', edit_lichen_sample_path(sample), title: 'Edit sample') if current_user&.admin?

@@ -23,4 +23,8 @@ RSpec.describe LichenSample, type: :model do
     it { is_expected.to have_and_belong_to_many(:biodiversity_reports) }
   end
 
+  it 'has a string representation consisting of its name' do
+    expect(lichen_sample.to_s).to eq("#{lichen_sample.plot} on #{lichen_sample.collected_on} by #{lichen_sample.user}")
+  end
+
 end
