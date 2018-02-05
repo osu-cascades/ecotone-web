@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180207135435) do
+ActiveRecord::Schema.define(version: 20180209151118) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -215,6 +215,29 @@ ActiveRecord::Schema.define(version: 20180207135435) do
     t.index ["user_id"], name: "index_species_variation_observations_on_user_id"
   end
 
+  create_table "tree_samples", force: :cascade do |t|
+    t.date "collected_on", null: false
+    t.bigint "plot_id"
+    t.bigint "user_id"
+    t.bigint "plant_id"
+    t.integer "tag_number", null: false
+    t.integer "growth_stage", null: false
+    t.float "dbh", null: false
+    t.float "lower_canopy_height"
+    t.float "upper_canopy_height"
+    t.float "latitude"
+    t.float "longitude"
+    t.string "photo_file_name"
+    t.string "photo_content_type"
+    t.integer "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["plant_id"], name: "index_tree_samples_on_plant_id"
+    t.index ["plot_id"], name: "index_tree_samples_on_plot_id"
+    t.index ["user_id"], name: "index_tree_samples_on_user_id"
+  end
+
   create_table "users", id: :serial, force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -242,4 +265,7 @@ ActiveRecord::Schema.define(version: 20180207135435) do
   add_foreign_key "species_variation_observations", "plants"
   add_foreign_key "species_variation_observations", "plots"
   add_foreign_key "species_variation_observations", "users"
+  add_foreign_key "tree_samples", "plants"
+  add_foreign_key "tree_samples", "plots"
+  add_foreign_key "tree_samples", "users"
 end

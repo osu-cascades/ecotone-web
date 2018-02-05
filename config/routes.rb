@@ -25,4 +25,5 @@ Rails.application.routes.draw do
   resources :nonvascular_plant_samples
   resources :soil_samples
   resources :species_variation_observations
+  resources :tree_samples
 end
