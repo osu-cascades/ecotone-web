@@ -1,0 +1,43 @@
+%h1 Listing tree_samples
+
+%table
+  %thead
+    %tr
+      %th Collected on
+      %th Plot
+      %th User
+      %th Plant
+      %th Tag number
+      %th Growth stage
+      %th Dbh
+      %th Lower canopy height
+      %th Upper canopy height
+      %th Latitude
+      %th Longitude
+      %th Photo
+      %th
+      %th
+      %th
+
+  %tbody
+    - @tree_samples.each do |tree_sample|
+      %tr
+        %td= tree_sample.collected_on
+        %td= tree_sample.plot
+        %td= tree_sample.user
+        %td= tree_sample.plant
+        %td= tree_sample.tag_number
+        %td= tree_sample.growth_stage
+        %td= tree_sample.dbh
+        %td= tree_sample.lower_canopy_height
+        %td= tree_sample.upper_canopy_height
+        %td= tree_sample.latitude
+        %td= tree_sample.longitude
+        %td= tree_sample.photo
+        %td= link_to 'Show', tree_sample
+        %td= link_to 'Edit', edit_tree_sample_path(tree_sample)
+        %td= link_to 'Destroy', tree_sample, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Tree sample', new_tree_sample_path

@@ -1,0 +1,46 @@
+= form_for @tree_sample do |f|
+  - if @tree_sample.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@tree_sample.errors.count, "error")} prohibited this tree_sample from being saved:"
+      %ul
+        - @tree_sample.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :collected_on
+    = f.date_select :collected_on
+  .field
+    = f.label :plot
+    = f.text_field :plot
+  .field
+    = f.label :user
+    = f.text_field :user
+  .field
+    = f.label :plant
+    = f.text_field :plant
+  .field
+    = f.label :tag_number
+    = f.number_field :tag_number
+  .field
+    = f.label :growth_stage
+    = f.number_field :growth_stage
+  .field
+    = f.label :dbh
+    = f.text_field :dbh
+  .field
+    = f.label :lower_canopy_height
+    = f.text_field :lower_canopy_height
+  .field
+    = f.label :upper_canopy_height
+    = f.text_field :upper_canopy_height
+  .field
+    = f.label :latitude
+    = f.text_field :latitude
+  .field
+    = f.label :longitude
+    = f.text_field :longitude
+  .field
+    = f.label :photo
+    = f.text_field :photo
+  .actions
+    = f.submit 'Save'

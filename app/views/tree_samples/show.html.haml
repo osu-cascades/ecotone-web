@@ -1,0 +1,42 @@
+%p#notice= notice
+
+%p
+  %b Collected on:
+  = @tree_sample.collected_on
+%p
+  %b Plot:
+  = @tree_sample.plot
+%p
+  %b User:
+  = @tree_sample.user
+%p
+  %b Plant:
+  = @tree_sample.plant
+%p
+  %b Tag number:
+  = @tree_sample.tag_number
+%p
+  %b Growth stage:
+  = @tree_sample.growth_stage
+%p
+  %b Dbh:
+  = @tree_sample.dbh
+%p
+  %b Lower canopy height:
+  = @tree_sample.lower_canopy_height
+%p
+  %b Upper canopy height:
+  = @tree_sample.upper_canopy_height
+%p
+  %b Latitude:
+  = @tree_sample.latitude
+%p
+  %b Longitude:
+  = @tree_sample.longitude
+%p
+  %b Photo:
+  = @tree_sample.photo
+
+= link_to 'Edit', edit_tree_sample_path(@tree_sample)
+\|
+= link_to 'Back', tree_samples_path

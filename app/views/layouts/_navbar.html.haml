@@ -35,7 +35,8 @@
                 / %li= link_to 'Soil', soil_samples_path, title: 'List of all plant samples'
                 %li.divider
                 %li= link_to 'Species Variation', species_variation_observations_path, title: 'Species Variation Observations'
-
+                %li.divider
+                %li= link_to 'Trees', tree_samples_path, title: 'Tree samples'
             %li= link_to 'Biodiversity Reports', biodiversity_reports_path, title: 'Biodiversity reports'
             - if current_user.admin?
               %li= link_to 'Users', users_path, title: 'List of all users'
