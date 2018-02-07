@@ -1,0 +1,30 @@
+- content_for_title('Species Variation Observations')
+- content_for(:subnav) do
+  = link_to('Add Species Variation Observation', new_species_variation_observation_path, class: 'btn btn-primary', title: 'Add a new species variation observation')
+
+%section
+  %h2 Observations
+  %table.table
+    %thead
+      %tr
+        %th{scope: 'col'} Id
+        %th{scope: 'col'} Observation date
+        %th{scope: 'col'} Plot
+        %th{scope: 'col'} Plant
+        %th{scope: 'col'} Average Height
+        %th{scope: 'col'} Average Width
+        %th{scope: 'col'} Qualitative Observation
+        %th{scope: 'col'}
+    %tbody
+      - @species_variation_observations.each do |o|
+        %tr
+          %td= o.id
+          %td= o.observed_on
+          %td= o.plot
+          %td= o.plant
+          %td= o.average_height
+          %td= o.average_width
+          %td= o.description
+          %td
+            = link_to 'view', o, title: "Details of species variation observation #{o.id}"
+            = link_to('edit', edit_species_variation_observation_path(o), title: 'Edit observation') if current_user&.admin?

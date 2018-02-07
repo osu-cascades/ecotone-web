@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180204213123) do
+ActiveRecord::Schema.define(version: 20180207022622) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -192,6 +192,25 @@ ActiveRecord::Schema.define(version: 20180204213123) do
     t.integer "collection_method"
   end
 
+  create_table "species_variation_observations", force: :cascade do |t|
+    t.date "observed_on", null: false
+    t.bigint "user_id", null: false
+    t.bigint "plot_id", null: false
+    t.bigint "plant_id", null: false
+    t.float "average_height", null: false
+    t.float "average_width", null: false
+    t.string "description"
+    t.string "photo_file_name"
+    t.string "photo_content_type"
+    t.integer "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["plant_id"], name: "index_species_variation_observations_on_plant_id"
+    t.index ["plot_id"], name: "index_species_variation_observations_on_plot_id"
+    t.index ["user_id"], name: "index_species_variation_observations_on_user_id"
+  end
+
   create_table "users", id: :serial, force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -216,4 +235,7 @@ ActiveRecord::Schema.define(version: 20180204213123) do
   add_foreign_key "nonvascular_plant_samples", "plots"
   add_foreign_key "nonvascular_plant_samples", "users"
   add_foreign_key "nutrients", "soil_samples"
+  add_foreign_key "species_variation_observations", "plants"
+  add_foreign_key "species_variation_observations", "plots"
+  add_foreign_key "species_variation_observations", "users"
 end
