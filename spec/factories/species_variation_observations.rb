@@ -1,12 +1,12 @@
 FactoryGirl.define do
   factory :species_variation_observation do
-    observed_on "2018-02-06"
-    user nil
-    plot nil
-    plant nil
+    observed_on Date.today
+    user
+    plot
+    plant
     average_height 1.5
     average_width 1.5
-    description "MyString"
-    photo ""
+    description 'Fake description'
+    photo ''
   end
 end
