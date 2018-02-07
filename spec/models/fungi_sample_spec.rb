@@ -5,6 +5,7 @@ RSpec.describe FungiSample, type: :model do
 
   context 'when created' do
     it { is_expected.to have_attributes(
+      collected_on: Date.today,
       location_within_plot: 'on a rock',
       size: 1.5,
       description: 'description of fungi sample'
