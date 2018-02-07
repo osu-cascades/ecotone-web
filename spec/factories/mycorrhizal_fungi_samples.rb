@@ -10,6 +10,7 @@ FactoryGirl.define do
     user
     plot
     plant
+    photo ''
 
     trait :without_visible_hyphae do
       visible_hyphae false

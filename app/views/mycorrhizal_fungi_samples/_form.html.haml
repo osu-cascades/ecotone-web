@@ -20,4 +20,6 @@
       = form.check_box :visible_hyphae, id: :mycorrhizal_fungi_sample_visible_hyphae, class: 'form-control'
       = form.label :hyphae_coverage
       = form.number_field :hyphae_coverage, id: :mycorrhizal_fungi_sample_hyphae_coverage, class: 'form-control'
+      = form.label :photo
+      = form.file_field :photo, class: 'form-control'
       = form.submit class: 'btn btn-primary'
