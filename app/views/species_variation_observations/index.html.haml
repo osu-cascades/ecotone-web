@@ -1,35 +1,30 @@
-%h1 Listing species_variation_observations
+- content_for_title('Species Variation Observations')
+- content_for(:subnav) do
+  = link_to('Add Species Variation Observation', new_species_variation_observation_path, class: 'btn btn-primary', title: 'Add a new species variation observation')
 
-%table
-  %thead
-    %tr
-      %th Observed on
-      %th User
-      %th Plot
-      %th Plant
-      %th Average height
-      %th Average width
-      %th Description
-      %th Photo
-      %th
-      %th
-      %th
-
-  %tbody
-    - @species_variation_observations.each do |species_variation_observation|
+%section
+  %h2 Observations
+  %table.table
+    %thead
       %tr
-        %td= species_variation_observation.observed_on
-        %td= species_variation_observation.user
-        %td= species_variation_observation.plot
-        %td= species_variation_observation.plant
-        %td= species_variation_observation.average_height
-        %td= species_variation_observation.average_width
-        %td= species_variation_observation.description
-        %td= species_variation_observation.photo
-        %td= link_to 'Show', species_variation_observation
-        %td= link_to 'Edit', edit_species_variation_observation_path(species_variation_observation)
-        %td= link_to 'Destroy', species_variation_observation, method: :delete, data: { confirm: 'Are you sure?' }
-
-%br
-
-= link_to 'New Species variation observation', new_species_variation_observation_path
+        %th{scope: 'col'} Id
+        %th{scope: 'col'} Observation date
+        %th{scope: 'col'} Plot
+        %th{scope: 'col'} Plant
+        %th{scope: 'col'} Average Height
+        %th{scope: 'col'} Average Width
+        %th{scope: 'col'} Qualitative Observation
+        %th{scope: 'col'}
+    %tbody
+      - @species_variation_observations.each do |o|
+        %tr
+          %td= o.id
+          %td= o.observed_on
+          %td= o.plot
+          %td= o.plant
+          %td= o.average_height
+          %td= o.average_width
+          %td= o.description
+          %td
+            = link_to 'view', o, title: "Details of species variation observation #{o.id}"
+            = link_to('edit', edit_species_variation_observation_path(o), title: 'Edit observation') if current_user&.admin?

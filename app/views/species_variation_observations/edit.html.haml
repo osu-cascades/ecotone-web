@@ -1,7 +1,2 @@
-%h1 Editing species_variation_observation
-
-= render 'form'
-
-= link_to 'Show', @species_variation_observation
-\|
-= link_to 'Back', species_variation_observations_path
+- content_for_title('Edit Species Variation Observation')
+= render partial: 'form'

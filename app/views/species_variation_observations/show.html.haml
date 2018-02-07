@@ -1,30 +1,38 @@
-%p#notice= notice
-
-%p
-  %b Observed on:
-  = @species_variation_observation.observed_on
-%p
-  %b User:
-  = @species_variation_observation.user
-%p
-  %b Plot:
-  = @species_variation_observation.plot
-%p
-  %b Plant:
-  = @species_variation_observation.plant
-%p
-  %b Average height:
-  = @species_variation_observation.average_height
-%p
-  %b Average width:
-  = @species_variation_observation.average_width
-%p
-  %b Description:
-  = @species_variation_observation.description
-%p
-  %b Photo:
-  = @species_variation_observation.photo
-
-= link_to 'Edit', edit_species_variation_observation_path(@species_variation_observation)
-\|
-= link_to 'Back', species_variation_observations_path
+- content_for_title("Species Variation Observation ##{@species_variation_observation.id}")
+- content_for(:subnav) do
+  = link_to '« Back to Species Variation Observations', species_variation_observations_path, class: 'btn btn-primary', title: 'Species Variation Observations'
+  - if current_user&.admin?
+    .btn-group
+      = link_to 'Edit', edit_species_variation_observation_path(@species_variation_observation), class: 'btn', title: 'Edit observation'
+      = link_to 'Delete', @species_variation_observation, method: :delete, data: { confirm: "Delete species_variation_observation #{@species_variation_observation.id}?" }, class: 'btn btn-danger', title: 'Delete observation'
+%section
+  .col-md-5
+    %h2 Photo
+    = image_tag @species_variation_observation.photo.url(:default), alt: "Photo of #{@species_variation_observation}"
+  .col-md-7
+    %h2 Attributes
+    %table.table
+      %thead
+        %th{colspan: '2'}= @species_variation_observation
+      %tbody
+        %tr
+          %th.col-md-4{scope: 'row'} Observation date
+          %td= @species_variation_observation.observed_on
+        %tr
+          %th.col-md-4{scope: 'row'} Plot
+          %td= @species_variation_observation.plot
+        %tr
+          %th.col-md-4{scope: 'row'} Plant
+          %td= @species_variation_observation.plant
+        %tr
+          %th.col-md-4{scope: 'row'} Observer
+          %td= @species_variation_observation.user
+        %tr
+          %th.col-md-4{scope: 'row'} Average height
+          %td= "#{@species_variation_observation.average_height} cm"
+        %tr
+          %th.col-md-4{scope: 'row'} Average width
+          %td= "#{@species_variation_observation.average_width} cm"
+        %tr
+          %th.col-md-4{scope: 'row'} Qualitative observations
+          %td= @species_variation_observation.description

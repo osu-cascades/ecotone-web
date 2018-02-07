@@ -1,34 +1,19 @@
-= form_for @species_variation_observation do |f|
-  - if @species_variation_observation.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@species_variation_observation.errors.count, "error")} prohibited this species_variation_observation from being saved:"
-      %ul
-        - @species_variation_observation.errors.full_messages.each do |message|
-          %li= message
-
-  .field
-    = f.label :observed_on
-    = f.date_select :observed_on
-  .field
-    = f.label :user
-    = f.text_field :user
-  .field
-    = f.label :plot
-    = f.text_field :plot
-  .field
-    = f.label :plant
-    = f.text_field :plant
-  .field
-    = f.label :average_height
-    = f.text_field :average_height
-  .field
-    = f.label :average_width
-    = f.text_field :average_width
-  .field
-    = f.label :description
-    = f.text_field :description
-  .field
-    = f.label :photo
-    = f.text_field :photo
-  .actions
-    = f.submit 'Save'
+.row
+  .col-md-6.col-md-offset-3
+    = form_for(@species_variation_observation, html: { multipart: true }) do |f|
+      = form_errors_for(@species_variation_observation)
+      = f.label :observed_on, 'Observation date'
+      = f.date_field :observed_on, class: 'form-control'
+      = f.label :plot_id, 'Plot'
+      = f.collection_select :plot_id, @plots, :id, :name, include_blank: 'Choose...'
+      = f.label :plant_id, 'Plant'
+      = f.collection_select :plant_id, @plants, :id, :common_name, include_blank: 'Choose...'
+      = f.label :average_height
+      = f.text_field :average_height, class: 'form-control', placeholder: 'cm'
+      = f.label :average_width
+      = f.text_field :average_width, class: 'form-control', placeholder: 'cm'
+      = f.label :description, 'Qualitative observations'
+      = f.text_area :description, class: 'form-control'
+      = f.label :photo
+      = f.file_field :photo, class: 'form-control'
+      = f.submit class: 'btn btn-primary'
