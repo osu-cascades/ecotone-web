@@ -12,14 +12,10 @@ class UsersController < ApplicationController
   end
 
   def new
-    flash[:info] = 'Registration is limited to OSU Cascades students.'
-    redirect_to root_url
     @user = User.new
   end
 
   def create
-    flash[:info] = 'Registration is limited to OSU Cascades students.'
-    redirect_to root_url
     @user = User.new(user_params)
     if verify_recaptcha(model: @user) && @user.save
       log_in @user
