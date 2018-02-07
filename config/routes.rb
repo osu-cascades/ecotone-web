@@ -24,4 +24,5 @@ Rails.application.routes.draw do
   resources :mycorrhizal_fungi_samples
   resources :nonvascular_plant_samples
   resources :soil_samples
+  resources :species_variation_observations
 end

@@ -1,0 +1,34 @@
+= form_for @species_variation_observation do |f|
+  - if @species_variation_observation.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@species_variation_observation.errors.count, "error")} prohibited this species_variation_observation from being saved:"
+      %ul
+        - @species_variation_observation.errors.full_messages.each do |message|
+          %li= message
+
+  .field
+    = f.label :observed_on
+    = f.date_select :observed_on
+  .field
+    = f.label :user
+    = f.text_field :user
+  .field
+    = f.label :plot
+    = f.text_field :plot
+  .field
+    = f.label :plant
+    = f.text_field :plant
+  .field
+    = f.label :average_height
+    = f.text_field :average_height
+  .field
+    = f.label :average_width
+    = f.text_field :average_width
+  .field
+    = f.label :description
+    = f.text_field :description
+  .field
+    = f.label :photo
+    = f.text_field :photo
+  .actions
+    = f.submit 'Save'

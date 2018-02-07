@@ -1,0 +1,30 @@
+%p#notice= notice
+
+%p
+  %b Observed on:
+  = @species_variation_observation.observed_on
+%p
+  %b User:
+  = @species_variation_observation.user
+%p
+  %b Plot:
+  = @species_variation_observation.plot
+%p
+  %b Plant:
+  = @species_variation_observation.plant
+%p
+  %b Average height:
+  = @species_variation_observation.average_height
+%p
+  %b Average width:
+  = @species_variation_observation.average_width
+%p
+  %b Description:
+  = @species_variation_observation.description
+%p
+  %b Photo:
+  = @species_variation_observation.photo
+
+= link_to 'Edit', edit_species_variation_observation_path(@species_variation_observation)
+\|
+= link_to 'Back', species_variation_observations_path
