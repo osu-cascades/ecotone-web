@@ -1,42 +1,48 @@
-%p#notice= notice
-
-%p
-  %b Collected on:
-  = @tree_sample.collected_on
-%p
-  %b Plot:
-  = @tree_sample.plot
-%p
-  %b User:
-  = @tree_sample.user
-%p
-  %b Plant:
-  = @tree_sample.plant
-%p
-  %b Tag number:
-  = @tree_sample.tag_number
-%p
-  %b Growth stage:
-  = @tree_sample.growth_stage
-%p
-  %b Dbh:
-  = @tree_sample.dbh
-%p
-  %b Lower canopy height:
-  = @tree_sample.lower_canopy_height
-%p
-  %b Upper canopy height:
-  = @tree_sample.upper_canopy_height
-%p
-  %b Latitude:
-  = @tree_sample.latitude
-%p
-  %b Longitude:
-  = @tree_sample.longitude
-%p
-  %b Photo:
-  = @tree_sample.photo
-
-= link_to 'Edit', edit_tree_sample_path(@tree_sample)
-\|
-= link_to 'Back', tree_samples_path
+- content_for_title("Tree Sample ##{@tree_sample.id}")
+- content_for(:subnav) do
+  = link_to '« Back to Tree samples', tree_samples_path, class: 'btn btn-primary', title: 'Tree samples'
+  - if @tree_sample.editable_by?(current_user)
+    .btn-group
+      = link_to 'Edit', edit_tree_sample_path(@tree_sample), class: 'btn', title: 'Edit sample'
+      - if current_user&.admin?
+        = link_to 'Delete', @tree_sample, method: :delete, data: { confirm: "Delete tree sample #{@tree_sample.id}?" }, class: 'btn btn-danger', title: 'Delete sample'
+%section
+  .col-md-5
+    %h2 Photo
+    = image_tag @tree_sample.photo.url(:default), alt: "Photo of #{@tree_sample}"
+  .col-md-7
+    %h2 Sample Information
+    %table.table
+      %thead
+        %th{colspan: '2'}= @tree_sample
+      %tbody
+        %tr
+          %th.col-md-4{scope: 'row'} Collection date
+          %td= @tree_sample.collected_on
+        %tr
+          %th.col-md-4{scope: 'row'} Plot
+          %td= @tree_sample.plot
+        %tr
+          %th.col-md-4{scope: 'row'} Species
+          %td= @tree_sample.plant
+        %tr
+          %th.col-md-4{scope: 'row'} Tag Number
+          %td= @tree_sample.tag_number
+        %tr
+          %th.col-md-4{scope: 'row'} Growth Stage
+          %td= @tree_sample.growth_stage.capitalize
+        %tr
+          %th.col-md-4{scope: 'row'} DBH
+          %td= "#{@tree_sample.dbh} cm"
+        %tr
+          %th.col-md-4{scope: 'row'} Lower Canopy Height
+          %td= "#{@tree_sample.lower_canopy_height} m"
+        %tr
+          %th.col-md-4{scope: 'row'} Upper Canopy Height
+          %td= "#{@tree_sample.upper_canopy_height} m"
+        %tr
+          %th.col-md-4{scope: 'row'} Latitude N
+          %td= "#{@tree_sample.latitude}°"
+        %tr
+          %th.col-md-4{scope: 'row'} Longitude W
+          %td= "#{@tree_sample.longitude}°"
