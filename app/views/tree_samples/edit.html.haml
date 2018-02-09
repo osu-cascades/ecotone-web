@@ -1,7 +1,2 @@
-%h1 Editing tree_sample
-
-= render 'form'
-
-= link_to 'Show', @tree_sample
-\|
-= link_to 'Back', tree_samples_path
+- content_for_title('Edit Tree Sample')
+= render partial: 'form'

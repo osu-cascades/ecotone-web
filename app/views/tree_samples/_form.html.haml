@@ -1,46 +1,27 @@
-= form_for @tree_sample do |f|
-  - if @tree_sample.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@tree_sample.errors.count, "error")} prohibited this tree_sample from being saved:"
-      %ul
-        - @tree_sample.errors.full_messages.each do |message|
-          %li= message
-
-  .field
-    = f.label :collected_on
-    = f.date_select :collected_on
-  .field
-    = f.label :plot
-    = f.text_field :plot
-  .field
-    = f.label :user
-    = f.text_field :user
-  .field
-    = f.label :plant
-    = f.text_field :plant
-  .field
-    = f.label :tag_number
-    = f.number_field :tag_number
-  .field
-    = f.label :growth_stage
-    = f.number_field :growth_stage
-  .field
-    = f.label :dbh
-    = f.text_field :dbh
-  .field
-    = f.label :lower_canopy_height
-    = f.text_field :lower_canopy_height
-  .field
-    = f.label :upper_canopy_height
-    = f.text_field :upper_canopy_height
-  .field
-    = f.label :latitude
-    = f.text_field :latitude
-  .field
-    = f.label :longitude
-    = f.text_field :longitude
-  .field
-    = f.label :photo
-    = f.text_field :photo
-  .actions
-    = f.submit 'Save'
+.row
+  .col-md-6.col-md-offset-3
+    = form_for(@tree_sample, html: { multipart: true }) do |f|
+      = form_errors_for(@tree_sample)
+      = f.label :collected_on, 'Collection date'
+      = f.date_field :collected_on, class: 'form-control'
+      = f.label :plot_id, 'Plot'
+      = f.collection_select :plot_id, @plots, :id, :name, { include_blank: 'Choose...' }, {class: 'form-control'}
+      = f.label :plant_id, 'Species'
+      = f.collection_select :plant_id, @plants, :id, :common_name, { include_blank: 'Choose...' }, {class: 'form-control'}
+      = f.label :tag_number, 'Tag'
+      = f.text_field :tag_number, class: 'form-control'
+      = f.label :growth_stage
+      = f.select :growth_stage, TreeSample.growth_stages.keys.map {|k| [k.capitalize, k]}, { include_blank: 'Choose...' }, {class: 'form-control'}
+      = f.label :dbh, 'DBH'
+      = f.text_field :dbh, class: 'form-control', placeholder: 'cm'
+      = f.label :lower_canopy_height
+      = f.text_field :lower_canopy_height, class: 'form-control', placeholder: 'm'
+      = f.label :upper_canopy_height
+      = f.text_field :upper_canopy_height, class: 'form-control', placeholder: 'm'
+      = f.label :latitude, 'Latitude N'
+      = f.text_field :latitude, class: 'form-control'
+      = f.label :longitude, 'Longitude W'
+      = f.text_field :longitude, class: 'form-control'
+      = f.label :photo
+      = f.file_field :photo, class: 'form-control'
+      = f.submit class: 'btn btn-primary'
