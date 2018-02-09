@@ -9,7 +9,7 @@ class ApplicationRecord < ActiveRecord::Base
   end
 
   def editable_by?(user)
-    user.admin? || user == self.user
+    user && (user.admin? || user == self.user)
   end
 
 end
