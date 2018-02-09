@@ -1,10 +1,11 @@
 - content_for_title("Mycorrhizal Fungi Sample ##{@mycorrhizal_fungi_sample.id}")
 - content_for(:subnav) do
   = link_to '« Back to Mycorrhizal fungi samples', mycorrhizal_fungi_samples_path, class: 'btn btn-primary', title: 'Mycorrhizal fungi samples'
-  - if current_user&.admin?
+  - if @mycorrhizal_fungi_sample.editable_by?(current_user)
     .btn-group
       = link_to 'Edit', edit_mycorrhizal_fungi_sample_path(@mycorrhizal_fungi_sample), class: 'btn', title: 'Edit sample'
-      = link_to 'Delete', @mycorrhizal_fungi_sample, method: :delete, data: { confirm: "Delete mycorrhizal fungi sample #{@mycorrhizal_fungi_sample.id}?" }, class: 'btn btn-danger', title: 'Delete sample'
+      - if current_user&.admin?
+        = link_to 'Delete', @mycorrhizal_fungi_sample, method: :delete, data: { confirm: "Delete mycorrhizal fungi sample #{@mycorrhizal_fungi_sample.id}?" }, class: 'btn btn-danger', title: 'Delete sample'
 %section
   .col-md-5
     %h2 Photo

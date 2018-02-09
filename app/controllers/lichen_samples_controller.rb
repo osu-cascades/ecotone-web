@@ -1,5 +1,6 @@
 class LichenSamplesController < ApplicationController
   before_action :login_required
+  before_action :admin_required, only: :destroy
   before_action :set_lichen_sample, only: [:show, :edit, :update, :destroy]
 
   def index

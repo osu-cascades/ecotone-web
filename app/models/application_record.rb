@@ -7,4 +7,9 @@ class ApplicationRecord < ActiveRecord::Base
       return false
     end
   end
+
+  def editable_by?(user)
+    user.admin? || user == self.user
+  end
+
 end

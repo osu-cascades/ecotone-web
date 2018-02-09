@@ -1,5 +1,6 @@
 class MycorrhizalFungiSamplesController < ApplicationController
   before_action :login_required
+  before_action :admin_required, only: :destroy
   before_action :set_mycorrhizal_fungi_sample, only: [:show, :edit, :update, :destroy]
 
   def index

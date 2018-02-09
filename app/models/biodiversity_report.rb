@@ -35,13 +35,14 @@ class BiodiversityReport < ApplicationRecord
     "by #{author} on #{measured_on.to_s(:long)} at #{measured_at.to_s(:ampm)}"
   end
 
-  def editable_by?(user)
-    user.admin? || user == author
-  end
-
   def destroy_associated_samples
     [soil_sample].each(&:destroy)
     macroinvertebrate_samples.each(&:destroy)
     plant_samples.each(&:destroy)
   end
+
+  def user
+    author
+  end
+
 end
