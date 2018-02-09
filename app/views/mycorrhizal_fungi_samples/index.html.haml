@@ -29,4 +29,4 @@
           %td= sample.hyphae_coverage ? "#{sample.hyphae_coverage}%" : 'unmeasured'
           %td
             = link_to 'view', sample, title: "Details of mycorrhizal fungi sample #{sample.id}"
-            = link_to('edit', edit_mycorrhizal_fungi_sample_path(sample), title: 'Edit sample') if current_user&.admin?
+            = link_to('edit', edit_mycorrhizal_fungi_sample_path(sample), title: 'Edit sample') if sample.editable_by?(current_user)

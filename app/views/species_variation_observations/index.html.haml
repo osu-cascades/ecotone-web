@@ -27,4 +27,4 @@
           %td= o.description
           %td
             = link_to 'view', o, title: "Details of species variation observation #{o.id}"
-            = link_to('edit', edit_species_variation_observation_path(o), title: 'Edit observation') if current_user&.admin?
+            = link_to('edit', edit_species_variation_observation_path(o), title: 'Edit observation') if o.editable_by?(current_user)
