@@ -5,7 +5,7 @@ FactoryGirl.define do
     plant
     user
     tag_number 1
-    growth_stage 1
+    growth_stage 'seedling'
     dbh 1.5
     lower_canopy_height 1.5
     upper_canopy_height 1.5
