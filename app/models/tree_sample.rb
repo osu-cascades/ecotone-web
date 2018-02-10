@@ -14,10 +14,10 @@ class TreeSample < ApplicationRecord
   validates_numericality_of :tag_number, only_integer: true, greater_than: 0
   validates_presence_of :growth_stage
   validates_numericality_of :dbh, greater_than: 0
-  validates_numericality_of :lower_canopy_height, greater_than: 0
-  validates_numericality_of :upper_canopy_height, greater_than: 0
-  validates_numericality_of :latitude
-  validates_numericality_of :longitude
+  validates_numericality_of :lower_canopy_height, greater_than: 0, allow_nil: true
+  validates_numericality_of :upper_canopy_height, greater_than: 0, allow_nil: true
+  validates_numericality_of :latitude, allow_nil: true
+  validates_numericality_of :longitude, allow_nil: true
 
   has_attached_file :photo, default_url: 'missing.png', styles: { default: '200x200#', thumbnail: '50x50#' }
   validates_attachment_content_type :photo, content_type: /\Aimage/

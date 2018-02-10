@@ -8,10 +8,10 @@ class CreateTreeSamples < ActiveRecord::Migration[5.1]
       t.integer :tag_number, null: false
       t.integer :growth_stage, null: false
       t.float :dbh, null: false
-      t.float :lower_canopy_height, null: false
-      t.float :upper_canopy_height, null: false
-      t.float :latitude, null: false
-      t.float :longitude, null: false
+      t.float :lower_canopy_height
+      t.float :upper_canopy_height
+      t.float :latitude
+      t.float :longitude
       t.attachment :photo
 
       t.timestamps
