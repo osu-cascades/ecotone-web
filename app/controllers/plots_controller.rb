@@ -4,14 +4,14 @@ class PlotsController < ApplicationController
   before_action :admin_required, except: [:index, :show]
 
   def index
-    @plots = Plot.all.order(:plot_id)
+    @plots = Plot.order(:plot_id)
   end
 
   def show; end
 
   def new
     @plot = Plot.new
-    @plants = Plant.all.order('LOWER(common_name) ASC')
+    @plants = Plant.order('LOWER(common_name)')
   end
 
   def edit

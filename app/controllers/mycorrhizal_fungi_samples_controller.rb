@@ -11,13 +11,13 @@ class MycorrhizalFungiSamplesController < ApplicationController
 
   def new
     @mycorrhizal_fungi_sample = MycorrhizalFungiSample.new
-    @plots = Plot.all
-    @plants = Plant.all
+    @plots = Plot.order(:plot_id)
+    @plants = Plant.order('LOWER(common_name)')
   end
 
   def edit
-    @plots = Plot.all
-    @plants = Plant.all
+    @plots = Plot.order(:plot_id)
+    @plants = Plant.order('LOWER(common_name)')
   end
 
   def create
@@ -28,8 +28,8 @@ class MycorrhizalFungiSamplesController < ApplicationController
         format.html { redirect_to @mycorrhizal_fungi_sample, flash: {success: 'Mycorrhizal fungi sample was successfully created.'} }
         format.json { render :show, status: :created, location: @mycorrhizal_fungi_sample }
       else
-        @plots = Plot.all
-        @plants = Plant.all
+        @plots = Plot.order(:plot_id)
+        @plants = Plant.order('LOWER(common_name)')
         format.html { render :new }
         format.json { render json: @mycorrhizal_fungi_sample.errors, status: :unprocessable_entity }
       end
@@ -42,8 +42,8 @@ class MycorrhizalFungiSamplesController < ApplicationController
         format.html { redirect_to @mycorrhizal_fungi_sample, flash: {success: 'Mycorrhizal fungi sample was successfully updated.'} }
         format.json { render :show, status: :ok, location: @mycorrhizal_fungi_sample }
       else
-        @plots = Plot.all
-        @plants = Plant.all
+        @plots = Plot.order(:plot_id)
+        @plants = Plant.order('LOWER(common_name)')
         format.html { render :edit }
         format.json { render json: @mycorrhizal_fungi_sample.errors, status: :unprocessable_entity }
       end

@@ -13,8 +13,6 @@ class BiodiversityReportsController < ApplicationController
   def new
     @biodiversity_report = BiodiversityReport.new
     build_samples_unless_exist
-    @plots = Plot.all.order(plot_id: :asc)
-    @plants = Plant.all.order('LOWER(common_name) asc')
   end
 
   def edit
@@ -56,8 +54,8 @@ class BiodiversityReportsController < ApplicationController
   private
 
   def load_plots_and_plants
-    @plots = Plot.all
-    @plants = Plant.all
+    @plots = Plot.order(:plot_id)
+    @plants = Plant.order('LOWER(common_name)')
   end
 
   def build_samples_unless_exist

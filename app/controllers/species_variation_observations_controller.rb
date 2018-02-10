@@ -12,13 +12,13 @@ class SpeciesVariationObservationsController < ApplicationController
 
   def new
     @species_variation_observation = SpeciesVariationObservation.new
-    @plots = Plot.all
-    @plants = Plant.all
+    @plots = Plot.order(:plot_id)
+    @plants = Plant.order('LOWER(common_name)')
   end
 
   def edit
-    @plots = Plot.all
-    @plants = Plant.all
+    @plots = Plot.order(:plot_id)
+    @plants = Plant.order('LOWER(common_name)')
   end
 
   def create
@@ -29,8 +29,8 @@ class SpeciesVariationObservationsController < ApplicationController
         format.html { redirect_to @species_variation_observation, flash: {success: 'Species variation observation was successfully created.' } }
         format.json { render :show, status: :created, location: @species_variation_observation }
       else
-        @plots = Plot.all
-        @plants = Plant.all
+        @plots = Plot.order(:plot_id)
+        @plants = Plant.order('LOWER(common_name)')
         format.html { render :new }
         format.json { render json: @species_variation_observation.errors, status: :unprocessable_entity }
       end
@@ -43,8 +43,8 @@ class SpeciesVariationObservationsController < ApplicationController
         format.html { redirect_to @species_variation_observation, flash: {success: 'Species variation observation was successfully updated.' } }
         format.json { render :show, status: :ok, location: @species_variation_observation }
       else
-        @plots = Plot.all
-        @plants = Plant.all
+        @plots = Plot.order(:plot_id)
+        @plants = Plant.order('LOWER(common_name)')
         format.html { render :edit }
         format.json { render json: @species_variation_observation.errors, status: :unprocessable_entity }
       end

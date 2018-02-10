@@ -11,11 +11,11 @@ class LichenSamplesController < ApplicationController
 
   def new
     @lichen_sample = LichenSample.new
-    @plots = Plot.all
+    @plots = Plot.order(:plot_id)
   end
 
   def edit
-    @plots = Plot.all
+    @plots = Plot.order(:plot_id)
   end
 
   def create
@@ -26,7 +26,7 @@ class LichenSamplesController < ApplicationController
         format.html { redirect_to @lichen_sample, flash: {success: 'Lichen sample was successfully created.'} }
         format.json { render :show, status: :created, location: @lichen_sample }
       else
-        @plots = Plot.all
+        @plots = Plot.order(:plot_id)
         format.html { render :new }
         format.json { render json: @lichen_sample.errors, status: :unprocessable_entity }
       end
@@ -39,7 +39,7 @@ class LichenSamplesController < ApplicationController
         format.html { redirect_to @lichen_sample, flash: {success: 'Lichen sample was successfully updated.'} }
         format.json { render :show, status: :ok, location: @lichen_sample }
       else
-        @plots = Plot.all
+        @plots = Plot.order(:plot_id)
         format.html { render :edit }
         format.json { render json: @lichen_sample.errors, status: :unprocessable_entity }
       end

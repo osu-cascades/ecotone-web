@@ -11,11 +11,11 @@ class FungiSamplesController < ApplicationController
 
   def new
     @fungi_sample = FungiSample.new
-    @plots = Plot.all
+    @plots = Plot.order(:plot_id)
   end
 
   def edit
-    @plots = Plot.all
+    @plots = Plot.order(:plot_id)
   end
 
   def create
@@ -26,7 +26,7 @@ class FungiSamplesController < ApplicationController
         format.html { redirect_to @fungi_sample, flash: {success: 'Fungi sample was successfully created.'} }
         format.json { render :show, status: :created, location: @fungi_sample }
       else
-        @plots = Plot.all
+        @plots = Plot.order(:plot_id)
         format.html { render :new }
         format.json { render json: @fungi_sample.errors, status: :unprocessable_entity }
       end
@@ -39,7 +39,7 @@ class FungiSamplesController < ApplicationController
         format.html { redirect_to @fungi_sample, flash: {success: 'Fungi sample was successfully updated.'} }
         format.json { render :show, status: :ok, location: @fungi_sample }
       else
-        @plots = Plot.all
+        @plots = Plot.order(:plot_id)
         format.html { render :edit }
         format.json { render json: @fungi_sample.errors, status: :unprocessable_entity }
       end

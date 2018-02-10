@@ -11,11 +11,11 @@ class NonvascularPlantSamplesController < ApplicationController
 
   def new
     @nonvascular_plant_sample = NonvascularPlantSample.new
-    @plots = Plot.all
+    @plots = Plot.order(:plot_id)
   end
 
   def edit
-    @plots = Plot.all
+    @plots = Plot.order(:plot_id)
   end
 
   def create
@@ -26,7 +26,7 @@ class NonvascularPlantSamplesController < ApplicationController
         format.html { redirect_to @nonvascular_plant_sample, flash: {success: 'Nonvascular Plant sample was successfully created.'} }
         format.json { render :show, status: :created, location: @nonvascular_plant_sample }
       else
-        @plots = Plot.all
+        @plots = Plot.order(:plot_id)
         format.html { render :new }
         format.json { render json: @nonvascular_plant_sample.errors, status: :unprocessable_entity }
       end
@@ -39,7 +39,7 @@ class NonvascularPlantSamplesController < ApplicationController
         format.html { redirect_to @nonvascular_plant_sample, flash: {success: 'Nonvascular Plant sample was successfully updated.'} }
         format.json { render :show, status: :ok, location: @nonvascular_plant_sample }
       else
-        @plots = Plot.all
+        @plots = Plot.order(:plot_id)
         format.html { render :edit }
         format.json { render json: @nonvascular_plant_sample.errors, status: :unprocessable_entity }
       end

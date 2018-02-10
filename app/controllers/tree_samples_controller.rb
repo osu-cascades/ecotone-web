@@ -11,13 +11,13 @@ class TreeSamplesController < ApplicationController
 
   def new
     @tree_sample = TreeSample.new
-    @plots = Plot.all
-    @plants = Plant.all
+    @plots = Plot.order(:plot_id)
+    @plants = Plant.order('LOWER(common_name)')
   end
 
   def edit
-    @plots = Plot.all
-    @plants = Plant.all
+    @plots = Plot.order(:plot_id)
+    @plants = Plant.order('LOWER(common_name)')
   end
 
   def create
@@ -28,8 +28,8 @@ class TreeSamplesController < ApplicationController
         format.html { redirect_to @tree_sample, flash: {success: 'Tree sample was successfully created.'} }
         format.json { render :show, status: :created, location: @tree_sample }
       else
-        @plots = Plot.all
-        @plants = Plant.all
+        @plots = Plot.order(:plot_id)
+        @plants = Plant.order('LOWER(common_name)')
         format.html { render :new }
         format.json { render json: @tree_sample.errors, status: :unprocessable_entity }
       end
@@ -42,8 +42,8 @@ class TreeSamplesController < ApplicationController
         format.html { redirect_to @tree_sample, flash: {success: 'Tree sample was successfully updated.'} }
         format.json { render :show, status: :ok, location: @tree_sample }
       else
-        @plots = Plot.all
-        @plants = Plant.all
+        @plots = Plot.order(:plot_id)
+        @plants = Plant.order('LOWER(common_name)')
         format.html { render :edit }
         format.json { render json: @tree_sample.errors, status: :unprocessable_entity }
       end
