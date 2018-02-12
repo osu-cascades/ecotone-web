@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180212030328) do
+ActiveRecord::Schema.define(version: 20180212045033) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,7 +85,6 @@ ActiveRecord::Schema.define(version: 20180212030328) do
     t.string "location_within_plot"
     t.integer "quantity"
     t.string "ecosystem_service"
-    t.integer "biodiversity_report_id"
     t.string "photo_file_name"
     t.string "photo_content_type"
     t.integer "photo_file_size"

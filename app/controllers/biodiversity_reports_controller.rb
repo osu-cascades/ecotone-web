@@ -73,9 +73,6 @@ class BiodiversityReportsController < ApplicationController
       soil_sample_attributes: [:biodiversity_report_id, :_destroy, :id,
         :collection_method, :ph_level, :temperature, :moisture],
 
-      macroinvertebrate_samples_attributes: [:biodiversity_report_id, :_destroy, :id,
-        :phylum, :location_within_plot, :quantity, :ecosystem_service, :photo],
-
       plant_samples_attributes: [:biodiversity_report_id, :_destroy, :id,
         :plant_id, :abundance,:percent_cover, :photo])
   end

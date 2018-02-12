@@ -4,7 +4,6 @@ class MacroinvertebrateSample < ApplicationRecord
   belongs_to :plot
   belongs_to :user
   has_and_belongs_to_many :biodiversity_reports
-  belongs_to :biodiversity_report
 
   validates :collected_on, presence: true
   validates :phylum, presence: true
@@ -16,5 +15,4 @@ class MacroinvertebrateSample < ApplicationRecord
   has_attached_file :photo, default_url: 'missing.png', styles: { default: '200x200#', thumbnail: '50x50#' }
   validates_attachment_content_type :photo, content_type: /\Aimage/
 
-  ignores_present_attributes exclude: 'biodiversity_report_id'
 end

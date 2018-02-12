@@ -23,7 +23,6 @@ RSpec.describe MacroinvertebrateSample, type: :model do
     it { is_expected.to validate_inclusion_of(:ecosystem_service).in_array(%w[Pollinator Consumer Decomposer]) }
     it { is_expected.to validate_attachment_content_type(:photo).allowing('image/jpg', 'image/png') }
     it { is_expected.to have_attached_file(:photo) }
-    it { is_expected.to belong_to(:biodiversity_report) }
     it { is_expected.to belong_to(:plot) }
     it { is_expected.to belong_to(:user) }
     it { is_expected.to have_and_belong_to_many(:biodiversity_reports) }
