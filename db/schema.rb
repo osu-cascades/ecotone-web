@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180209151118) do
+ActiveRecord::Schema.define(version: 20180212015930) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,6 +85,11 @@ ActiveRecord::Schema.define(version: 20180209151118) do
     t.datetime "photo_updated_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "collected_on"
+    t.bigint "plot_id"
+    t.bigint "user_id"
+    t.index ["plot_id"], name: "index_macroinvertebrate_samples_on_plot_id"
+    t.index ["user_id"], name: "index_macroinvertebrate_samples_on_user_id"
   end
 
   create_table "mycorrhizal_fungi_samples", force: :cascade do |t|
@@ -256,6 +261,8 @@ ActiveRecord::Schema.define(version: 20180209151118) do
   add_foreign_key "fungi_samples", "users"
   add_foreign_key "lichen_samples", "plots"
   add_foreign_key "lichen_samples", "users"
+  add_foreign_key "macroinvertebrate_samples", "plots"
+  add_foreign_key "macroinvertebrate_samples", "users"
   add_foreign_key "mycorrhizal_fungi_samples", "plants"
   add_foreign_key "mycorrhizal_fungi_samples", "plots"
   add_foreign_key "mycorrhizal_fungi_samples", "users"
