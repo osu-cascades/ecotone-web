@@ -27,4 +27,9 @@ RSpec.describe MacroinvertebrateSample, type: :model do
     it { is_expected.to belong_to(:user) }
     it { is_expected.to have_and_belong_to_many(:biodiversity_reports) }
   end
+
+  it 'has a string representation consisting of its name' do
+    expect(macroinvertebrate_sample.to_s).to eq("#{macroinvertebrate_sample.plot} on #{macroinvertebrate_sample.collected_on} by #{macroinvertebrate_sample.user}")
+  end
+
 end

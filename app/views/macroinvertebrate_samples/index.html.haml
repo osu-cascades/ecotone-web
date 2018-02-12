@@ -1,0 +1,30 @@
+- content_for_title('Macroinvertebrate Samples')
+- content_for(:subnav) do
+  = link_to('Add Macroinvertebrate Sample', new_macroinvertebrate_sample_path, class: 'btn btn-primary', title: 'Add a new macroinvertebrate sample')
+
+%section
+  %h2 Sample Information
+  %table.table
+    %thead
+      %tr
+        %th{scope: 'col'} Id
+        %th{scope: 'col'} Collection date
+        %th{scope: 'col'} Plot
+        %th{scope: 'col'} Location within plot
+        %th{scope: 'col'} Phylum
+        %th{scope: 'col'} Quantity
+        %th{scope: 'col'} Ecosystem service
+        %th{scope: 'col'}
+    %tbody
+      - @macroinvertebrate_samples.each do |sample|
+        %tr
+          %td= sample.id
+          %td= sample.collected_on
+          %td= sample.plot
+          %td= sample.location_within_plot
+          %td= sample.phylum
+          %td= sample.quantity
+          %td= sample.ecosystem_service
+          %td
+            = link_to 'view', sample, title: "Details of macroinvertebrate sample #{sample.id}"
+            = link_to('edit', edit_macroinvertebrate_sample_path(sample), title: 'Edit sample') if sample.editable_by?(current_user)
