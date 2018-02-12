@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180212015930) do
+ActiveRecord::Schema.define(version: 20180212030328) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,13 @@ ActiveRecord::Schema.define(version: 20180212015930) do
     t.bigint "lichen_sample_id", null: false
     t.index ["biodiversity_report_id"], name: "index_biodiversity_reports_lichen_samples_on_bd_report_id"
     t.index ["lichen_sample_id"], name: "index_biodiversity_reports_lichen_samples_on_lichen_sample_id"
+  end
+
+  create_table "biodiversity_reports_macroinvertebrate_samples", id: false, force: :cascade do |t|
+    t.bigint "biodiversity_report_id", null: false
+    t.bigint "macroinvertebrate_sample_id", null: false
+    t.index ["biodiversity_report_id"], name: "index_bd_reports_macroinvertebrate_samples_on_bd_report_id"
+    t.index ["macroinvertebrate_sample_id"], name: "index_biodiversity_reports_mi_samples_on_mi_sample_id"
   end
 
   create_table "fungi_samples", force: :cascade do |t|
@@ -257,6 +264,8 @@ ActiveRecord::Schema.define(version: 20180212015930) do
 
   add_foreign_key "biodiversity_reports_lichen_samples", "biodiversity_reports"
   add_foreign_key "biodiversity_reports_lichen_samples", "lichen_samples"
+  add_foreign_key "biodiversity_reports_macroinvertebrate_samples", "biodiversity_reports"
+  add_foreign_key "biodiversity_reports_macroinvertebrate_samples", "macroinvertebrate_samples"
   add_foreign_key "fungi_samples", "plots"
   add_foreign_key "fungi_samples", "users"
   add_foreign_key "lichen_samples", "plots"

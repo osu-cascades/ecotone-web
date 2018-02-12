@@ -6,9 +6,7 @@ class BiodiversityReport < ApplicationRecord
   accepts_nested_attributes_for :soil_sample, allow_destroy: true, reject_if: :all_blank
 
   has_and_belongs_to_many :lichen_samples
-
-  has_many :macroinvertebrate_samples
-  accepts_nested_attributes_for :macroinvertebrate_samples, allow_destroy: true, reject_if: :all_blank
+  has_and_belongs_to_many :macroinvertebrate_samples
 
   has_many :plant_samples
   accepts_nested_attributes_for :plant_samples, allow_destroy: true, reject_if: :all_blank
@@ -37,7 +35,6 @@ class BiodiversityReport < ApplicationRecord
 
   def destroy_associated_samples
     [soil_sample].each(&:destroy)
-    macroinvertebrate_samples.each(&:destroy)
     plant_samples.each(&:destroy)
   end
 

@@ -3,6 +3,7 @@ class MacroinvertebrateSample < ApplicationRecord
 
   belongs_to :plot
   belongs_to :user
+  has_and_belongs_to_many :biodiversity_reports
   belongs_to :biodiversity_report
 
   validates :collected_on, presence: true
