@@ -3,8 +3,11 @@ class SoilSample < ApplicationRecord
     composite: 2,
     point: 4
   }
+  belongs_to :plot
+  belongs_to :user
   belongs_to :biodiversity_report
   has_many :nutrients
+  validates_presence_of :collected_on
   validates_presence_of :collection_method
   validates_numericality_of :ph_level, greater_than_or_equal_to: 0, less_than_or_equal_to: 14
   validates_numericality_of :temperature
