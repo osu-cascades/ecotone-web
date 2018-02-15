@@ -12,12 +12,9 @@ class BiodiversityReportsController < ApplicationController
 
   def new
     @biodiversity_report = BiodiversityReport.new
-    build_samples_unless_exist
   end
 
-  def edit
-    build_samples_unless_exist
-  end
+  def edit; end
 
   def create
     @biodiversity_report = BiodiversityReport.new(biodiversity_report_params)
@@ -27,7 +24,6 @@ class BiodiversityReportsController < ApplicationController
       flash[:success] = 'Biodiversity report was successfully created.'
     else
       load_plots_and_plants
-      build_samples_unless_exist
       render :new
     end
   end
@@ -39,7 +35,6 @@ class BiodiversityReportsController < ApplicationController
       flash[:success] = 'Biodiversity report was successfully updated.'
     else
       load_plots_and_plants
-      build_samples_unless_exist
       render :edit
     end
   end
@@ -58,10 +53,6 @@ class BiodiversityReportsController < ApplicationController
     @plants = Plant.order('LOWER(common_name)')
   end
 
-  def build_samples_unless_exist
-    @biodiversity_report.build_soil_sample unless @biodiversity_report.soil_sample
-  end
-
   def set_biodiversity_report
     @biodiversity_report = BiodiversityReport.find(params[:id])
   end
@@ -69,9 +60,6 @@ class BiodiversityReportsController < ApplicationController
   def biodiversity_report_params
     params.require(:biodiversity_report).permit(:measured_on, :measured_at, :temperature,
       :species_richness, :photo, :plot_id, :diversity_index,
-
-      soil_sample_attributes: [:biodiversity_report_id, :_destroy, :id,
-        :collection_method, :ph_level, :temperature, :moisture],
 
       plant_samples_attributes: [:biodiversity_report_id, :_destroy, :id,
         :plant_id, :abundance,:percent_cover, :photo])

@@ -7,7 +7,6 @@ class SoilSample < ApplicationRecord
 
   belongs_to :plot
   belongs_to :user
-  belongs_to :biodiversity_report
   has_many :nutrients
   has_and_belongs_to_many :biodiversity_reports
 
@@ -16,8 +15,6 @@ class SoilSample < ApplicationRecord
   validates_numericality_of :ph_level, greater_than_or_equal_to: 0, less_than_or_equal_to: 14
   validates_numericality_of :temperature
   validates_numericality_of :moisture, greater_than_or_equal_to: 0
-
-  ignores_present_attributes exclude: 'biodiversity_report_id'
 
   DEFAULT_NUTRIENT_NAMES = ['Nitrogen', 'Phosphorus', 'Potassium']
 

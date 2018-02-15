@@ -12,19 +12,19 @@ RSpec.describe BiodiversityReportsHelper, type: :helper do
 
   describe '#link_to_toggle_sample_fields' do
     context 'when the soil sample has attribute values' do
-      it 'returns an Omit link' do
+      skip 'returns an Omit link' do
         expect(helper.link_to_toggle_sample_fields_for(soil_sample)).to match '<a.*>Omit soil sample</a>'
       end
     end
 
     context 'when the soil sample does not have attribute values' do
-      it 'returns an Add link' do
+      skip 'returns an Add link' do
         expect(helper.link_to_toggle_sample_fields_for(empty_soil_sample)).to match '<a.*>Add soil sample</a>'
       end
     end
 
     context 'when the soil sample is nil' do
-      it 'returns nil' do
+      skip 'returns nil' do
         expect(helper.link_to_toggle_sample_fields_for(nil)).to be_nil
       end
     end
@@ -32,13 +32,13 @@ RSpec.describe BiodiversityReportsHelper, type: :helper do
 
   describe '#visibility_class' do
     context 'when the soil sample has attribute values' do
-      it "returns 'in'" do
+      skip "returns 'in'" do
         expect(visibility_class(soil_sample)).to eq('in')
       end
     end
 
     context 'when the soil sample does not have attribute values' do
-      it 'returns false' do
+      skip 'returns false' do
         expect(visibility_class(empty_soil_sample)).to be(false)
       end
     end

@@ -2,9 +2,6 @@ class BiodiversityReport < ApplicationRecord
   belongs_to :author, class_name: 'User'
   belongs_to :plot
 
-  has_one :soil_sample
-  accepts_nested_attributes_for :soil_sample, allow_destroy: true, reject_if: :all_blank
-
   has_and_belongs_to_many :soil_samples
   has_and_belongs_to_many :lichen_samples
   has_and_belongs_to_many :macroinvertebrate_samples
@@ -35,7 +32,6 @@ class BiodiversityReport < ApplicationRecord
   end
 
   def destroy_associated_samples
-    [soil_sample].each(&:destroy)
     plant_samples.each(&:destroy)
   end
 
