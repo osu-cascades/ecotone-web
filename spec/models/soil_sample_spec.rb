@@ -22,6 +22,7 @@ RSpec.describe SoilSample, type: :model do
     it { is_expected.to validate_presence_of(:collection_method) }
     it { is_expected.to belong_to(:plot) }
     it { is_expected.to belong_to(:user) }
+    it { is_expected.to have_and_belong_to_many(:biodiversity_reports) }
     it { is_expected.to belong_to(:biodiversity_report) }
     it { is_expected.to have_many(:nutrients) }
   end

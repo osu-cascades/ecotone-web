@@ -5,6 +5,7 @@ class BiodiversityReport < ApplicationRecord
   has_one :soil_sample
   accepts_nested_attributes_for :soil_sample, allow_destroy: true, reject_if: :all_blank
 
+  has_and_belongs_to_many :soil_samples
   has_and_belongs_to_many :lichen_samples
   has_and_belongs_to_many :macroinvertebrate_samples
 
