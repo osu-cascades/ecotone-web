@@ -1,0 +1,17 @@
+.row
+  .col-md-6.col-md-offset-3
+    = form_for(@soil_sample) do |f|
+      = form_errors_for(@soil_sample)
+      = f.label :collected_on, 'Collection date'
+      = f.date_field :collected_on, class: 'form-control'
+      = f.label :plot_id, 'Plot'
+      = f.collection_select :plot_id, @plots, :id, :name, include_blank: 'Choose...'
+      = f.label :collection_method
+      = f.select :collection_method, SoilSample.collection_methods.keys, include_blank: 'Choose...'
+      = f.label :ph_level, 'pH level'
+      = f.text_field :ph_level, class: 'form-control'
+      = f.label :temperature
+      = f.text_field :temperature, class: 'form-control'
+      = f.label :moisture
+      = f.text_field :moisture, class: 'form-control'
+      = f.submit class: 'btn btn-primary'

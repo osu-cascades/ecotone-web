@@ -1,0 +1,36 @@
+- content_for_title("Soil Sample ##{@soil_sample.id}")
+- content_for(:subnav) do
+  = link_to '« Back to Soil samples', soil_samples_path, class: 'btn btn-primary', title: 'Soil samples'
+  - if @soil_sample.editable_by?(current_user)
+    .btn-group
+      = link_to 'Edit', edit_soil_sample_path(@soil_sample), class: 'btn', title: 'Edit sample'
+      - if current_user&.admin?
+        = link_to 'Delete', @soil_sample, method: :delete, data: { confirm: "Delete soil sample #{@soil_sample.id}?" }, class: 'btn btn-danger', title: 'Delete sample'
+%section
+  .col-md-5
+    %h2 Photo
+    %p (no photo)
+  .col-md-7
+    %h2 Sample Information
+    %table.table
+      %thead
+        %th{colspan: '2'}= @soil_sample
+      %tbody
+        %tr
+          %th.col-md-4{scope: 'row'} Collection date
+          %td= @soil_sample.collected_on
+        %tr
+          %th.col-md-4{scope: 'row'} Plot
+          %td= @soil_sample.plot
+        %tr
+          %th.col-md-4{scope: 'row'} pH
+          %td= @soil_sample.ph_level
+        %tr
+          %th.col-md-4{scope: 'row'} Temperature
+          %td= @soil_sample.temperature
+        %tr
+          %th.col-md-4{scope: 'row'} Moisture
+          %td= @soil_sample.moisture
+        %tr
+          %th.col-md-4{scope: 'row'} Collection method
+          %td= @soil_sample.collection_method

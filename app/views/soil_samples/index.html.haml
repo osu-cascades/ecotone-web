@@ -1,0 +1,30 @@
+- content_for_title('Soil Samples')
+- content_for(:subnav) do
+  = link_to('Add Soil Sample', new_soil_sample_path, class: 'btn btn-primary', title: 'Add a new soil sample')
+
+%section
+  %h2 Sample Information
+  %table.table
+    %thead
+      %tr
+        %th{scope: 'col'} Id
+        %th{scope: 'col'} Plot
+        %th{scope: 'col'} Collection date
+        %th{scope: 'col'} pH
+        %th{scope: 'col'} Temperature
+        %th{scope: 'col'} Moisture
+        %th{scope: 'col'} Collection method
+        %th{scope: 'col'}
+    %tbody
+      - @soil_samples.each do |sample|
+        %tr
+          %td= sample.id
+          %td= sample.plot
+          %td= sample.collected_on
+          %td= sample.ph_level
+          %td= sample.temperature
+          %td= sample.moisture
+          %td= sample.collection_method
+          %td
+            = link_to 'view', sample, title: "Details of soil sample #{sample.id}"
+            = link_to('edit', edit_soil_sample_path(sample), title: 'Edit sample') if sample.editable_by?(current_user)

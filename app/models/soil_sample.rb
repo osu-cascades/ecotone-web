@@ -24,4 +24,9 @@ class SoilSample < ApplicationRecord
       nutrients.build(name: name)
     end
   end
+
+  def to_s
+    "#{plot} on #{collected_on} by #{user}"
+  end
+
 end
