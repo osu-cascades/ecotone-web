@@ -5,9 +5,8 @@ FactoryGirl.define do
     percent_cover 1
     photo ''
     plant
-    plot { biodiversity_report.plot }
-    user { biodiversity_report.author }
-    biodiversity_report
+    plot
+    user
   end
 
   factory :empty_plant_sample, class: PlantSample do
@@ -18,6 +17,5 @@ FactoryGirl.define do
     plant nil
     plot nil
     user nil
-    biodiversity_report nil
   end
 end

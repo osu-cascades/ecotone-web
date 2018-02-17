@@ -58,10 +58,7 @@ class BiodiversityReportsController < ApplicationController
   end
 
   def biodiversity_report_params
-    params.require(:biodiversity_report).permit(:measured_on, :measured_at, :temperature,
-      :species_richness, :photo, :plot_id, :diversity_index,
-
-      plant_samples_attributes: [:biodiversity_report_id, :_destroy, :id,
-        :plant_id, :abundance,:percent_cover, :photo])
+    params.require(:biodiversity_report).permit(:measured_on, :measured_at,
+      :temperature, :species_richness, :photo, :plot_id, :diversity_index)
   end
 end

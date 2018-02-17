@@ -1,4 +1,7 @@
-%p Common name: #{plant_sample.plant.common_name}
+%p Collected on: #{plant_sample.collected_on}
+%p Plot: #{plant_sample.plot}
+%p Collected by: #{plant_sample.user}
+%p Plant: #{plant_sample.plant.common_name}
 %p Abundance: #{plant_sample.abundance}
 %p Percent Cover: #{plant_sample.percent_cover}
 = image_tag plant_sample.photo.url(:default), alt: "Photo of #{plant_sample.plant.common_name}"

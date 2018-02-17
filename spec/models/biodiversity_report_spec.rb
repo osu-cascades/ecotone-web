@@ -39,19 +39,8 @@ RSpec.describe BiodiversityReport, type: :model do
     it { is_expected.to have_and_belong_to_many(:soil_samples) }
     it { is_expected.to have_and_belong_to_many(:lichen_samples) }
     it { is_expected.to have_and_belong_to_many(:macroinvertebrate_samples) }
-    it { is_expected.to have_many(:plant_samples) }
-    it { is_expected.to accept_nested_attributes_for(:plant_samples).allow_destroy(true) }
+    it { is_expected.to have_and_belong_to_many(:plant_samples) }
     it { is_expected.to have_attached_file(:photo) }
-
-    it 'triggers destroy_associated_samples after destroy' do
-      expect(report).to receive(:destroy_associated_samples)
-      report.destroy
-    end
-
-    it 'destroys associated samples when destroyed' do
-      create(:plant_sample, biodiversity_report: report)
-      expect { report.destroy }.to change { PlantSample.count }.from(1).to(0)
-    end
   end
 
   describe 'editability' do
