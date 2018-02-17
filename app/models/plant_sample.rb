@@ -31,4 +31,9 @@ class PlantSample < ApplicationRecord
       end
     end
   end
+
+  def to_s
+    "#{plot} on #{collected_on} by #{user}"
+  end
+
 end

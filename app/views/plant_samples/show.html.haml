@@ -1,0 +1,33 @@
+- content_for_title("Plant Sample ##{@plant_sample.id}")
+- content_for(:subnav) do
+  = link_to '« Back to Plant samples', plant_samples_path, class: 'btn btn-primary', title: 'Plant samples'
+  - if @plant_sample.editable_by?(current_user)
+    .btn-group
+      = link_to 'Edit', edit_plant_sample_path(@plant_sample), class: 'btn', title: 'Edit sample'
+      - if current_user&.admin?
+        = link_to 'Delete', @plant_sample, method: :delete, data: { confirm: "Delete plant sample #{@plant_sample.id}?" }, class: 'btn btn-danger', title: 'Delete sample'
+%section
+  .col-md-5
+    %h2 Photo
+    = image_tag @plant_sample.photo.url(:default), alt: "Photo of #{@plant_sample}"
+  .col-md-7
+    %h2 Sample Information
+    %table.table
+      %thead
+        %th{colspan: '2'}= @plant_sample
+      %tbody
+        %tr
+          %th.col-md-4{scope: 'row'} Collection date
+          %td= @plant_sample.collected_on
+        %tr
+          %th.col-md-4{scope: 'row'} Plot
+          %td= @plant_sample.plot
+        %tr
+          %th.col-md-4{scope: 'row'} Plant
+          %td= @plant_sample.plant.common_name
+        %tr
+          %th.col-md-4{scope: 'row'} Abundance
+          %td= @plant_sample.abundance
+        %tr
+          %th.col-md-4{scope: 'row'} Percent Cover
+          %td= @plant_sample.percent_cover

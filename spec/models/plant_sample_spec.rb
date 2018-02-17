@@ -25,6 +25,10 @@ RSpec.describe PlantSample, type: :model do
     it { is_expected.to have_and_belong_to_many(:biodiversity_reports) }
   end
 
+  it 'has a string representation consisting of its name' do
+    expect(plant_sample.to_s).to eq("#{plant_sample.plot} on #{plant_sample.collected_on} by #{plant_sample.user}")
+  end
+
   describe '#to_csv' do
     skip 'generates a valid csv representation' do
       p1 = PlantSample.create(plant: plant, collected_on: '2000-01-01', biodiversity_report: biodiversity_report, plot: biodiversity_report.plot, user: biodiversity_report.author, abundance: 1, percent_cover: 1)

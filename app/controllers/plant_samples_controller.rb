@@ -22,16 +22,24 @@ class PlantSamplesController < ApplicationController
 
   def new
     @plant_sample = PlantSample.new
+    @plots = Plot.order(:plot_id)
+    @plants = Plant.order('LOWER(common_name)')
   end
 
-  def edit; end
+  def edit
+    @plots = Plot.order(:plot_id)
+    @plants = Plant.order('LOWER(common_name)')
+  end
 
   def create
     @plant_sample = PlantSample.new(plant_sample_params)
+    @plant_sample.user = current_user
     if @plant_sample.save
       redirect_to plant_samples_path
       flash[:success] = 'Plant sample was successfully created.'
     else
+      @plots = Plot.order(:plot_id)
+      @plants = Plant.order('LOWER(common_name)')
       render :new
     end
   end
@@ -41,6 +49,8 @@ class PlantSamplesController < ApplicationController
       redirect_to @plant_sample
       flash[:success] = 'Plant sample was successfully updated.'
     else
+      @plots = Plot.order(:plot_id)
+      @plants = Plant.order('LOWER(common_name)')
       render :edit
     end
   end
@@ -58,8 +68,8 @@ class PlantSamplesController < ApplicationController
     end
 
     def plant_sample_params
-      params.require(:plant_sample).permit(:abundance, :percent_cover, :biomass_estimate,
-        :photo, :plant_id)
+      params.require(:plant_sample).permit(:collected_on, :abundance, :percent_cover, :biomass_estimate,
+        :photo, :plant_id, :plot_id)
     end
 
 end

@@ -1,29 +1,31 @@
 - content_for_title('Plant Samples')
 - content_for(:subnav) do
-  = link_to 'New Plant Sample', new_plant_sample_path, class: 'btn btn-primary'
-  = link_to 'Export All Samples', export_path(format: 'csv'), class: 'btn btn-primary-outline'
-.table-responsive
-  %table.table.table-striped
-    %thead
-      %tr
-        %th Plot
-        %th Species
-        %th Date
-        %th Time
-        %th Temperature
-        %th Species Richness
-        %th Diversity Index
-        %th Abundance
-        %th Percent Cover
-    %tbody
-      - @plant_samples.each do |sample|
+  = link_to 'Add Plant Sample', new_plant_sample_path, class: 'btn btn-primary', title: 'Add a new plant sample'
+
+%section
+  %h2 Sample Information
+  .table-responsive
+    %table.table.table-striped
+      %thead
         %tr
-          %td= sample.biodiversity_report.plot.name unless sample.biodiversity_report.nil?
-          %td= sample&.plant.common_name
-          %td= sample&.biodiversity_report.measured_on.to_s(:long)
-          %td= sample&.biodiversity_report.measured_at.to_s(:ampm)
-          %td= sample&.biodiversity_report.temperature
-          %td= sample&.biodiversity_report.species_richness
-          %td= sample&.biodiversity_report.diversity_index
-          %td= sample.abundance
-          %td= sample.percent_cover
+          %th{scope: 'col'} Id
+          %th{scope: 'col'} Collection date
+          %th{scope: 'col'} Plot
+          %th{scope: 'col'} Species
+          %th{scope: 'col'} Abundance
+          %th{scope: 'col'} Percent cover
+          %th{scope: 'col'} Biomass estimate
+          %th{scope: 'col'}
+      %tbody
+        - @plant_samples.each do |sample|
+          %tr
+            %td= sample.id
+            %td= sample.collected_on
+            %td= sample.plot
+            %td= sample.plant.common_name
+            %td= sample.abundance
+            %td= sample.percent_cover
+            %td= sample.biomass_estimate
+            %td
+              = link_to 'view', sample, title: "Details of plant sample #{sample.id}"
+              = link_to('edit', edit_plant_sample_path(sample), title: 'Edit sample') if sample.editable_by?(current_user)
