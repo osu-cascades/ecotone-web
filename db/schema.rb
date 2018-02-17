@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180215134949) do
+ActiveRecord::Schema.define(version: 20180216235133) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -165,6 +165,11 @@ ActiveRecord::Schema.define(version: 20180215134949) do
     t.datetime "updated_at", null: false
     t.integer "biodiversity_report_id"
     t.integer "plant_id"
+    t.date "collected_on"
+    t.bigint "plot_id"
+    t.bigint "user_id"
+    t.index ["plot_id"], name: "index_plant_samples_on_plot_id"
+    t.index ["user_id"], name: "index_plant_samples_on_user_id"
   end
 
   create_table "plants", id: :serial, force: :cascade do |t|
@@ -290,6 +295,8 @@ ActiveRecord::Schema.define(version: 20180215134949) do
   add_foreign_key "nonvascular_plant_samples", "plots"
   add_foreign_key "nonvascular_plant_samples", "users"
   add_foreign_key "nutrients", "soil_samples"
+  add_foreign_key "plant_samples", "plots"
+  add_foreign_key "plant_samples", "users"
   add_foreign_key "soil_samples", "plots"
   add_foreign_key "soil_samples", "users"
   add_foreign_key "species_variation_observations", "plants"

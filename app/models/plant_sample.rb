@@ -2,11 +2,14 @@ require 'csv'
 
 class PlantSample < ApplicationRecord
   belongs_to :plant
+  belongs_to :plot
+  belongs_to :user
   belongs_to :biodiversity_report
 
   has_attached_file :photo, default_url: 'missing.png', styles: { default: '200x200#', thumbnail: '50x50#' }
   validates_attachment_content_type :photo, content_type: /\Aimage/
 
+  validates_presence_of :collected_on
   validates_numericality_of :abundance, only_integer: true, greater_than: 0
   validates_numericality_of :percent_cover, only_integer: true, greater_than: 0, less_than_or_equal_to: 100
 

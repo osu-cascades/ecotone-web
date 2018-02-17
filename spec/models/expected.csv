@@ -1,3 +1,3 @@
-Plot,common_name,scientific_name,measured_on,measured_at,temperature,species_richness,diversity_index,abundance,percent_cover
-Plot #1,Plant Example,Scientific Example,2000-01-01,2000-01-01 00:00:00 UTC,1.5,1,1.5,1,1
-Plot #1,Plant Example,Scientific Example,2000-01-01,2000-01-01 00:00:00 UTC,1.5,1,1.5,1,1
+Plot,common_name,scientific_name,measured_on,measured_at,temperature,species_richness,diversity_index,collected_on,abundance,percent_cover
+Plot #1,Plant Example,Scientific Example,2000-01-01,2000-01-01 00:00:00 UTC,1.5,1,1.5,2000-01-01,1,1
+Plot #1,Plant Example,Scientific Example,2000-01-01,2000-01-01 00:00:00 UTC,1.5,1,1.5,2000-01-01,1,1
