@@ -4,6 +4,7 @@ class PlantSample < ApplicationRecord
   belongs_to :plant
   belongs_to :plot
   belongs_to :user
+  has_and_belongs_to_many :biodiversity_reports
   belongs_to :biodiversity_report
 
   has_attached_file :photo, default_url: 'missing.png', styles: { default: '200x200#', thumbnail: '50x50#' }
