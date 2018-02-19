@@ -16,6 +16,7 @@ class BiodiversityReport < ApplicationRecord
   validates_numericality_of :species_richness, only_integer: true, greater_than: 0
   validates_numericality_of :diversity_index, greater_than: 0
   validates_numericality_of :species_evenness, greater_than_or_equal_to: 0, less_than_or_equal_to: 1, allow_nil: true
+  validates_numericality_of :biomass_estimate, greater_than_or_equal_to: 0, allow_nil: true
 
   paginates_per 10
 

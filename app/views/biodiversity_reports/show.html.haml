@@ -6,26 +6,57 @@
       = link_to 'Edit', edit_biodiversity_report_path(@biodiversity_report), class: 'btn', title: "Edit #{@biodiversity_report}"
       - if current_user&.admin?
         = link_to 'Delete', @biodiversity_report, method: :delete, data: { confirm: 'Delete Report?' }, class: 'btn btn-danger', title: "Delete #{@biodiversity_report}"
-%h2.center= @biodiversity_report.byline
+
 %section
-  .col-md-5
-    %h3= @biodiversity_report.plot
-    %p Temperature: #{@biodiversity_report.temperature}
-    %p Species Richness: #{@biodiversity_report.species_richness}
-    %p Species Evenness: #{@biodiversity_report.species_evenness}
-    %p Shannon-Wiener Diversity Index: #{@biodiversity_report.diversity_index}
-  .col-md-7
-    = image_tag @biodiversity_report.photo.url(:default), alt: "Photo of #{@biodiversity_report.plot}"
-  .col-md-12
-    %hr
-    %h3 Soil Samples
-    = render(@biodiversity_report.soil_samples) || '<p>No soil samples</p>'.html_safe
-    %hr
-    %h3 Lichen Samples
-    = render(@biodiversity_report.lichen_samples) || '<p>No lichen samples</p>'.html_safe
-    %hr
-    %h3 Macroinvertebrate Samples
-    = render(@biodiversity_report.macroinvertebrate_samples) || '<p>No macroinvertebrate samples</p>'.html_safe
-    %hr
-    %h3 Plant Samples
-    = render(@biodiversity_report.plant_samples) || '<p>No plant samples</p>'.html_safe
+  .row
+    .col-md-5
+      %h2 Photo
+      = image_tag @biodiversity_report.photo.url(:default), alt: "Photo of #{@biodiversity_report.plot}"
+    .col-md-7
+      %h2.center= "by #{@biodiversity_report.author}"
+      %table.table
+        %thead
+          %th{colspan: '2'}= @biodiversity_report.byline
+        %tbody
+          %tr
+            %th.col-md-4{scope: 'row'} Collection date
+            %td= @biodiversity_report.measured_on.to_s(:long)
+          %tr
+            %th.col-md-4{scope: 'row'} Collection time
+            %td= @biodiversity_report.measured_at.to_s(:ampm)
+          %tr
+            %th.col-md-4{scope: 'row'} Author
+            %td= @biodiversity_report.author
+          %tr
+            %th.col-md-4{scope: 'row'} Plot
+            %td= @biodiversity_report.plot
+          %tr
+            %th.col-md-4{scope: 'row'} Temperature
+            %td= @biodiversity_report.temperature
+          %tr
+            %th.col-md-4{scope: 'row'} Species richness
+            %td= @biodiversity_report.species_richness
+          %tr
+            %th.col-md-4{scope: 'row'} Diversity index
+            %td= @biodiversity_report.diversity_index
+          %tr
+            %th.col-md-4{scope: 'row'} Species evenness
+            %td= @biodiversity_report.species_evenness
+          %tr
+            %th.col-md-4{scope: 'row'} Biomass estimate
+            %td= @biodiversity_report.biomass_estimate
+
+  .row
+    .col-md-12
+      %hr
+      %h3 Soil Samples
+      = render(@biodiversity_report.soil_samples) || '<p>No soil samples</p>'.html_safe
+      %hr
+      %h3 Lichen Samples
+      = render(@biodiversity_report.lichen_samples) || '<p>No lichen samples</p>'.html_safe
+      %hr
+      %h3 Macroinvertebrate Samples
+      = render(@biodiversity_report.macroinvertebrate_samples) || '<p>No macroinvertebrate samples</p>'.html_safe
+      %hr
+      %h3 Plant Samples
+      = render(@biodiversity_report.plant_samples) || '<p>No plant samples</p>'.html_safe

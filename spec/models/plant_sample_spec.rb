@@ -8,7 +8,8 @@ RSpec.describe PlantSample, type: :model do
     it { is_expected.to have_attributes(
       collected_on: Date.today,
       abundance: 1,
-      percent_cover: 1
+      percent_cover: 1,
+      biomass_estimate: 1.0
     ) }
     it { is_expected.to be_valid }
   end
