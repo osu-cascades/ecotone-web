@@ -21,7 +21,6 @@ RSpec.feature 'User creates a biodiversity report' do
     fill_in('Biomass estimate', with: '1.0')
     click_button('Create Biodiversity report')
     expect(page).to have_selector '.alert', text: 'Biodiversity report was successfully created.'
-    expect(page).to have_content(BiodiversityReport.last.to_s)
   end
 
   scenario 'providing invalid report data' do
