@@ -14,6 +14,7 @@
     %p Species Richness: #{@biodiversity_report.species_richness}
     %p Species Evenness: #{@biodiversity_report.species_evenness}
     %p Shannon-Wiener Diversity Index: #{@biodiversity_report.diversity_index}
+    %p Biomass Estimate: #{@biodiversity_report.biomass_estimate}
   .col-md-7
     = image_tag @biodiversity_report.photo.url(:default), alt: "Photo of #{@biodiversity_report.plot}"
   .col-md-12

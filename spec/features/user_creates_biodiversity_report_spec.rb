@@ -18,11 +18,10 @@ RSpec.feature 'User creates a biodiversity report' do
     fill_in('Species richness', with: '10')
     fill_in('Shannon-Wiener diversity index', with: '5.0')
     fill_in('Species evenness', with: '0.5')
+    fill_in('Biomass estimate', with: '1.0')
     click_button('Create Biodiversity report')
     expect(page).to have_selector '.alert', text: 'Biodiversity report was successfully created.'
     expect(page).to have_content(BiodiversityReport.last.to_s)
-    click_link(BiodiversityReport.last.to_s)
-    expect(page).to have_content('No soil sample')
   end
 
   scenario 'providing invalid report data' do

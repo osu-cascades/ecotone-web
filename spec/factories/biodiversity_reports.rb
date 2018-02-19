@@ -6,6 +6,7 @@ FactoryGirl.define do
     species_richness 1
     diversity_index 1.5
     species_evenness 0.5
+    biomass_estimate 1.0
     photo ''
     plot
     author factory: :user
