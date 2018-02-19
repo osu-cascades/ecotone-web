@@ -4,4 +4,5 @@
 %p Plant: #{plant_sample.plant.common_name}
 %p Abundance: #{plant_sample.abundance}
 %p Percent Cover: #{plant_sample.percent_cover}
+%p Biomass Estimate: #{plant_sample.biomass_estimate}
 = image_tag plant_sample.photo.url(:default), alt: "Photo of #{plant_sample.plant.common_name}"

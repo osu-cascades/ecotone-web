@@ -15,6 +15,7 @@ RSpec.feature 'User creates a plant sample' do
     select('Plant Example', from: 'Plant')
     fill_in('Abundance', with: 1)
     fill_in('Percent cover', with: 1)
+    fill_in('Biomass estimate', with: 1.0)
     click_on('Create Plant sample')
     expect(page).to have_content('Plant sample was successfully created')
   end
