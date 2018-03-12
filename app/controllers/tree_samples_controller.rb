@@ -5,6 +5,10 @@ class TreeSamplesController < ApplicationController
 
   def index
     @tree_samples = TreeSample.all
+    respond_to do |format|
+      format.html
+      format.csv { send_data @tree_samples.to_csv, filename: "treesamples-#{Date.today}.csv" }
+    end
   end
 
   def show; end
