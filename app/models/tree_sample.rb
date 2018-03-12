@@ -26,4 +26,26 @@ class TreeSample < ApplicationRecord
     "#{plant} in #{plot} on #{collected_on} by #{user}"
   end
 
+  def self.to_csv
+    CSV.generate(headers: true) do |csv|
+      header = ['Id', 'Collection date', 'Plot', 'Species', 'Tag', 'Growth Stage', 'DBH', 'Lower Canopy Height', 'Upper Canopy Height', 'Latitude', 'Longitude']
+      csv << header
+      TreeSample.includes(:plot, :plant).each do |ts|
+        csv.add_row [
+          ts.id,
+          ts.collected_on,
+          ts.plot.to_s,
+          ts.plant.to_s,
+          ts.tag_number,
+          ts.growth_stage.capitalize,
+          ts.dbh,
+          ts.lower_canopy_height,
+          ts.upper_canopy_height,
+          ts.latitude,
+          ts.longitude
+        ]
+      end
+    end
+  end
+
 end
