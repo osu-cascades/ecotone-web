@@ -28,10 +28,10 @@
           %td= @plot.longitude || 'unmeasured'
         %tr
           %th.col-md-4{scope: 'row'} Elevation
-          %td= @plot.elevation || 'unmeasured'
+          %td= @plot.elevation ? "#{@plot.elevation} ft." : 'unmeasured'
         %tr
           %th.col-md-4{scope: 'row'} Area
-          %td= @plot.area || 'unmeasured'
+          %td= @plot.area ? "#{@plot.area} sq. ft." : 'unmeasured'
         %tr
           %th.col-md-4{scope: 'row'} Aspect
           %td= @plot.aspect
