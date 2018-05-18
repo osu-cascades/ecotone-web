@@ -20,6 +20,9 @@
           %th.col-md-4{scope: 'row'} Collection date
           %td= @soil_sample.collected_on
         %tr
+          %th.col-md-4{scope: 'row'} Collection method
+          %td= @soil_sample.collection_method
+        %tr
           %th.col-md-4{scope: 'row'} Plot
           %td= @soil_sample.plot
         %tr
@@ -32,5 +35,11 @@
           %th.col-md-4{scope: 'row'} Moisture
           %td= @soil_sample.moisture
         %tr
-          %th.col-md-4{scope: 'row'} Collection method
-          %td= @soil_sample.collection_method
+          %th.col-md-4{scope: 'row'} Nitrogen
+          %td= @soil_sample.nutrients.find{ |n| n.name == 'Nitrogen'}&.level
+        %tr
+          %th.col-md-4{scope: 'row'} Phosphorus
+          %td= @soil_sample.nutrients.find{ |n| n.name == 'Phosphorus'}&.level
+        %tr
+          %th.col-md-4{scope: 'row'} Potassium
+          %td= @soil_sample.nutrients.find{ |n| n.name == 'Potassium'}&.level

@@ -14,4 +14,10 @@
       = f.text_field :temperature, class: 'form-control'
       = f.label :moisture
       = f.text_field :moisture, class: 'form-control'
+      %h3 Nutrients
+      = f.fields_for :nutrients, @soil_sample.nutrients do |nf|
+        = nf.hidden_field :name
+        = nf.label :level, nf.object.name
+        = nf.select :level, Nutrient.levels.keys, include_blank: 'Choose...'
+
       = f.submit class: 'btn btn-primary'

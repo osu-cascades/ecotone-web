@@ -10,6 +10,8 @@ class SoilSample < ApplicationRecord
   has_many :nutrients
   has_and_belongs_to_many :biodiversity_reports
 
+  accepts_nested_attributes_for :nutrients
+
   validates_presence_of :collected_on
   validates_presence_of :collection_method
   validates_numericality_of :ph_level, greater_than_or_equal_to: 0, less_than_or_equal_to: 14

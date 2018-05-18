@@ -11,6 +11,7 @@ class SoilSamplesController < ApplicationController
 
   def new
     @soil_sample = SoilSample.new
+    @soil_sample.build_default_nutrients
     @plots = Plot.order(:plot_id)
   end
 
@@ -61,7 +62,8 @@ class SoilSamplesController < ApplicationController
     end
 
     def soil_sample_params
-      params.require(:soil_sample).permit(:collected_on, :plot_id, :collection_method, :ph_level, :temperature, :moisture)
+      params.require(:soil_sample).permit(:collected_on, :plot_id, :collection_method, :ph_level, :temperature, :moisture,
+         nutrients_attributes: [:name, :level])
     end
 
 end

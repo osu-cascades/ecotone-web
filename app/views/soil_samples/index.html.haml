@@ -10,10 +10,13 @@
         %th{scope: 'col'} Id
         %th{scope: 'col'} Plot
         %th{scope: 'col'} Collection date
+        %th{scope: 'col'} Collection method
         %th{scope: 'col'} pH
         %th{scope: 'col'} Temperature
         %th{scope: 'col'} Moisture
-        %th{scope: 'col'} Collection method
+        %th{scope: 'col'} N
+        %th{scope: 'col'} P
+        %th{scope: 'col'} K
         %th{scope: 'col'}
     %tbody
       - @soil_samples.each do |sample|
@@ -21,10 +24,13 @@
           %td= sample.id
           %td= sample.plot
           %td= sample.collected_on
+          %td= sample.collection_method
           %td= sample.ph_level
           %td= sample.temperature
           %td= sample.moisture
-          %td= sample.collection_method
+          %td= sample.nutrients.find{ |n| n.name == 'Nitrogen'}&.level
+          %td= sample.nutrients.find{ |n| n.name == 'Phosphorus'}&.level
+          %td= sample.nutrients.find{ |n| n.name == 'Potassium'}&.level
           %td
             = link_to 'view', sample, title: "Details of soil sample #{sample.id}"
             = link_to('edit', edit_soil_sample_path(sample), title: 'Edit sample') if sample.editable_by?(current_user)
