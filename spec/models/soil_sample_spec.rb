@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe SoilSample, type: :model do
   subject(:soil_sample) { build :soil_sample }
+  let(:nutrient) { create :nutrient }
 
   context 'when created' do
     it { is_expected.to have_attributes(
@@ -12,6 +13,14 @@ RSpec.describe SoilSample, type: :model do
       collection_method: 'composite'
     ) }
     it { is_expected.to be_valid }
+  end
+
+  describe 'destruction' do
+    it "destroys associated nutrients" do
+      soil_sample = nutrient.soil_sample
+      soil_sample.destroy
+      expect { nutrient.reload }.to raise_error(ActiveRecord::RecordNotFound)
+    end
   end
 
   describe 'validations and associations' do

@@ -7,7 +7,7 @@ class SoilSample < ApplicationRecord
 
   belongs_to :plot
   belongs_to :user
-  has_many :nutrients
+  has_many :nutrients, dependent: :destroy
   has_and_belongs_to_many :biodiversity_reports
 
   accepts_nested_attributes_for :nutrients, reject_if: :nutrient_presence_unspecified
