@@ -10,7 +10,7 @@ class SoilSample < ApplicationRecord
   has_many :nutrients
   has_and_belongs_to_many :biodiversity_reports
 
-  accepts_nested_attributes_for :nutrients
+  accepts_nested_attributes_for :nutrients, reject_if: :nutrient_presence_unspecified
 
   validates_presence_of :collected_on
   validates_presence_of :collection_method
@@ -29,6 +29,12 @@ class SoilSample < ApplicationRecord
 
   def to_s
     "#{plot} on #{collected_on} by #{user}"
+  end
+
+  private
+
+  def nutrient_presence_unspecified(attributes)
+    attributes['level'].blank? && attributes['amount'].blank?
   end
 
 end
