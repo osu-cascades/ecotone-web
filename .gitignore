@@ -30,3 +30,5 @@ spec/examples.txt
 /public/packs*
 /elm-stuff
 /node_modules
+
+latest.dump
