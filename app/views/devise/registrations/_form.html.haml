@@ -10,4 +10,5 @@
       = form.password_field :password, class: 'form-control'
       = form.label :password_confirmation, "Confirm Password"
       = form.password_field :password_confirmation, class: 'form-control'
+      = recaptcha_tags if @user.new_record?
       = form.submit class: 'btn btn-primary'
