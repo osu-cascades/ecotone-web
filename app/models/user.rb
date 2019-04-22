@@ -2,7 +2,8 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :validatable
+         :recoverable, :validatable, :omniauthable,
+         omniauth_providers: [:google_oauth2]
   attr_accessor :reset_token
   before_save :downcase_email
   validates :name, presence: true, length: { maximum: 50 }
@@ -20,6 +21,14 @@ class User < ApplicationRecord
 
   def self.new_token
     SecureRandom.urlsafe_base64
+  end
+
+  def self.from_omniauth(auth)
+    where(email: auth.info.email).first_or_create do |user|
+      user.password = Devise.friendly_token[0,20]
+      user.email = auth.info.email
+      user.name = auth.info.name
+    end
   end
 
   # Hartl-Style. See https://www.railstutorial.org/book/password_reset
