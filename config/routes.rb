@@ -1,10 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { registrations: 'registrations', omniauth_callbacks: 'users/omniauth_callbacks' }
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root    'static_pages#home'
-  get     'signup'  => 'users#new'
-  get     'login'   => 'sessions#new'
-  post    'login'   => 'sessions#create'
-  delete  'logout'  => 'sessions#destroy'
 
   resources :users
   resources :biodiversity_reports
