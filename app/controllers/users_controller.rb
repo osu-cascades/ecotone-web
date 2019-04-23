@@ -34,6 +34,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
       flash[:success] = 'Account updated.'
+      bypass_sign_in @user
       redirect_to @user
     else
       render 'edit'

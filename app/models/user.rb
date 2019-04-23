@@ -1,9 +1,8 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :validatable, :omniauthable,
-         omniauth_providers: [:google_oauth2]
+  devise :database_authenticatable, :recoverable, :validatable,
+         :omniauthable, omniauth_providers: [:google_oauth2]
   attr_accessor :reset_token
   before_save :downcase_email
   validates :name, presence: true, length: { maximum: 50 }
@@ -23,7 +22,8 @@ class User < ApplicationRecord
     SecureRandom.urlsafe_base64
   end
 
-  def self.from_omniauth(auth)
+  def self.from_omniauth(auth, allowed_domains)
+    return unless allowed_domains.include? auth&.extra&.raw_info&.hd
     where(email: auth.info.email).first_or_create do |user|
       user.password = Devise.friendly_token[0,20]
       user.email = auth.info.email
