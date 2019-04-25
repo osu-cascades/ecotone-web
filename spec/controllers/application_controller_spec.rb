@@ -23,7 +23,7 @@ RSpec.describe ApplicationController, type: :controller do
 
   describe '#login_required' do
     context 'user is logged in' do
-      before { allow(controller).to receive(:logged_in?).and_return(true) }
+      before { allow(controller).to receive(:user_signed_in?).and_return(true) }
       it 'does not invoke a redirect' do
         get :fake_action
         expect(response).to have_http_status(:success)
@@ -31,10 +31,10 @@ RSpec.describe ApplicationController, type: :controller do
     end
 
     context 'user is not logged in' do
-      before { allow(controller).to receive(:logged_in?).and_return(false) }
+      before { allow(controller).to receive(:user_signed_in?).and_return(false) }
       it 'invokes a redirect' do
         get :fake_action
-        expect(response).to redirect_to(login_path)
+        expect(response).to redirect_to(new_user_session_path)
       end
       it 'places a message in the flash' do
         get :fake_action

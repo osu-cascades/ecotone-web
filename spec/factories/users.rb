@@ -8,9 +8,5 @@ FactoryGirl.define do
     trait :admin do
       admin true
     end
-
-    trait :resetting_password do
-      after(:build) { |u| u.create_reset_digest }
-    end
   end
 end

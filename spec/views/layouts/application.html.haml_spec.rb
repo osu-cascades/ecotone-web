@@ -18,6 +18,7 @@ RSpec.describe "layouts/application", type: :view do
     let(:user) { build(:user) }
     before do
       allow(view).to receive(:current_user) { user }
+      allow(view).to receive(:user_signed_in?) { true }
     end
 
     it { is_expected.to_not have_link "Log in" }
@@ -32,6 +33,7 @@ RSpec.describe "layouts/application", type: :view do
     let(:user) { build(:user, :admin) }
     before do
       allow(view).to receive(:current_user) { user }
+      allow(view).to receive(:user_signed_in?) { true }
     end
 
     it { is_expected.to have_link "Users" }

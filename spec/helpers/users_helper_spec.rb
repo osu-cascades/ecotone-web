@@ -5,7 +5,7 @@ RSpec.describe UsersHelper, type: :helper do
     context 'current user is admin' do
       let(:current_user) { build(:user, :admin) }
       let(:user) { build(:user) }
-      before { assign(:current_user, current_user) }
+      before { sign_in(current_user) }
 
       it 'returns a link if the user is not the current user' do
         expect(helper.delete_user_link(current_user, user)).to have_link 'delete'

@@ -32,3 +32,5 @@ spec/examples.txt
 /node_modules
 
 latest.dump
+/public/packs
+/node_modules

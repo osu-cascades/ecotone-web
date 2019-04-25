@@ -6,7 +6,7 @@ RSpec.describe UsersController, type: :controller do
   let(:admin_user) { build(:user, :admin) }
 
   before do
-    allow(controller).to receive(:logged_in?).and_return(true)
+    allow(controller).to receive(:user_signed_in?).and_return(true)
   end
 
   describe '#index' do

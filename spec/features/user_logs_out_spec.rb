@@ -6,6 +6,7 @@ RSpec.feature 'User logs out' do
     before { sign_in(user) }
 
     scenario 'successfully logs out' do
+      visit root_path
       expect(page).to have_no_link 'Log in'
       expect(page).to have_link 'Log out'
       click_link 'Log out'
