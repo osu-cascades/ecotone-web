@@ -36,7 +36,8 @@ RSpec.feature 'User creates a tree sample' do
   end
 
   scenario 'with invalid sample attributes' do
-    skip
+    click_on('Create Tree sample')
+    expect(page).to have_content('The form contains 6 errors.')
   end
 
 end
