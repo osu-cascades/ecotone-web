@@ -7,5 +7,10 @@ FactoryGirl.define do
     trait :admin do
       admin true
     end
+
+    trait :alternate do
+      name 'Another Example Valid User'
+      email 'another_example@example.com'
+    end
   end
 end
