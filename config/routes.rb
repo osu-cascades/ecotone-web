@@ -11,8 +11,6 @@ Rails.application.routes.draw do
   resources :plants
   get     'plants/:id/download_qr' => 'plants#download_qr'
 
-  resources :password_resets, only: [:new, :create, :edit, :update]
-
   resources :plant_samples
   get 'export' => 'plant_samples#export'
   resources :fungi_samples

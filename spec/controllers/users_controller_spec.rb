@@ -58,39 +58,4 @@ RSpec.describe UsersController, type: :controller do
       expect(response).to have_http_status(:success)
     end
   end
-
-  describe '#edit' do
-    context 'user views own edit profile' do
-      before do
-        allow(controller).to receive(:current_user).and_return(user)
-      end
-
-      it 'returns http success' do
-        get :edit, params: { id: user.id }
-        expect(response).to have_http_status(:success)
-      end
-    end
-
-    context "admin views another's edit profile" do
-      before do
-        allow(controller).to receive(:current_user).and_return(admin_user)
-      end
-
-      it 'returns http success' do
-        get :edit, params: { id: user.id }
-        expect(response).to have_http_status(:success)
-      end
-    end
-
-    context "user views another's edit profile" do
-      before do
-        allow(controller).to receive(:current_user).and_return(other_user)
-      end
-
-      it 'redirects to root' do
-        get :edit, params: { id: user.id }
-        expect(response).to redirect_to(root_url)
-      end
-    end
-  end
 end

@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :login_required, except: [:new, :create]
   before_action :admin_required, only: :destroy
-  before_action :prevent_normal_users_from_editing_and_viewing_other_users, only: [:edit, :update, :show]
+  before_action :prevent_normal_users_from_viewing_other_users, only: [:show]
 
   def index
     @users = User.all
@@ -15,21 +15,6 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def edit
-    @user = User.find(params[:id])
-  end
-
-  def update
-    @user = User.find(params[:id])
-    if @user.update_attributes(user_params)
-      flash[:success] = 'Account updated.'
-      bypass_sign_in @user
-      redirect_to @user
-    else
-      render 'edit'
-    end
-  end
-
   def destroy
     User.find(params[:id]).destroy
     flash[:success] = 'User deleted.'
@@ -38,11 +23,7 @@ class UsersController < ApplicationController
 
   private
 
-  def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
-  end
-
-  def prevent_normal_users_from_editing_and_viewing_other_users
+  def prevent_normal_users_from_viewing_other_users
     redirect_to(root_url) unless current_user.id == params[:id].to_i || current_user.admin?
   end
 end
