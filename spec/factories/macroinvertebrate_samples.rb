@@ -18,4 +18,8 @@ FactoryGirl.define do
     ecosystem_service ''
     photo ''
   end
+
+  factory :invalid_macroinvertebrate_sample, parent: :macroinvertebrate_sample do |f|
+    f.quantity -2
+  end
 end
