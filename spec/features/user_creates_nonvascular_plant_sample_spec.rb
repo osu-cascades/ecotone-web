@@ -15,7 +15,7 @@ RSpec.feature 'User creates a non-vascular plant sample' do
     fill_in('Location within plot', with: 'Fake location')
     fill_in('Description', with: 'Fake description')
     click_on('Create Nonvascular plant sample')
-    expect(page).to have_content('Nonvascular Plant sample was successfully created')
+    expect(page).to have_content('Nonvascular plant sample was successfully created')
   end
 
   scenario 'with invalid sample attributes' do

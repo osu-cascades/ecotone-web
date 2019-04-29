@@ -7,4 +7,8 @@ FactoryGirl.define do
     photo ''
     user
   end
+
+  factory :invalid_nonvascular_plant_sample, parent: :nonvascular_plant_sample do |f|
+    f.description nil
+  end
 end

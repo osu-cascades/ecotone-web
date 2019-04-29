@@ -23,7 +23,7 @@ class NonvascularPlantSamplesController < ApplicationController
     @nonvascular_plant_sample.user = current_user
     respond_to do |format|
       if @nonvascular_plant_sample.save
-        format.html { redirect_to @nonvascular_plant_sample, flash: {success: 'Nonvascular Plant sample was successfully created.'} }
+        format.html { redirect_to @nonvascular_plant_sample, flash: {success: 'Nonvascular plant sample was successfully created.'} }
         format.json { render :show, status: :created, location: @nonvascular_plant_sample }
       else
         @plots = Plot.order(:plot_id)
@@ -36,7 +36,7 @@ class NonvascularPlantSamplesController < ApplicationController
   def update
     respond_to do |format|
       if @nonvascular_plant_sample.update(nonvascular_plant_sample_params)
-        format.html { redirect_to @nonvascular_plant_sample, flash: {success: 'Nonvascular Plant sample was successfully updated.'} }
+        format.html { redirect_to @nonvascular_plant_sample, flash: {success: 'Nonvascular plant sample was successfully updated.'} }
         format.json { render :show, status: :ok, location: @nonvascular_plant_sample }
       else
         @plots = Plot.order(:plot_id)
@@ -49,7 +49,7 @@ class NonvascularPlantSamplesController < ApplicationController
   def destroy
     @nonvascular_plant_sample.destroy
     respond_to do |format|
-      format.html { redirect_to nonvascular_plant_samples_url, flash: {success: 'Nonvascular Plant sample was successfully destroyed.'} }
+      format.html { redirect_to nonvascular_plant_samples_url, flash: {success: 'Nonvascular plant sample was successfully destroyed.'} }
       format.json { head :no_content }
     end
   end
