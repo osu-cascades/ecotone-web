@@ -16,4 +16,8 @@ FactoryGirl.define do
     moisture ''
     collection_method ''
   end
+
+  factory :invalid_soil_sample, parent: :soil_sample do |f|
+    f.ph_level 22
+  end
 end
