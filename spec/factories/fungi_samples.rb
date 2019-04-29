@@ -16,4 +16,8 @@ FactoryGirl.define do
     description ''
     photo ''
   end
+
+  factory :invalid_fungi_sample, parent: :fungi_sample do |f|
+    f.size -2
+  end
 end
