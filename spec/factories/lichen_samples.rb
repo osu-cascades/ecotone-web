@@ -14,4 +14,8 @@ FactoryGirl.define do
     description ''
     photo ''
   end
+
+  factory :invalid_lichen_sample, parent: :lichen_sample do |f|
+    f.description nil
+  end  
 end
