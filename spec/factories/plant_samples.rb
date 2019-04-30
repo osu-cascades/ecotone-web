@@ -20,4 +20,8 @@ FactoryGirl.define do
     plot nil
     user nil
   end
+
+  factory :invalid_plant_sample, parent: :plant_sample do |f|
+    f.abundance -2
+  end
 end
