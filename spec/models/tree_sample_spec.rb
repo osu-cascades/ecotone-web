@@ -36,4 +36,17 @@ RSpec.describe TreeSample, type: :model do
   it 'has a string representation consisting of its name' do
     expect(tree_sample.to_s).to eq("#{tree_sample.plant} in #{tree_sample.plot} on #{tree_sample.collected_on} by #{tree_sample.user}")
   end
+
+  describe '#to_csv' do
+    before do
+      user = create(:user, email: 'example2@example.com')
+      first_tree_sample = create(:tree_sample, collected_on: '2000-01-01', id: 1)
+      second_tree_sample = create(:tree_sample, collected_on: '2000-01-01', id: 2, user: user)
+    end
+
+    it 'generates valid CSV' do
+      expected_csv = File.read(File.dirname(__FILE__) + '/tree_sample_expected.csv')
+      expect(TreeSample.all.to_csv).to eq(expected_csv)
+    end
+  end
 end
