@@ -16,5 +16,9 @@ FactoryGirl.define do
       visible_hyphae false
       hyphae_coverage nil
     end
+
+    factory :invalid_mycorrhizal_fungi_sample, parent: :mycorrhizal_fungi_sample do |f|
+      f.length -2
+    end
   end
 end
