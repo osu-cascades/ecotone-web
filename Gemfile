@@ -35,8 +35,8 @@ end
 
 group :development, :test do
   gem 'byebug', platform: :mri
-  gem 'rspec-rails', '~> 3.5'
-  gem 'rspec-mocks'
+  gem 'rspec-rails', '~> 3.8.2'
+  gem 'rspec-mocks', '~> 3.8.0'
   gem 'shoulda-matchers', '~> 4.0.1'
   gem 'capybara'
   gem 'factory_bot_rails', '~> 5.0.2'
