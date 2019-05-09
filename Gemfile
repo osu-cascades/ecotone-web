@@ -42,7 +42,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'dotenv-rails'
   gem 'poltergeist'
-  gem 'foreman', '~> 0.84.0'
+  gem 'foreman', '~> 0.85.0'
   gem 'haml-rails', '~> 2.0.0'
 end
 
