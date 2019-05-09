@@ -33,12 +33,12 @@ RSpec.describe MycorrhizalFungiSamplesController, type: :controller do
   describe '#create' do
     context 'with invalid attributes' do
       it 'does not save new mycorrhizal fungi sample' do
-        mycorrhizal_fungi_sample_params = FactoryGirl.attributes_for(:invalid_mycorrhizal_fungi_sample)
+        mycorrhizal_fungi_sample_params = FactoryBot.attributes_for(:invalid_mycorrhizal_fungi_sample)
         expect { post :create, params: { mycorrhizal_fungi_sample: mycorrhizal_fungi_sample_params } }.to_not change(MycorrhizalFungiSample, :count)
       end
 
       it 'does not redirect to index' do
-        post :create, params: { mycorrhizal_fungi_sample: FactoryGirl.attributes_for(:invalid_mycorrhizal_fungi_sample) }
+        post :create, params: { mycorrhizal_fungi_sample: FactoryBot.attributes_for(:invalid_mycorrhizal_fungi_sample) }
         expect(response).to_not redirect_to mycorrhizal_fungi_samples_path
       end
     end
@@ -58,31 +58,31 @@ RSpec.describe MycorrhizalFungiSamplesController, type: :controller do
 
     context 'with valid attributes' do
       it 'updates mycorrhizal fungi sample attributes' do
-        put :update, params: { id: @mycorrhizal_fungi_sample, mycorrhizal_fungi_sample: FactoryGirl.attributes_for(:mycorrhizal_fungi_sample, length: 2) }
+        put :update, params: { id: @mycorrhizal_fungi_sample, mycorrhizal_fungi_sample: FactoryBot.attributes_for(:mycorrhizal_fungi_sample, length: 2) }
         @mycorrhizal_fungi_sample.reload
         expect(@mycorrhizal_fungi_sample.length).to eq(2)
       end
 
       it 'redirects to the updated mycorrhizal fungi sample' do
-        put :update, params: { id: @mycorrhizal_fungi_sample, mycorrhizal_fungi_sample: FactoryGirl.attributes_for(:mycorrhizal_fungi_sample) }
+        put :update, params: { id: @mycorrhizal_fungi_sample, mycorrhizal_fungi_sample: FactoryBot.attributes_for(:mycorrhizal_fungi_sample) }
         expect(response).to redirect_to @mycorrhizal_fungi_sample
       end
 
       it 'produces correct flash notice' do
-        put :update, params: { id: @mycorrhizal_fungi_sample, mycorrhizal_fungi_sample: FactoryGirl.attributes_for(:mycorrhizal_fungi_sample) }
+        put :update, params: { id: @mycorrhizal_fungi_sample, mycorrhizal_fungi_sample: FactoryBot.attributes_for(:mycorrhizal_fungi_sample) }
         assert_equal 'Mycorrhizal fungi sample was successfully updated.', flash[:success]
       end
     end
 
     context 'with invalid attributes' do
       it 'does not update attributes' do
-        put :update, params: { id: @mycorrhizal_fungi_sample, mycorrhizal_fungi_sample: FactoryGirl.attributes_for(:mycorrhizal_fungi_sample, length: -2) }
+        put :update, params: { id: @mycorrhizal_fungi_sample, mycorrhizal_fungi_sample: FactoryBot.attributes_for(:mycorrhizal_fungi_sample, length: -2) }
         @mycorrhizal_fungi_sample.reload
         expect(@mycorrhizal_fungi_sample.length).to eq(1)
       end
 
       it 'does not redirect to updated mycorrhizal fungi sample' do
-        put :update, params: { id: @mycorrhizal_fungi_sample, mycorrhizal_fungi_sample: FactoryGirl.attributes_for(:mycorrhizal_fungi_sample, length: -2) }
+        put :update, params: { id: @mycorrhizal_fungi_sample, mycorrhizal_fungi_sample: FactoryBot.attributes_for(:mycorrhizal_fungi_sample, length: -2) }
         expect(response).to_not redirect_to @mycorrhizal_fungi_sample
       end
     end

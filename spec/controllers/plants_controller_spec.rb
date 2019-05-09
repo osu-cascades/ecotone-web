@@ -3,10 +3,10 @@ require 'rails_helper'
 # source: https://everydayrails.com/2012/04/07/testing-series-rspec-controllers.html
 
 RSpec.describe PlantsController, type: :controller do
-  let(:general_user) { FactoryGirl.build(:user) }
-  let(:admin_user) { FactoryGirl.build(:user, :admin) }
-  let(:plant) { FactoryGirl.create(:plant) }
-  let(:invalid_plant) { FactoryGirl.build(:invalid_plant) }
+  let(:general_user) { FactoryBot.build(:user) }
+  let(:admin_user) { FactoryBot.build(:user, :admin) }
+  let(:plant) { FactoryBot.create(:plant) }
+  let(:invalid_plant) { FactoryBot.build(:invalid_plant) }
 
   before do
     allow(controller).to receive(:current_user).and_return(admin_user)
@@ -36,29 +36,29 @@ RSpec.describe PlantsController, type: :controller do
   describe '#create' do
     context 'with valid attributes' do
       it 'creates new plant' do
-        plant_params = FactoryGirl.attributes_for(:plant)
+        plant_params = FactoryBot.attributes_for(:plant)
         expect { post :create, params: { plant: plant_params } }.to change(Plant, :count).by(1)
       end
 
       it 'redirects to index' do
-        post :create, params: { plant: FactoryGirl.attributes_for(:plant) }
+        post :create, params: { plant: FactoryBot.attributes_for(:plant) }
         expect(response).to redirect_to plants_path
       end
 
       it 'produces correct flash notice' do
-        post :create, params: { plant: FactoryGirl.attributes_for(:plant) }
+        post :create, params: { plant: FactoryBot.attributes_for(:plant) }
         assert_equal 'Plant was successfully created.', flash[:success]
       end
     end
 
     context 'with invalid attributes' do
       it 'does not save new plant' do
-        plant_params = FactoryGirl.attributes_for(:invalid_plant)
+        plant_params = FactoryBot.attributes_for(:invalid_plant)
         expect { post :create, params: { plant: plant_params } }.to_not change(Plant, :count)
       end
 
       it 'does not redirect to index' do
-        post :create, params: { plant: FactoryGirl.attributes_for(:invalid_plant) }
+        post :create, params: { plant: FactoryBot.attributes_for(:invalid_plant) }
         expect(response).to_not redirect_to plants_path
       end
     end
@@ -71,31 +71,31 @@ RSpec.describe PlantsController, type: :controller do
 
     context 'with valid attributes' do
       it 'updates plant attributes' do
-        put :update, params: { id: @plant, plant: FactoryGirl.attributes_for(:plant, common_name: 'CHANGED') }
+        put :update, params: { id: @plant, plant: FactoryBot.attributes_for(:plant, common_name: 'CHANGED') }
         @plant.reload
         expect(@plant.common_name).to eq('CHANGED')
       end
 
       it 'redirects to the updated plant' do
-        put :update, params: { id: @plant, plant: FactoryGirl.attributes_for(:plant) }
+        put :update, params: { id: @plant, plant: FactoryBot.attributes_for(:plant) }
         expect(response).to redirect_to @plant
       end
 
       it 'produces correct flash notice' do
-        post :update, params: { id: @plant, plant: FactoryGirl.attributes_for(:plant, common_name: 'CHANGED') }
+        post :update, params: { id: @plant, plant: FactoryBot.attributes_for(:plant, common_name: 'CHANGED') }
         assert_equal 'Plant was successfully updated.', flash[:success]
       end
     end
 
     context 'with invalid attributes' do
       it 'does not update attributes' do
-        put :update, params: { id: @plant, plant: FactoryGirl.attributes_for(:plant, scientific_name: nil) }
+        put :update, params: { id: @plant, plant: FactoryBot.attributes_for(:plant, scientific_name: nil) }
         @plant.reload
         expect(@plant.scientific_name).to eq('Example')
       end
 
       it 'does not redirect to updated plant' do
-        put :update, params: { id: @plant, plant: FactoryGirl.attributes_for(:invalid_plant) }
+        put :update, params: { id: @plant, plant: FactoryBot.attributes_for(:invalid_plant) }
         expect(response).to_not redirect_to @plant
       end
     end
@@ -133,7 +133,7 @@ RSpec.describe PlantsController, type: :controller do
       end
 
       it '#create redirects' do
-        get :create, params: { plant: FactoryGirl.attributes_for(:plant) }
+        get :create, params: { plant: FactoryBot.attributes_for(:plant) }
         expect(response).to redirect_to :root
       end
 
@@ -142,7 +142,7 @@ RSpec.describe PlantsController, type: :controller do
       end
 
       it '#update redirects' do
-        put :update, params: { id: @plant, plant: FactoryGirl.attributes_for(:plant) }
+        put :update, params: { id: @plant, plant: FactoryBot.attributes_for(:plant) }
         expect(response).to redirect_to :root
       end
 

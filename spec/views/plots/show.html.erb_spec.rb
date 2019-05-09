@@ -6,7 +6,7 @@ RSpec.describe "plots/show", type: :view do
 
     context "inoculated" do
       it "displays 'Yes'" do
-        assign(:plot, build(:plot))
+        assign(:plot, create(:plot))
         render
         expect(rendered).to have_content("Yes")
       end
@@ -14,7 +14,7 @@ RSpec.describe "plots/show", type: :view do
 
     context "not inoculated" do
       it "displays 'No'" do
-        assign(:plot, build(:plot, inoculated: false))
+        assign(:plot, create(:plot, inoculated: false))
         render
         expect(rendered).to have_content("No")
       end
@@ -25,7 +25,7 @@ RSpec.describe "plots/show", type: :view do
   describe "displaying latitude, longitude, area and elevation" do
     context "when present" do
       it "displays the values" do
-        assign(:plot, build(:plot))
+        assign(:plot, create(:plot))
         render
         expect(rendered).to have_content("44.0582")
         expect(rendered).to have_content("121.3153")
@@ -36,7 +36,7 @@ RSpec.describe "plots/show", type: :view do
 
     context "when nil" do
       it "displays 'unmeasured'" do
-        assign(:plot, build(:plot, latitude: nil, longitude: nil, elevation: nil, area: nil))
+        assign(:plot, create(:plot, latitude: nil, longitude: nil, elevation: nil, area: nil))
         render
         expect(rendered).to have_content("unmeasured")
       end
@@ -45,7 +45,7 @@ RSpec.describe "plots/show", type: :view do
 
   context "location description" do
     it "is humanized" do
-      assign(:plot, build(:plot, location_description: 'description of plot'))
+      assign(:plot, create(:plot, location_description: 'description of plot'))
       render
       expect(rendered).to have_content("Description of plot.")
     end

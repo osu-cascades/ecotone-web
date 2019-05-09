@@ -44,31 +44,31 @@ RSpec.describe SpeciesVariationObservationsController, type: :controller do
 
     context 'with valid attributes' do
       it 'updates species variation observation attributes' do
-        put :update, params: { id: @species_variation_observation, species_variation_observation: FactoryGirl.attributes_for(:species_variation_observation, average_height: 2.2) }
+        put :update, params: { id: @species_variation_observation, species_variation_observation: FactoryBot.attributes_for(:species_variation_observation, average_height: 2.2) }
         @species_variation_observation.reload
         expect(@species_variation_observation.average_height).to eq(2.2)
       end
 
       it 'redirects to the updated species variation observation' do
-        put :update, params: { id: @species_variation_observation, species_variation_observation: FactoryGirl.attributes_for(:species_variation_observation) }
+        put :update, params: { id: @species_variation_observation, species_variation_observation: FactoryBot.attributes_for(:species_variation_observation) }
         expect(response).to redirect_to @species_variation_observation
       end
 
       it 'produces correct flash notice' do
-        put :update, params: { id: @species_variation_observation, species_variation_observation: FactoryGirl.attributes_for(:species_variation_observation) }
+        put :update, params: { id: @species_variation_observation, species_variation_observation: FactoryBot.attributes_for(:species_variation_observation) }
         assert_equal 'Species variation observation was successfully updated.', flash[:success]
       end
     end
 
     context 'with invalid attributes' do
       it 'does not update attributes' do
-        put :update, params: { id: @species_variation_observation, species_variation_observation: FactoryGirl.attributes_for(:species_variation_observation, average_height: -2) }
+        put :update, params: { id: @species_variation_observation, species_variation_observation: FactoryBot.attributes_for(:species_variation_observation, average_height: -2) }
         @species_variation_observation.reload
         expect(@species_variation_observation.average_height).to eq(1.5)
       end
 
       it 'does not redirect to updated species variation observation' do
-        put :update, params: { id: @species_variation_observation, species_variation_observation: FactoryGirl.attributes_for(:species_variation_observation, average_height: -2) }
+        put :update, params: { id: @species_variation_observation, species_variation_observation: FactoryBot.attributes_for(:species_variation_observation, average_height: -2) }
         expect(response).to_not redirect_to @species_variation_observation
       end
     end

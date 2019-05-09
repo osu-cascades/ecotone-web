@@ -33,12 +33,12 @@ RSpec.describe SoilSamplesController, type: :controller do
   describe '#create' do
     context 'with invalid attributes' do
       it 'does not save new soil_sample' do
-        soil_sample_params = FactoryGirl.attributes_for(:invalid_soil_sample)
+        soil_sample_params = FactoryBot.attributes_for(:invalid_soil_sample)
         expect { post :create, params: { soil_sample: soil_sample_params } }.to_not change(SoilSample, :count)
       end
 
       it 'does not redirect to index' do
-        post :create, params: { soil_sample: FactoryGirl.attributes_for(:invalid_soil_sample) }
+        post :create, params: { soil_sample: FactoryBot.attributes_for(:invalid_soil_sample) }
         expect(response).to_not redirect_to soil_samples_path
       end
     end
@@ -58,31 +58,31 @@ RSpec.describe SoilSamplesController, type: :controller do
 
     context 'with valid attributes' do
       it 'updates soil sample attributes' do
-        put :update, params: { id: @soil_sample, soil_sample: FactoryGirl.attributes_for(:soil_sample, ph_level: 2.2) }
+        put :update, params: { id: @soil_sample, soil_sample: FactoryBot.attributes_for(:soil_sample, ph_level: 2.2) }
         @soil_sample.reload
         expect(@soil_sample.ph_level).to eq(2.2)
       end
 
       it 'redirects to the updated soil sample' do
-        put :update, params: { id: @soil_sample, soil_sample: FactoryGirl.attributes_for(:soil_sample) }
+        put :update, params: { id: @soil_sample, soil_sample: FactoryBot.attributes_for(:soil_sample) }
         expect(response).to redirect_to @soil_sample
       end
 
       it 'produces correct flash notice' do
-        put :update, params: { id: @soil_sample, soil_sample: FactoryGirl.attributes_for(:soil_sample) }
+        put :update, params: { id: @soil_sample, soil_sample: FactoryBot.attributes_for(:soil_sample) }
         assert_equal 'Soil sample was successfully updated.', flash[:success]
       end
     end
 
     context 'with invalid attributes' do
       it 'does not update attributes' do
-        put :update, params: { id: @soil_sample, soil_sample: FactoryGirl.attributes_for(:soil_sample, ph_level: 22) }
+        put :update, params: { id: @soil_sample, soil_sample: FactoryBot.attributes_for(:soil_sample, ph_level: 22) }
         @soil_sample.reload
         expect(@soil_sample.ph_level).to eq(1.5)
       end
 
       it 'does not redirect to updated soil sample' do
-        put :update, params: { id: @soil_sample, soil_sample: FactoryGirl.attributes_for(:soil_sample, ph_level: 22) }
+        put :update, params: { id: @soil_sample, soil_sample: FactoryBot.attributes_for(:soil_sample, ph_level: 22) }
         expect(response).to_not redirect_to @soil_sample
       end
     end

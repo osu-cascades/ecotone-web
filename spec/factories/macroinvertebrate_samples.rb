@@ -1,25 +1,25 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :macroinvertebrate_sample do
-    collected_on Date.today
+    collected_on { Date.today }
     plot
     user
-    phylum 'Arthropoda'
-    location_within_plot 'on a rock'
-    quantity 1
-    ecosystem_service 'Pollinator'
-    photo ''
+    phylum { 'Arthropoda' }
+    location_within_plot { 'on a rock' }
+    quantity { 1 }
+    ecosystem_service { 'Pollinator' }
+    photo { '' }
   end
 
   factory :empty_macroinvertebrate_sample, class: MacroinvertebrateSample do
-    collected_on nil
-    phylum ''
-    location_within_plot ''
-    quantity ''
-    ecosystem_service ''
-    photo ''
+    collected_on { nil }
+    phylum { '' }
+    location_within_plot { '' }
+    quantity { '' }
+    ecosystem_service { '' }
+    photo { '' }
   end
 
   factory :invalid_macroinvertebrate_sample, parent: :macroinvertebrate_sample do |f|
-    f.quantity -2
+    f.quantity { -2 }
   end
 end

@@ -33,12 +33,12 @@ RSpec.describe FungiSamplesController, type: :controller do
   describe '#create' do
     context 'with invalid attributes' do
       it 'does not save new fungi_sample' do
-        fungi_sample_params = FactoryGirl.attributes_for(:invalid_fungi_sample)
+        fungi_sample_params = FactoryBot.attributes_for(:invalid_fungi_sample)
         expect { post :create, params: { fungi_sample: fungi_sample_params } }.to_not change(FungiSample, :count)
       end
 
       it 'does not redirect to index' do
-        post :create, params: { fungi_sample: FactoryGirl.attributes_for(:invalid_fungi_sample) }
+        post :create, params: { fungi_sample: FactoryBot.attributes_for(:invalid_fungi_sample) }
         expect(response).to_not redirect_to fungi_samples_path
       end
     end
@@ -58,31 +58,31 @@ RSpec.describe FungiSamplesController, type: :controller do
 
     context 'with valid attributes' do
       it 'updates fungi sample attributes' do
-        put :update, params: { id: @fungi_sample, fungi_sample: FactoryGirl.attributes_for(:fungi_sample, size: 2.2) }
+        put :update, params: { id: @fungi_sample, fungi_sample: FactoryBot.attributes_for(:fungi_sample, size: 2.2) }
         @fungi_sample.reload
         expect(@fungi_sample.size).to eq(2.2)
       end
 
       it 'redirects to the updated fungi sample' do
-        put :update, params: { id: @fungi_sample, fungi_sample: FactoryGirl.attributes_for(:fungi_sample) }
+        put :update, params: { id: @fungi_sample, fungi_sample: FactoryBot.attributes_for(:fungi_sample) }
         expect(response).to redirect_to @fungi_sample
       end
 
       it 'produces correct flash notice' do
-        put :update, params: { id: @fungi_sample, fungi_sample: FactoryGirl.attributes_for(:fungi_sample) }
+        put :update, params: { id: @fungi_sample, fungi_sample: FactoryBot.attributes_for(:fungi_sample) }
         assert_equal 'Fungi sample was successfully updated.', flash[:success]
       end
     end
 
     context 'with invalid attributes' do
       it 'does not update attributes' do
-        put :update, params: { id: @fungi_sample, fungi_sample: FactoryGirl.attributes_for(:fungi_sample, size: -2) }
+        put :update, params: { id: @fungi_sample, fungi_sample: FactoryBot.attributes_for(:fungi_sample, size: -2) }
         @fungi_sample.reload
         expect(@fungi_sample.size).to eq(1.5)
       end
 
       it 'does not redirect to updated fungi sample' do
-        put :update, params: { id: @fungi_sample, fungi_sample: FactoryGirl.attributes_for(:fungi_sample, size: -2) }
+        put :update, params: { id: @fungi_sample, fungi_sample: FactoryBot.attributes_for(:fungi_sample, size: -2) }
         expect(response).to_not redirect_to @fungi_sample
       end
     end

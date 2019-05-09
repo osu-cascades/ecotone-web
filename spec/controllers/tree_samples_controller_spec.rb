@@ -44,31 +44,31 @@ RSpec.describe TreeSamplesController, type: :controller do
 
     context 'with valid attributes' do
       it 'updates tree sample attributes' do
-        put :update, params: { id: @tree_sample, tree_sample: FactoryGirl.attributes_for(:tree_sample, dbh: 2.2) }
+        put :update, params: { id: @tree_sample, tree_sample: FactoryBot.attributes_for(:tree_sample, dbh: 2.2) }
         @tree_sample.reload
         expect(@tree_sample.dbh).to eq(2.2)
       end
 
       it 'redirects to the updated tree sample' do
-        put :update, params: { id: @tree_sample, tree_sample: FactoryGirl.attributes_for(:tree_sample) }
+        put :update, params: { id: @tree_sample, tree_sample: FactoryBot.attributes_for(:tree_sample) }
         expect(response).to redirect_to @tree_sample
       end
 
       it 'produces correct flash notice' do
-        put :update, params: { id: @tree_sample, tree_sample: FactoryGirl.attributes_for(:tree_sample) }
+        put :update, params: { id: @tree_sample, tree_sample: FactoryBot.attributes_for(:tree_sample) }
         assert_equal 'Tree sample was successfully updated.', flash[:success]
       end
     end
 
     context 'with invalid attributes' do
       it 'does not update attributes' do
-        put :update, params: { id: @tree_sample, tree_sample: FactoryGirl.attributes_for(:tree_sample, dbh: -2) }
+        put :update, params: { id: @tree_sample, tree_sample: FactoryBot.attributes_for(:tree_sample, dbh: -2) }
         @tree_sample.reload
         expect(@tree_sample.dbh).to eq(1.5)
       end
 
       it 'does not redirect to updated tree sample' do
-        put :update, params: { id: @tree_sample, tree_sample: FactoryGirl.attributes_for(:tree_sample, dbh: -2) }
+        put :update, params: { id: @tree_sample, tree_sample: FactoryBot.attributes_for(:tree_sample, dbh: -2) }
         expect(response).to_not redirect_to @tree_sample
       end
     end

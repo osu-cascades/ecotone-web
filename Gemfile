@@ -39,7 +39,7 @@ group :development, :test do
   gem 'rspec-mocks'
   gem 'shoulda-matchers', '~> 4.0.1'
   gem 'capybara'
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails', '~> 5.0.2'
   gem 'dotenv-rails'
   gem 'poltergeist'
   gem 'foreman', '~> 0.85.0'

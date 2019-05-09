@@ -33,12 +33,12 @@ RSpec.describe NonvascularPlantSamplesController, type: :controller do
   describe '#create' do
     context 'with invalid attributes' do
       it 'does not save new nonvascular_plant_sample' do
-        nonvascular_plant_sample_params = FactoryGirl.attributes_for(:invalid_nonvascular_plant_sample)
+        nonvascular_plant_sample_params = FactoryBot.attributes_for(:invalid_nonvascular_plant_sample)
         expect { post :create, params: { nonvascular_plant_sample: nonvascular_plant_sample_params } }.to_not change(NonvascularPlantSample, :count)
       end
 
       it 'does not redirect to index' do
-        post :create, params: { nonvascular_plant_sample: FactoryGirl.attributes_for(:invalid_nonvascular_plant_sample) }
+        post :create, params: { nonvascular_plant_sample: FactoryBot.attributes_for(:invalid_nonvascular_plant_sample) }
         expect(response).to_not redirect_to nonvascular_plant_samples_path
       end
     end
@@ -58,31 +58,31 @@ RSpec.describe NonvascularPlantSamplesController, type: :controller do
 
     context 'with valid attributes' do
       it 'updates nonvascular_plant sample attributes' do
-        put :update, params: { id: @nonvascular_plant_sample, nonvascular_plant_sample: FactoryGirl.attributes_for(:nonvascular_plant_sample, description: 'All the vasculars') }
+        put :update, params: { id: @nonvascular_plant_sample, nonvascular_plant_sample: FactoryBot.attributes_for(:nonvascular_plant_sample, description: 'All the vasculars') }
         @nonvascular_plant_sample.reload
         expect(@nonvascular_plant_sample.description).to eq('All the vasculars')
       end
 
       it 'redirects to the updated nonvascular_plant sample' do
-        put :update, params: { id: @nonvascular_plant_sample, nonvascular_plant_sample: FactoryGirl.attributes_for(:nonvascular_plant_sample) }
+        put :update, params: { id: @nonvascular_plant_sample, nonvascular_plant_sample: FactoryBot.attributes_for(:nonvascular_plant_sample) }
         expect(response).to redirect_to @nonvascular_plant_sample
       end
 
       it 'produces correct flash notice' do
-        put :update, params: { id: @nonvascular_plant_sample, nonvascular_plant_sample: FactoryGirl.attributes_for(:nonvascular_plant_sample) }
+        put :update, params: { id: @nonvascular_plant_sample, nonvascular_plant_sample: FactoryBot.attributes_for(:nonvascular_plant_sample) }
         assert_equal 'Nonvascular plant sample was successfully updated.', flash[:success]
       end
     end
 
     context 'with invalid attributes' do
       it 'does not update attributes' do
-        put :update, params: { id: @nonvascular_plant_sample, nonvascular_plant_sample: FactoryGirl.attributes_for(:nonvascular_plant_sample, description: nil) }
+        put :update, params: { id: @nonvascular_plant_sample, nonvascular_plant_sample: FactoryBot.attributes_for(:nonvascular_plant_sample, description: nil) }
         @nonvascular_plant_sample.reload
         expect(@nonvascular_plant_sample.description).to eq('description of a nonvascular plant')
       end
 
       it 'does not redirect to updated nonvascular_plant sample' do
-        put :update, params: { id: @nonvascular_plant_sample, nonvascular_plant_sample: FactoryGirl.attributes_for(:nonvascular_plant_sample, description: nil) }
+        put :update, params: { id: @nonvascular_plant_sample, nonvascular_plant_sample: FactoryBot.attributes_for(:nonvascular_plant_sample, description: nil) }
         expect(response).to_not redirect_to @nonvascular_plant_sample
       end
     end

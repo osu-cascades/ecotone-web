@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe PlotsHelper, type: :helper do
   describe '#link_to_featured_plant' do
-    let(:plot) { build(:plot, id: 1) }
+    let(:plot) { create(:plot, id: 1) }
     let(:current_user) { build(:user, :admin) }
 
     context 'plot has no featured plant and admin is logged in' do

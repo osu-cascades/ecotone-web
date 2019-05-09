@@ -33,12 +33,12 @@ RSpec.describe MacroinvertebrateSamplesController, type: :controller do
   describe '#create' do
     context 'with invalid attributes' do
       it 'does not save new macroinvertebrate_sample' do
-        macroinvertebrate_sample_params = FactoryGirl.attributes_for(:invalid_macroinvertebrate_sample)
+        macroinvertebrate_sample_params = FactoryBot.attributes_for(:invalid_macroinvertebrate_sample)
         expect { post :create, params: { macroinvertebrate_sample: macroinvertebrate_sample_params } }.to_not change(MacroinvertebrateSample, :count)
       end
 
       it 'does not redirect to index' do
-        post :create, params: { macroinvertebrate_sample: FactoryGirl.attributes_for(:invalid_macroinvertebrate_sample) }
+        post :create, params: { macroinvertebrate_sample: FactoryBot.attributes_for(:invalid_macroinvertebrate_sample) }
         expect(response).to_not redirect_to macroinvertebrate_samples_path
       end
     end
@@ -58,31 +58,31 @@ RSpec.describe MacroinvertebrateSamplesController, type: :controller do
 
     context 'with valid attributes' do
       it 'updates macroinvertebrate sample attributes' do
-        put :update, params: { id: @macroinvertebrate_sample, macroinvertebrate_sample: FactoryGirl.attributes_for(:macroinvertebrate_sample, quantity: 22) }
+        put :update, params: { id: @macroinvertebrate_sample, macroinvertebrate_sample: FactoryBot.attributes_for(:macroinvertebrate_sample, quantity: 22) }
         @macroinvertebrate_sample.reload
         expect(@macroinvertebrate_sample.quantity).to eq(22)
       end
 
       it 'redirects to the updated macroinvertebrate sample' do
-        put :update, params: { id: @macroinvertebrate_sample, macroinvertebrate_sample: FactoryGirl.attributes_for(:macroinvertebrate_sample) }
+        put :update, params: { id: @macroinvertebrate_sample, macroinvertebrate_sample: FactoryBot.attributes_for(:macroinvertebrate_sample) }
         expect(response).to redirect_to @macroinvertebrate_sample
       end
 
       it 'produces correct flash notice' do
-        put :update, params: { id: @macroinvertebrate_sample, macroinvertebrate_sample: FactoryGirl.attributes_for(:macroinvertebrate_sample) }
+        put :update, params: { id: @macroinvertebrate_sample, macroinvertebrate_sample: FactoryBot.attributes_for(:macroinvertebrate_sample) }
         assert_equal 'Macroinvertebrate sample was successfully updated.', flash[:success]
       end
     end
 
     context 'with invalid attributes' do
       it 'does not update attributes' do
-        put :update, params: { id: @macroinvertebrate_sample, macroinvertebrate_sample: FactoryGirl.attributes_for(:macroinvertebrate_sample, quantity: -2) }
+        put :update, params: { id: @macroinvertebrate_sample, macroinvertebrate_sample: FactoryBot.attributes_for(:macroinvertebrate_sample, quantity: -2) }
         @macroinvertebrate_sample.reload
         expect(@macroinvertebrate_sample.quantity).to eq(1)
       end
 
       it 'does not redirect to updated macroinvertebrate sample' do
-        put :update, params: { id: @macroinvertebrate_sample, macroinvertebrate_sample: FactoryGirl.attributes_for(:macroinvertebrate_sample, quantity: -2) }
+        put :update, params: { id: @macroinvertebrate_sample, macroinvertebrate_sample: FactoryBot.attributes_for(:macroinvertebrate_sample, quantity: -2) }
         expect(response).to_not redirect_to @macroinvertebrate_sample
       end
     end

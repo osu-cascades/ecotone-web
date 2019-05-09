@@ -3,11 +3,11 @@ require 'rails_helper'
 # ssource: https://everydayrails.com/2012/04/07/testing-series-rspec-controllers.html
 
 RSpec.describe PlotsController, type: :controller do
-  let(:general_user) { FactoryGirl.build(:user) }
-  let(:admin_user) { FactoryGirl.build(:user, :admin) }
-  let(:plot) { FactoryGirl.create(:plot) }
+  let(:general_user) { FactoryBot.build(:user) }
+  let(:admin_user) { FactoryBot.build(:user, :admin) }
+  let(:plot) { FactoryBot.create(:plot) }
   let(:plant) { create(:plant) }
-  let(:invalid_plot) { FactoryGirl.build(:invalid_plot) }
+  let(:invalid_plot) { FactoryBot.build(:invalid_plot) }
 
   before do
     allow(controller).to receive(:current_user).and_return(admin_user)
@@ -44,29 +44,29 @@ RSpec.describe PlotsController, type: :controller do
   describe '#create' do
     context 'with valid attributes' do
       it 'creates new plot' do
-        plot_params = FactoryGirl.attributes_for(:plot, featured_plant_id: plant.id)
+        plot_params = FactoryBot.attributes_for(:plot, featured_plant_id: plant.id)
         expect { post :create, params: { plot: plot_params } }.to change(Plot, :count).by(1)
       end
 
       it 'redirects to index' do
-        post :create, params: { plot: FactoryGirl.attributes_for(:plot, featured_plant_id: plant.id) }
+        post :create, params: { plot: FactoryBot.attributes_for(:plot, featured_plant_id: plant.id) }
         expect(response).to redirect_to plots_path
       end
 
       it 'produces correct flash notice' do
-        post :create, params: { plot: FactoryGirl.attributes_for(:plot, featured_plant_id: plant.id) }
+        post :create, params: { plot: FactoryBot.attributes_for(:plot, featured_plant_id: plant.id) }
         assert_equal 'Plot was successfully created.', flash[:success]
       end
     end
 
     context 'with invalid attributes' do
       it 'does not save new plot' do
-        plot_params = FactoryGirl.attributes_for(:invalid_plot)
+        plot_params = FactoryBot.attributes_for(:invalid_plot)
         expect { post :create, params: { plot: plot_params } }.to_not change(Plot, :count)
       end
 
       it 'does not redirect to index' do
-        post :create, params: { plot: FactoryGirl.attributes_for(:invalid_plot) }
+        post :create, params: { plot: FactoryBot.attributes_for(:invalid_plot) }
         expect(response).to_not redirect_to plots_path
       end
     end
@@ -79,31 +79,31 @@ RSpec.describe PlotsController, type: :controller do
 
     context 'with valid attributes' do
       it 'updates plot attributes' do
-        put :update, params: { id: @plot, plot: FactoryGirl.attributes_for(:plot, plot_id: 2) }
+        put :update, params: { id: @plot, plot: FactoryBot.attributes_for(:plot, plot_id: 2) }
         @plot.reload
         expect(@plot.plot_id).to eq(2)
       end
 
       it 'redirects to the updated plot' do
-        put :update, params: { id: @plot, plot: FactoryGirl.attributes_for(:plot) }
+        put :update, params: { id: @plot, plot: FactoryBot.attributes_for(:plot) }
         expect(response).to redirect_to @plot
       end
 
       it 'produces correct flash notice' do
-        put :update, params: { id: @plot, plot: FactoryGirl.attributes_for(:plot) }
+        put :update, params: { id: @plot, plot: FactoryBot.attributes_for(:plot) }
         assert_equal 'Plot was successfully updated.', flash[:success]
       end
     end
 
     context 'with invalid attributes' do
       it 'does not update attributes' do
-        put :update, params: { id: @plot, plot: FactoryGirl.attributes_for(:plot, plot_id: nil) }
+        put :update, params: { id: @plot, plot: FactoryBot.attributes_for(:plot, plot_id: nil) }
         @plot.reload
         expect(@plot.plot_id).to eq(1)
       end
 
       it 'does not redirect to updated plot' do
-        put :update, params: { id: @plot, plot: FactoryGirl.attributes_for(:invalid_plot) }
+        put :update, params: { id: @plot, plot: FactoryBot.attributes_for(:invalid_plot) }
         expect(response).to_not redirect_to @plpot
       end
     end
@@ -141,7 +141,7 @@ RSpec.describe PlotsController, type: :controller do
       end
 
       it '#create redirects' do
-        get :create, params: { plant: FactoryGirl.attributes_for(:plot) }
+        get :create, params: { plant: FactoryBot.attributes_for(:plot) }
         expect(response).to redirect_to :root
       end
 
@@ -150,7 +150,7 @@ RSpec.describe PlotsController, type: :controller do
       end
 
       it '#update redirects' do
-        put :update, params: { id: @plot, plot: FactoryGirl.attributes_for(:plot) }
+        put :update, params: { id: @plot, plot: FactoryBot.attributes_for(:plot) }
         expect(response).to redirect_to :root
       end
 
