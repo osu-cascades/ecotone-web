@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.4.2'
+ruby '2.6.3'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -8,7 +8,7 @@ end
 
 gem 'rails', '~> 5.1.1'
 gem 'bootstrap-sass'
-gem 'haml'
+gem 'haml', '~> 5.0.4'
 gem 'pg'
 gem 'puma', '~> 3.0'
 gem 'sass-rails', '~> 5.0'
@@ -37,13 +37,13 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails', '~> 3.5'
   gem 'rspec-mocks'
-  gem 'shoulda-matchers', '~> 3.1.1'
+  gem 'shoulda-matchers', '~> 4.0.1'
   gem 'capybara'
   gem 'factory_girl_rails'
   gem 'dotenv-rails'
   gem 'poltergeist'
   gem 'foreman', '~> 0.84.0'
-  gem 'haml-rails'
+  gem 'haml-rails', '~> 2.0.0'
 end
 
 group :development do
