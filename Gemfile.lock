@@ -359,7 +359,7 @@ DEPENDENCIES
   capybara
   codeclimate-test-reporter (~> 1.0.8)
   coffee-rails (~> 4.2)
-  devise
+  devise (>= 4.7.1)
   dotenv-rails
   factory_bot_rails (~> 5.0.2)
   foreman (~> 0.85.0)
@@ -398,4 +398,4 @@ RUBY VERSION
    ruby 2.6.3p62
 
 BUNDLED WITH
-   1.17.2
+   1.17.3
