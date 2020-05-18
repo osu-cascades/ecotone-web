@@ -24,7 +24,7 @@ gem 'aws-sdk', '~> 2.9.0'
 gem 'rqrcode', '~> 0.10.1'
 gem 'kaminari'
 gem 'webpacker', '>= 2.0.0'
-gem 'devise'
+gem 'devise', '>= 4.7.1'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 
