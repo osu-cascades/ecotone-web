@@ -7,7 +7,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'rails', '~> 5.1.1'
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '~> 3.4.1'
 gem 'haml', '~> 5.0.4'
 gem 'pg'
 gem 'puma', '~> 3.0'
