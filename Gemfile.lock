@@ -226,7 +226,8 @@ GEM
       method_source (~> 0.8.1)
       slop (~> 3.4)
     public_suffix (2.0.5)
-    puma (3.9.1)
+    puma (4.2.1)
+      nio4r (~> 2.0)
     rack (2.2.2)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -382,7 +383,7 @@ DEPENDENCIES
   paperclip (~> 5.2.1)
   pg
   poltergeist
-  puma (~> 3.0)
+  puma (~> 4.2.1)
   rails (~> 5.1.1)
   recaptcha
   rqrcode (~> 0.10.1)
