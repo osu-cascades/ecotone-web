@@ -187,7 +187,7 @@ GEM
     multi_xml (0.6.0)
     multipart-post (2.0.0)
     nenv (0.3.0)
-    nio4r (2.1.0)
+    nio4r (2.5.2)
     nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
     notiffany (0.1.1)
@@ -226,7 +226,7 @@ GEM
       method_source (~> 0.8.1)
       slop (~> 3.4)
     public_suffix (2.0.5)
-    puma (4.2.1)
+    puma (4.3.5)
       nio4r (~> 2.0)
     rack (2.2.2)
     rack-test (0.6.3)
@@ -383,7 +383,7 @@ DEPENDENCIES
   paperclip (~> 5.2.1)
   pg
   poltergeist
-  puma (~> 4.2.1)
+  puma (~> 4.3.5)
   rails (~> 5.1.1)
   recaptcha
   rqrcode (~> 0.10.1)
