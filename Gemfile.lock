@@ -131,7 +131,7 @@ GEM
       guard (~> 2.1)
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
-    haml (5.0.4)
+    haml (5.1.2)
       temple (>= 0.8.0)
       tilt
     haml-rails (2.0.1)
@@ -377,8 +377,8 @@ DEPENDENCIES
   foreman (~> 0.85.0)
   guard
   guard-rspec
-  haml (~> 5.0.4)
-  haml-rails (~> 2.0.0)
+  haml (~> 5.1.2)
+  haml-rails (~> 2.0.1)
   jbuilder (~> 2.5)
   jquery-rails
   kaminari

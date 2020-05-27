@@ -8,7 +8,7 @@ end
 
 gem 'rails', '~> 5.1.7'
 gem 'bootstrap-sass', '~> 3.4.1'
-gem 'haml', '~> 5.0.4'
+gem 'haml', '~> 5.1.2'
 gem 'pg'
 gem 'puma', '~> 4.3.5'
 gem 'sass-rails', '~> 5.0'
@@ -43,7 +43,7 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'poltergeist'
   gem 'foreman', '~> 0.85.0'
-  gem 'haml-rails', '~> 2.0.0'
+  gem 'haml-rails', '~> 2.0.1'
 end
 
 group :development do
