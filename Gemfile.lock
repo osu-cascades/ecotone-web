@@ -370,7 +370,7 @@ DEPENDENCIES
   byebug
   capybara
   codeclimate-test-reporter (~> 1.0.8)
-  coffee-rails (~> 4.2)
+  coffee-rails (~> 4.2.2)
   devise (>= 4.7.1)
   dotenv-rails
   factory_bot_rails (~> 5.0.2)
