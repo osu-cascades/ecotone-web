@@ -32,7 +32,9 @@ RSpec.configure do |config|
   # https://github.com/rails/webpacker/issues/59
   config.before :suite do
     `bin/webpack`
-    Webpacker::Manifest.load
+    Timeout.timeout(300) do
+      loop until Webpacker.config.public_manifest_path.exist?
+    end
   end
 end
 
