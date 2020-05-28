@@ -30,7 +30,7 @@ gem 'omniauth-google-oauth2'
 
 group :test do
   gem 'simplecov', require: false
-  gem 'codeclimate-test-reporter', '~> 1.0.8'
+  gem 'codeclimate-test-reporter', '~> 1.0.9'
 end
 
 group :development, :test do
