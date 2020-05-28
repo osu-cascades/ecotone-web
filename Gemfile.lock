@@ -379,7 +379,7 @@ DEPENDENCIES
   guard-rspec
   haml (~> 5.1.2)
   haml-rails (~> 2.0.1)
-  jbuilder (~> 2.5)
+  jbuilder (~> 2.10.0)
   jquery-rails
   kaminari
   listen (~> 3.1.5)
