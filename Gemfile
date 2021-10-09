@@ -27,6 +27,7 @@ gem 'webpacker', '>= 2.0.0'
 gem 'devise', '>= 4.7.1'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
+gem 'omniauth-rails_csrf_protection', '~> 1.0'
 
 group :test do
   gem 'simplecov', '~> 0.18.5', require: false
