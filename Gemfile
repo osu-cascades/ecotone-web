@@ -30,7 +30,7 @@ gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection', '~> 1.0'
 
 group :test do
-  gem 'simplecov', '~> 0.18.5', require: false
+  gem 'simplecov', '~> 0.21.2', require: false
 end
 
 group :development, :test do
