@@ -130,7 +130,7 @@ Airbrake.configure do |c|
   # https://github.com/airbrake/airbrake-ruby#ignore_environments
   c.ignore_environments = %w(development test)
   # https://github.com/airbrake/airbrake-ruby#blacklist_keys
-  c.blacklist_keys = [/password/i, /authorization/i]
+  c.blocklist_keys = [/password/i, /authorization/i]
 end
 # A filter that collects request body information. Enable it if you are sure you
 # don't send sensitive information to Airbrake in your body (such as passwords).
