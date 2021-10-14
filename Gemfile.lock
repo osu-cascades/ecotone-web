@@ -395,7 +395,7 @@ DEPENDENCIES
   byebug
   capybara
   coffee-rails (~> 4.2.2)
-  devise (>= 4.7.1)
+  devise (>= 4.8.0)
   dotenv-rails
   factory_bot_rails (~> 6.2.0)
   foreman (~> 0.87.2)
@@ -435,4 +435,4 @@ RUBY VERSION
    ruby 2.6.6p146
 
 BUNDLED WITH
-   2.2.27
+   2.2.28
