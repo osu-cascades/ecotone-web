@@ -427,7 +427,7 @@ DEPENDENCIES
   spring
   spring-commands-rspec
   spring-watcher-listen (~> 2.0.1)
-  turbolinks (~> 5)
+  turbolinks (~> 5.2.1)
   tzinfo-data
   uglifier (>= 4.2.0)
   web-console (>= 3.7.0)
