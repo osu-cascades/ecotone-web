@@ -8,7 +8,7 @@ end
 
 gem 'rails', '~> 5.1.7'
 gem 'bootstrap-sass', '~> 3.4.1'
-gem 'haml', '~> 5.1.2'
+gem 'haml', '~> 5.2.2'
 gem 'pg'
 gem 'puma', '~> 5.5.2'
 gem 'sass-rails', '~> 6.0.0'
