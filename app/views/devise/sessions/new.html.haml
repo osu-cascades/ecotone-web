@@ -1,3 +1,3 @@
 - content_for_title('Log In')
 .sign-in
-  = link_to image_tag('btn_google_signin_dark_normal_web@2x.png'), user_google_oauth2_omniauth_authorize_path
+  = link_to image_tag('btn_google_signin_dark_normal_web@2x.png'), user_google_oauth2_omniauth_authorize_path, method: :post
