@@ -8,9 +8,10 @@
 [Ecotone](https://osu-ecotone.herokuapp.com/) enables Biology and Resource Management students to practice identifying native plants, identify different sites (plots), and track the long term trends of the ecotone on the [OSU Cascades](http://osucascades.edu) campus.
 
 ## Development
+If you want to contribute to Ecotone, be sure to review the [contribution guidelines](https://github.com/osu-cascades/ecotone-web/blob/899030573a4a79cb30bf1e87bf31b0ba6e11fc78/CONTRIBUTING.md). This project adheres to Ecotones's [code of conduct](https://github.com/osu-cascades/ecotone-web/blob/899030573a4a79cb30bf1e87bf31b0ba6e11fc78/CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code.
 
 ### Prerequisites
-* Ruby 2.4.2
+* Ruby 2.6.6
 * PostgreSQL
 
 ### Setting up your environment
