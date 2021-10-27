@@ -28,6 +28,7 @@ gem 'devise', '>= 4.8.0'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection', '~> 1.0'
+gem 'bootsnap'
 
 group :test do
   gem 'simplecov', '~> 0.21.2', require: false
