@@ -6,7 +6,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'rails', '~> 5.1.7'
+gem 'rails', '~> 5.2.0'
 gem 'bootstrap-sass', '~> 3.4.1'
 gem 'haml', '~> 5.2.2'
 gem 'pg'
@@ -28,6 +28,7 @@ gem 'devise', '>= 4.8.0'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection', '~> 1.0'
+gem 'bootsnap'
 
 group :test do
   gem 'simplecov', '~> 0.21.2', require: false
