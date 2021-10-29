@@ -23,7 +23,7 @@ gem 'paperclip', '~> 5.2.1'
 gem 'aws-sdk', '~> 2.9.0'
 gem 'rqrcode', '~> 2.1.0'
 gem 'kaminari'
-gem 'webpacker', '>= 2.0.0'
+gem 'webpacker', '5.4.3'
 gem 'devise', '>= 4.8.0'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
@@ -36,9 +36,9 @@ end
 
 group :development, :test do
   gem 'byebug', platform: :mri
-  gem 'rspec-rails', '~> 3.8.2'
-  gem 'rspec-mocks', '~> 3.8.0'
-  gem 'shoulda-matchers', '~> 4.0.1'
+  gem 'rspec-rails', '~> 5.0.2'
+  gem 'rspec-mocks', '~> 3.10.2'
+  gem 'shoulda-matchers', '~> 5.0.0'
   gem 'capybara'
   gem 'factory_bot_rails', '~> 6.2.0'
   gem 'dotenv-rails'
