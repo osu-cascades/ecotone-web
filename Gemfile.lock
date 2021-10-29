@@ -428,7 +428,7 @@ DEPENDENCIES
   pg
   poltergeist
   puma (~> 5.5.2)
-  rails (~> 5.2.0)
+  rails (~> 5.2.6)
   recaptcha
   rqrcode (~> 2.1.0)
   rspec-mocks (~> 3.8.0)
