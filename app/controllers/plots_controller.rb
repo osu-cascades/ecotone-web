@@ -11,7 +11,7 @@ class PlotsController < ApplicationController
 
   def new
     @plot = Plot.new
-    @plants = Plant.order('LOWER(common_name)')
+    @plants = Plant.order(Arel.sql('LOWER(common_name)'))
   end
 
   def edit

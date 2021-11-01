@@ -23,12 +23,12 @@ class PlantSamplesController < ApplicationController
   def new
     @plant_sample = PlantSample.new
     @plots = Plot.order(:plot_id)
-    @plants = Plant.order('LOWER(common_name)')
+    @plants = Plant.order(Arel.sql('LOWER(common_name)'))
   end
 
   def edit
     @plots = Plot.order(:plot_id)
-    @plants = Plant.order('LOWER(common_name)')
+    @plants = Plant.order(Arel.sql('LOWER(common_name)'))
   end
 
   def create
@@ -39,7 +39,7 @@ class PlantSamplesController < ApplicationController
       flash[:success] = 'Plant sample was successfully created.'
     else
       @plots = Plot.order(:plot_id)
-      @plants = Plant.order('LOWER(common_name)')
+      @plants = Plant.order(Arel.sql('LOWER(common_name)'))
       render :new
     end
   end
@@ -50,7 +50,7 @@ class PlantSamplesController < ApplicationController
       flash[:success] = 'Plant sample was successfully updated.'
     else
       @plots = Plot.order(:plot_id)
-      @plants = Plant.order('LOWER(common_name)')
+      @plants = Plant.order(Arel.sql('LOWER(common_name)'))
       render :edit
     end
   end

@@ -50,7 +50,7 @@ class BiodiversityReportsController < ApplicationController
 
   def load_plots_and_plants
     @plots = Plot.order(:plot_id)
-    @plants = Plant.order('LOWER(common_name)')
+    @plants = Plant.order(Arel.sql('LOWER(common_name)'))
   end
 
   def set_biodiversity_report

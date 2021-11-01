@@ -13,12 +13,12 @@ class SpeciesVariationObservationsController < ApplicationController
   def new
     @species_variation_observation = SpeciesVariationObservation.new
     @plots = Plot.order(:plot_id)
-    @plants = Plant.order('LOWER(common_name)')
+    @plants = Plant.order(Arel.sql('LOWER(common_name)'))
   end
 
   def edit
     @plots = Plot.order(:plot_id)
-    @plants = Plant.order('LOWER(common_name)')
+    @plants = Plant.order(Arel.sql('LOWER(common_name)'))
   end
 
   def create
@@ -30,7 +30,7 @@ class SpeciesVariationObservationsController < ApplicationController
         format.json { render :show, status: :created, location: @species_variation_observation }
       else
         @plots = Plot.order(:plot_id)
-        @plants = Plant.order('LOWER(common_name)')
+        @plants = Plant.order(Arel.sql('LOWER(common_name)'))
         format.html { render :new }
         format.json { render json: @species_variation_observation.errors, status: :unprocessable_entity }
       end
@@ -44,7 +44,7 @@ class SpeciesVariationObservationsController < ApplicationController
         format.json { render :show, status: :ok, location: @species_variation_observation }
       else
         @plots = Plot.order(:plot_id)
-        @plants = Plant.order('LOWER(common_name)')
+        @plants = Plant.order(Arel.sql('LOWER(common_name)'))
         format.html { render :edit }
         format.json { render json: @species_variation_observation.errors, status: :unprocessable_entity }
       end
