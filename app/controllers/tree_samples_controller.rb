@@ -16,12 +16,12 @@ class TreeSamplesController < ApplicationController
   def new
     @tree_sample = TreeSample.new
     @plots = Plot.order(:plot_id)
-    @plants = Plant.order('LOWER(common_name)')
+    @plants = Plant.order(Arel.sql('LOWER(common_name)'))
   end
 
   def edit
     @plots = Plot.order(:plot_id)
-    @plants = Plant.order('LOWER(common_name)')
+    @plants = Plant.order(Arel.sql('LOWER(common_name)'))
   end
 
   def create
@@ -33,7 +33,7 @@ class TreeSamplesController < ApplicationController
         format.json { render :show, status: :created, location: @tree_sample }
       else
         @plots = Plot.order(:plot_id)
-        @plants = Plant.order('LOWER(common_name)')
+        @plants = Plant.order(Arel.sql('LOWER(common_name)'))
         format.html { render :new }
         format.json { render json: @tree_sample.errors, status: :unprocessable_entity }
       end
@@ -47,7 +47,7 @@ class TreeSamplesController < ApplicationController
         format.json { render :show, status: :ok, location: @tree_sample }
       else
         @plots = Plot.order(:plot_id)
-        @plants = Plant.order('LOWER(common_name)')
+        @plants = Plant.order(Arel.sql('LOWER(common_name)'))
         format.html { render :edit }
         format.json { render json: @tree_sample.errors, status: :unprocessable_entity }
       end
