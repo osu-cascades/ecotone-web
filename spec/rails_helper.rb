@@ -29,13 +29,13 @@ RSpec.configure do |config|
   config.include Devise::Test::ControllerHelpers, type: :helper
   config.include Devise::Test::IntegrationHelpers, type: :feature
   config.include Paperclip::Shoulda::Matchers
-  # https://github.com/rails/webpacker/issues/59
-  config.before :suite do
-    `bin/webpack`
-    Timeout.timeout(300) do
-      loop until Webpacker.config.public_manifest_path.exist?
-    end
-  end
+  # # https://github.com/rails/webpacker/issues/59
+  # config.before :suite do
+  #   `bin/webpack`
+  #   Timeout.timeout(300) do
+  #     loop until Webpacker.config.public_manifest_path.exist?
+  #   end
+  # end
 end
 
 Shoulda::Matchers.configure do |config|
