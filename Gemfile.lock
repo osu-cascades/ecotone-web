@@ -208,6 +208,7 @@ GEM
     mimemagic (0.3.10)
       nokogiri (~> 1)
       rake
+    mini_magick (4.11.0)
     mini_mime (1.1.2)
     mini_portile2 (2.6.1)
     minitest (5.14.4)
@@ -426,6 +427,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   listen (~> 3.7.0)
+  mini_magick (~> 4.5, >= 4.5.1)
   omniauth
   omniauth-google-oauth2
   omniauth-rails_csrf_protection (~> 1.0)
@@ -454,4 +456,4 @@ RUBY VERSION
    ruby 2.7.4p191
 
 BUNDLED WITH
-   2.2.29
+   2.2.30

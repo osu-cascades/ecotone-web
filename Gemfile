@@ -29,6 +29,8 @@ gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection', '~> 1.0'
 gem 'bootsnap'
+gem 'mini_magick', '~> 4.5', '>= 4.5.1'
+#gem "aws-sdk-s3", require: false
 
 group :test do
   gem 'simplecov', '~> 0.21.2', require: false
