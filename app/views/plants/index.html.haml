@@ -5,7 +5,7 @@
   - @plants.each do |plant|
     %li.photo_list
       .col-md-1
-        = link_to image_tag(plant.photo.url.variant resize: "200x200", alt: "Photo of #{plant}"), plant, title: "Details of #{plant}"
+        = link_to image_tag(plant.photo.variant resize: "200x200", alt: "Photo of #{plant}"), plant, title: "Details of #{plant}"
       .col-md-11
         %h3= link_to plant.common_name.capitalize, plant, title: "Details of #{plant}"
         %h4
