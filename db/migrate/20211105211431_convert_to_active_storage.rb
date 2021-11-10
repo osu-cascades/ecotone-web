@@ -85,7 +85,7 @@ class ConvertToActiveStorage < ActiveRecord::Migration[5.2]
     Digest::MD5.base64digest(File.read(url))
 
     # remote files stored on another person's computer:
-    # url = attachment.url
+     #url = attachment.url
     # Digest::MD5.base64digest(Net::HTTP.get(URI(url)))
   end
 end
