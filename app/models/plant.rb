@@ -5,7 +5,8 @@ class Plant < ApplicationRecord
   validates :habitat_type, presence: true
   validates :tolerance, presence: true
 
-  has_attached_file :photo, default_url: 'missing.png', styles: { default: '200x200#', thumbnail: '50x50#' }
+  has_one_attached :photo
+  #has_attached_file :photo, default_url: 'missing.png', styles: { default: '200x200#', thumbnail: '50x50#' }
   validates_attachment_content_type :photo, content_type: /\Aimage/
 
   has_many :plots, foreign_key: 'featured_plant_id'
