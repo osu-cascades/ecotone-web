@@ -9,7 +9,7 @@
 %section
   .col-md-5
     %h2 Photo
-    = image_tag @plant.photo.url(:default), alt: "Photo of #{@plant}"
+    = image_tag @plant.photo.url.variant(resize: "200x200"), alt: "Photo of #{@plant}"
   .col-md-7
     %h2
       %em
