@@ -12,7 +12,7 @@ class Plot < ApplicationRecord
 
   has_one_attached :photo
   #has_attached_file :photo, default_url: 'missing.png', styles: { default: '400x400#', thumbnail: '50x50#' }
-  #validates_attachment_content_type :photo, content_type: /\Aimage/
+  validates :photo, content_type: /\Aimage/
 
   belongs_to :featured_plant, class_name: 'Plant', optional: true
   has_many :biodiversity_reports

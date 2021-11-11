@@ -33,7 +33,7 @@ RSpec.describe Plot, type: :model do
     it { is_expected.to validate_presence_of(:origin) }
     it { is_expected.to validate_presence_of(:initial_planting_date) }
     it { is_expected.to validate_presence_of(:initial_succession) }
-    it { is_expected.to validate_attachment_content_type(:photo).allowing('image/jpg', 'image/png') }
+    it { is_expected.to validate_content_type_of(:photo).allowing('image/jpg', 'image/png') }
   end
 
   describe 'associations' do

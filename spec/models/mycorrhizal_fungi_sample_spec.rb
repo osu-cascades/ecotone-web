@@ -10,7 +10,7 @@ RSpec.describe MycorrhizalFungiSample, type: :model do
     it { is_expected.to validate_inclusion_of(:magnification).in_array([4, 10, 40]) }
     it { is_expected.to validate_numericality_of(:vesicle_count).only_integer.is_greater_than_or_equal_to(0) }
     it { is_expected.to validate_numericality_of(:arbuscule_count).only_integer.is_greater_than_or_equal_to(0) }
-    it { is_expected.to validate_attachment_content_type(:photo).allowing('image/jpg', 'image/png') }
+    it { is_expected.to validate_content_type_of(:photo).allowing('image/jpg', 'image/png') }
   end
 
   describe 'associations' do
@@ -33,7 +33,7 @@ RSpec.describe MycorrhizalFungiSample, type: :model do
     it { is_expected.to be_valid }
     # it { is_expected.to validate_inclusion_of(:visible_hyphae).in_array([true, false]) }
     it { is_expected.to validate_numericality_of(:hyphae_coverage).only_integer.is_greater_than(0).is_less_than_or_equal_to(100) }
-    it { is_expected.to validate_attachment_content_type(:photo).allowing('image/jpg', 'image/png') }
+    it { is_expected.to validate_content_type_of(:photo).allowing('image/jpg', 'image/png') }
   end
 
   context 'without visible hyphae' do
