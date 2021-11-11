@@ -19,7 +19,6 @@ gem 'turbolinks', '~> 5.2.1'
 gem 'jbuilder', '~> 2.11.2'
 gem 'bcrypt'
 gem 'recaptcha', require: 'recaptcha/rails'
-#gem 'paperclip', '~> 5.2.1'
 gem 'aws-sdk', '~> 2.9.0'
 gem 'rqrcode', '~> 2.1.0'
 gem 'kaminari'
@@ -30,7 +29,8 @@ gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection', '~> 1.0'
 gem 'bootsnap'
 gem 'mini_magick', '~> 4.5', '>= 4.5.1'
-#gem "aws-sdk-s3", require: false
+gem 'active_storage_validations'
+
 
 group :test do
   gem 'simplecov', '~> 0.21.2', require: false

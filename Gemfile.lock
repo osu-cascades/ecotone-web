@@ -24,6 +24,8 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
+    active_storage_validations (0.9.5)
+      rails (>= 5.2.0)
     activejob (5.2.6)
       activesupport (= 5.2.6)
       globalid (>= 0.3.6)
@@ -392,6 +394,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  active_storage_validations
   airbrake
   aws-sdk (~> 2.9.0)
   bcrypt
