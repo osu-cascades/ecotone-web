@@ -1,5 +1,5 @@
 require 'simplecov'
-require 'paperclip/matchers'
+#require 'paperclip/matchers'
 
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
@@ -28,7 +28,6 @@ RSpec.configure do |config|
   config.include Devise::Test::ControllerHelpers, type: :view
   config.include Devise::Test::ControllerHelpers, type: :helper
   config.include Devise::Test::IntegrationHelpers, type: :feature
-  config.include Paperclip::Shoulda::Matchers
   # https://github.com/rails/webpacker/issues/59
   config.before :suite do
     `bin/webpack`
