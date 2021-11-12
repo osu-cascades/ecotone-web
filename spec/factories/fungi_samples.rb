@@ -6,7 +6,6 @@ FactoryBot.define do
     location_within_plot { 'on a rock' }
     size { 1.5 }
     description { 'description of fungi sample' }
-    photo { '' }
   end
 
   factory :empty_fungi_sample, class: FungiSample do
@@ -14,7 +13,6 @@ FactoryBot.define do
     location_within_plot { '' }
     size { '' }
     description { '' }
-    photo { '' }
   end
 
   factory :invalid_fungi_sample, parent: :fungi_sample do |f|

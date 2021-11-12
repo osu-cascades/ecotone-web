@@ -7,7 +7,6 @@ FactoryBot.define do
     diversity_index { 1.5 }
     species_evenness { 0.5 }
     biomass_estimate { 1.0 }
-    photo { '' }
     plot
     author factory: :user
   end

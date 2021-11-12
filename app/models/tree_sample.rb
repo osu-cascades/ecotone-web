@@ -20,8 +20,7 @@ class TreeSample < ApplicationRecord
   validates_numericality_of :longitude, allow_nil: true
 
   has_one_attached :photo
-  validates :photo, content_type: /\Aimage/
-
+  validates :photo, content_type: ['image/jpg', 'image/png']
   def to_s
     "#{plant} in #{plot} on #{collected_on} by #{user}"
   end

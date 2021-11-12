@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe BiodiversityReport, type: :model do
-  subject(:report) { build :biodiversity_report, id: 'FAKE' }
+   subject(:report) { build :biodiversity_report, id: 'FAKE' }
 
   context 'when created' do
     it { is_expected.to have_attributes(
@@ -42,7 +42,6 @@ RSpec.describe BiodiversityReport, type: :model do
     it { is_expected.to have_and_belong_to_many(:lichen_samples) }
     it { is_expected.to have_and_belong_to_many(:macroinvertebrate_samples) }
     it { is_expected.to have_and_belong_to_many(:plant_samples) }
-    it { is_expected.to have_attached_file(:photo) }
   end
 
   describe 'editability' do

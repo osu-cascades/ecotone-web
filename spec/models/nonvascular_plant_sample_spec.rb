@@ -16,7 +16,6 @@ RSpec.describe NonvascularPlantSample, type: :model do
     it { is_expected.to validate_presence_of(:collected_on) }
     it { is_expected.to validate_presence_of(:location_within_plot) }
     it { is_expected.to validate_presence_of(:description) }
-    it { is_expected.to have_attached_file(:photo) }
     it { is_expected.to validate_content_type_of(:photo).allowing('image/jpg', 'image/png') }
     it { is_expected.to belong_to(:plot) }
     it { is_expected.to belong_to(:user) }

@@ -8,7 +8,7 @@ class PlantSample < ApplicationRecord
 
   has_one_attached :photo
   #has_attached_file :photo, default_url: 'missing.png', styles: { default: '200x200#', thumbnail: '50x50#' }
-  validates :photo, content_type: /\Aimage/
+  validates :photo, content_type: ['image/jpg', 'image/png']
 
   validates_presence_of :collected_on
   validates_numericality_of :abundance, only_integer: true, greater_than: 0

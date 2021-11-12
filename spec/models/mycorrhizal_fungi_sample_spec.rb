@@ -17,7 +17,6 @@ RSpec.describe MycorrhizalFungiSample, type: :model do
     it { is_expected.to belong_to(:user) }
     it { is_expected.to belong_to(:plot) }
     it { is_expected.to belong_to(:plant) }
-    it { is_expected.to have_attached_file(:photo) }
   end
 
   context 'when created with visible hyphae' do

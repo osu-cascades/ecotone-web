@@ -39,7 +39,6 @@ RSpec.describe Plot, type: :model do
   describe 'associations' do
     it { is_expected.to belong_to(:featured_plant).class_name('Plant').optional }
     it { is_expected.to have_many :biodiversity_reports }
-    it { is_expected.to have_attached_file(:photo) }
   end
 
   context 'without a featured plant' do

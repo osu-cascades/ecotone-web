@@ -24,7 +24,6 @@ RSpec.describe Plant, type: :model do
   end
 
   describe 'associations' do
-    it { is_expected.to have_attached_file(:photo) }
     it { is_expected.to have_many(:plots).with_foreign_key(:featured_plant_id) }
     it { is_expected.to have_many(:plant_samples) }
   end

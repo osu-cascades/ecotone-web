@@ -7,6 +7,5 @@ FactoryBot.define do
     average_height { 1.5 }
     average_width { 1.5 }
     description { 'Fake description' }
-    photo { '' }
   end
 end
