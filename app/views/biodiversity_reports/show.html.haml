@@ -11,7 +11,7 @@
   .row
     .col-md-5
       %h2 Photo
-      = image_tag @biodiversity_report.photo.variant(resize: "200x200"), alt: "Photo of #{@biodiversity_report.plot}"
+      = image_tag @biodiversity_report.photo.variant(resize: "200x200"), alt: "Photo of #{@biodiversity_report.plot}" if @biodiversity_report.photo.attached?
     .col-md-7
       %h2.center= "by #{@biodiversity_report.author}"
       %table.table

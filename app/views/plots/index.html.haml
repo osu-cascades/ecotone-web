@@ -5,7 +5,7 @@
   - @plots.each do |plot|
     %li.photo_list
       .col-md-1
-        = link_to image_tag(plot.photo.variant resize: "200x200", alt: "Photo of #{plot}"), plot, title: "Details of #{plot}"
+        = link_to image_tag(plot.photo.variant resize: "200x200", alt: "Photo of #{plot}"), plot, title: "Details of #{plot}" if plot.photo.attached?
       .col-md-11
         %h3= link_to "Plot ##{plot.plot_id}", plot, title: "Details of #{plot}"
         %h4= plot.formatted_location_description
