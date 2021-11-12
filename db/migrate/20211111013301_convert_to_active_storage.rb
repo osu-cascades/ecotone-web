@@ -75,8 +75,8 @@ class ConvertToActiveStorage < ActiveRecord::Migration[5.2]
 
   def key(instance, attachment)
     SecureRandom.uuid
-    # Alternatively:
-    # instance.send("#{attachment}_file_name")
+     #Alternatively:
+    #instance.send("#{attachment}_file_name")
   end
 
   def checksum(attachment)
@@ -89,4 +89,3 @@ class ConvertToActiveStorage < ActiveRecord::Migration[5.2]
     Digest::MD5.base64digest(Net::HTTP.get(URI(url)))
   end
 end
-
