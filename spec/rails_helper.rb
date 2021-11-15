@@ -28,6 +28,7 @@ RSpec.configure do |config|
   config.include Devise::Test::ControllerHelpers, type: :view
   config.include Devise::Test::ControllerHelpers, type: :helper
   config.include Devise::Test::IntegrationHelpers, type: :feature
+<<<<<<< HEAD
   # https://github.com/rails/webpacker/issues/59
   config.before :suite do
     `bin/webpack`
@@ -35,6 +36,9 @@ RSpec.configure do |config|
       loop until Webpacker.config.public_manifest_path.exist?
     end
   end
+=======
+  config.include Paperclip::Shoulda::Matchers
+>>>>>>> dev
 end
 
 Shoulda::Matchers.configure do |config|
