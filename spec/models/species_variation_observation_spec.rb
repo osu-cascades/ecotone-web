@@ -17,8 +17,7 @@ RSpec.describe SpeciesVariationObservation, type: :model do
     it { is_expected.to validate_presence_of(:observed_on) }
     it { is_expected.to validate_numericality_of(:average_height).is_greater_than_or_equal_to(0) }
     it { is_expected.to validate_numericality_of(:average_width).is_greater_than_or_equal_to(0) }
-    it { is_expected.to validate_attachment_content_type(:photo).allowing('image/jpg', 'image/png') }
-    it { is_expected.to have_attached_file(:photo) }
+    it { is_expected.to validate_content_type_of(:photo).allowing('image/jpg', 'image/png') }
     it { is_expected.to belong_to(:user) }
     it { is_expected.to belong_to(:plot) }
     it { is_expected.to belong_to(:plant) }

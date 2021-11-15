@@ -4,7 +4,6 @@ FactoryBot.define do
     abundance { 1 }
     percent_cover { 1 }
     biomass_estimate { 1.0 }
-    photo { '' }
     plant
     plot
     user
@@ -15,7 +14,6 @@ FactoryBot.define do
     abundance { '' }
     percent_cover { '' }
     biomass_estimate { nil }
-    photo { '' }
     plant { nil }
     plot { nil }
     user { nil }
