@@ -6,8 +6,9 @@ class PlantSample < ApplicationRecord
   belongs_to :user
   has_and_belongs_to_many :biodiversity_reports
 
-  has_attached_file :photo, default_url: 'missing.png', styles: { default: '200x200#', thumbnail: '50x50#' }
-  validates_attachment_content_type :photo, content_type: /\Aimage/
+  has_one_attached :photo
+  #has_attached_file :photo, default_url: 'missing.png', styles: { default: '200x200#', thumbnail: '50x50#' }
+  validates :photo, content_type: ['image/jpg', 'image/png']
 
   validates_presence_of :collected_on
   validates_numericality_of :abundance, only_integer: true, greater_than: 0

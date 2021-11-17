@@ -39,3 +39,9 @@ spec/examples.txt
 latest.dump
 /public/packs
 /node_modules
+
+# Ignore master key for decrypting credentials and more.
+/config/master.key
+
+#ignore local storage files created by active_storage
+/storage
