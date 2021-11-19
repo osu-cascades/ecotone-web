@@ -30,7 +30,6 @@ RSpec.describe MycorrhizalFungiSample, type: :model do
       hyphae_coverage: 10,
     ) }
     it { is_expected.to be_valid }
-    # it { is_expected.to validate_inclusion_of(:visible_hyphae).in_array([true, false]) }
     it { is_expected.to validate_numericality_of(:hyphae_coverage).only_integer.is_greater_than(0).is_less_than_or_equal_to(100) }
     it { is_expected.to validate_content_type_of(:photo).allowing('image/jpg', 'image/png') }
   end
