@@ -5,4 +5,4 @@
 %p Abundance: #{plant_sample.abundance}
 %p Percent Cover: #{plant_sample.percent_cover}
 %p Biomass Estimate: #{plant_sample.biomass_estimate}
-= image_tag plant_sample.photo.url(:default), alt: "Photo of #{plant_sample.plant.common_name}"
+= image_tag plant_sample.photo.variant(resize: "200x200"), alt: "Photo of #{plant_sample.plant.common_name}" if plant_sample.photo.attached?
