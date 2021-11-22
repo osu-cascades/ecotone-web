@@ -19,7 +19,6 @@ gem 'turbolinks', '~> 5.2.1'
 gem 'jbuilder', '~> 2.11.2'
 gem 'bcrypt'
 gem 'recaptcha', require: 'recaptcha/rails'
-#gem 'aws-sdk', '~> 2.9.0', require: false
 gem 'rqrcode', '~> 2.1.0'
 gem 'kaminari'
 gem 'devise', '>= 4.8.0'
