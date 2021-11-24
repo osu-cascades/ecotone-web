@@ -442,7 +442,7 @@ DEPENDENCIES
   turbolinks (~> 5.2.1)
   tzinfo-data
   uglifier (>= 4.2.0)
-  web-console (>= 3.7.0)
+  web-console (>= 4.2.0)
 
 RUBY VERSION
    ruby 3.0.0p0
