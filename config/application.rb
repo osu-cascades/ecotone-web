@@ -1,5 +1,4 @@
 require_relative 'boot'
-require "active_storage/engine"
 
 require 'rails/all'
 
