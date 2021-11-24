@@ -7,7 +7,6 @@ FactoryBot.define do
     location_within_plot { 'on a rock' }
     quantity { 1 }
     ecosystem_service { 'Pollinator' }
-    photo { '' }
   end
 
   factory :empty_macroinvertebrate_sample, class: MacroinvertebrateSample do
@@ -16,7 +15,6 @@ FactoryBot.define do
     location_within_plot { '' }
     quantity { '' }
     ecosystem_service { '' }
-    photo { '' }
   end
 
   factory :invalid_macroinvertebrate_sample, parent: :macroinvertebrate_sample do |f|

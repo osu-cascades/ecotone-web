@@ -13,8 +13,9 @@ class MycorrhizalFungiSample < ApplicationRecord
   validates_inclusion_of :visible_hyphae, in: [true, false]
   validates_numericality_of :hyphae_coverage, if: :has_visible_hyphae?, only_integer: true, greater_than: 0, less_than_or_equal_to: 100
 
-  has_attached_file :photo, default_url: 'missing.png', styles: { default: '200x200#', thumbnail: '50x50#' }
-  validates_attachment_content_type :photo, content_type: /\Aimage/
+  has_one_attached :photo
+  #has_attached_file :photo, default_url: 'missing.png', styles: { default: '200x200#', thumbnail: '50x50#' }
+  validates :photo, content_type: ['image/jpg', 'image/png']
 
   def has_visible_hyphae?
     visible_hyphae

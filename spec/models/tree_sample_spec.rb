@@ -26,8 +26,6 @@ RSpec.describe TreeSample, type: :model do
     it { is_expected.to validate_numericality_of(:upper_canopy_height).is_greater_than(0).allow_nil }
     it { is_expected.to validate_numericality_of(:latitude).allow_nil }
     it { is_expected.to validate_numericality_of(:longitude).allow_nil }
-    it { is_expected.to validate_attachment_content_type(:photo).allowing('image/jpg', 'image/png') }
-    it { is_expected.to have_attached_file(:photo) }
     it { is_expected.to belong_to(:plot) }
     it { is_expected.to belong_to(:plant) }
     it { is_expected.to belong_to(:user) }

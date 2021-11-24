@@ -18,8 +18,6 @@ RSpec.describe FungiSample, type: :model do
     it { is_expected.to validate_presence_of(:location_within_plot) }
     it { is_expected.to validate_numericality_of(:size).is_greater_than_or_equal_to(0) }
     it { is_expected.to validate_presence_of(:description) }
-    it { is_expected.to validate_attachment_content_type(:photo).allowing('image/jpg', 'image/png') }
-    it { is_expected.to have_attached_file(:photo) }
     it { is_expected.to belong_to(:plot) }
     it { is_expected.to belong_to(:user) }
   end

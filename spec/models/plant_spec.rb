@@ -20,11 +20,9 @@ RSpec.describe Plant, type: :model do
     it { is_expected.to validate_presence_of(:description) }
     it { is_expected.to validate_presence_of(:habitat_type) }
     it { is_expected.to validate_presence_of(:tolerance) }
-    it { is_expected.to validate_attachment_content_type(:photo).allowing('image/jpg', 'image/png') }
   end
 
   describe 'associations' do
-    it { is_expected.to have_attached_file(:photo) }
     it { is_expected.to have_many(:plots).with_foreign_key(:featured_plant_id) }
     it { is_expected.to have_many(:plant_samples) }
   end
