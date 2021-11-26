@@ -1,12 +1,12 @@
 source 'https://rubygems.org'
-ruby '3.0.0'
+ruby '3.0.2'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'rails', '~> 6.0.0'
+gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
 gem 'bootstrap-sass', '~> 3.4.1'
 gem 'haml', '~> 5.2.2'
 gem 'pg'
@@ -49,10 +49,10 @@ group :development, :test do
 end
 
 group :development do
-  gem 'web-console', '>= 3.7.0'
+  gem 'web-console', '>= 4.2.0'
   gem 'listen', '~> 3.7.0'
-  gem 'spring'
-  gem 'spring-watcher-listen', '~> 2.0.1'
+  gem 'spring', '~> 3.1.0'
+  # gem 'spring-watcher-listen', '~> 2.0.1'
   gem 'guard'
   gem 'guard-rspec', require: false
   gem 'spring-commands-rspec'
