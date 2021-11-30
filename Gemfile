@@ -29,6 +29,7 @@ gem 'bootsnap'
 gem 'mini_magick', '~> 4.5', '>= 4.5.1'
 gem 'active_storage_validations'
 gem 'aws-sdk-s3'
+gem 'image_processing', '~> 1.2'
 
 
 group :test do
