@@ -9,7 +9,7 @@
 %section
   .col-md-5
     %h2 Photo
-    = image_tag @plot.photo.variant(resize: "200x200"), alt: "Photo of #{@plot}" 
+    = image_tag @plot.photo.variant(resize: "200x200"), alt: "Photo of #{@plot}" if @plot.photo.attached?
   .col-md-7
     %h2 Plot Information
     %p= @plot.formatted_location_description
