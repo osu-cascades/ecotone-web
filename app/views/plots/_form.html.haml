@@ -27,6 +27,6 @@
       = form.label :initial_succession
       = form.text_field :initial_succession, class: 'form-control'
       = form.label :photo
-      = image_tag(@plot.photo.variant(resize: "200x200"), alt: "Photo of #{@plot}") unless @plot.new_record? 
+      = image_tag(@plot.photo.variant(resize: "200x200"), alt: "Photo of #{@plot.featured_plant}") unless @plot.new_record? if plot.photo.attached?
       = form.file_field :photo, class: 'form-control'
       = form.submit class: 'btn btn-primary'
