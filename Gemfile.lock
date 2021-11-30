@@ -433,7 +433,6 @@ DEPENDENCIES
   jquery-rails
   kaminari
   listen (~> 3.7.0)
-  mini_magick (~> 4.5, >= 4.5.1)
   omniauth
   omniauth-google-oauth2
   omniauth-rails_csrf_protection (~> 1.0)
