@@ -19,7 +19,7 @@ RSpec.describe PlantSample, type: :model do
     it { is_expected.to validate_numericality_of(:abundance).only_integer.is_greater_than(0) }
     it { is_expected.to validate_numericality_of(:percent_cover).only_integer.is_greater_than(0).is_less_than_or_equal_to(100) }
     it { is_expected.to validate_numericality_of(:biomass_estimate).is_greater_than_or_equal_to(0).allow_nil }
-    it { is_expected.to validate_content_type_of(:photo).allowing('image/jpg', 'image/png') }
+
     it { is_expected.to belong_to(:plant) }
     it { is_expected.to belong_to(:plot) }
     it { is_expected.to belong_to(:user) }

@@ -32,7 +32,6 @@ RSpec.describe BiodiversityReport, type: :model do
     it { is_expected.to validate_numericality_of(:biomass_estimate).is_greater_than_or_equal_to(0).allow_nil }
     it { is_expected.to validate_presence_of(:measured_on) }
     it { is_expected.to validate_presence_of(:measured_at) }
-    it { is_expected.to validate_content_type_of(:photo).allowing('image/jpg', 'image/png') }
   end
 
   describe 'associations' do

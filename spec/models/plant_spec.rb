@@ -20,7 +20,6 @@ RSpec.describe Plant, type: :model do
     it { is_expected.to validate_presence_of(:description) }
     it { is_expected.to validate_presence_of(:habitat_type) }
     it { is_expected.to validate_presence_of(:tolerance) }
-    it { is_expected.to validate_content_type_of(:photo).allowing('image/jpg', 'image/png') }
   end
 
   describe 'associations' do
