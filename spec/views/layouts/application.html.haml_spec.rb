@@ -4,7 +4,7 @@ RSpec.describe "layouts/application", type: :view do
 
   subject(:layout) { render }
 
-  it { is_expected.to have_title "Ecotone | OSU Cascades" }
+  it { is_expected.to have_title "Ecotone | OSU-Cascades" }
   it { is_expected.to have_content "Ecotone" }
   it { is_expected.to have_link "Report a Bug" }
   it { is_expected.to have_link "OSU Cascades" }
