@@ -5,25 +5,43 @@
 // }
 
 .btn {
-  background-color: #F0F0F0;
-  color: lighten($osu-orange, 5%);
-  &:hover, &:focus {
-    background-color: lighten($osu-orange, 5%);
-    border-color: lighten($osu-orange, 5%);
-    color: #FFF;
-  }
-  &:active {
-    background-color: lighten($osu-orange, 10%) !important;
-    border-color: lighten($osu-orange, 10%) !important;
-  }
-  &:disabled {
-    background-color: lighten($osu-orange, 10%) !important;
-    border-color: lighten($osu-orange, 10%) !important;
-  }
+  box-shadow: $shadow2;
+  border-radius: 4px;
+  transition-duration: 0.1s;
 }
 
 .btn-primary {
-  background-color: white;
-  border-color: $osu-orange;
-  color: $osu-orange;
+	color: white;
+  background-color: $orange3;
+  border-color: $orange3;
+	box-shadow: $shadow2;
+	&:hover, &:focus {
+		color: white;
+  	background-color: $orange2;
+  	border-color: $orange2;
+    box-shadow: $shadow1;
+  }
+}
+
+.btn-secondary {
+  color: $orange3;
+	background-color: white;
+  border-color: $orange3;
+	box-shadow: $shadow2;
+	&:hover, &:focus {
+		color: $orange3;
+		background-color: white;
+  	border-color: $orange2;
+    box-shadow: $shadow1;
+  }
+}
+
+.btn-tertiary {
+	color: $orange3;
+	background-color: transparent;
+	text-decoration: underline;     
+	text-decoration-color: $orange3; 
+	&:hover, &:focus {
+		box-shadow: $shadow3;
+	}
 }
