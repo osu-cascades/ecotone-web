@@ -1,8 +1,14 @@
 @import './constants.css.scss';
 
 body { 
-    background-color: hsl(210, 100%, 98%); 
-    padding-top: 64px;
-    font-family: 'Gudea', sans-serif;
+	background-color: hsl(210, 100%, 98%); 
+	padding-top: 64px;
+	font-family: 'Gudea', sans-serif;
 }
 // body { background-color: $grey9;}
+
+button {
+	border-radius: 4px;
+  transition-duration: 0.1s;
+}
+

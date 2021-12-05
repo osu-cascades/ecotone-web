@@ -2,10 +2,9 @@
 - content_for(:subnav) do
   = link_to '« Plots', plots_path, class: 'btn btn-primary', title: 'List of all plots'
   - if current_user&.admin?
-    .btn-group
-      = link_to 'Edit', edit_plot_path(@plot), class: 'btn', title: "Edit #{@plot}"
-      = link_to 'Delete', @plot, method: :delete, data: { confirm: "Delete Plot ##{@plot.plot_id}?" }, class: 'btn btn-danger', title: "Delete #{@plot}"
-    = link_to 'Download QR Code', { action: 'download_qr' }, 'data-turbolinks': false, class: 'btn', title: "QR Code for #{@plot}"
+    = link_to 'Edit', edit_plot_path(@plot), class: 'btn btn-primary', title: "Edit #{@plot}"
+    = link_to 'Download QR Code', { action: 'download_qr' }, 'data-turbolinks': false, class: 'btn btn-secondary', title: "QR Code for #{@plot}"
+    = link_to 'Delete', @plot, method: :delete, data: { confirm: "Delete Plot ##{@plot.plot_id}?" }, class: 'btn-tertiary', title: "Delete #{@plot}"
 %section
   .col-md-5
     %h2 Photo
