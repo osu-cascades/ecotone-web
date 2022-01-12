@@ -52,7 +52,7 @@ end
 group :development do
   gem 'web-console', '>= 4.2.0'
   gem 'listen', '~> 3.7.0'
-  gem 'spring', '~> 3.1.0'
+  gem 'spring', '~> 4.0.0'
   gem 'guard'
   gem 'guard-rspec', require: false
   gem 'spring-commands-rspec'
