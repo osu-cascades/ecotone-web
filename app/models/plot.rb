@@ -10,7 +10,7 @@ class Plot < ApplicationRecord
   validates :initial_planting_date, presence: true
   validates :initial_succession, presence: true
 
-  has_one_attached :photo
+  has_many_attached :photo
   validates :photo, content_type: ['image/jpg', 'image/png', 'image/jpeg']
 
   belongs_to :featured_plant, class_name: 'Plant', optional: true
