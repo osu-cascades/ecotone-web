@@ -40,7 +40,7 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails', '~> 5.0.2'
   gem 'rspec-mocks', '~> 3.10.2'
-  gem 'shoulda-matchers', '~> 5.0.0'
+  gem 'shoulda-matchers', '~> 5.1.0'
   gem 'capybara'
   gem 'factory_bot_rails', '~> 6.2.0'
   gem 'dotenv-rails'

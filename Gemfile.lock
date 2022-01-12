@@ -392,7 +392,7 @@ GEM
       tilt
     sexp_processor (4.16.0)
     shellany (0.0.1)
-    shoulda-matchers (5.0.0)
+    shoulda-matchers (5.1.0)
       activesupport (>= 5.2.0)
     simplecov (0.21.2)
       docile (~> 1.1)
@@ -476,7 +476,7 @@ DEPENDENCIES
   rspec-mocks (~> 3.10.2)
   rspec-rails (~> 5.0.2)
   sass-rails (~> 6.0.0)
-  shoulda-matchers (~> 5.0.0)
+  shoulda-matchers (~> 5.1.0)
   simplecov (~> 0.21.2)
   spring (~> 4.0.0)
   spring-commands-rspec
