@@ -1,9 +1,9 @@
 - content_for_title('Plots on Campus')
 - content_for(:subnav) do
   = link_to('Add Plot', new_plot_path, class: 'btn btn-primary', title: 'Add a new plot') if current_user&.admin?
-%ul.indexing
+.tiles
   - @plots.each do |plot|
-    %li.photo_list
+    .tile
       .col-md-1
         = link_to image_tag(plot.photo.variant resize: "200x200"), plot, title: "Details of #{plot}" if plot.photo.attached?
       .col-md-11
