@@ -27,6 +27,7 @@
       = form.label :initial_succession
       = form.text_field :initial_succession, class: 'form-control'
       = form.label :photo
-      = image_tag(@plot.photo[0].variant(resize: "200x200"), alt: "Photo of #{@plot.photo}") unless @plot.new_record? if @plot.photo.attached?
+      - (0...@plot.photo.count).each do |photo|
+        = image_tag(@plot.photo[photo].variant(resize: "200x200"), alt: "Photo of #{@plot.photo}") unless @plot.new_record? if @plot.photo.attached?
       = form.file_field :photo, multiple: true, class: 'form-control'
       = form.submit class: 'btn btn-primary'
