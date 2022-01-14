@@ -39,6 +39,7 @@ class PlotsController < ApplicationController
     end
   end
 
+
   def destroy
     @plot.destroy
     redirect_to plots_path
