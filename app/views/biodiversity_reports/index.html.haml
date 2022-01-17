@@ -22,7 +22,7 @@
       - @biodiversity_reports.each do |report|
         %tr
           %td= report.id
-          %td= report.measured_on.to_s(:long)
+          %td= report.measured_on.to_formatted_s(:long)
           %td= report.plot
           %td= report.temperature
           %td= report.species_richness
