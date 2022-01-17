@@ -26,7 +26,7 @@ class BiodiversityReport < ApplicationRecord
   end
 
   def byline
-    "by #{author} on #{measured_on.to_s(:long)} at #{measured_at.to_s(:ampm)}"
+    "by #{author} on #{measured_on.to_formatted_s(:long)} at #{measured_at.to_formatted_s(:ampm)}"
   end
 
   def user
