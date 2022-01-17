@@ -11,6 +11,8 @@
     %h2 Photo
     - (0...@plot.photo.count).each do |photo|
       = image_tag @plot.photo[photo].variant(resize: "200x200"), class: 'plot_photos', alt: "Photo of #{@plot.photo}" if @plot.photo.attached?
+    = link_to 'Delete photo', @plot.photo, method: :delete, data: { confirm: "Delete photo ##{@plot.plot_id}?" }, class: 'btn btn-danger', title: "Delete #{@plot.photo}"
+
   .col-md-7
     %h2 Plot Information
     %p= @plot.formatted_location_description
