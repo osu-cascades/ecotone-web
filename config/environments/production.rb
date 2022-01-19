@@ -13,7 +13,11 @@ Rails.application.configure do
   # your application in memory, allowing both threaded web servers
   # and those relying on copy on write to perform better.
   # Rake tasks automatically ignore this option for performance.
-  config.eager_load = true
+
+  # Setting to false due to airbrake issue with Rails 7, set to true once issue is resolved
+  # https://github.com/airbrake/airbrake/issues/1177
+  config.eager_load = false
+  
 
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
