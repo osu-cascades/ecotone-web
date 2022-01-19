@@ -4,14 +4,30 @@
   - if current_user&.admin?
     .btn-group
       = link_to 'Edit', edit_plot_path(@plot), class: 'btn', title: "Edit #{@plot}"
-      = link_to 'Delete', @plot, method: :delete, data: { confirm: "Delete Plot ##{@plot.plot_id}?" }, class: 'btn btn-danger', title: "Delete #{@plot}"
     = link_to 'Download QR Code', { action: 'download_qr' }, 'data-turbolinks': false, class: 'btn', title: "QR Code for #{@plot}"
 %section
   .col-md-5
     %h2 Photo
-    - (0...@plot.photo.count).each do |photo|
-      = image_tag @plot.photo[photo].variant(resize: "200x200"), class: 'plot_photos', alt: "Photo of #{@plot.photo}" if @plot.photo.attached?
-    = link_to 'Delete photo', @plot.photo, method: :delete, data: { confirm: "Delete photo ##{@plot.plot_id}?" }, class: 'btn btn-danger', title: "Delete #{@plot.photo}"
+    - if @plot.photo.length > 1
+      #myCarousel.carousel.slide{"data-ride" => "carousel"}
+        %ol.carousel-indicators
+          - @plot.photo.each_with_index do |image, index|
+            %li{:class => index == 0 ? 'active' : '', "data-slide-to" => index, "data-target" => "#myCarousel"}
+        .carousel-inner{:role => "listbox"}
+          - @plot.photo.each_with_index do |image, index|
+            %div{:class => "item #{index == 0 ? 'active' : ''}"}
+              = image_tag(@plot.photo[index].variant(resize: "200x200"), alt: "Photo of #{@plot.photo}") unless @plot.new_record?
+              %end
+        %a.left.carousel-control{"data-slide" => "prev", :href => "#myCarousel", :role => "button"}
+          %span.glyphicon.glyphicon-chevron-left{"aria-hidden" => "true"}
+          %span.sr-only Previous
+        %a.right.carousel-control{"data-slide" => "next", :href => "#myCarousel", :role => "button"}
+          %span.glyphicon.glyphicon-chevron-right{"aria-hidden" => "true"}
+          %span.sr-only Next
+    - elsif @plot.photo.length == 1
+      = image_tag(@plot.photo[0].variant(resize: "200x200"), alt: "Photo of #{@plot.photo}") unless @plot.new_record?
+
+    
 
   .col-md-7
     %h2 Plot Information
