@@ -313,16 +313,52 @@ ul.indexing {
   }
 }
 
+.gallery {
+  margin: 5px;
+  border: 1px solid #ccc;
+  float: left;
+  width: 180px;
+}
+
+.gallery:hover {
+  border: 1px solid #777;
+}
+
+.gallery img {
+  width: 100%;
+  height: 200px;
+}
+
+.desc {
+  padding: 5px;
+  text-align: center;
+}
+
 .tiles {
-  width: 800px;
+  width: auto;
   font-size: 0;
   margin: 0 auto;
 }
 
-.tile {
+<%# .tile {
   width: calc(800px / 5);
   display: inline-block;
-}
+  overflow: auto;
+  padding: 10px 0;
+  img {
+    width: 100px;
+    height: 100px;
+    }
+  h3 {
+    margin: 0px;
+    }
+  h4 {
+    margin: 0px;
+    }
+  border-left: 1px solid $gray-lighter;
+  border-right: 1px solid $gray-lighter;
+  border-bottom: 1px solid $gray-lighter;
+} %>
 
 .citation {
   color: #4C4C4C;
