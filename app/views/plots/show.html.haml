@@ -15,12 +15,12 @@
             %div{:class => "item #{index == 0 ? 'active' : ''}"}
               = image_tag(@plot.photo[index].variant(resize: "350x350"), alt: "Photo of #{@plot.photo}") unless @plot.new_record?
               %end
-        %a.carousel-control-prev{"data-slide" => "prev", :href => "#plotCarousel", :role => "button"}
-          %span.glyphicon.glyphicon-chevron-left{"aria-hidden" => "true"}
-          %span.sr-only Previous
-        %a.carousel-control-next{"data-slide" => "next", :href => "#plotCarousel", :role => "button"}
-          %span.glyphicon.glyphicon-chevron-right{"aria-hidden" => "true"}
-          %span.sr-only Next
+      %a.carousel-control-prev{"data-slide" => "prev", :href => "#plotCarousel", :role => "button"}
+        %span.glyphicon.glyphicon-chevron-left{"aria-hidden" => "true"}
+        %span.sr-only Previous
+      %a.carousel-control-next{"data-slide" => "next", :href => "#plotCarousel", :role => "button"}
+        %span.glyphicon.glyphicon-chevron-right{"aria-hidden" => "true"}
+        %span.sr-only Next
     - elsif @plot.photo.length == 1
       = image_tag(@plot.photo[0].variant(resize: "350x350"), alt: "Photo of #{@plot.photo}") unless @plot.new_record?
 
