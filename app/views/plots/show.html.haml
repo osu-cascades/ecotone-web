@@ -9,23 +9,20 @@
   .col-md-5
     %h2 Photo
     - if @plot.photo.length > 1
-      #myCarousel.carousel.slide{"data-ride" => "carousel"}
-        %ol.carousel-indicators
-          - @plot.photo.each_with_index do |image, index|
-            %li{:class => index == 0 ? 'active' : '', "data-slide-to" => index, "data-target" => "#myCarousel"}
-        .carousel-inner{:role => "listbox"}
+      #plotCarousel.carousel{"data-interval" => "false"}
+        .carousel-inner
           - @plot.photo.each_with_index do |image, index|
             %div{:class => "item #{index == 0 ? 'active' : ''}"}
-              = image_tag(@plot.photo[index].variant(resize: "200x200"), alt: "Photo of #{@plot.photo}") unless @plot.new_record?
+              = image_tag(@plot.photo[index].variant(resize: "350x350"), alt: "Photo of #{@plot.photo}") unless @plot.new_record?
               %end
-        %a.left.carousel-control{"data-slide" => "prev", :href => "#myCarousel", :role => "button"}
-          %span.glyphicon.glyphicon-chevron-left{"aria-hidden" => "true"}
+        %a.carousel-control-prev{"data-slide" => "prev", :href => "#plotCarousel", :role => "button"}
+          %span.carousel-control-prev-icon{"aria-hidden" => "true"}
           %span.sr-only Previous
-        %a.right.carousel-control{"data-slide" => "next", :href => "#myCarousel", :role => "button"}
-          %span.glyphicon.glyphicon-chevron-right{"aria-hidden" => "true"}
+        %a.carousel-control-next{"data-slide" => "next", :href => "#plotCarousel", :role => "button"}
+          %span.carousel-control-next-icon{"aria-hidden" => "true"}
           %span.sr-only Next
     - elsif @plot.photo.length == 1
-      = image_tag(@plot.photo[0].variant(resize: "200x200"), alt: "Photo of #{@plot.photo}") unless @plot.new_record?
+      = image_tag(@plot.photo[0].variant(resize: "350x350"), alt: "Photo of #{@plot.photo}") unless @plot.new_record?
 
     
 
