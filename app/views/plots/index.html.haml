@@ -5,8 +5,13 @@
   - @plots.each do |plot|
     .tile
       .img
+<<<<<<< HEAD
         = link_to image_tag(plot.photo[0].variant resize: "200x200"), plot, title: "Details of #{plot}" if plot.photo.attached?
       .desc
+=======
+        = link_to image_tag(plot.photo.variant resize: "200x200"), plot, title: "Details of #{plot}" if plot.photo.attached?
+      .plot_desc
+>>>>>>> d909de9f7e9afcb080b6f47f101a393a1edfb65f
         %h3= link_to "Plot ##{plot.plot_id}", plot, title: "Details of #{plot}"
         %h4= plot.formatted_location_description
         %p= link_to('edit', edit_plot_path(plot), title: "Edit #{plot}") if current_user&.admin?
