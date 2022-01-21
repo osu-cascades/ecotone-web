@@ -6,7 +6,7 @@
     .tile
       .img
         = link_to image_tag(plot.photo.variant resize: "200x200"), plot, title: "Details of #{plot}" if plot.photo.attached?
-      .desc
+      .plot_desc
         %h3= link_to "Plot ##{plot.plot_id}", plot, title: "Details of #{plot}"
         %h4= plot.formatted_location_description
         %p= link_to('edit', edit_plot_path(plot), title: "Edit #{plot}") if current_user&.admin?
