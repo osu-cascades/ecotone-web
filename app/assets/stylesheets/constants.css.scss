@@ -1,3 +1,30 @@
+// FONT
+@font-face {
+  font-family: 'graphik-light';
+  src: url(fonts/GraphikLight.otf);
+}
+
+@font-face {
+  font-family: 'graphik-light-italic';
+  src: url(fonts/GraphikLightItalic.otf);
+}
+
+@font-face {
+  font-family: 'graphik-regular';
+  src: url(fonts/GraphikRegular.otf);
+}
+
+@font-face {
+  font-family: 'graphik-regular-italic';
+  src: url(fonts/GraphikRegularItalic.otf);
+}
+
+@font-face {
+  font-family: 'graphik-medium';
+  src: url(fonts/GraphikMedium.otf);
+}
+
+
 // PRIMARY COLOR - Orange
 $orange0: hsl(22, 98%, 18%);
 $orange1: hsl(22, 96%, 27%);
