@@ -60,9 +60,6 @@
         %tr
           %th.col-md-4{scope: 'row'} Initial succession
           %td= @plot.initial_succession
-  .col-md-7
-    %h2
-    = image_tag @plot.photo.variant(resize: "400x400"), class: 'image', alt: "Photo of #{@plot.photo}" if @plot.photo.attached?
 - if @plot.featured_plant
   %section
     %h2{:class => 'center'} Featured Plant: #{@plot.featured_plant.common_name}
