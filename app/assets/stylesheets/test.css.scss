@@ -69,3 +69,20 @@
   font-family: 'graphik-regular-italic';
 }
 
+#logo {
+  float: left;
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+  color: $grey5;
+  margin-right: 8px;
+  padding-top: 8px;
+  &:hover {
+    color: $grey8;
+    text-decoration: none;
+  }
+  &:active {
+    color: $green4;
+  }
+}
+
