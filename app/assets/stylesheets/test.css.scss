@@ -58,15 +58,18 @@
 // Home page
 .center.jumbotron {
 	margin-bottom: 48px;
+  color: $grey1;
 }
 
 .title {
   font-family: 'graphik-medium';
   font-size: 48px;
+  color: $grey2;
 }
 
 .caption {
   font-family: 'graphik-regular-italic';
+  color: $grey2;
 }
 
 #logo {
