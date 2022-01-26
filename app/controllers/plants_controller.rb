@@ -59,6 +59,6 @@ class PlantsController < ApplicationController
 
   def plant_params
     params.require(:plant).permit(:common_name, :scientific_name, :description,
-     :habitat_type, :tolerance, :photo, :citation, :invasive)
+     :habitat_type, :tolerance, :photo [], :citation, :invasive)
   end
 end
