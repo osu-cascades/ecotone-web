@@ -15,7 +15,7 @@
           - @plant.photo.each_with_index do |image, index|
             %div{:class => "item #{index == 0 ? 'active' : ''}"}
               = image_tag(@plant.photo[index].variant(resize: "350x350"), class: 'carousel_photos', alt: "Photo of #{@plant.photo}") unless @plant.new_record?
-              = link_to 'Remove', delete_plant_image_attachment_plant_url(image.id), method: :delete, data: { confirm: 'Are you sure?' }
+              = link_to 'Delete Photo', delete_plant_image_attachment_plant_url(image.id), class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' }
               %end
       %a.carousel-control-prev{"data-slide" => "prev", :href => "#plantCarousel", :role => "button"}
         %span.glyphicon.glyphicon-chevron-left{"aria-hidden" => "true"}
