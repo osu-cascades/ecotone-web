@@ -1,0 +1,107 @@
+// FONT
+@font-face {
+  font-family: 'graphik-light';
+  src: url(fonts/GraphikLight.otf);
+}
+
+@font-face {
+  font-family: 'graphik-light-italic';
+  src: url(fonts/GraphikLightItalic.otf);
+}
+
+@font-face {
+  font-family: 'graphik-regular';
+  src: url(fonts/GraphikRegular.otf);
+}
+
+@font-face {
+  font-family: 'graphik-regular-italic';
+  src: url(fonts/GraphikRegularItalic.otf);
+}
+
+@font-face {
+  font-family: 'graphik-medium';
+  src: url(fonts/GraphikMedium.otf);
+}
+
+
+// PRIMARY COLOR - Orange
+$orange0: hsl(22, 98%, 18%);
+$orange1: hsl(22, 96%, 27%);
+$orange2: hsl(21, 100%, 38%);
+$orange3: hsl(20, 93%, 46%);
+$orange4: hsl(18, 89%, 56%);
+$orange5: hsl(17, 92%, 61%);
+$orange6: hsl(18, 92%, 70%);
+$orange7: hsl(20, 95%, 75%);
+$orange8: hsl(22, 100%, 85%);
+$orange9: hsl(22, 100%, 95%);
+
+// PRIMARY COLOR - Lime Green
+$green0: hsl(81, 86%, 14%);
+$green1: hsl(81, 78%, 21%);
+$green2: hsl(83, 74%, 27%);
+$green3: hsl(83, 70%, 34%);
+$green4: hsl(83, 64%, 42%);
+$green5: hsl(83, 55%, 52%);
+$green6: hsl(83, 63%, 61%);
+$green7: hsl(83, 68%, 74%);
+$green8: hsl(84, 77%, 86%);
+$green9: hsl(83, 88%, 94%);
+
+// NEUTRAL COLOR - Warm Grey
+$grey0: hsl(42, 15%, 13%);
+$grey1: hsl(40, 13%, 23%);
+$grey2: hsl(37, 11%, 28%);
+$grey3: hsl(41, 9%, 35%);
+$grey4: hsl(41, 8%, 48%);
+$grey5: hsl(41, 8%, 61%);
+$grey6: hsl(39, 11%, 69%);
+$grey7: hsl(40, 15%, 80%);
+$grey8: hsl(43, 13%, 90%);
+$grey9: hsl(40, 23%, 97%);
+
+// SUPPORTING COLOR - Light Blue
+$blue0: hsl(200, 82%, 24%);
+$blue1: hsl(200, 72%, 31%);
+$blue2: hsl(200, 68%, 35%);
+$blue3: hsl(200, 59%, 43%);
+$blue4: hsl(200, 54%, 49%);
+$blue5: hsl(200, 60%, 58%);
+$blue6: hsl(200, 66%, 69%);
+$blue7: hsl(200, 71%, 80%);
+$blue8: hsl(200, 88%, 90%);
+$blue9: hsl(201, 100%, 96%);
+
+// SUPPORTING COLOR - Red
+$red0: hsl(360, 92%, 20%);
+$red1: hsl(360, 85%, 25%);
+$red2: hsl(360, 79%, 32%);
+$red3: hsl(360, 72%, 38%);
+$red4: hsl(360, 67%, 44%);
+$red5: hsl(360, 64%, 55%);
+$red6: hsl(360, 71%, 66%);
+$red7: hsl(360, 77%, 78%);
+$red8: hsl(360, 82%, 89%);
+$red9: hsl(360, 100%, 97%);
+
+// SUPPORTING COLOR - Yellow
+$yellow0: hsl(43, 86%, 17%);
+$yellow1: hsl(43, 77%, 27%);
+$yellow2: hsl(43, 72%, 37%);
+$yellow3: hsl(42, 63%, 48%);
+$yellow4: hsl(42, 78%, 60%);
+$yellow5: hsl(43, 89%, 70%);
+$yellow6: hsl(43, 90%, 76%);
+$yellow7: hsl(45, 86%, 81%);
+$yellow8: hsl(45, 90%, 88%);
+$yellow9: hsl(45, 100%, 96%);
+
+
+// SHADOW SCALE
+$shadow0: 0 1px 3px rgba(0,0,0,.12), 0 1px 2px rgba(0,0,0,.24);
+$shadow1: 0 3px 6px rgba(0,0,0,.15), 0 2px 4px rgba(0,0,0,.12);
+$shadow2: 0 6px 12px rgba(0,0,0,.15), 0 3px 6px rgba(0,0,0,.11);
+$shadow3: 0 10px 20px rgba(0,0,0,.15), 0 5x 10px rgba(0,0,0,.10);
+$shadow4: 0 15px 25px rgba(0,0,0,.17), 0 6px 12px rgba(0,0,0,.05);
+$shadow5: 0 20px 40px rgba(0,0,0,.2);
