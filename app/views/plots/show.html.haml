@@ -64,7 +64,6 @@
   %section
     %h2{:class => 'center'} Featured Plant: #{@plot.featured_plant.common_name}
     .col-md-5
-<<<<<<< HEAD
       %h3 Photo
       - if @plot.featured_plant.photo.length > 1
         #featured_plantCarousel.carousel{"data-interval" => "false"}
@@ -82,10 +81,6 @@
       - elsif @plot.featured_plant.photo.length == 1
         = image_tag(@plot.featured_plant.photo[0].variant(resize: "350x350"), alt: "Photo of #{@plot.featured_plant.photo}") unless @plot.new_record?
 
-=======
-      %h3 
-      = image_tag @plot.featured_plant.photo.variant(resize: "400x400"), alt: "Photo of #{@plot.featured_plant}" if @plot.featured_plant.photo.attached?
->>>>>>> develop
     .col-md-7
       %h3
         %em
