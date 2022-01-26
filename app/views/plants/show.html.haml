@@ -14,7 +14,7 @@
         .carousel-inner
           - @plant.photo.each_with_index do |image, index|
             %div{:class => "item #{index == 0 ? 'active' : ''}"}
-              = image_tag(@plant.photo[index].variant(resize: "350x350"), class: 'plot_photos', alt: "Photo of #{@plant.photo}") unless @plant.new_record?
+              = image_tag(@plant.photo[index].variant(resize: "350x350"), class: 'carousel_photos', alt: "Photo of #{@plant.photo}") unless @plant.new_record?
               %end
       %a.carousel-control-prev{"data-slide" => "prev", :href => "#plantCarousel", :role => "button"}
         %span.glyphicon.glyphicon-chevron-left{"aria-hidden" => "true"}
