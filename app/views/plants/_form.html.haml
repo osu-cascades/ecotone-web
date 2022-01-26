@@ -17,6 +17,6 @@
       = form.label :tolerance
       = form.text_field :tolerance, class: 'form-control'
       = form.label :photo, class: 'form-label-photo'
-      = image_tag @plant.photo.variant(resize: "200x200"), alt: "Photo of #{@plant}" if @plant.photo.attached?
-      = form.file_field :photo, class: 'form-control'
+      = image_tag @plant.photo[0].variant(resize: "200x200"), alt: "Photo of #{@plant}" if @plant.photo.attached?
+      = form.file_field :photo, multiple: true, class: 'form-control'
       = form.submit class: 'btn btn-primary'
