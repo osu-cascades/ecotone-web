@@ -1,12 +1,12 @@
 - content_for_title('All Plants')
 - content_for(:subnav) do
   = link_to('Add Plant', new_plant_path, class: 'btn btn-primary', title: 'Add a new plant') if current_user&.admin?
-%ul.indexing
+.gallery
   - @plants.each do |plant|
-    %li.photo_list
-      .col-md-1
+    .tile
+      .img
         = link_to image_tag(plant.photo.variant resize: "200x200"), plant, title: "Details of #{plant}" if plant.photo.attached?
-      .col-md-11
+      .plant_desc
         %h3= link_to plant.common_name.capitalize, plant, title: "Details of #{plant}"
         %h4
           %em= plant.scientific_name.capitalize

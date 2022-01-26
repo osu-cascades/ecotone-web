@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2022_01_12_212755) do
     t.string "record_type", null: false
     t.bigint "record_id", null: false
     t.bigint "blob_id", null: false
-    t.datetime "created_at", null: false
+    t.datetime "created_at", precision: 6, null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2022_01_12_212755) do
     t.text "metadata"
     t.bigint "byte_size", null: false
     t.string "checksum"
-    t.datetime "created_at", null: false
+    t.datetime "created_at", precision: 6, null: false
     t.string "service_name", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
@@ -61,9 +61,9 @@ ActiveRecord::Schema.define(version: 2022_01_12_212755) do
     t.string "photo_file_name"
     t.string "photo_content_type"
     t.integer "photo_file_size"
-    t.datetime "photo_updated_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "photo_updated_at", precision: 6
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.integer "author_id"
     t.integer "plot_id"
     t.float "diversity_index"
@@ -107,10 +107,10 @@ ActiveRecord::Schema.define(version: 2022_01_12_212755) do
     t.string "photo_file_name"
     t.string "photo_content_type"
     t.integer "photo_file_size"
-    t.datetime "photo_updated_at"
+    t.datetime "photo_updated_at", precision: 6
     t.bigint "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["plot_id"], name: "index_fungi_samples_on_plot_id"
     t.index ["user_id"], name: "index_fungi_samples_on_user_id"
   end
@@ -121,9 +121,9 @@ ActiveRecord::Schema.define(version: 2022_01_12_212755) do
     t.string "photo_file_name"
     t.string "photo_content_type"
     t.integer "photo_file_size"
-    t.datetime "photo_updated_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "photo_updated_at", precision: 6
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.date "collected_on"
     t.bigint "plot_id"
     t.bigint "user_id"
@@ -139,9 +139,9 @@ ActiveRecord::Schema.define(version: 2022_01_12_212755) do
     t.string "photo_file_name"
     t.string "photo_content_type"
     t.integer "photo_file_size"
-    t.datetime "photo_updated_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "photo_updated_at", precision: 6
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.date "collected_on"
     t.bigint "plot_id"
     t.bigint "user_id"
@@ -160,12 +160,12 @@ ActiveRecord::Schema.define(version: 2022_01_12_212755) do
     t.bigint "user_id", null: false
     t.bigint "plot_id", null: false
     t.bigint "plant_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.string "photo_file_name"
     t.string "photo_content_type"
     t.integer "photo_file_size"
-    t.datetime "photo_updated_at"
+    t.datetime "photo_updated_at", precision: 6
     t.index ["plant_id"], name: "index_mycorrhizal_fungi_samples_on_plant_id"
     t.index ["plot_id"], name: "index_mycorrhizal_fungi_samples_on_plot_id"
     t.index ["user_id"], name: "index_mycorrhizal_fungi_samples_on_user_id"
@@ -179,10 +179,10 @@ ActiveRecord::Schema.define(version: 2022_01_12_212755) do
     t.string "photo_file_name"
     t.string "photo_content_type"
     t.integer "photo_file_size"
-    t.datetime "photo_updated_at"
+    t.datetime "photo_updated_at", precision: 6
     t.bigint "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["plot_id"], name: "index_nonvascular_plant_samples_on_plot_id"
     t.index ["user_id"], name: "index_nonvascular_plant_samples_on_user_id"
   end
@@ -192,8 +192,8 @@ ActiveRecord::Schema.define(version: 2022_01_12_212755) do
     t.integer "level"
     t.float "amount"
     t.bigint "soil_sample_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["soil_sample_id"], name: "index_nutrients_on_soil_sample_id"
   end
 
@@ -204,9 +204,9 @@ ActiveRecord::Schema.define(version: 2022_01_12_212755) do
     t.string "photo_file_name"
     t.string "photo_content_type"
     t.integer "photo_file_size"
-    t.datetime "photo_updated_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "photo_updated_at", precision: 6
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.integer "plant_id"
     t.date "collected_on"
     t.bigint "plot_id"
@@ -220,12 +220,12 @@ ActiveRecord::Schema.define(version: 2022_01_12_212755) do
     t.string "scientific_name"
     t.string "habitat_type"
     t.string "tolerance"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.string "photo_file_name"
     t.string "photo_content_type"
     t.integer "photo_file_size"
-    t.datetime "photo_updated_at"
+    t.datetime "photo_updated_at", precision: 6
     t.text "description"
     t.text "citation"
     t.boolean "invasive"
@@ -243,20 +243,20 @@ ActiveRecord::Schema.define(version: 2022_01_12_212755) do
     t.boolean "inoculated"
     t.string "initial_planting_date"
     t.string "initial_succession"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.string "photo_file_name"
     t.string "photo_content_type"
     t.integer "photo_file_size"
-    t.datetime "photo_updated_at"
+    t.datetime "photo_updated_at", precision: 6
     t.integer "featured_plant_id"
   end
 
   create_table "soil_samples", id: :serial, force: :cascade do |t|
     t.float "ph_level"
     t.float "temperature"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.float "moisture"
     t.integer "collection_method"
     t.date "collected_on"
@@ -277,9 +277,9 @@ ActiveRecord::Schema.define(version: 2022_01_12_212755) do
     t.string "photo_file_name"
     t.string "photo_content_type"
     t.integer "photo_file_size"
-    t.datetime "photo_updated_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "photo_updated_at", precision: 6
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["plant_id"], name: "index_species_variation_observations_on_plant_id"
     t.index ["plot_id"], name: "index_species_variation_observations_on_plot_id"
     t.index ["user_id"], name: "index_species_variation_observations_on_user_id"
@@ -300,9 +300,9 @@ ActiveRecord::Schema.define(version: 2022_01_12_212755) do
     t.string "photo_file_name"
     t.string "photo_content_type"
     t.integer "photo_file_size"
-    t.datetime "photo_updated_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "photo_updated_at", precision: 6
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["plant_id"], name: "index_tree_samples_on_plant_id"
     t.index ["plot_id"], name: "index_tree_samples_on_plot_id"
     t.index ["user_id"], name: "index_tree_samples_on_user_id"
@@ -311,12 +311,12 @@ ActiveRecord::Schema.define(version: 2022_01_12_212755) do
   create_table "users", id: :serial, force: :cascade do |t|
     t.string "name"
     t.string "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.string "encrypted_password"
     t.boolean "admin", default: false
     t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
+    t.datetime "reset_password_sent_at", precision: 6
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

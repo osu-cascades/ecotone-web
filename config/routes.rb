@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :users
   resources :biodiversity_reports
 
+  get     'map' , to: 'static_pages#map'
+
   resources :plots
   get     'plots/:id/download_qr' => 'plots#download_qr'
 
