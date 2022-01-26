@@ -68,7 +68,22 @@
     %h2 Featured Plant: #{@plot.featured_plant.common_name}
     .col-md-5
       %h3 Photo
-      = image_tag @plot.featured_plant.photo[0].variant(resize: "200x200"), alt: "Photo of #{@plot.featured_plant}" if @plot.featured_plant.photo.attached?
+      - if @plot.featured_plant.photo.length > 1
+        #featured_plantCarousel.carousel{"data-interval" => "false"}
+          .carousel-inner
+            - @plot.featured_plant.photo.each_with_index do |image, index|
+              %div{:class => "item #{index == 0 ? 'active' : ''}"}
+                = image_tag(@plot.featured_plant.photo[index].variant(resize: "350x350"), class: 'plot_photos', alt: "Photo of #{@plot.featured_plant.photo}") unless @plot.new_record?
+                %end
+        %a.carousel-control-prev{"data-slide" => "prev", :href => "#featured_plantCarousel", :role => "button"}
+          %span.glyphicon.glyphicon-chevron-left{"aria-hidden" => "true"}
+          %span.sr-only Previous
+        %a.carousel-control-next{"data-slide" => "next", :href => "#featured_plantCarousel", :role => "button"}
+          %span.glyphicon.glyphicon-chevron-right{"aria-hidden" => "true"}
+          %span.sr-only Next
+      - elsif @plot.featured_plant.photo.length == 1
+        = image_tag(@plot.featured_plant.photo[0].variant(resize: "350x350"), alt: "Photo of #{@plot.featured_plant.photo}") unless @plot.new_record?
+
     .col-md-7
       %h3
         %em
