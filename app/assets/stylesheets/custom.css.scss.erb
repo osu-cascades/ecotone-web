@@ -16,10 +16,10 @@ $gray-medium-light: #eaeaea;
 
 // Universal
 
-body {
-  padding-top: 60px;
-  font-family: 'Gudea', sans-serif;
-}
+// body {
+//   padding-top: 60px;
+//   font-family: 'Gudea', sans-serif;
+// }
 
 section {
   overflow: auto;
@@ -45,7 +45,7 @@ p {
   text-align: center;
 }
 
-.btn {
+<%# .btn {
   background-color: #F0F0F0;
   color: lighten($osu-orange, 5%);
   &:hover, &:focus {
@@ -79,7 +79,7 @@ p {
   &:active, &:focus {
     background-color: #D00 !important;
   }
-}
+} %>
 
 nav.paginator {
   display: block;
@@ -157,30 +157,30 @@ a.navbar-brand img {
   margin-top: -14px;
 }
 
-#logo {
-  float: left;
-  margin-right: 10px;
-  font-size: 1.7em;
-  color: #DDD;
-  letter-spacing: -1px;
-  padding-top: 9px;
-  font-weight: bold;
-  &:hover {
-    color: #EEE;
-    text-decoration: none;
-  }
-  &:active {
-    color: #FFF;
-  }
-}
+// #logo {
+//   float: left;
+//   margin-right: 10px;
+//   font-size: 1.7em;
+//   color: #DDD;
+//   letter-spacing: -1px;
+//   padding-top: 9px;
+//   font-weight: bold;
+//   &:hover {
+//     color: #EEE;
+//     text-decoration: none;
+//   }
+//   &:active {
+//     color: #FFF;
+//   }
+// }
 
 .subnav {
   height: 36px;
 }
 
-.btn-group .btn {
+<%# .btn-group .btn {
   width: 80px;
-}
+} %>
 
 .subnav .btn-primary {
   min-width: 130px;
@@ -222,7 +222,7 @@ footer {
 // Homepage
 
 .jumbotron {
-  background-image: url(<%= asset_path 'osucascades_sketch.jpg' %>);
+  background-image: url(<%= asset_path 'osucascades_background.jpg' %>);
 }
 
 .img-circle {

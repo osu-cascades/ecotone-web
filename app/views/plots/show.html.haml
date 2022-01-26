@@ -1,10 +1,10 @@
 - content_for_title("Plot ##{@plot.plot_id}")
 - content_for(:subnav) do
-  = link_to '« Back to plots', plots_path, class: 'btn btn-primary', title: 'List of all plots'
+  = link_to '« Plots', plots_path, class: 'btn btn-primary', title: 'List of all plots'
   - if current_user&.admin?
-    .btn-group
-      = link_to 'Edit', edit_plot_path(@plot), class: 'btn', title: "Edit #{@plot}"
-    = link_to 'Download QR Code', { action: 'download_qr' }, 'data-turbolinks': false, class: 'btn', title: "QR Code for #{@plot}"
+    = link_to 'Edit', edit_plot_path(@plot), class: 'btn btn-primary', title: "Edit #{@plot}"
+    = link_to 'Download QR Code', { action: 'download_qr' }, 'data-turbolinks': false, class: 'btn btn-secondary', title: "QR Code for #{@plot}"
+    = link_to 'Delete', @plot, method: :delete, data: { confirm: "Delete Plot ##{@plot.plot_id}?" }, class: 'btn-tertiary', title: "Delete #{@plot}"
 %section
   .col-md-5
     %h2 Photo
@@ -23,9 +23,6 @@
         %span.sr-only Next
     - elsif @plot.photo.length == 1
       = image_tag(@plot.photo[0].variant(resize: "350x350"), alt: "Photo of #{@plot.photo}") unless @plot.new_record?
-
-    
-
   .col-md-7
     %h2 Plot Information
     %p= @plot.formatted_location_description
@@ -65,8 +62,9 @@
           %td= @plot.initial_succession
 - if @plot.featured_plant
   %section
-    %h2 Featured Plant: #{@plot.featured_plant.common_name}
+    %h2{:class => 'center'} Featured Plant: #{@plot.featured_plant.common_name}
     .col-md-5
+<<<<<<< HEAD
       %h3 Photo
       - if @plot.featured_plant.photo.length > 1
         #featured_plantCarousel.carousel{"data-interval" => "false"}
@@ -84,6 +82,10 @@
       - elsif @plot.featured_plant.photo.length == 1
         = image_tag(@plot.featured_plant.photo[0].variant(resize: "350x350"), alt: "Photo of #{@plot.featured_plant.photo}") unless @plot.new_record?
 
+=======
+      %h3 
+      = image_tag @plot.featured_plant.photo.variant(resize: "400x400"), alt: "Photo of #{@plot.featured_plant}" if @plot.featured_plant.photo.attached?
+>>>>>>> develop
     .col-md-7
       %h3
         %em

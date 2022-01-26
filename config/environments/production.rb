@@ -16,7 +16,7 @@ Rails.application.configure do
 
   # Setting to false due to airbrake issue with Rails 7, set to true once issue is resolved
   # https://github.com/airbrake/airbrake/issues/1177
-  config.eager_load = false
+  config.eager_load = true
   
 
   # Full error reports are disabled and caching is turned on.
