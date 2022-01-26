@@ -42,7 +42,7 @@ class PlotsController < ApplicationController
   def delete_plot_image_attachment
     @photo = ActiveStorage::Attachment.find(params[:id])
     @photo.purge
-    redirect_to plots_path
+    redirect_back fallback_location: plots_path
     flash[:success] = 'Photo was successfully deleted.'
   end
 
