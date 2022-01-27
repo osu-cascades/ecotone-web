@@ -40,6 +40,13 @@ class PlantsController < ApplicationController
     flash[:success] = 'Plant was successfully destroyed.'
   end
 
+  def delete_plant_image_attachment
+    @photo = ActiveStorage::Attachment.find(params[:id])
+    @photo.purge
+    redirect_back fallback_location: plants_path
+    flash[:success] = 'Photo was successfully deleted.'
+  end
+
   def download_qr
     @qr = RQRCode::QRCode.new(plant_url(@plant), size: 10, level: :h)
     png = build_qr_code_image(@qr, 360)
@@ -59,6 +66,6 @@ class PlantsController < ApplicationController
 
   def plant_params
     params.require(:plant).permit(:common_name, :scientific_name, :description,
-     :habitat_type, :tolerance, :photo, :citation, :invasive)
+     :habitat_type, :tolerance, :citation, :invasive, photo: [])
   end
 end
