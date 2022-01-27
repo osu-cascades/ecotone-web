@@ -4,6 +4,7 @@
 / source: http://getbootstrap.com/examples/carousel/#
 
 .container
-  = image_tag('ecotone_map_2017.png', class:'img-responsive', usemap:'#interactiveMap')
+  = image_tag('ecotone_map_2017.png', usemap:'#interactiveMap')
   %map(name='interactiveMap')
-    %area(shape='rect' coords='29, 50, 250, 350' href='/plots/')
+    %area(shape='rect' coords='350, 175, 575, 125' href='/plots/')
+    %area(shape='circle' coords='465, 350, 40' href='/plants/')
