@@ -2,6 +2,36 @@
   %h1 Ecotone 
   %h2 A map of the campus
 / source: http://getbootstrap.com/examples/carousel/#
+
 .container
-  = image_tag('ecotone_map_2017.png', class: 'img-responsive', alt: 'Map of the campus plots')
+  = image_tag('ecotone_map_2017.png', usemap:'#interactiveMap')
+  %map(name='interactiveMap')
+
+    %area(name='plot_2' shape='rect' coords='350, 175, 575, 125' href='/plots/2')
+    %area(name='plot_8' shape='rect' coords='400, 220, 465, 265' href='/plots/8')
+    %area(name='plot_11' shape='rect' coords='515, 260, 570, 320' href='/plots/11')
+    %area(name='plot_14' shape='rect' coords='635, 295, 680, 355' href='/plots/14')  
+    %area(name='plot_15' shape='rect' coords='715, 315, 750, 360' href='/plots/15')  
+
+    %area(name='plot_1' shape='circle' coords='360, 75, 30' href='/plots/1')
+    %area(name='plot_3' shape='circle' coords='540, 150, 15' href='/plots/3')
+    %area(name='plot_4' shape='circle' coords='525, 210, 20' href='/plots/4')
+    %area(name='plot_5' shape='circle' coords='545, 220, 15' href='/plots/5')
+    %area(name='plot_6' shape='circle' coords='540, 245, 15' href='/plots/6')
+    %area(name='plot_7' shape='circle' coords='505, 235, 15' href='/plots/7')
+    %area(name='plot_9' shape='circle' coords='480, 260 ,20' href='/plots/9')
+    %area(name='plot_10' shape='circle' coords='185, 250, 15' href='/plots/10')
+    %area(name='plot_12' shape='circle' coords='465, 350, 30' href='/plots/12')
+    %area(name='plot_13' shape='circle' coords='435, 450, 30' href='/plots/13')
+    %area(name='plot_16' shape='circle' coords='660, 495, 15' href='/plots/16')
+    %area(name='plot_17' shape='circle' coords='785, 535, 15' href='/plots/17')
+    %area(name='plot_18' shape='circle' coords='840, 565, 15' href='/plots/18')
+    %area(name='plot_19' shape='circle' coords='880, 545, 15' href='/plots/19')
+    %area(name='plot_20' shape='circle' coords='990, 405, 30' href='/plots/20')
+    %area(name='plot_21' shape='circle' coords='955, 345, 30' href='/plots/21')
+    %area(name='plot_22' shape='circle' coords='985, 260, 15' href='/plots/22')
+    %area(name='plot_23' shape='circle' coords='945, 240, 15' href='/plots/23')
+    %area(name='plot_24' shape='circle' coords='910, 305, 15' href='/plots/24')
+    %area(name='plot_25' shape='circle' coords='985, 210, 15' href='/plots/25')
+    %area(name='plot_26' shape='circle' coords='860, 465, 15' href='/plots/26')
 
