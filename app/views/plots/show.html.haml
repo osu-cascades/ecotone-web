@@ -13,8 +13,9 @@
         .carousel-inner
           - @plot.photo.each_with_index do |image, index|
             %div{:class => "item #{index == 0 ? 'active' : ''}"}
-              = image_tag(@plot.photo[index].variant(resize: "350x350"), class: 'plot_photos', alt: "Photo of #{@plot.photo}") unless @plot.new_record?
+              = image_tag(@plot.photo[index].variant(resize: "350x350"), class: 'carousel_photos', alt: "Photo of #{@plot.photo}") unless @plot.new_record?
               %end
+              = link_to 'Delete Photo', delete_plot_image_attachment_plot_url(image.id), class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' }
       %a.carousel-control-prev{"data-slide" => "prev", :href => "#plotCarousel", :role => "button"}
         %span.glyphicon.glyphicon-chevron-left{"aria-hidden" => "true"}
         %span.sr-only Previous
@@ -22,7 +23,7 @@
         %span.glyphicon.glyphicon-chevron-right{"aria-hidden" => "true"}
         %span.sr-only Next
     - elsif @plot.photo.length == 1
-      = image_tag(@plot.photo[0].variant(resize: "350x350"), alt: "Photo of #{@plot.photo}") unless @plot.new_record?
+      = image_tag(@plot.photo[0].variant(resize: "350x350"), class: 'carousel_photos', alt: "Photo of #{@plot.photo}") unless @plot.new_record?
   .col-md-7
     %h2 Plot Information
     %p= @plot.formatted_location_description
@@ -64,8 +65,23 @@
   %section
     %h2{:class => 'center'} Featured Plant: #{@plot.featured_plant.common_name}
     .col-md-5
-      %h3 
-      = image_tag @plot.featured_plant.photo.variant(resize: "400x400"), alt: "Photo of #{@plot.featured_plant}" if @plot.featured_plant.photo.attached?
+      %h3 Photo
+      - if @plot.featured_plant.photo.length > 1
+        #featured_plantCarousel.carousel{"data-interval" => "false"}
+          .carousel-inner
+            - @plot.featured_plant.photo.each_with_index do |image, index|
+              %div{:class => "item #{index == 0 ? 'active' : ''}"}
+                = image_tag(@plot.featured_plant.photo[index].variant(resize: "350x350"), class: 'carousel_photos', alt: "Photo of #{@plot.featured_plant.photo}") unless @plot.new_record?
+                %end
+        %a.carousel-control-prev{"data-slide" => "prev", :href => "#featured_plantCarousel", :role => "button"}
+          %span.glyphicon.glyphicon-chevron-left{"aria-hidden" => "true"}
+          %span.sr-only Previous
+        %a.carousel-control-next{"data-slide" => "next", :href => "#featured_plantCarousel", :role => "button"}
+          %span.glyphicon.glyphicon-chevron-right{"aria-hidden" => "true"}
+          %span.sr-only Next
+      - elsif @plot.featured_plant.photo.length == 1
+        = image_tag(@plot.featured_plant.photo[0].variant(resize: "350x350"), alt: "Photo of #{@plot.featured_plant.photo}") unless @plot.new_record?
+
     .col-md-7
       %h3
         %em

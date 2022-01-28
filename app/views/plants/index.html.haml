@@ -5,7 +5,7 @@
   - @plants.each do |plant|
     .tile
       .img
-        = link_to image_tag(plant.photo.variant resize: "200x200"), plant, title: "Details of #{plant}" if plant.photo.attached?
+        = link_to image_tag(plant.photo[0].variant resize: "200x200"), plant, title: "Details of #{plant}" if plant.photo.attached?
       .plant_desc
         %h3= link_to plant.common_name.capitalize, plant, title: "Details of #{plant}"
         %h4

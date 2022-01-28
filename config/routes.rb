@@ -23,4 +23,16 @@ Rails.application.routes.draw do
   resources :soil_samples
   resources :species_variation_observations
   resources :tree_samples
+
+  resources :plots do
+    member do
+      delete :delete_plot_image_attachment
+    end
+  end
+
+  resources :plants do
+    member do
+      delete :delete_plant_image_attachment
+    end
+  end
 end

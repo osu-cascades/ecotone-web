@@ -9,7 +9,22 @@
 %section
   .col-md-5
     %h2 Photo
-    = image_tag @plant.photo.variant(resize: "200x200"), alt: "Photo of #{@plant}" if @plant.photo.attached?
+    - if @plant.photo.length > 1
+      #plantCarousel.carousel{"data-interval" => "false"}
+        .carousel-inner
+          - @plant.photo.each_with_index do |image, index|
+            %div{:class => "item #{index == 0 ? 'active' : ''}"}
+              = image_tag(@plant.photo[index].variant(resize: "350x350"), class: 'carousel_photos', alt: "Photo of #{@plant.photo}") unless @plant.new_record?
+              = link_to 'Delete Photo', delete_plant_image_attachment_plant_url(image.id), class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' }
+              %end
+      %a.carousel-control-prev{"data-slide" => "prev", :href => "#plantCarousel", :role => "button"}
+        %span.glyphicon.glyphicon-chevron-left{"aria-hidden" => "true"}
+        %span.sr-only Previous
+      %a.carousel-control-next{"data-slide" => "next", :href => "#plantCarousel", :role => "button"}
+        %span.glyphicon.glyphicon-chevron-right{"aria-hidden" => "true"}
+        %span.sr-only Next
+    - elsif @plant.photo.length == 1
+      = image_tag(@plant.photo[0].variant(resize: "350x350"), alt: "Photo of #{@plant.photo}") unless @plant.new_record?
   .col-md-7
     %h2
       %em
