@@ -8,5 +8,5 @@
         = link_to image_tag(plot.photo[0].variant resize: "200x200"), plot, title: "Details of #{plot}" if plot.photo.attached?
       .plot_desc
         %h3= link_to "Plot ##{plot.plot_id}", plot, title: "Details of #{plot}"
-        %h4= truncate(plot.formatted_location_description, length:75)
+        %h4= truncate(plot.formatted_location_description, length:75, separator:' ')
         %p= link_to('edit', edit_plot_path(plot), title: "Edit #{plot}") if current_user&.admin?
