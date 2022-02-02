@@ -30,7 +30,7 @@ gem 'mini_magick', '~> 4.5', '>= 4.5.1'
 gem 'active_storage_validations'
 gem 'aws-sdk-s3'
 gem 'image_processing', '~> 1.2'
-
+gem 'leaflet-rails', '~> 1.7.0'
 
 group :test do
   gem 'simplecov', '~> 0.21.2', require: false
