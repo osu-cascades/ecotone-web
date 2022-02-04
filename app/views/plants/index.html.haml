@@ -1,7 +1,7 @@
 - content_for_title('All Plants')
 - content_for(:subnav) do
   = link_to('Add Plant', new_plant_path, class: 'btn btn-primary', title: 'Add a new plant') if current_user&.admin?
-.container
+.gallery
   - @plants.each do |plant|
     .tile
       .img
