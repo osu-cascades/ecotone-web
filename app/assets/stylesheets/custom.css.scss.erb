@@ -319,6 +319,9 @@ ul.indexing {
   margin: 0 auto;
   overflow: auto;
   padding: 10px 0;
+  display:         flex;
+  flex-wrap:       wrap;
+  justify-content: center;
 }
 
 .tile {
@@ -352,7 +355,7 @@ ul.indexing {
   height: 130px;
 }
 
-@media only screen and (max-width: 800px) {
+<%# @media only screen and (max-width: 800px) {
  .tile {
    width: 30%;
  }
@@ -360,9 +363,9 @@ ul.indexing {
 
 @media only screen and (max-width: 400px) {
   .tile {
-   width: 45%;
+   max-width: 100%;
  }
-}
+} %>
 
 .citation {
   color: #4C4C4C;
