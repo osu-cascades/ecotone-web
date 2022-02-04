@@ -1,4 +1,4 @@
-Leaflet.tile_layer = "http://{s}.tile.cloudmade.com/pk.eyJ1IjoiYm95a2oiLCJhIjoiY2t6NjEwZDdhMG13bzJ5cHJ5c2xsbng3NSJ9.lGXEzSMuY3VGPCHJDI5xpg/997/256/{z}/{x}/{y}.png"
+Leaflet.tile_layer = "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token="
 # You can also use any other tile layer here if you don't want to use Cloudmade - see http://leafletjs.com/reference.html#tilelayer for more
-Leaflet.attribution = "Your attribution statement"
+Leaflet.attribution = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>'
 Leaflet.max_zoom = 18
