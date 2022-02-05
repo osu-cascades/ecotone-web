@@ -2,13 +2,16 @@
 
 body { 
   background-color: hsl(210, 100%, 98%); 
-  padding-top: 64px;
+  padding-top: $space7;
   font-family: 'graphik-regular';
   color: $grey0;
 }
 
 button {
-  border-radius: 4px;
+  padding: $space1;
+  text-align: center;
+  vertical-align: center;
+  border-radius: $space0;
   transition-duration: 0.1s;
 }
 
