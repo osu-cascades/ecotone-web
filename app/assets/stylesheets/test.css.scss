@@ -1,14 +1,15 @@
 @import './constants.css.scss';
+@use 'default';
 
 // body {
 //     border: 2px solid black;
 // }
 
-.btn {
-  box-shadow: $shadow2;
-  border-radius: 4px;
-  transition-duration: 0.1s;
-}
+// .btn {
+//   box-shadow: $shadow2;
+//   border-radius: 4px;
+//   transition-duration: 0.1s;
+// }
 
 .btn-primary {
 	color: white;
@@ -54,38 +55,3 @@
 	padding: 12px;
 	padding-left: 128px;
 }
-
-// Home page
-.center.jumbotron {
-	margin-bottom: 48px;
-  color: $grey1;
-}
-
-.title {
-  font-family: 'graphik-medium';
-  font-size: 48px;
-  color: $grey2;
-}
-
-.caption {
-  font-family: 'graphik-regular-italic';
-  color: $grey2;
-}
-
-#logo {
-  float: left;
-  display: flex;
-  align-items: center;
-  font-size: 24px;
-  color: $grey5;
-  margin-right: 8px;
-  padding-top: 8px;
-  &:hover {
-    color: $grey8;
-    text-decoration: none;
-  }
-  &:active {
-    color: $green4;
-  }
-}
-
