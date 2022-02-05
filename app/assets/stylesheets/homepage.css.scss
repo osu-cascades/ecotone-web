@@ -1,28 +1,65 @@
 @import './constants.css.scss';
 
-.center.jumbotron {
-  margin-bottom: $space6;
-  color: $grey1;
-}
-
 .jumbotron {
-  background-image: url('osucascades_background.jpg');
+  margin-bottom: $space5;
+  color: $grey1;
+	background-image: url('osucascades_background.jpg');
 }
 
 .title {
+	margin: $space4;
   font-family: 'graphik-medium';
   font-size: $txt8;
   color: $grey2;
 }
 
 .caption {
+	margin: $space4;
   font-family: 'graphik-regular-italic';
   color: $grey2;
 }
 
+.img-container {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+	.col {
+		margin: $space4;
+	}
+	h3 {
+		margin-top: $space4;
+	}
+}
+
+@media (max-width: 800px) {
+  .img-container {
+		align-items: center;
+  	justify-items: center;
+    grid-auto-flow: row;
+  }
+	.col {
+		max-width: $space13;
+	}
+}
+
 .img-circle {
-  margin: auto;
-  display: block;
-  height: 200;
-  width: 200;
+    position: relative;
+		margin: auto;
+		display: block;
+		height: 200px;
+		width: 200px;
+		&::after {
+			box-shadow: inset 0 0 0 1px hsla(0, 0%, 0%, .1);
+			border-radius: 50%;
+			content: "";
+			display: block;
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+		}
+		img {
+			border-radius: 50%;
+		}
 }
