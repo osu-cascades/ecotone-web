@@ -1,0 +1,28 @@
+@import './constants.css.scss';
+
+.center.jumbotron {
+  margin-bottom: $space6;
+  color: $grey1;
+}
+
+.jumbotron {
+  background-image: url('osucascades_background.jpg');
+}
+
+.title {
+  font-family: 'graphik-medium';
+  font-size: $txt8;
+  color: $grey2;
+}
+
+.caption {
+  font-family: 'graphik-regular-italic';
+  color: $grey2;
+}
+
+.img-circle {
+  margin: auto;
+  display: block;
+  height: 200;
+  width: 200;
+}
