@@ -19,7 +19,12 @@ RSpec.feature 'User creates a lichen sample' do
   end
 
   scenario 'with invalid sample attributes' do
-    skip
+    fill_in('Collection date', with: '')
+    select('Plot #1', from: '')
+    fill_in('Location within plot', with: '')
+    fill_in('Description', with: '')
+    click_on('Create Lichen sample')
+    expect(page).to have_content('The form contains 3 errors.')
   end
 
 end
