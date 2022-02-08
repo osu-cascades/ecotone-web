@@ -25,8 +25,7 @@ RSpec.feature 'User creates a lichen sample' do
       expect(error_explanations).to have_content('Plot must exist')
       expect(error_explanations).to have_content("Collected on can't be blank")
       expect(error_explanations).to have_content("Location within plot can't be blank")
-      expect(error_explanations).to have_content("Description can't be blank")
-      
+      expect(error_explanations).to have_content("Description can't be blank") 
     end
   end
 
