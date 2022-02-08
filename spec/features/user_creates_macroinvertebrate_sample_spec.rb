@@ -21,7 +21,14 @@ RSpec.feature 'User creates a macroinvertebrate sample' do
   end
 
   scenario 'with invalid sample attributes' do
-    skip
+    fill_in('Collection date', with: '')
+    select('Plot #1', from: 'Plot')
+    fill_in('Phylum', with: '')
+    fill_in('Location within plot', with: 'Fake location')
+    fill_in('Quantity', with: 1)
+    select(MacroinvertebrateSample::ECOSYSTEM_SERVICES.first, from: 'Ecosystem service')
+    click_on('Create Macroinvertebrate sample')
+    expect(page).to have_content('The form contains 2 errors.')
   end
 
 end
