@@ -20,7 +20,13 @@ RSpec.feature 'User creates a fungi sample' do
   end
 
   scenario 'with invalid sample attributes' do
-    skip
+    fill_in('Collection date', with: '')
+    select('Plot #1', from: 'Plot')
+    fill_in('Location within plot', with: 'Fake location')
+    fill_in('Size', with: '10.0')
+    fill_in('Description', with: 'Fake description')
+    click_on('Create Fungi sample')
+    expect(page).to have_content('The form contains 1 error.')
   end
 
 end
