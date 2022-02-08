@@ -21,14 +21,18 @@ RSpec.feature 'User creates a macroinvertebrate sample' do
   end
 
   scenario 'with invalid sample attributes' do
-    fill_in('Collection date', with: '')
-    select('Plot #1', from: 'Plot')
-    fill_in('Phylum', with: '')
-    fill_in('Location within plot', with: 'Fake location')
-    fill_in('Quantity', with: 1)
-    select(MacroinvertebrateSample::ECOSYSTEM_SERVICES.first, from: 'Ecosystem service')
     click_on('Create Macroinvertebrate sample')
-    expect(page).to have_content('The form contains 2 errors.')
+    expect(page).to have_content('The form contains 7 errors.')
+    page.find('.alert').tap do |error_explanations|
+      expect(error_explanations).to have_content('Plot must exist')
+      expect(error_explanations).to have_content("Collected on can't be blank")
+      expect(error_explanations).to have_content("Phylum can't be blank")
+      expect(error_explanations).to have_content("Location within plot can't be blank")
+      expect(error_explanations).to have_content('Quantity is not a number')
+      expect(error_explanations).to have_content("Ecosystem service can't be blank")
+      expect(error_explanations).to have_content('Ecosystem service is not a valid ecosystem service')
+    end
+    
   end
 
 end
