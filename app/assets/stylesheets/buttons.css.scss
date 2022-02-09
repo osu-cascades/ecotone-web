@@ -1,0 +1,83 @@
+@import './constants.css.scss';
+
+.button {
+  font-size: $txt1;
+  height: $space5;
+  width: $space9;
+  padding: $space0;
+  text-align: center;
+  border-radius: $space0;
+  transition-duration: 0.1s;
+}
+
+.primary {
+  color: white;
+  background-color: $orange3;
+  border-color: $orange3;
+  box-shadow: $shadow2;
+  &:hover, &:focus {
+    color: $grey9;
+    background-color: $orange3;
+    border-color: $orange3;
+    box-shadow: $shadow1;
+  }
+  &:active {
+    color: $grey9;
+    background-color: $orange2;
+    border-color: $orange2;
+    box-shadow: $shadow1;
+  }
+}
+
+// .secondary {
+//   color: $orange3;
+// 	background-color: white;
+//   border-color: $orange3;
+// 	box-shadow: $shadow2;
+// 	&:hover, &:focus {
+// 		color: $orange3;
+// 		background-color: white;
+//   	border-color: $orange2;
+//     box-shadow: $shadow1;
+//   }
+// }
+
+// .tertiary {
+// 	color: $orange3;
+// 	background-color: transparent;
+// 	text-decoration: underline;     
+// 	text-decoration-color: $orange3; 
+// 	&:hover, &:focus {
+// 		box-shadow: $shadow3;
+// 	}
+// }
+
+.btn-icon {
+	height: $space5;
+	width: $space5;
+	color: transparent;
+	background-color: transparent;
+	border: transparent;
+	transition: all .15s ease-in-out;
+	&:hover {
+		transform: scale(1.2);
+	}
+}
+
+.btn-public {
+	display: grid;
+	grid-auto-flow: column;
+	column-gap: $space3;
+	justify-content: start;
+	& form.button_to {
+		height: $space5;
+  	width: $space9;
+	}
+}
+
+.btn-admin {
+	display: grid;
+	grid-auto-flow: column;
+	column-gap: $space2;
+	justify-content: end;
+}
