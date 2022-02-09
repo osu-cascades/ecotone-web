@@ -25,6 +25,8 @@ a {
 
 .subnav {
   display: grid;
+  grid-auto-flow: column;
+  // grid-auto-columns: 1fr;
   height: $space6;
   padding: $space1;
 }
@@ -33,6 +35,11 @@ a {
 // 	padding: 12px;
 // 	padding-left: 128px;
 // }
+
+form.button_to {
+  height: 0px;
+  width: 0px;
+}
 
 .button {
   font-size: $txt1;
@@ -85,3 +92,18 @@ a {
 // 		box-shadow: $shadow3;
 // 	}
 // }
+
+
+.btn-icon {
+    height: 0px;
+    width: 0px;
+    color: transparent;
+    background-color: transparent;
+    border: transparent;
+}
+
+i {
+    font-size: $txt6;
+    color: $orange2;
+    transition: all .2s ease-in-out;
+}
