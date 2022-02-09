@@ -1,6 +1,6 @@
 - content_for_title('Plant Samples')
 - content_for(:subnav) do
-  = link_to 'Add Plant Sample', new_plant_sample_path, class: 'btn btn-primary', title: 'Add a new plant sample'
+  = button_to('Add Sample', new_plant_sample_path, class: 'button primary', title: 'Add a new plant sample', method: 'get')
 
 %section
   %h2 Sample Information
