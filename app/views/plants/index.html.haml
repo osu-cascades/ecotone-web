@@ -1,13 +1,13 @@
 - content_for_title('All Plants')
 - content_for(:subnav) do
-  = link_to('Add Plant', new_plant_path, class: 'btn btn-primary', title: 'Add a new plant') if current_user&.admin?
+  = button_to('Add Plant', new_plant_path, class: 'button primary', title: 'Add a new plant', method: 'get') if current_user&.admin?
 .gallery
   - @plants.each do |plant|
     .tile
       .img
         = link_to image_tag(plant.photo[0].variant resize: "200x200"), plant, title: "Details of #{plant}" if plant.photo.attached?
       .plant_desc
-        %h3= link_to plant.common_name.capitalize, plant, title: "Details of #{plant}"
+        %h3= link_to plant.common_name.capitalize.truncate_words(2), plant, title: "Details of #{plant}"
         %h4
-          %em= plant.scientific_name.capitalize
+          %em= plant.scientific_name.capitalize.truncate_words(2)
         %p= link_to('edit', edit_plant_path(plant), title: "Edit #{plant}") if current_user&.admin?

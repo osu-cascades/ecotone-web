@@ -1,6 +1,6 @@
 - content_for_title('Plots on Campus')
 - content_for(:subnav) do
-  = link_to('Add Plot', new_plot_path, class: 'btn btn-primary', title: 'Add a new plot') if current_user&.admin?
+  = button_to('Add Plot', new_plot_path, class: 'button primary', title: 'Add a new plot', method: 'get') if current_user&.admin?
 .gallery
   - @plots.each do |plot|
     .tile
@@ -8,5 +8,5 @@
         = link_to image_tag(plot.photo[0].variant resize: "200x200"), plot, title: "Details of #{plot}" if plot.photo.attached?
       .plot_desc
         %h3= link_to "Plot ##{plot.plot_id}", plot, title: "Details of #{plot}"
-        %h4= plot.formatted_location_description
+        %h4= truncate(plot.formatted_location_description, length:75, separator:' ')
         %p= link_to('edit', edit_plot_path(plot), title: "Edit #{plot}") if current_user&.admin?

@@ -1,18 +1,19 @@
-.center.jumbotron
+.jumbotron.center
   %h1.title Ecotone
   %h2.caption A Living, Learning Laboratory at OSU-Cascades
-/ source: http://getbootstrap.com/examples/carousel/#
-.container
-  .row
-    .col-lg-4.center
-      = image_tag('ecotone-plants-tykeson-hall-osu-cascades-200x200.jpg', class: 'img-circle', alt: 'Native plant species at OSU cascades')
-      %h3 Native Plant Landscaping
-      %p Natural resources and biology students constructed long-term monitoring plots for native species on the OSU Cascades campus
-    .col-lg-4.center
-      = image_tag('ecotone-plot-with-trees-osu-cascades-bend-or-200x200.jpg', class: 'img-circle', alt: 'Ecotone plot on OSU Cascades campus in Bend, OR')
-      %h3 Education
-      %p Biology students can periodically collect and record data samples to track plant health and plot biodiversity
-    .col-lg-4.center
-      = image_tag('ecotone-flower2-osu-cascades-200x200.jpg', class: 'img-circle', alt: 'Flower on OSU Cascades campus')
-      %h3 Plant Identification
-      %p Learn more about plant species that are native to Central Oregon by scanning the QR codes posted at each plot around campus
+.img-container
+  .col.center
+    .img-circle
+      = image_tag('ecotone-plants-tykeson-hall-osu-cascades-200x200.jpg', alt: 'Native plant species at OSU-cascades')
+    %h3 Native Plant Landscaping
+    %p Natural resources and biology students constructed plots for native species on the OSU-Cascades campus
+  .col.center
+    .img-circle
+      = image_tag('ecotone-plot-with-trees-osu-cascades-bend-or-200x200.jpg', alt: 'Ecotone plot on OSU-Cascades campus in Bend, OR')
+    %h3 Education
+    %p Biology students can periodically collect and record data samples to track plant health and plot biodiversity
+  .col.center
+    .img-circle
+      = image_tag('ecotone-flower2-osu-cascades-200x200.jpg', alt: 'Flower on OSU-Cascades campus')
+    %h3 Plant Identification
+    %p Learn more about native plant species by scanning the QR codes posted at each plot around campus
