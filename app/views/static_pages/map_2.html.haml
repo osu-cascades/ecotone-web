@@ -9,6 +9,7 @@
 
   var mapBoxAttribution = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>'
   var mapboxUrl = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiYm95a2oiLCJhIjoiY2t6N3F3dHg3MWRrZzJucGh0aWZrZG84OSJ9.uQt5x-TJrlhe624nAsDeaA'
+  var mapboxUrlSat = 'https://api.mapbox.com/styles/v1/mapbox/satellite-streets-v11.html?title=true&access_token=pk.eyJ1IjoiYm95a2oiLCJhIjoiY2t6N3F3dHg3MWRrZzJucGh0aWZrZG84OSJ9.uQt5x-TJrlhe624nAsDeaA'
 
   var map = L.map('map').setView([44.04, -121.33], 14, {layers: [grayscale, plots]});
 
@@ -24,8 +25,14 @@
 
   var plots = L.layerGroup([plot_5, plot_6]).addTo(map);
 
-  var grayscale = L.tileLayer(mapboxUrl, {id: 'mapbox/grayscale', tileSize: 512, zoomOffset: -1, attribution: mapboxAttribution}),
-  streets   = L.tileLayer(mapboxUrl, {id: 'mapbox/streets-v11', tileSize: 512, zoomOffset: -1, attribution: mapboxAttribution});
+  var grayscale = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    id: 'mapbox/satellite-streets-v11', 
+    tileSize: 512, zoomOffset: -1, 
+    attribution: mapBoxAttribution,
+    accessToken: 'pk.eyJ1IjoiYm95a2oiLCJhIjoiY2t6N3F3dHg3MWRrZzJucGh0aWZrZG84OSJ9.uQt5x-TJrlhe624nAsDeaA'
+  }).addTo(map);
+
+  var streets = L.tileLayer(mapboxUrl, {id: 'mapbox/streets-v11', tileSize: 512, zoomOffset: -1, attribution: mapBoxAttribution});
 
   var baseMaps = {
     "Grayscale": grayscale,
