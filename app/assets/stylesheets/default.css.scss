@@ -29,11 +29,12 @@ a {
   height: $space6;
   padding: $space1;
   align-content: center;
+  border: 2px solid black;
 }
 
 form.button_to {
-  height: 0px;
-  width: 0px;
+  height: $space5;
+  width: $space9;
   margin: 0px;
   padding: 0px;
 }
