@@ -1,6 +1,6 @@
 - content_for_title('Plots on Campus')
 - content_for(:subnav) do
-  = link_to('Add Plot', new_plot_path, class: 'btn btn-primary', title: 'Add a new plot') if current_user&.admin?
+  = button_to('Add Plot', new_plot_path, class: 'button primary', title: 'Add a new plot', method: 'get') if current_user&.admin?
 .gallery
   - @plots.each do |plot|
     .tile

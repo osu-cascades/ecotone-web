@@ -1,6 +1,6 @@
 - content_for_title('Mycorrhizal Fungi Samples')
 - content_for(:subnav) do
-  = link_to('Add Mycorrhizal Fungi Sample', new_mycorrhizal_fungi_sample_path, class: 'btn btn-primary', title: 'Add a new mycorrhizal fungi sample')
+  = button_to('Add Sample', new_mycorrhizal_fungi_sample_path, class: 'button primary', title: 'Add a new mycorrhizal fungi sample', method: 'get')
 
 %section
   %h2 Sample Information

@@ -7,20 +7,38 @@ body {
   color: $grey0;
 }
 
-button {
-  padding: $space1;
-  text-align: center;
-  vertical-align: center;
-  border-radius: $space0;
-  transition-duration: 0.1s;
-}
-
 p {
   font-family: 'graphik-light';
   font-size: $txt2;
   line-height: $space4;
 }
 
+a { 
+  &:link, &:visited, &:hover, &:active {
+    text-decoration: none
+  }
+}
+
 .center {
   text-align: center;
 }
+
+.subnav {
+  display: grid;
+  grid-auto-flow: column;
+  height: $space6;
+  padding: $space1;
+  align-content: center;
+}
+
+form.button_to {
+  height: $space5;
+  width: $space9;
+  margin: 0px;
+  padding: 0px;
+}
+
+// .image {
+// 	padding: 12px;
+// 	padding-left: 128px;
+// }

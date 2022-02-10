@@ -1,11 +1,12 @@
 - content_for_title(@plant.common_name.capitalize)
 - content_for(:subnav) do
-  = link_to '« Back to plants', plants_path, class: 'btn btn-primary', title: 'List of all plants'
-  = link_to 'Download QR Code', { action: 'download_qr' }, 'data-turbolinks': false, class: 'btn', title: "QR Code for #{@plant}"
+  .btn-public
+    = button_to('« Plants', plants_path, class: 'button primary', title: 'List of all plants', method: 'get')
+    = link_to(content_tag(:i, '', :class => "icon-qr-code"), { action: 'download_qr' }, 'data-turbolinks': false, class: 'btn-icon', title: "Download QR Code for #{@plant}")
   - if current_user&.admin?
-    .btn-group
-      = link_to 'Edit', edit_plant_path(@plant), class: 'btn', title: "Edit #{@plant}"
-      = link_to 'Delete', @plant, method: :delete, data: { confirm: "Delete #{@plant.common_name}?" }, class: 'btn btn-danger', title: "Delete #{@plant}"
+    .btn-admin
+      = link_to(content_tag(:i, '', :class => "icon-edit"), edit_plant_path(@plant), class: 'btn-icon', title: "Edit #{@plant}")
+      = link_to(content_tag(:i, '', :class => "icon-delete2"), @plant, method: :delete, data: { confirm: "Delete #{@plant.common_name}?" }, class: 'btn-icon', title: "Delete #{@plant}")
 %section
   .col-md-5
     %h2 Photo

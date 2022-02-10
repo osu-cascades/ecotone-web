@@ -1,6 +1,6 @@
 - content_for_title('Lichen Samples')
 - content_for(:subnav) do
-  = link_to('Add Lichen Sample', new_lichen_sample_path, class: 'btn btn-primary', title: 'Add a new lichen sample')
+  = button_to('Add Sample', new_lichen_sample_path, class: 'button primary', title: 'Add a new lichen sample', method: 'get')
 
 %section
   %h2 Sample Information
