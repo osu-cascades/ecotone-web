@@ -15,8 +15,17 @@
   var map = L.map('map', {
     center: [44.04, -121.33],
     zoom: 14,
-    layers: [grayscale, cities]
+    layers: [grayscale, plots]
   });
+
+  var baseMaps = {
+    "Grayscale": grayscale,
+    "Streets": streets
+  };
+
+  var overlayMaps = {
+    "Cities": plots
+  };
 
   L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {attribution: mapboxAttribution,
   maxZoom: 18,
@@ -25,10 +34,7 @@
   zoomOffset: -1,
   accessToken: 'pk.eyJ1IjoiYm95a2oiLCJhIjoiY2t6N3F3dHg3MWRrZzJucGh0aWZrZG84OSJ9.uQt5x-TJrlhe624nAsDeaA'}).addTo(map);
 
-  L.marker([44.0429688, -121.3329103]).addTo(map)
-    .bindPopup('Plot 5')
-    .openPopup();
+  var plot_5 = L.marker([44.0429688, -121.3329103]).bindPopup('This is plot 5'),
+    plot_5   = L.marker([44.0429688, -121.3329103]).bindPopup('This is plot 6'),
 
-  L.marker([44.0429789, -121.333324]).addTo(map)
-    .bindPopup('Plot 6')
-    .openPopup();
+  var plots = L.layerGroup([plot_5, plot_6]);
