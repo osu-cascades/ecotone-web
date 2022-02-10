@@ -69,15 +69,11 @@
 	grid-auto-flow: column;
 	column-gap: $space3;
 	justify-content: start;
-	& form.button_to {
-		height: $space5;
-  	width: $space9;
-	}
 }
 
 .btn-admin {
-	display: grid;
-	grid-auto-flow: column;
-	column-gap: $space2;
-	justify-content: end;
+  display: grid;
+  grid-auto-flow: column;
+  column-gap: $space2;
+  justify-content: end;
 }
