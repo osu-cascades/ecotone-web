@@ -7,14 +7,18 @@
 
 :javascript
 
-  var mapboxAttribution = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}'
+  var mapboxAttribution = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>'
 
   var grayscale = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {id: 'MapID', tileSize: 512, zoomOffset: -1, attribution: mapboxAttribution}),
     streets   = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {id: 'MapID', tileSize: 512, zoomOffset: -1, attribution: mapboxAttribution});
 
-  var map = L.map('map').setView([44.04, -121.33], 14);
+  var map = L.map('map', {
+    center: [44.04, -121.33],
+    zoom: 14,
+    layers: [grayscale, cities]
+  });
 
-  L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+  L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {attribution: mapboxAttribution,
   maxZoom: 18,
   id: 'mapbox/streets-v11',
   tileSize: 512,
