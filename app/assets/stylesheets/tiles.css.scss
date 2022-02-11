@@ -11,7 +11,7 @@
 }
 
 .tile {
-	margin: $space0;
+	margin: $space1;
 	border: 1px solid $grey5;
 	width: 15.7%;
 	min-width: $space10;
@@ -26,14 +26,14 @@
 }
 
 .plot_desc {
-	padding: $space0;
+	padding: $space1;
 	text-align: center;
 	width: 100%;
 	height: 160px;
 }
 
 .plant_desc {
-	padding: $space0;
+	padding: $space1;
 	text-align: center;
 	width: 100%;
 	height: $space9;
