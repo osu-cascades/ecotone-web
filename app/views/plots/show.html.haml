@@ -17,7 +17,8 @@
             %div{:class => "item #{index == 0 ? 'active' : ''}"}
               = image_tag(@plot.photo[index].variant(resize: "350x350"), class: 'carousel_photos', alt: "Photo of #{@plot.photo}") unless @plot.new_record?
               %end
-              = link_to 'Delete Photo', delete_plot_image_attachment_plot_url(image.id), class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' }
+              - if current_user&.admin?
+                = link_to 'Delete Photo', delete_plot_image_attachment_plot_url(image.id), class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' }
       %a.carousel-control-prev{"data-slide" => "prev", :href => "#plotCarousel", :role => "button"}
         %span.glyphicon.glyphicon-chevron-left{"aria-hidden" => "true"}
         %span.sr-only Previous
