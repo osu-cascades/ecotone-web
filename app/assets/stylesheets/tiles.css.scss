@@ -12,16 +12,24 @@
 
 .tile {
 	margin: $space1;
-	border: 1px solid $grey5;
+	border: $grey5;
 	border-radius: $space0;
 	width: 15.7%;
 	min-width: $space10;
+	transition-duration: 0.1s;
+	box-shadow: $shadow2;
 	&:hover {
-    border: 1px solid $grey3;
+    border: $grey3;
+		box-shadow: $shadow1;
   }
+	&:active {
+		border: $grey2;
+		box-shadow: $shadow0;
+	}
 }
 
 .tile img {
+	border-radius: $space0;
 	object-fit: cover;
 	width: 100%;
 	height: $space10;
