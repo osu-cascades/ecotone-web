@@ -2,43 +2,40 @@
 
 .gallery {
 	width: auto;
-	font-size: 0;
 	margin: 0 auto;
 	overflow: auto;
-	padding: 10px 0;
+	padding: $space2 0;
 	display:         flex;
 	flex-wrap:       wrap;
 	justify-content: center;
 }
 
 .tile {
-	margin: 5px;
+	margin: $space0;
 	border: 1px solid $grey5;
-	float: left;
 	width: 15.7%;
-	min-width: 180px;
-}
-
-.tile:hover {
-	border: 1px solid #777;
+	min-width: $space10;
+	&:hover {
+    border: 1px solid $grey3;
+  }
 }
 
 .tile img {
 	width: 100%;
-	height: 180px;
+	height: $space10;
 }
 
 .plot_desc {
-	padding: 5px;
+	padding: $space0;
 	text-align: center;
 	width: 100%;
 	height: 160px;
 }
 
 .plant_desc {
-	padding: 5px;
+	padding: $space0;
 	text-align: center;
 	width: 100%;
-	height: 130px;
+	height: $space9;
 }
   
