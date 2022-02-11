@@ -10,4 +10,3 @@
         %h3= link_to plant.common_name.capitalize.truncate_words(2), plant, title: "Details of #{plant}"
         %h4
           %em= plant.scientific_name.capitalize.truncate_words(2)
-        %p= link_to('edit', edit_plant_path(plant), title: "Edit #{plant}") if current_user&.admin?
