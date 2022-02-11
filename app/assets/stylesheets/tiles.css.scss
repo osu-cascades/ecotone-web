@@ -4,7 +4,7 @@
 	width: auto;
 	margin: 0 auto;
 	overflow: auto;
-	padding: $space2 0;
+	padding: $space2;
 	display:         flex;
 	flex-wrap:       wrap;
 	justify-content: center;
@@ -21,6 +21,7 @@
 }
 
 .tile img {
+	object-fit: cover;
 	width: 100%;
 	height: $space10;
 }
