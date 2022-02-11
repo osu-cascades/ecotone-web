@@ -13,6 +13,7 @@
 .tile {
 	margin: $space1;
 	border: 1px solid $grey5;
+	border-radius: $space0;
 	width: 15.7%;
 	min-width: $space10;
 	&:hover {
