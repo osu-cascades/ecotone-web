@@ -6,13 +6,10 @@
 .content(id='map')
 
 :javascript
-  console.log(process.env.LEAFLET_KEY)
-
-:javascript
 
   var mapBoxAttribution = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>'
 
-  var map = L.map('map').setView([44.04, -121.33], 15, {layers: [satelliteLayer, outdoorLayer]});
+  var map = L.map('map').setView([44.0429688, -121.3329103], 18, {layers: [satelliteLayer, outdoorLayer]});
 
   var plot_5 = L.marker([44.0429688, -121.3329103]).bindPopup('This is plot 5'),
     plot_5_edit = L.marker([44.0432026, -121.3334076]).bindPopup('Plot 5 edit point');
@@ -21,24 +18,27 @@
   var plots = L.layerGroup([plot_5, plot_5_edit, plot_6]).addTo(map);
 
   L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {attribution: mapBoxAttribution,
-  maxZoom: 18,
-  id: 'mapbox/streets-v11',
-  tileSize: 512,
-  zoomOffset: -1,
-  accessToken: 'pk.eyJ1IjoiYm95a2oiLCJhIjoiY2t6N3F3dHg3MWRrZzJucGh0aWZrZG84OSJ9.uQt5x-TJrlhe624nAsDeaA'}).addTo(map);
+    maxZoom: 18,
+    id: 'mapbox/streets-v11',
+    tileSize: 512,
+    zoomOffset: -1,
+    accessToken: 'pk.eyJ1IjoiYm95a2oiLCJhIjoiY2t6aGhqY2s5M3l2NjJ2cDRqcW56NXk1aiJ9.SHbqduUQMxM8d9mDEhF0Gw'
+  }).addTo(map);
 
   var satelliteLayer = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     id: 'mapbox/satellite-streets-v11', 
-    tileSize: 512, zoomOffset: -1, 
+    tileSize: 512, 
+    zoomOffset: -1, 
     attribution: mapBoxAttribution,
-    accessToken: 'pk.eyJ1IjoiYm95a2oiLCJhIjoiY2t6N3F3dHg3MWRrZzJucGh0aWZrZG84OSJ9.uQt5x-TJrlhe624nAsDeaA'
+    accessToken: 'pk.eyJ1IjoiYm95a2oiLCJhIjoiY2t6aGhqY2s5M3l2NjJ2cDRqcW56NXk1aiJ9.SHbqduUQMxM8d9mDEhF0Gw'
   }).addTo(map);
 
   var outdoorLayer = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     id: 'mapbox/outdoors-v11', 
-    tileSize: 512, zoomOffset: -1, 
+    tileSize: 512, 
+    zoomOffset: -1, 
     attribution: mapBoxAttribution,
-    accessToken: 'pk.eyJ1IjoiYm95a2oiLCJhIjoiY2t6N3F3dHg3MWRrZzJucGh0aWZrZG84OSJ9.uQt5x-TJrlhe624nAsDeaA',
+    accessToken: 'pk.eyJ1IjoiYm95a2oiLCJhIjoiY2t6aGhqY2s5M3l2NjJ2cDRqcW56NXk1aiJ9.SHbqduUQMxM8d9mDEhF0Gw',
   }).addTo(map);
 
   var baseMaps = {
