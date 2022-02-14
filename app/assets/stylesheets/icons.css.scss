@@ -1,0 +1,14 @@
+@import './constants.css.scss';
+
+i {
+	font-size: $space5;
+	&.icon-qr-code {
+		color: $green2;
+	}
+	&.icon-edit {
+		color: $blue3;
+	}
+	&.icon-delete2 {
+		color: $red4;
+	}
+}

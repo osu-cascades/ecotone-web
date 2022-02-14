@@ -98,6 +98,39 @@ $yellow8: hsl(45, 90%, 88%);
 $yellow9: hsl(45, 100%, 96%);
 
 
+// TEXT SCALE
+$txt0: 12px;
+$txt1: 14px;
+$txt2: 16px;
+$txt3: 18px;
+$txt4: 20px;
+$txt5: 24px;
+$txt6: 30px;
+$txt7: 36px;
+$txt8: 48px;
+$txt9: 60px;
+$txt10: 72px;
+
+
+// SPACING SCALE
+$space0: 4px;
+$space1: 8px;
+$space2: 12px;
+$space3: 16px;
+$space4: 24px;
+$space5: 32px;
+$space6: 48px;
+$space7: 64px;
+$space8: 96px;
+$space9: 128px;
+$space10: 192px;
+$space11: 256px;
+$space12: 384px;
+$space13: 512px;
+$space14: 640px;
+$space15: 768px;
+
+
 // SHADOW SCALE
 $shadow0: 0 1px 3px rgba(0,0,0,.12), 0 1px 2px rgba(0,0,0,.24);
 $shadow1: 0 3px 6px rgba(0,0,0,.15), 0 2px 4px rgba(0,0,0,.12);
@@ -105,3 +138,50 @@ $shadow2: 0 6px 12px rgba(0,0,0,.15), 0 3px 6px rgba(0,0,0,.11);
 $shadow3: 0 10px 20px rgba(0,0,0,.15), 0 5x 10px rgba(0,0,0,.10);
 $shadow4: 0 15px 25px rgba(0,0,0,.17), 0 6px 12px rgba(0,0,0,.05);
 $shadow5: 0 20px 40px rgba(0,0,0,.2);
+
+
+// ICONS
+@font-face {
+  font-family: 'icomoon';
+  src:  url('fonts/icomoon.eot?gp6fc0');
+  src:  url('fonts/icomoon.eot?gp6fc0#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?gp6fc0') format('truetype'),
+    url('fonts/icomoon.woff?gp6fc0') format('woff'),
+    url('fonts/icomoon.svg?gp6fc0#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-edit1:before {
+  content: "\e901";
+}
+.icon-edit:before {
+  content: "\e902";
+}
+.icon-delete1:before {
+  content: "\e903";
+}
+.icon-delete:before {
+  content: "\e904";
+}
+.icon-delete2:before {
+  content: "\e906";
+}
+.icon-qr-code:before {
+  content: "\e907";
+}
