@@ -9,8 +9,6 @@
 
   var mapBoxAttribution = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>'
 
-  - @plots.each do |plot|
-
   var map = L.map('map').setView([44.0429688, -121.3329103], 18, {layers: [satelliteLayer, outdoorLayer]});
 
   var plot_5    = L.marker([44.0429688, -121.3329103]).bindPopup("<b> Plot text here </b><a href='https://localhost:3000/plots'> Plot </a>"),
