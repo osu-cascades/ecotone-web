@@ -6,7 +6,4 @@ class StaticPagesController < ApplicationController
   def map;
   end
 
-  def map_2;
-  end
-
 end
