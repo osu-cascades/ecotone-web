@@ -19,7 +19,14 @@ RSpec.feature 'User creates a lichen sample' do
   end
 
   scenario 'with invalid sample attributes' do
-    skip
+    click_on('Create Lichen sample')
+    expect(page).to have_content('The form contains 4 errors.')
+    page.find('.alert').tap do |error_explanations|
+      expect(error_explanations).to have_content('Plot must exist')
+      expect(error_explanations).to have_content("Collected on can't be blank")
+      expect(error_explanations).to have_content("Location within plot can't be blank")
+      expect(error_explanations).to have_content("Description can't be blank") 
+    end
   end
 
 end

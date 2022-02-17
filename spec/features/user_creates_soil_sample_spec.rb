@@ -24,7 +24,16 @@ RSpec.feature 'User creates a soil sample' do
   end
 
   scenario 'with invalid sample attributes' do
-    skip
+    click_on('Create Soil sample')
+    expect(page).to have_content('The form contains 6 errors.')
+    page.find('.alert').tap do |error_explanations|
+      expect(error_explanations).to have_content('Plot must exist')
+      expect(error_explanations).to have_content("Collected on can't be blank")
+      expect(error_explanations).to have_content("Collection method can't be blank")
+      expect(error_explanations).to have_content('Ph level is not a number') 
+      expect(error_explanations).to have_content('Temperature is not a number') 
+      expect(error_explanations).to have_content('Moisture is not a number')
+    end
   end
 
   scenario 'without nutrient levels' do
