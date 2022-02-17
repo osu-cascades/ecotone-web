@@ -5,14 +5,14 @@ Rails.application.routes.draw do
   resources :users
   resources :biodiversity_reports
 
-  get     'map' , to: 'static_pages#map'
-  get     'map_2', to: 'static_pages#map_2'
-
   resources :plots
   get     'plots/:id/download_qr' => 'plots#download_qr'
 
   resources :plants
   get     'plants/:id/download_qr' => 'plants#download_qr'
+
+  get     'map' , to: 'static_pages#map'
+  get     'map_2', to: 'map#show'
 
   resources :plant_samples
   get 'export' => 'plant_samples#export'
