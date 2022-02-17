@@ -12,9 +12,10 @@
           = link_to 'Ecotone', root_path, id: 'logo', title: 'Ecotone Homepage'
       #navbar.navbar-collapse.collapse
         %ul.nav.navbar-nav.navbar-right
-          %li= link_to 'Map', map_path, title: 'Map of the plots'
           %li= link_to 'Plots', plots_path, title: 'List of all plots'
           %li= link_to 'Plants', plants_path, title: 'List of all plants'
+          %li= link_to 'Map', map_path, title: 'Map of the plots'
+          %li= link_to 'Leaflet', map_2_path, title: 'Map of the plots'
           - if user_signed_in?
             %li.dropdown
               %a.dropdown-toggle{'aria-expanded': 'false', 'aria-haspopup': 'true', 'data-toggle': 'dropdown', href: '#', role: 'button'}
