@@ -5,12 +5,14 @@
 	margin: 0 auto;
 	overflow: auto;
 	padding: $space2;
+  padding-bottom: $space4;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
 }
 
 .tile {
+  position: relative;
 	margin: $space1;
 	border: $grey5;
 	border-radius: $space0;
@@ -28,7 +30,66 @@
 	}
 }
 
-.tile img {
+.tile-link {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+// .img-circle {
+// 	position: relative;
+// 	margin: auto;
+// 	display: block;
+// 	height: 200px;
+// 	width: 200px;
+// 	&::after {
+// 		box-shadow: inset 0 0 0 1px hsla(0, 0%, 0%, .1);
+// 		border-radius: 50%;
+// 		content: "";
+// 		display: block;
+// 		position: absolute;
+// 		left: 0;
+// 		right: 0;
+// 		top: 0;
+// 		bottom: 0;
+// 	}
+// 	img {
+// 		border-radius: 50%;
+// 	}
+// }
+
+// .img-tile {
+//   position: relative;
+// 	margin: auto;
+// 	display: block;
+//   object-fit: cover;
+// 	width: 100%;
+// 	height: $space10;
+//   &::after {
+//     box-shadow: inset 0 0 0 1px hsla(0, 0%, 0%, .1);
+//     border-radius: $space0;
+//     content: "";
+//     display: block;
+//     position: absolute;
+//     left: 0;
+//     right: 0;
+//     top: 0;
+//     bottom: 0;
+//   }
+//   a {
+//     width: 100%;
+// 	  height: $space10;
+//   }
+//   img {
+// 		border-radius: $space0;
+//     object-fit: cover;
+// 	}
+// }
+
+.img-tile {
 	border-radius: $space0;
 	object-fit: cover;
 	width: 100%;
