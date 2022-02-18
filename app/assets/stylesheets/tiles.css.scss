@@ -19,10 +19,16 @@
 	width: 15.7%;
 	min-width: $space10;
 	transition-duration: 0.1s;
+  background-color: white;
 	box-shadow: $shadow1;
 	&:hover {
     border: $grey3;
-		box-shadow: $shadow3;
+    &#plot {
+      box-shadow: $orange-shadow;
+    }
+    &#plant {
+      box-shadow: $green-shadow;
+    }
   }
 	&:active {
 		border: $grey2;
@@ -73,7 +79,6 @@
     margin-bottom: $space1;
     font-weight: 500;
   }
-
 }
 
 .plot {
