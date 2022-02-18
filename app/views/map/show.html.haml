@@ -31,6 +31,8 @@
       accessToken: 'pk.eyJ1IjoiYm95a2oiLCJhIjoiY2t6aGhqY2s5M3l2NjJ2cDRqcW56NXk1aiJ9.SHbqduUQMxM8d9mDEhF0Gw',
     }).addTo(map);
 
+    console.log('#{ENV['LEAFLET_ENV_TEST']}')
+
     var baseMaps = {
       "Satellite": satelliteLayer,
       "Ground": outdoorLayer
