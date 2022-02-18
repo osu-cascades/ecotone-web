@@ -39,28 +39,6 @@
   z-index: 1;
 }
 
-// .img-circle {
-// 	position: relative;
-// 	margin: auto;
-// 	display: block;
-// 	height: 200px;
-// 	width: 200px;
-// 	&::after {
-// 		box-shadow: inset 0 0 0 1px hsla(0, 0%, 0%, .1);
-// 		border-radius: 50%;
-// 		content: "";
-// 		display: block;
-// 		position: absolute;
-// 		left: 0;
-// 		right: 0;
-// 		top: 0;
-// 		bottom: 0;
-// 	}
-// 	img {
-// 		border-radius: 50%;
-// 	}
-// }
-
 .img-tile {
   position: relative;
 	margin: auto;
@@ -85,32 +63,17 @@
     border-radius: $space0;
   }
 }
-//   a {
-//     width: 100%;
-// 	  height: $space10;
-//   }
-//   img {
-// 		border-radius: $space0;
-//     object-fit: cover;
-// 	}
-// }
-
-// .img-tile {
-// 	border-radius: $space0;
-// 	object-fit: cover;
-// 	width: 100%;
-// 	height: $space10;
-//   img {
-//     height: 100%;
-//     width: 100%;
-//     border-radius: $space0;
-//   }
-// }
 
 .desc {
-	padding: 0px $space1 $space1;
+	padding: $space1;
 	text-align: center;
 	width: 100%;
+  h3 {
+    margin-top: $space3;
+    margin-bottom: $space1;
+    font-weight: 500;
+  }
+
 }
 
 .plot {
