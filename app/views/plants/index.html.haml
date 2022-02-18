@@ -5,7 +5,7 @@
   - @plants.each do |plant|
     .tile#plant
       .img-tile
-        = image_tag(plant.photo[0].variant resize: "200x200") if plant.photo.attached?
+        = image_tag(default_plant_photo(plant))
       .desc
         %h3= plant.common_name.capitalize.truncate_words(2)
         %p.italic= plant.scientific_name.capitalize.truncate_words(2)
