@@ -20,7 +20,7 @@
       tileSize: 512, 
       zoomOffset: -1, 
       attribution: mapBoxAttribution,
-      accessToken: 'pk.eyJ1IjoiYm95a2oiLCJhIjoiY2t6aGhqY2s5M3l2NjJ2cDRqcW56NXk1aiJ9.SHbqduUQMxM8d9mDEhF0Gw'
+      accessToken: '#{ENV['LEAFLET_KEY']}'
     }).addTo(map);
 
     var outdoorLayer = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
@@ -28,7 +28,7 @@
       tileSize: 512, 
       zoomOffset: -1, 
       attribution: mapBoxAttribution,
-      accessToken: 'pk.eyJ1IjoiYm95a2oiLCJhIjoiY2t6aGhqY2s5M3l2NjJ2cDRqcW56NXk1aiJ9.SHbqduUQMxM8d9mDEhF0Gw',
+      accessToken: '#{ENV['LEAFLET_KEY']}'
     }).addTo(map);
 
     console.log('#{ENV['LEAFLET_ENV_TEST']}')
