@@ -15,14 +15,6 @@
 
     var plot_markers = L.layerGroup([plot_5, plot_6, plot_7]).addTo(map);
 
-    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {attribution: mapBoxAttribution,
-      maxZoom: 18,
-      id: 'mapbox/streets-v11',
-      tileSize: 512,
-      zoomOffset: -1,
-      accessToken: 'pk.eyJ1IjoiYm95a2oiLCJhIjoiY2t6aGhqY2s5M3l2NjJ2cDRqcW56NXk1aiJ9.SHbqduUQMxM8d9mDEhF0Gw'
-    }).addTo(map);
-
     var satelliteLayer = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
       id: 'mapbox/satellite-streets-v11', 
       tileSize: 512, 
