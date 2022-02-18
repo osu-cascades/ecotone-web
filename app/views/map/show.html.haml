@@ -2,10 +2,9 @@
   %h1 Ecotone 
   %h2 An even better map of the campus
 / source: http://getbootstrap.com/examples/carousel/#
-
+    
 .content(id='map')
   :javascript
-
     var mapBoxAttribution = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>'
 
     var map = L.map('map').setView([44.0429688, -121.3329103], 18, {layers: [satelliteLayer, outdoorLayer]});
