@@ -6,7 +6,7 @@
     .tile#plant
       .img-tile
         = image_tag(plant.photo[0].variant resize: "200x200") if plant.photo.attached?
-      .desc.plant
+      .desc
         %h3= plant.common_name.capitalize.truncate_words(2)
         %p.italic= plant.scientific_name.capitalize.truncate_words(2)
       = link_to "", plant, title: "Details of #{plant}", class: "tile-link"

@@ -6,7 +6,7 @@
     .tile#plot
       .img-tile
         = image_tag(plot.photo[0].variant resize: "200x200") if plot.photo.attached?
-      .desc.plot
+      .desc
         %h3= "Plot ##{plot.plot_id}"
         %p= truncate(plot.formatted_location_description, length:75, separator:' ')
       = link_to "", plot, title: "Details of #{plot}", class: "tile-link"
