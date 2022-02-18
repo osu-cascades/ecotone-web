@@ -5,8 +5,8 @@
 	margin: 0 auto;
 	overflow: auto;
 	padding: $space2;
-	display:         flex;
-	flex-wrap:       wrap;
+	display: flex;
+	flex-wrap: wrap;
 	justify-content: center;
 }
 
@@ -17,7 +17,7 @@
 	width: 15.7%;
 	min-width: $space10;
 	transition-duration: 0.1s;
-	box-shadow: $shadow2;
+	box-shadow: $shadow3;
 	&:hover {
     border: $grey3;
 		box-shadow: $shadow1;
