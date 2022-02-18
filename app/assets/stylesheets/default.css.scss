@@ -11,9 +11,11 @@ p {
   font-family: 'graphik-light';
   font-size: $txt2;
   line-height: $space4;
+  margin: 0 0 $space1;
 }
 
 a { 
+  text-decoration: none;
   &:link, &:visited, &:hover, &:active {
     text-decoration: none
   }
@@ -21,6 +23,10 @@ a {
 
 .center {
   text-align: center;
+}
+
+.italic {
+  font-family: 'graphik-light-italic';
 }
 
 .subnav {
