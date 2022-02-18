@@ -31,8 +31,6 @@
       accessToken: '#{ENV['LEAFLET_KEY']}'
     }).addTo(map);
 
-    console.log('#{ENV['LEAFLET_ENV_TEST']}')
-
     var baseMaps = {
       "Satellite": satelliteLayer,
       "Ground": outdoorLayer
