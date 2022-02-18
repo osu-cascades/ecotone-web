@@ -15,20 +15,18 @@
 
     var plot_markers = L.layerGroup([plot_5, plot_6, plot_7]).addTo(map);
 
-    var satelliteLayer = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    var satelliteLayer = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=#{ENV["LEAFLET_KEY"]}', {
       id: 'mapbox/satellite-streets-v11', 
       tileSize: 512, 
       zoomOffset: -1, 
       attribution: mapBoxAttribution,
-      accessToken: '#{ENV['LEAFLET_KEY']}'
     }).addTo(map);
 
-    var outdoorLayer = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    var outdoorLayer = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=#{ENV["LEAFLET_KEY"]}', {
       id: 'mapbox/outdoors-v11', 
       tileSize: 512, 
       zoomOffset: -1, 
       attribution: mapBoxAttribution,
-      accessToken: '#{ENV['LEAFLET_KEY']}'
     }).addTo(map);
 
     var baseMaps = {
