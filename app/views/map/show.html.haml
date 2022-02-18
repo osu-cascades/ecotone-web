@@ -9,8 +9,8 @@
 
     var map = L.map('map').setView([44.0429688, -121.3329103], 18, {layers: [satelliteLayer, outdoorLayer]});
 
-    var plot_5    = L.marker([44.0429688, -121.3329103]).bindPopup("<a href='http://localhost:3000/plots/1/'> Plot </a>"),
-      plot_6      = L.marker([44.0429789, -121.333324]).bindPopup("<a href='#{plots_url}/1/'> Plots </a>"),
+    var plot_5    = L.marker([44.0429688, -121.3329103]).bindPopup("<a href='http://localhost:3000/plots/1/'> Plot 5 </a>"),
+      plot_6      = L.marker([44.0429789, -121.333324]).bindPopup("<a href='#{plots_url}/1/'> Plot 6 </a>"),
       plot_7 = L.marker([44.0432026, -121.3334076]).bindPopup('This is plot 7');
 
     var plot_markers = L.layerGroup([plot_5, plot_6, plot_7]).addTo(map);
