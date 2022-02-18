@@ -18,22 +18,27 @@
 	border-radius: $space0;
 	width: 15.7%;
 	min-width: $space10;
-	transition-duration: 0.1s;
+	transition-duration: 0.15s;
   background-color: white;
 	box-shadow: $shadow1;
-	&:hover {
-    border: $grey3;
-    &#plot {
-      box-shadow: $orange-shadow;
-    }
-    &#plant {
-      box-shadow: $green-shadow;
-    }
+}
+
+#plot {
+  &:hover {
+    box-shadow: $orange-shadow;
   }
-	&:active {
-		border: $grey2;
+  &:active {
 		box-shadow: $shadow0;
-	}
+  }
+}
+
+#plant {
+  &:hover {
+    box-shadow: $green-shadow;
+  }
+  &:active {
+		box-shadow: $shadow0;
+  }
 }
 
 .tile-link {
