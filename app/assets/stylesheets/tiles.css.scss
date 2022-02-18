@@ -1,0 +1,51 @@
+@import './constants.css.scss';
+
+.gallery {
+	width: auto;
+	margin: 0 auto;
+	overflow: auto;
+	padding: $space2;
+	display:         flex;
+	flex-wrap:       wrap;
+	justify-content: center;
+}
+
+.tile {
+	margin: $space1;
+	border: $grey5;
+	border-radius: $space0;
+	width: 15.7%;
+	min-width: $space10;
+	transition-duration: 0.1s;
+	box-shadow: $shadow2;
+	&:hover {
+    border: $grey3;
+		box-shadow: $shadow1;
+  }
+	&:active {
+		border: $grey2;
+		box-shadow: $shadow0;
+	}
+}
+
+.tile img {
+	border-radius: $space0;
+	object-fit: cover;
+	width: 100%;
+	height: $space10;
+}
+
+.desc {
+	padding: 0px $space1 $space1;
+	text-align: center;
+	width: 100%;
+}
+
+.plot {
+	height: 160px;
+}
+
+.plant {
+	height: $space9;
+}
+  

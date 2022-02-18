@@ -31,7 +31,7 @@ RSpec.describe PlantSample, type: :model do
   end
 
   describe '#to_csv' do
-    skip 'generates a valid csv representation' do
+     skip 'generates a valid csv representation' do
       p1 = PlantSample.create(plant: plant, collected_on: '2000-01-01', biodiversity_report: biodiversity_report, plot: biodiversity_report.plot, user: biodiversity_report.author, abundance: 1, percent_cover: 1)
       p2 = PlantSample.create(plant: plant, collected_on: '2000-01-01', biodiversity_report: biodiversity_report, plot: biodiversity_report.plot, user: biodiversity_report.author, abundance: 1, percent_cover: 1)
 
