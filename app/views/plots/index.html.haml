@@ -5,7 +5,7 @@
   - @plots.each do |plot|
     .tile#plot
       .img-tile
-        = image_tag(plot.photo[0].variant resize: "200x200") if plot.photo.attached?
+        = image_tag(photo(plot))
       .desc
         %h3= "Plot ##{plot.plot_id}"
         %p= truncate(plot.formatted_location_description, length:75, separator:' ')
