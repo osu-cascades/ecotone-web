@@ -5,7 +5,7 @@
   - @plants.each do |plant|
     .tile#plant
       .img-tile
-        = image_tag(default_plant_photo(plant))
+        = image_tag(photo(plant))
       .desc
         %h3= plant.common_name.capitalize.truncate_words(2)
         %p.italic= plant.scientific_name.capitalize.truncate_words(2)

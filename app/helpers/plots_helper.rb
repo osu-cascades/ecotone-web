@@ -9,7 +9,7 @@ module PlotsHelper
       'n/a'
     end
   end
-  def default_plot_photo(plot)
+  def photo(plot)
     if plot.photo.attached?
       plot.photo[0].variant resize: "200x200"
     else

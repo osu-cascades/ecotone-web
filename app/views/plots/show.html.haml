@@ -27,6 +27,8 @@
         %span.sr-only Next
     - elsif @plot.photo.length == 1
       = image_tag(@plot.photo[0].variant(resize: "350x350"), class: 'carousel_photos', alt: "Photo of #{@plot.photo}") unless @plot.new_record?
+    - elsif @plot.photo.length == 0
+      = image_tag(photo(@plot))
   .col-md-7
     %h2 Plot Information
     %p= @plot.formatted_location_description
