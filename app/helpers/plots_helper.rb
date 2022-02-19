@@ -9,4 +9,11 @@ module PlotsHelper
       'n/a'
     end
   end
+  def photo(plot)
+    if plot.photo.attached?
+      plot.photo[0].variant resize: "200x200"
+    else
+      'missing.png'
+    end
+  end
 end

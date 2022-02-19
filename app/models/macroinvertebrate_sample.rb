@@ -12,7 +12,6 @@ class MacroinvertebrateSample < ApplicationRecord
   validates :ecosystem_service, presence: true, inclusion: { in: ECOSYSTEM_SERVICES,
                                                              message: '%{value} is not a valid ecosystem service' }
   has_one_attached :photo
-  #has_attached_file :photo, default_url: 'missing.png', styles: { default: '200x200#', thumbnail: '50x50#' }
   validates :photo, content_type: ['image/jpg', 'image/png', 'image/jpeg']
 
   def to_s

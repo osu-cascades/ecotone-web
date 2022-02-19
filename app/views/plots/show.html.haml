@@ -2,7 +2,7 @@
 - content_for(:subnav) do
   .btn-public
     = button_to('« Plots', plots_path, class: 'button primary', title: 'List of all plots', method: 'get')
-    = link_to(content_tag(:i, '', :class => "icon-qr-code"), { action: 'download_qr' }, 'data-turbolinks': false, class: 'btn-icon', title: "Download QR Code for #{@plot}")
+    = link_to(content_tag(:i, '', :class => "icon-qr-code"), { controller: 'plots' , action: 'download_qr', id: @plot }, 'data-turbolinks': false, class: 'btn-icon', title: "Download QR Code for #{@plot}")
   - if current_user&.admin?
     .btn-admin
       = link_to(content_tag(:i, '', :class => "icon-edit"), edit_plot_path(@plot), class: 'btn-icon', title: "Edit #{@plot}")
@@ -17,7 +17,8 @@
             %div{:class => "item #{index == 0 ? 'active' : ''}"}
               = image_tag(@plot.photo[index].variant(resize: "350x350"), class: 'carousel_photos', alt: "Photo of #{@plot.photo}") unless @plot.new_record?
               %end
-              = link_to 'Delete Photo', delete_plot_image_attachment_plot_url(image.id), class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' }
+              - if current_user&.admin?
+                = link_to 'Delete Photo', delete_plot_image_attachment_plot_url(image.id), class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' }
       %a.carousel-control-prev{"data-slide" => "prev", :href => "#plotCarousel", :role => "button"}
         %span.glyphicon.glyphicon-chevron-left{"aria-hidden" => "true"}
         %span.sr-only Previous
@@ -26,6 +27,8 @@
         %span.sr-only Next
     - elsif @plot.photo.length == 1
       = image_tag(@plot.photo[0].variant(resize: "350x350"), class: 'carousel_photos', alt: "Photo of #{@plot.photo}") unless @plot.new_record?
+    - elsif @plot.photo.length == 0
+      = image_tag(photo(@plot))
   .col-md-7
     %h2 Plot Information
     %p= @plot.formatted_location_description

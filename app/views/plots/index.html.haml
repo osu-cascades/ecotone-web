@@ -3,9 +3,10 @@
   = button_to('Add Plot', new_plot_path, class: 'button primary', title: 'Add a new plot', method: 'get') if current_user&.admin?
 .gallery
   - @plots.each do |plot|
-    .tile
-      .img
-        = link_to image_tag(plot.photo[0].variant resize: "200x200"), plot, title: "Details of #{plot}" if plot.photo.attached?
-      .desc.plot
-        %h3= link_to "Plot ##{plot.plot_id}", plot, title: "Details of #{plot}"
+    .tile#plot
+      .img-tile
+        = image_tag(photo(plot))
+      .desc
+        %h3= "Plot ##{plot.plot_id}"
         %p= truncate(plot.formatted_location_description, length:75, separator:' ')
+      = link_to "", plot, title: "Details of #{plot}", class: "tile-link"

@@ -21,7 +21,15 @@ RSpec.feature 'User creates a plant sample' do
   end
 
   scenario 'with invalid sample attributes' do
-    skip
+    click_on('Create Plant sample')
+    expect(page).to have_content('The form contains 5 errors.')
+    page.find('.alert').tap do |error_explanations|
+      expect(error_explanations).to have_content('Plant must be specified')
+      expect(error_explanations).to have_content('Plot must exist')
+      expect(error_explanations).to have_content("Collected on can't be blank")
+      expect(error_explanations).to have_content('Abundance is not a number')
+      expect(error_explanations).to have_content('Percent cover is not a number') 
+    end
   end
 
 end

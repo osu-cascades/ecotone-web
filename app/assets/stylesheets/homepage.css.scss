@@ -43,23 +43,23 @@
 }
 
 .img-circle {
-    position: relative;
-		margin: auto;
+	position: relative;
+	margin: auto;
+	display: block;
+	height: 200px;
+	width: 200px;
+	&::after {
+		box-shadow: inset 0 0 0 1px hsla(0, 0%, 0%, .1);
+		border-radius: 50%;
+		content: "";
 		display: block;
-		height: 200px;
-		width: 200px;
-		&::after {
-			box-shadow: inset 0 0 0 1px hsla(0, 0%, 0%, .1);
-			border-radius: 50%;
-			content: "";
-			display: block;
-			position: absolute;
-			left: 0;
-			right: 0;
-			top: 0;
-			bottom: 0;
-		}
-		img {
-			border-radius: 50%;
-		}
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+	}
+	img {
+		border-radius: 50%;
+	}
 }
