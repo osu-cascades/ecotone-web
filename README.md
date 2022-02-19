@@ -106,7 +106,9 @@ Still not sick of setting up your dev environment? Then continue with configurin
     url = https://git.heroku.com/osu-ecotone-staging.git
     fetch = +refs/heads/*:refs/remotes/heroku/*
 ````
-This adds the remote Heroku repositories to your local git configuration. To deploy the app, git push to one of the Heroku apps.
+This adds the remote Heroku repositories to your local git configuration. To use Heroku on the command line, make sure you have installed the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli#install-the-heroku-cli)
+
+To deploy the app, git push to one of the Heroku apps.
 ````
 git push [staging|production] {branch}:master
 ````
