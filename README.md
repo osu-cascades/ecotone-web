@@ -3,7 +3,6 @@
 [![Build Status](https://travis-ci.org/osu-cascades/ecotone-web.svg?branch=master)](https://travis-ci.org/osu-cascades/ecotone-web)
 [![Code Climate](https://codeclimate.com/github/osu-cascades/ecotone-web/badges/gpa.svg)](https://codeclimate.com/github/osu-cascades/ecotone-web)
 [![Test Coverage](https://codeclimate.com/github/osu-cascades/ecotone-web/badges/coverage.svg)](https://codeclimate.com/github/osu-cascades/ecotone-web/coverage)
-[![Security](https://hakiri.io/github/osu-cascades/ecotone-web/master.svg)](https://hakiri.io/github/osu-cascades/ecotone-web/master)
 
 [Ecotone](https://osu-ecotone.herokuapp.com/) enables Biology and Resource Management students to practice identifying native plants, identify different sites (plots), and track the long term trends of the ecotone on the [OSU-Cascades](http://osucascades.edu) campus.
 
@@ -11,9 +10,10 @@
 If you want to contribute to Ecotone, be sure to review the [contribution guidelines](https://github.com/osu-cascades/ecotone-web/blob/899030573a4a79cb30bf1e87bf31b0ba6e11fc78/CONTRIBUTING.md). This project adheres to Ecotones's [code of conduct](https://github.com/osu-cascades/ecotone-web/blob/899030573a4a79cb30bf1e87bf31b0ba6e11fc78/CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code.
 
 ## Prerequisites
-* [Ruby 3.0.3](https://rvm.io/)
-* [Rails 7.0.1](http://www.installrails.com/)
+* [Ruby 3.1.1](https://rvm.io/)
+* [Rails 7.0.2](http://www.installrails.com/)
 * [PostgreSQL](https://www.digitalocean.com/community/tutorials/how-to-install-postgresql-on-ubuntu-20-04-quickstart)
+* [NodeJS](https://nodejs.org/en/download/)
 
 ## Environment Setup
 
