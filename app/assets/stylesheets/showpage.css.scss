@@ -45,12 +45,12 @@
 th {
 	font-weight: 400;
 	font-size: $txt2;
-	padding-left: $space0 !important;
-	margin: 0px;
+	padding: $space1 $space3 $space1 $space0 !important;
 }
 
 td {
 	font-family: 'graphik-light';
+	padding: $space1 $space3 $space1 $space0 !important;
 }
 
 .danger {
