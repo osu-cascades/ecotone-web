@@ -1,8 +1,11 @@
 @import './constants.css.scss';
 
-body { 
-  background-color: hsl(210, 100%, 98%); 
-  padding-top: $space7;
+html, body { 
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  background-color: hsl(210, 100%, 98%);
   font-family: 'graphik-regular';
   color: $grey0;
 }
@@ -19,6 +22,18 @@ a {
   &:link, &:visited, &:hover, &:active {
     text-decoration: none
   }
+}
+
+.container {
+  min-height: 100%;
+  position: relative;
+}
+
+#body {
+  min-height: 100%;
+  padding-top: $space7;
+  padding-bottom: $space4;
+  margin-bottom: $space6;
 }
 
 .center {
