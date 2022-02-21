@@ -29,6 +29,14 @@ a {
   font-family: 'graphik-light-italic';
 }
 
+.light-italic {
+  font-family: 'graphik-extra-light-italic'
+}
+
+.no-margin {
+	margin: 0px;
+}
+
 .subnav {
   display: grid;
   grid-auto-flow: column;
