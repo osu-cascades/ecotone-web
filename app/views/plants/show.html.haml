@@ -1,4 +1,4 @@
-- content_for_title(@plant.common_name.capitalize)
+- content_for_title(@plant.common_name.titleize)
 - content_for(:subnav) do
   .btn-public
     = button_to('« Plants', plants_path, class: 'button primary', title: 'List of all plants', method: 'get')
