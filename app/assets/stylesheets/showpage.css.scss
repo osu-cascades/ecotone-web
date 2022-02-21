@@ -5,6 +5,7 @@
   grid-auto-flow: column;
 	justify-content: center;
 	margin: $space4;
+	margin-bottom: $space6;
 }
 
 @media (max-width: 800px) {
@@ -12,6 +13,13 @@
 		align-items: center;
   	justify-items: center;
     grid-auto-flow: row;
+  }
+}
+
+// when plants have little information, add some breathing room for the footer
+@media (min-height: 200px) {
+  .content {
+		margin-bottom: $space9;
   }
 }
 
