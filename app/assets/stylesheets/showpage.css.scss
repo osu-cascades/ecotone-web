@@ -1,0 +1,118 @@
+@import './constants.css.scss';
+
+.content {
+	display: grid;
+  grid-auto-flow: column;
+	justify-content: center;
+	margin: $space4;
+}
+
+@media (max-width: 800px) {
+  .content {
+		align-items: center;
+  	justify-items: center;
+    grid-auto-flow: row;
+  }
+}
+
+.info {
+	display: grid;
+	align-content: start;
+	margin-left: $space5;
+	margin-right: $space5;
+}
+
+.heading {
+	margin-top: 0px;
+	margin-bottom: $space1;
+	color: $grey2;
+	font-size: $txt5;
+}
+
+.citation {
+	margin: 0px;
+	color: $grey4;
+	font-size: $txt0;
+}
+
+.table {
+	margin-top: $space3;
+	border-collapse: collapse;
+	border-color: $blue0;
+}
+
+th {
+	font-weight: 400;
+	font-size: $txt2;
+	padding-left: $space0 !important;
+	margin: 0px;
+}
+
+td {
+	font-family: 'graphik-light';
+}
+
+.danger {
+	background-color: $red7;
+}
+
+.img-square {
+	position: relative;
+	margin: 0px $space5 $space5;
+	display: block;
+	width: $space11;
+	height: $space11;
+	background-size: cover;
+	border-radius: $space0;
+	&::after {
+		box-shadow: $border-shadow;
+		border-radius: $space0;
+		content: "";
+		display: block;
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+	}
+	&.default img {
+		height: 100%;
+		width: 100%;
+	}
+}
+
+//Plot image carousel
+.carousel-control-prev
+ {
+  position: absolute;
+  top: 50%;
+  bottom: 0;
+  right: 440px;
+  width:  30;
+  font-size: 35px;
+  color: grey;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
+  background-color: rgba(0, 0, 0, 0);
+  filter: alpha(opacity=50);
+}
+
+.carousel-control-next
+ {
+  position: absolute;
+  top: 50%;
+  bottom: 0;
+  left: 270px;
+  width:  20%; 
+  font-size: 35px;
+  color: grey;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
+  background-color: rgba(0, 0, 0, 0);
+  filter: alpha(opacity=50);
+}
+
+.carousel_photos {
+  padding-left: 20px;
+  padding-bottom: 10px;
+}
