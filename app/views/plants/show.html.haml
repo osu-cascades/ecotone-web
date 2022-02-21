@@ -6,11 +6,11 @@
   - if current_user&.admin?
     .btn-admin
       = link_to(content_tag(:i, '', :class => "icon-edit"), edit_plant_path(@plant), class: 'btn-icon', title: "Edit #{@plant}")
-      = link_to(content_tag(:i, '', :class => "icon-delete2"), @plant, method: :delete, data: { confirm: "Delete #{@plant.common_name}?" }, class: 'btn-icon', title: "Delete #{@plant}")
+      = link_to(content_tag(:i, '', :class => "icon-trash"), @plant, method: :delete, data: { confirm: "Delete #{@plant.common_name}?" }, class: 'btn-icon', title: "Delete #{@plant}")
 .content
   - if @plant.photo.length == 0
     .img-square.default
-      = image_tag(photo(@plant), alt: "Photo of #{@plant.photo}") unless @plant.new_record?
+      = image_tag(photo(@plant), alt: "Photo of #{@plant.photo}")
   - elsif @plant.photo.length == 1
     .img-square{ :style => "background-image: url(#{rails_blob_url(photo(@plant))})" }
   - else
@@ -19,8 +19,6 @@
         - @plant.photo.each_with_index do |image, index|
           %div{:class => "item #{index == 0 ? 'active' : ''}"}
             = image_tag(@plant.photo[index].variant(resize: "350x350"), class: 'carousel_photos', alt: "Photo of #{@plant.photo}") unless @plant.new_record?
-            = link_to 'Delete Photo', delete_plant_image_attachment_plant_url(image.id), class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' }
-            %end
     %a.carousel-control-prev{"data-slide" => "prev", :href => "#plantCarousel", :role => "button"}
       %span.glyphicon.glyphicon-chevron-left{"aria-hidden" => "true"}
       %span.sr-only Previous

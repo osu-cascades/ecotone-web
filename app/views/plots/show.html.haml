@@ -6,7 +6,7 @@
   - if current_user&.admin?
     .btn-admin
       = link_to(content_tag(:i, '', :class => "icon-edit"), edit_plot_path(@plot), class: 'btn-icon', title: "Edit #{@plot}")
-      = link_to(content_tag(:i, '', :class => "icon-delete2"), @plot, method: :delete, data: { confirm: "Delete Plot ##{@plot.plot_id}?" }, class: 'btn-icon', title: "Delete #{@plot}")
+      = link_to(content_tag(:i, '', :class => "icon-trash"), @plot, method: :delete, data: { confirm: "Delete Plot ##{@plot.plot_id}?" }, class: 'btn-icon', title: "Delete #{@plot}")
 %section
   .col-md-5
     %h2 Photo
