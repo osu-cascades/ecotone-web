@@ -14,7 +14,7 @@
   - elsif @plant.photo.length == 1
     .img-square{ :style => "background-image: url(#{rails_blob_url(photo(@plant))})", :alt => "Photo of #{@plant.photo}" }
   - else
-    #plantCarousel.carousel.slide{"data-interval" => "false"}
+    #plantCarousel.carousel{"data-interval" => "false"}
       %a.carousel-control-prev.btn-icon#chevron{"data-slide" => "prev", :href => "#plantCarousel", :role => "button"}
         = content_tag(:i, '', :class => "icon-chevron-left")
       .carousel-inner
