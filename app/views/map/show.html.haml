@@ -2,20 +2,24 @@
   %h1 Ecotone 
   %h2 An even better map of the campus
 / source: http://getbootstrap.com/examples/carousel/#
-    
+
 .content(id='map')
   :javascript
     var mapBoxAttribution = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>'
 
     var map = L.map('map').setView([44.0429688, -121.3329103], 18, {layers: [satelliteLayer, outdoorLayer]});
 
-    var plot_5    = L.marker([44.0429688, -121.3329103]).bindPopup("<a href='http://localhost:3000/plots/1/'> Plot 5 </a>"),
+    var plot_5    = L.marker([44.0429688, -121.3329103]).bindPopup("<a href='https://osu-ecotone.herokuapp.com/plots/2'> Plot 5 </a>"),
       plot_6      = L.marker([44.0429789, -121.333324]).bindPopup("<a href='#{plots_url}/1/'> Plot 6 </a>"),
-      plot_7 = L.marker([44.0432026, -121.3334076]).bindPopup('This is plot 7');
+      plot_7      = L.marker([44.0432026, -121.3334076]).bindPopup('This is plot 7'),
+      plot_1      = L.marker([44.043577, -121.334438]).bindPopup("<a href='#{plots_url}/1/'> Plot 1 </a>");
 
-    var plot_markers = L.layerGroup([plot_5, plot_6, plot_7]).addTo(map);
+    var plot_markers = L.layerGroup([plot_1, plot_5, plot_6, plot_7]).addTo(map);
 
-    console.log("#{'ruby line here'}")
+    console.log("#{'ruby line here'}");
+    console.log('#{plots_url}');
+    console.log('Latitude: #{@plot_id}');
+    console.log('#{@plot_latitude, id=1}');
 
     var satelliteLayer = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=#{ENV["LEAFLET_KEY"]}', {
       id: 'mapbox/satellite-streets-v11', 
