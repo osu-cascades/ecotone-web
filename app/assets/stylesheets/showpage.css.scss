@@ -82,38 +82,23 @@ td {
 	}
 }
 
-//Plot image carousel
-.carousel-control-prev
- {
-  position: absolute;
-  top: 50%;
-  bottom: 0;
-  right: 440px;
-  width:  30;
-  font-size: 35px;
-  color: grey;
-  text-align: center;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
-  background-color: rgba(0, 0, 0, 0);
-  filter: alpha(opacity=50);
-}
+// Image Carousel
+.carousel {
+	display: grid;
+  grid-auto-flow: column;
+	align-content: center;
 
-.carousel-control-next
- {
-  position: absolute;
-  top: 50%;
-  bottom: 0;
-  left: 270px;
-  width:  20%; 
-  font-size: 35px;
-  color: grey;
-  text-align: center;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
-  background-color: rgba(0, 0, 0, 0);
-  filter: alpha(opacity=50);
-}
+	.carousel-inner {
+		overflow: visible;
+	}
 
-.carousel_photos {
-  padding-left: 20px;
-  padding-bottom: 10px;
+	.img-square {
+		margin: 0px;
+		padding: 0px;
+	}
+
+	a {
+		height: $space5;
+		width: $space5;
+	}
 }

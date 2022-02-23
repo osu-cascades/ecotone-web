@@ -12,19 +12,16 @@
     .img-square.default
       = image_tag(photo(@plant), alt: "Photo of #{@plant.photo}")
   - elsif @plant.photo.length == 1
-    .img-square{ :style => "background-image: url(#{rails_blob_url(photo(@plant))})" }
+    .img-square{ :style => "background-image: url(#{rails_blob_url(photo(@plant))})", :alt => "Photo of #{@plant.photo}" }
   - else
-    #plantCarousel.carousel{"data-interval" => "false"}
+    #plantCarousel.carousel.slide{"data-interval" => "false"}
+      %a.carousel-control-prev.btn-icon#chevron{"data-slide" => "prev", :href => "#plantCarousel", :role => "button"}
+        = content_tag(:i, '', :class => "icon-chevron-left")
       .carousel-inner
         - @plant.photo.each_with_index do |image, index|
-          %div{:class => "item #{index == 0 ? 'active' : ''}"}
-            = image_tag(@plant.photo[index].variant(resize: "350x350"), class: 'carousel_photos', alt: "Photo of #{@plant.photo}") unless @plant.new_record?
-    %a.carousel-control-prev{"data-slide" => "prev", :href => "#plantCarousel", :role => "button"}
-      %span.glyphicon.glyphicon-chevron-left{"aria-hidden" => "true"}
-      %span.sr-only Previous
-    %a.carousel-control-next{"data-slide" => "next", :href => "#plantCarousel", :role => "button"}
-      %span.glyphicon.glyphicon-chevron-right{"aria-hidden" => "true"}
-      %span.sr-only Next
+          %div{ :class => "img-square item #{index == 0 ? 'active' : ''}", :style => "background-image: url(#{rails_blob_url(photo(@plant, index))})", :alt => "Photo of #{image}" }
+      %a.carousel-control-next.btn-icon#chevron{"data-slide" => "next", :href => "#plantCarousel", :role => "button"}
+        = content_tag(:i, '', :class => "icon-chevron-right")
   .info
     %h2.heading.light-italic
       = @plant.scientific_name.capitalize
