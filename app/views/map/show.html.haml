@@ -12,9 +12,10 @@
     var plot_5    = L.marker([44.0429688, -121.3329103]).bindPopup("<a href='https://osu-ecotone.herokuapp.com/plots/2'> Plot 5 </a>"),
       plot_6      = L.marker([44.0429789, -121.333324]).bindPopup("<a href='#{plots_url}/1/'> Plot 6 </a>"),
       plot_7      = L.marker([44.0432026, -121.3334076]).bindPopup('This is plot 7'),
-      plot_1      = L.marker([44.043577, -121.334438]).bindPopup("<a href='#{plots_url}/1/'> Plot 1 </a>");
+      plot_1      = L.marker([44.043577, -121.334438]).bindPopup("<a href='#{plots_url}/1/'> Plot 1 </a>"),
+      plot_2      = L.marker([44.043487, -121.334235]).bindPopup("<a href='#{plots_url}/2/'> Plot 2 </a>");
 
-    var plot_markers = L.layerGroup([plot_1, plot_5, plot_6, plot_7]).addTo(map);
+    var plot_markers = L.layerGroup([plot_1, plot_2, plot_5, plot_6, plot_7]).addTo(map);
 
     console.log("#{'ruby line here'}");
     console.log('#{plots_url}');
