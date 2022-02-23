@@ -15,6 +15,8 @@
 
     var plot_markers = L.layerGroup([plot_5, plot_6, plot_7]).addTo(map);
 
+    console.log("#{'ruby line here'}")
+
     var satelliteLayer = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=#{ENV["LEAFLET_KEY"]}', {
       id: 'mapbox/satellite-streets-v11', 
       tileSize: 512, 
