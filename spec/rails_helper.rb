@@ -8,10 +8,10 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 
 require 'spec_helper'
 require 'rspec/rails'
-require 'capybara/poltergeist' # Add additional requires below this line.
+require 'capybara/rspec' # Add additional requires below this line.
 require 'devise'
 
-Capybara.javascript_driver = :poltergeist
+Capybara.javascript_driver = :selenium
 
 # Alternatively, in the individual `*_spec.rb` files, manually
 # require only the support files necessary.
