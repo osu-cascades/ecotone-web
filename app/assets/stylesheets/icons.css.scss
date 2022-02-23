@@ -11,4 +11,7 @@ i {
 	&.icon-trash {
 		color: $red4;
 	}
+	&.icon-chevron-left, &.icon-chevron-right {
+		color: $grey4;
+	}
 }
