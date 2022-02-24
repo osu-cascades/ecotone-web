@@ -1,5 +1,10 @@
 // FONT
 @font-face {
+  font-family: 'graphik-extra-light-italic';
+  src: url(fonts/GraphikExtralightItalic.otf);
+}
+
+@font-face {
   font-family: 'graphik-light';
   src: url(fonts/GraphikLight.otf);
 }
@@ -144,16 +149,18 @@ $shadow5: 0 20px 40px rgba(0,0,0,.2);
 $orange-shadow: 0 10px 20px rgba(194, 68, 0, 0.45), 0 5px 10px rgba(0,0,0,.10);
 // shadow3 mixed with green2
 $green-shadow: 0 10px 20px rgba(81, 120, 18, 0.5), 0 5px 10px rgba(0,0,0,.10);
+// picture border shadow
+$border-shadow: inset 0 0 0 1px hsla(0, 0%, 0%, .1);
 
 
 // ICONS
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?gp6fc0');
-  src:  url('fonts/icomoon.eot?gp6fc0#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?gp6fc0') format('truetype'),
-    url('fonts/icomoon.woff?gp6fc0') format('woff'),
-    url('fonts/icomoon.svg?gp6fc0#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?2ua8r4');
+  src:  url('fonts/icomoon.eot?2ua8r4#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?2ua8r4') format('truetype'),
+    url('fonts/icomoon.woff?2ua8r4') format('woff'),
+    url('fonts/icomoon.svg?2ua8r4#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -173,21 +180,18 @@ $green-shadow: 0 10px 20px rgba(81, 120, 18, 0.5), 0 5px 10px rgba(0,0,0,.10);
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-edit1:before {
+.icon-chevron-right:before {
+  content: "\e900";
+}
+.icon-chevron-left:before {
   content: "\e901";
 }
 .icon-edit:before {
   content: "\e902";
 }
-.icon-delete1:before {
+.icon-qr-code:before {
   content: "\e903";
 }
-.icon-delete:before {
+.icon-trash:before {
   content: "\e904";
-}
-.icon-delete2:before {
-  content: "\e906";
-}
-.icon-qr-code:before {
-  content: "\e907";
 }

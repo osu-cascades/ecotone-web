@@ -1,9 +1,12 @@
 @import './constants.css.scss';
 
 footer {
-  margin-top: $space6;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
   padding-top: $space1;
   border-top: 1px solid $grey7;
+  width: 100%;
   ul {
     float: right;
     list-style: none;
