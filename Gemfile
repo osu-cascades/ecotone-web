@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '3.1.0'
+ruby '3.1.1'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -30,6 +30,10 @@ gem 'mini_magick', '~> 4.5', '>= 4.5.1'
 gem 'active_storage_validations'
 gem 'aws-sdk-s3'
 gem 'image_processing', '~> 1.2'
+
+# there is currently an issue with oauth and faraday gems: https://github.com/oauth-xx/oauth2/issues/572
+# hard set oauth2 until problem is resolved
+gem 'oauth2', '= 1.4.7'
 
 
 group :test do
