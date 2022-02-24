@@ -29,12 +29,12 @@ class Plot < ApplicationRecord
   end
 
   def formatted_location_description
-    add_period(location_description.slice(0,1).capitalize + location_description.strip.slice(1..-1))
+    remove_period(location_description.slice(0,1).capitalize + location_description.strip.slice(1..-1))
   end
 
   private
 
-  def add_period(str)
-    str << '.' unless str[-1] == '.'
+  def remove_period(str)
+    str[1...-1] unless str[-1] != '.'
   end
 end
