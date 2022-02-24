@@ -4,8 +4,11 @@
 .gallery
   - @plots.each do |plot|
     .tile#plot
-      .img-tile
-        = image_tag(photo(plot))
+      - if plot.photo.attached?
+        .img-tile{ :style => "background-image: url(#{rails_blob_url(photo(plot))})", :alt => "Photo of #{plot.photo}" }
+      -else
+        .img-tile.default
+          = image_tag(photo(plot), alt: "Photo of #{plot.photo}")
       .desc
         %h3= "Plot ##{plot.plot_id}"
         %p= truncate(plot.formatted_location_description, length:75, separator:' ')

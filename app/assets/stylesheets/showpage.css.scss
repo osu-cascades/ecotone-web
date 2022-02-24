@@ -1,0 +1,139 @@
+@import './constants.css.scss';
+
+.content {
+	display: grid;
+  grid-auto-flow: column;
+	justify-content: center;
+	margin: $space4;
+}
+
+@media (max-width: 800px) {
+  .content {
+		align-items: center;
+  	justify-items: center;
+    grid-auto-flow: row;
+  }
+	.info {
+		margin-top: $space6;
+		#plot-heading {
+			text-align: center;
+		}
+	}
+}
+
+.img-caption {
+	.space {
+		margin-top: $space4;
+		margin-bottom: 0px;
+		font-size: $txt4;
+		color: $grey2;
+	}
+}
+
+.info {
+	display: grid;
+	align-content: start;
+	margin-left: $space5;
+	margin-right: $space5;
+}
+
+.heading {
+	margin-top: 0px;
+	margin-bottom: $space1;
+	color: $grey2;
+	font-size: $txt5;
+}
+
+.citation {
+	margin: 0px;
+	padding-top: $space0;
+	color: $grey4;
+	font-size: $txt0;
+}
+
+.table {
+	margin-top: $space3;
+	border-collapse: collapse;
+	border-color: $blue0;
+}
+
+th {
+	font-weight: 400;
+	font-size: $txt2;
+	padding: $space1 $space3 $space1 $space0 !important;
+	&.table-title {
+		padding-top: 0px !important;
+	}
+}
+
+td {
+	font-family: 'graphik-light';
+	padding: $space1 $space3 $space1 $space0 !important;
+}
+
+#plot-table {
+	margin-top: 0px;
+	width: $space12;
+	th {
+		font-size: $txt1;
+	}
+}
+
+.danger {
+	background-color: $red7;
+}
+
+.img-square {
+	position: relative;
+	margin: 0px $space5 0px;
+	display: block;
+	width: $space11;
+	height: $space11;
+	background-size: cover;
+	border-radius: $space0;
+	&::after {
+		box-shadow: $border-shadow;
+		border-radius: $space0;
+		content: "";
+		display: block;
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+	}
+	&.default img {
+		height: 100%;
+		width: 100%;
+	}
+}
+
+// Image Carousel
+.carousel {
+	.carousel-inner {
+		width: $space11;
+		height: $space11;
+		overflow: visible;
+	}
+
+	.center {
+		display: grid;
+  	grid-auto-flow: column;
+		width: 340px;
+		height: $space11;
+		align-content: center;
+		justify-content: center;
+	}
+
+	.img-square {
+		margin: 0px;
+		padding: 0px;
+	}
+
+	a {
+		height: $space5;
+		width: $space5;
+		align-self: center;
+		margin: $space0;
+	}
+}
