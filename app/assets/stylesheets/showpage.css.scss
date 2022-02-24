@@ -77,6 +77,15 @@ td {
 	th {
 		font-size: $txt1;
 	}
+	a {
+		color: $green2;
+		&:hover, &:focus, &:focus-visible {
+			color: $green1;
+		}
+		&:active {
+			color: $green0;
+		}
+	}
 }
 
 .danger {
