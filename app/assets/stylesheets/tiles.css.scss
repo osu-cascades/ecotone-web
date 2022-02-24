@@ -57,6 +57,8 @@
   object-fit: cover;
 	width: 100%;
 	height: $space10;
+  background-size: cover;
+  border-radius: $space0;
   &::after {
     box-shadow: $border-shadow;
     border-radius: $space0;
@@ -68,7 +70,7 @@
     top: 0;
     bottom: 0;
   }
-  img {
+  &.default img {
     height: 100%;
     width: 100%;
     border-radius: $space0;
