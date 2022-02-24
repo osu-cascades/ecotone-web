@@ -36,7 +36,7 @@ class Plot < ApplicationRecord
 
   def remove_period(str)
     if str[-1] == '.'
-      str[1...-1]
+      str[0...-1]
     else
       str
     end
