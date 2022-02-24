@@ -13,6 +13,9 @@
   	justify-items: center;
     grid-auto-flow: row;
   }
+	.info {
+		margin-top: $space6;
+	}
 }
 
 .info {
@@ -84,8 +87,6 @@ td {
 
 // Image Carousel
 .carousel {
-	margin-bottom: $space6;
-
 	.carousel-inner {
 		width: $space11;
 		height: $space11;
