@@ -7,102 +7,131 @@
     .btn-admin
       = link_to(content_tag(:i, '', :class => "icon-edit"), edit_plot_path(@plot), class: 'btn-icon', title: "Edit #{@plot}")
       = link_to(content_tag(:i, '', :class => "icon-trash"), @plot, method: :delete, data: { confirm: "Delete Plot ##{@plot.plot_id}?" }, class: 'btn-icon', title: "Delete #{@plot}")
-%section
-  .col-md-5
-    %h2 Photo
-    - if @plot.photo.length > 1
-      #plotCarousel.carousel{"data-interval" => "false"}
-        .carousel-inner
-          - @plot.photo.each_with_index do |image, index|
-            %div{:class => "item #{index == 0 ? 'active' : ''}"}
-              = image_tag(@plot.photo[index].variant(resize: "350x350"), class: 'carousel_photos', alt: "Photo of #{@plot.photo}") unless @plot.new_record?
-              %end
-              - if current_user&.admin?
-                = link_to 'Delete Photo', delete_plot_image_attachment_plot_url(image.id), class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' }
-      %a.carousel-control-prev{"data-slide" => "prev", :href => "#plotCarousel", :role => "button"}
-        %span.glyphicon.glyphicon-chevron-left{"aria-hidden" => "true"}
-        %span.sr-only Previous
-      %a.carousel-control-next{"data-slide" => "next", :href => "#plotCarousel", :role => "button"}
-        %span.glyphicon.glyphicon-chevron-right{"aria-hidden" => "true"}
-        %span.sr-only Next
+.content
+  .img-caption
+    - if @plot.photo.length == 0
+      .img-square.default
+        = image_tag(photo(@plot), alt: "Photo of #{@plot.photo}")
     - elsif @plot.photo.length == 1
-      = image_tag(@plot.photo[0].variant(resize: "350x350"), class: 'carousel_photos', alt: "Photo of #{@plot.photo}") unless @plot.new_record?
-    - elsif @plot.photo.length == 0
-      = image_tag(photo(@plot))
-  .col-md-7
-    %h2 Plot Information
-    %p= @plot.formatted_location_description
-    %table.table
+      .img-square{ :style => "background-image: url(#{rails_blob_url(photo(@plot))})", :alt => "Photo of #{@plot.photo}" }
+    - else
+      #plotCarousel.carousel{"data-interval" => "false"}
+        .center
+          %a.carousel-control-prev.btn-icon#chevron{"data-slide" => "prev", :href => "#plotCarousel", :role => "button"}
+            = content_tag(:i, '', :class => "icon-chevron-left")
+          .carousel-inner
+            - @plot.photo.each_with_index do |image, index|
+              %div{ :class => "img-square item #{index == 0 ? 'active' : ''}", :style => "background-image: url(#{rails_blob_url(photo(@plot, index))})", :alt => "Photo of #{image}" }
+          %a.carousel-control-next.btn-icon#chevron{"data-slide" => "next", :href => "#plotCarousel", :role => "button"}
+            = content_tag(:i, '', :class => "icon-chevron-right")
+    %p.center.space.italic= @plot.formatted_location_description
+  .info
+    %h2.heading#plot-heading Information
+    %table.table#plot-table
       %thead
-        %th{colspan: '2'} Updated #{@plot.updated_at&.to_formatted_s(:long)  }
+        %th.citation.italic{colspan: '2'} Last updated #{@plot.updated_at&.to_formatted_s(:long)  }
       %tbody
         %tr
-          %th.col-md-4{scope: 'row'} Featured Plant
+          %th{scope: 'row'} Featured Plant
           %td= link_to_featured_plant(@plot)
         %tr
-          %th.col-md-4{scope: 'row'} Latitude
+          %th{scope: 'row'} Latitude
           %td= @plot.latitude || 'unmeasured'
         %tr
-          %th.col-md-4{scope: 'row'} Longitude
+          %th{scope: 'row'} Longitude
           %td= @plot.longitude || 'unmeasured'
         %tr
-          %th.col-md-4{scope: 'row'} Elevation
+          %th{scope: 'row'} Elevation
           %td= @plot.elevation ? "#{@plot.elevation} ft." : 'unmeasured'
         %tr
-          %th.col-md-4{scope: 'row'} Area
+          %th{scope: 'row'} Area
           %td= @plot.area ? "#{@plot.area} sq. ft." : 'unmeasured'
         %tr
-          %th.col-md-4{scope: 'row'} Aspect
+          %th{scope: 'row'} Aspect
           %td= @plot.aspect
         %tr
-          %th.col-md-4{scope: 'row'} Origin
+          %th{scope: 'row'} Origin
           %td= @plot.origin
         %tr
-          %th.col-md-4{scope: 'row'} Inoculated?
+          %th{scope: 'row'} Inoculated?
           %td= @plot.inoculated ? 'Yes' : 'No'
         %tr
-          %th.col-md-4{scope: 'row'} Initial planting date
+          %th{scope: 'row'} Initial planting date
           %td= @plot.initial_planting_date
         %tr
-          %th.col-md-4{scope: 'row'} Initial succession
+          %th{scope: 'row'} Initial succession
           %td= @plot.initial_succession
-- if @plot.featured_plant
-  %section
-    %h2{:class => 'center'} Featured Plant: #{@plot.featured_plant.common_name}
-    .col-md-5
-      %h3 Photo
-      - if @plot.featured_plant.photo.length > 1
-        #featured_plantCarousel.carousel{"data-interval" => "false"}
-          .carousel-inner
-            - @plot.featured_plant.photo.each_with_index do |image, index|
-              %div{:class => "item #{index == 0 ? 'active' : ''}"}
-                = image_tag(@plot.featured_plant.photo[index].variant(resize: "350x350"), class: 'carousel_photos', alt: "Photo of #{@plot.featured_plant.photo}") unless @plot.new_record?
-                %end
-        %a.carousel-control-prev{"data-slide" => "prev", :href => "#featured_plantCarousel", :role => "button"}
-          %span.glyphicon.glyphicon-chevron-left{"aria-hidden" => "true"}
-          %span.sr-only Previous
-        %a.carousel-control-next{"data-slide" => "next", :href => "#featured_plantCarousel", :role => "button"}
-          %span.glyphicon.glyphicon-chevron-right{"aria-hidden" => "true"}
-          %span.sr-only Next
-      - elsif @plot.featured_plant.photo.length == 1
-        = image_tag(@plot.featured_plant.photo[0].variant(resize: "350x350"), alt: "Photo of #{@plot.featured_plant.photo}") unless @plot.new_record?
+%h2.center= @plot.featured_plant.common_name.titleize
+.content
+  - if @plot.featured_plant.photo.length == 0
+    .img-square.default
+      = image_tag(photo(@plot.featured_plant), alt: "Photo of #{@plot.featured_plant.photo}")
+  - elsif @plot.featured_plant.photo.length == 1
+    .img-square{ :style => "background-image: url(#{rails_blob_url(photo(@plot.featured_plant))})", :alt => "Photo of #{@plot.featured_plant.photo}" }
+  - else
+    #plantCarousel.carousel{"data-interval" => "false"}
+      .center
+        %a.carousel-control-prev.btn-icon#chevron{"data-slide" => "prev", :href => "#plantCarousel", :role => "button"}
+          = content_tag(:i, '', :class => "icon-chevron-left")
+        .carousel-inner
+          - @plot.featured_plant.photo.each_with_index do |image, index|
+            %div{ :class => "img-square item #{index == 0 ? 'active' : ''}", :style => "background-image: url(#{rails_blob_url(photo(@plot.featured_plant, index))})", :alt => "Photo of #{image}" }
+        %a.carousel-control-next.btn-icon#chevron{"data-slide" => "next", :href => "#plantCarousel", :role => "button"}
+          = content_tag(:i, '', :class => "icon-chevron-right")
+  .info
+    %h2.heading.light-italic
+      = @plot.featured_plant.scientific_name.capitalize
+      - if @plot.featured_plant.invasive
+        (invasive)
+    %p.no-margin= @plot.featured_plant.description
+    %p.citation.italic= @plot.featured_plant.citation
+    %table.table
+      %thead
+        %th{scope: 'col'} Habitat Type
+        %th{scope: 'col'} Tolerance
+        %th{scope: 'col'} Invasive?
+      %tbody
+        %td= @plot.featured_plant.habitat_type
+        %td= @plot.featured_plant.tolerance
+        %td{class: ('danger' if @plot.featured_plant.invasive)}= @plot.featured_plant.invasive? ? 'Yes' : 'No'
 
-    .col-md-7
-      %h3
-        %em
-          = @plot.featured_plant.scientific_name.capitalize
-        - if @plot.featured_plant.invasive
-          (invasive)
-      %p= @plot.featured_plant.description
-      %p.citation= @plot.featured_plant.citation
-      %table.table
-        %thead
-          %tr
-            %th{scope: 'col'} Habitat Type
-            %th{scope: 'col'} Tolerance
-            %th{scope: 'col'} Invasive?
-        %tbody
-          %tr
-            %td= @plot.featured_plant.habitat_type
-            %td= @plot.featured_plant.tolerance
-            %td{class: ('bg-danger' if @plot.featured_plant.invasive)}= @plot.featured_plant.invasive? ? 'Yes' : 'No'
+-# - if @plot.featured_plant
+-#   %section
+-#     %h2{:class => 'center'} Featured Plant: #{@plot.featured_plant.common_name}
+-#     .col-md-5
+-#       %h3 Photo
+-#       - if @plot.featured_plant.photo.length > 1
+-#         #featured_plantCarousel.carousel{"data-interval" => "false"}
+-#           .carousel-inner
+-#             - @plot.featured_plant.photo.each_with_index do |image, index|
+-#               %div{:class => "item #{index == 0 ? 'active' : ''}"}
+-#                 = image_tag(@plot.featured_plant.photo[index].variant(resize: "350x350"), class: 'carousel_photos', alt: "Photo of #{@plot.featured_plant.photo}") unless @plot.new_record?
+-#                 %end
+-#         %a.carousel-control-prev{"data-slide" => "prev", :href => "#featured_plantCarousel", :role => "button"}
+-#           %span.glyphicon.glyphicon-chevron-left{"aria-hidden" => "true"}
+-#           %span.sr-only Previous
+-#         %a.carousel-control-next{"data-slide" => "next", :href => "#featured_plantCarousel", :role => "button"}
+-#           %span.glyphicon.glyphicon-chevron-right{"aria-hidden" => "true"}
+-#           %span.sr-only Next
+-#       - elsif @plot.featured_plant.photo.length == 1
+-#         = image_tag(@plot.featured_plant.photo[0].variant(resize: "350x350"), alt: "Photo of #{@plot.featured_plant.photo}") unless @plot.new_record?
+
+-#     .col-md-7
+-#       %h3
+-#         %em
+-#           = @plot.featured_plant.scientific_name.capitalize
+-#         - if @plot.featured_plant.invasive
+-#           (invasive)
+-#       %p= @plot.featured_plant.description
+-#       %p.citation= @plot.featured_plant.citation
+-#       %table.table
+-#         %thead
+-#           %tr
+-#             %th{scope: 'col'} Habitat Type
+-#             %th{scope: 'col'} Tolerance
+-#             %th{scope: 'col'} Invasive?
+-#         %tbody
+-#           %tr
+-#             %td= @plot.featured_plant.habitat_type
+-#             %td= @plot.featured_plant.tolerance
+-#             %td{class: ('bg-danger' if @plot.featured_plant.invasive)}= @plot.featured_plant.invasive? ? 'Yes' : 'No'
