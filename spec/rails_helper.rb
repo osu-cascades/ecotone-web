@@ -1,5 +1,4 @@
 require 'simplecov'
-#require 'paperclip/matchers'
 
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
@@ -11,7 +10,7 @@ require 'rspec/rails'
 require 'capybara/rspec' # Add additional requires below this line.
 require 'devise'
 
-Capybara.javascript_driver = :selenium
+Capybara.javascript_driver = :selenium_headless
 
 # Alternatively, in the individual `*_spec.rb` files, manually
 # require only the support files necessary.
