@@ -35,6 +35,10 @@ class Plot < ApplicationRecord
   private
 
   def remove_period(str)
-    str[1...-1] unless str[-1] != '.'
+    if str[-1] == '.'
+      str[1...-1]
+    else
+      str
+    end
   end
 end
