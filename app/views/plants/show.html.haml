@@ -15,13 +15,14 @@
     .img-square{ :style => "background-image: url(#{rails_blob_url(photo(@plant))})", :alt => "Photo of #{@plant.photo}" }
   - else
     #plantCarousel.carousel{"data-interval" => "false"}
-      %a.carousel-control-prev.btn-icon#chevron{"data-slide" => "prev", :href => "#plantCarousel", :role => "button"}
-        = content_tag(:i, '', :class => "icon-chevron-left")
-      .carousel-inner
-        - @plant.photo.each_with_index do |image, index|
-          %div{ :class => "img-square item #{index == 0 ? 'active' : ''}", :style => "background-image: url(#{rails_blob_url(photo(@plant, index))})", :alt => "Photo of #{image}" }
-      %a.carousel-control-next.btn-icon#chevron{"data-slide" => "next", :href => "#plantCarousel", :role => "button"}
-        = content_tag(:i, '', :class => "icon-chevron-right")
+      .center
+        %a.carousel-control-prev.btn-icon#chevron{"data-slide" => "prev", :href => "#plantCarousel", :role => "button"}
+          = content_tag(:i, '', :class => "icon-chevron-left")
+        .carousel-inner
+          - @plant.photo.each_with_index do |image, index|
+            %div{ :class => "img-square item #{index == 0 ? 'active' : ''}", :style => "background-image: url(#{rails_blob_url(photo(@plant, index))})", :alt => "Photo of #{image}" }
+        %a.carousel-control-next.btn-icon#chevron{"data-slide" => "next", :href => "#plantCarousel", :role => "button"}
+          = content_tag(:i, '', :class => "icon-chevron-right")
   .info
     %h2.heading.light-italic
       = @plant.scientific_name.capitalize

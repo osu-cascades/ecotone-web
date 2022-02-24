@@ -59,7 +59,7 @@ td {
 
 .img-square {
 	position: relative;
-	margin: 0px $space5 $space5;
+	margin: 0px $space5 0px;
 	display: block;
 	width: $space11;
 	height: $space11;
@@ -84,12 +84,21 @@ td {
 
 // Image Carousel
 .carousel {
-	display: grid;
-  grid-auto-flow: column;
-	align-content: center;
+	margin-bottom: $space6;
 
 	.carousel-inner {
+		width: $space11;
+		height: $space11;
 		overflow: visible;
+	}
+
+	.center {
+		display: grid;
+  	grid-auto-flow: column;
+		width: 340px;
+		height: $space11;
+		align-content: center;
+		justify-content: center;
 	}
 
 	.img-square {
@@ -100,5 +109,7 @@ td {
 	a {
 		height: $space5;
 		width: $space5;
+		align-self: center;
+		margin: $space0;
 	}
 }
