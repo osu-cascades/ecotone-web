@@ -6,10 +6,7 @@
 .content(id='map')
   :javascript
 
-    console.log('#{plots_url}');
     '#{@ping = Plot.find(1)}'
-    console.log('#{@ping.latitude}');
-    console.log('#{@ping.longitude}')
 
     var mapBoxAttribution = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>'
     var mapBoxRequest = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=#{ENV["LEAFLET_KEY"]}'
