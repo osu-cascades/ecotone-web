@@ -29,7 +29,8 @@
       attribution: mapBoxAttribution,
     }).addTo(map);
 
-    var outdoorLayer = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=#{ENV["LEAFLET_KEY"]}', {
+    var outdoorLayer = L.tileLayer(mapBoxRequest, 
+    {
       id: 'mapbox/outdoors-v11', 
       tileSize: 512, 
       zoomOffset: -1, 
