@@ -1,7 +1,7 @@
 module PlantsHelper
-  def photo(plant)
+  def photo(plant, idx = 0)
     if plant.photo.attached?
-      plant.photo[0].variant resize: "200x200"
+      plant.photo[idx]
     else
       'missing.png'
     end

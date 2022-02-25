@@ -4,9 +4,12 @@
 .gallery
   - @plants.each do |plant|
     .tile#plant
-      .img-tile
-        = image_tag(photo(plant))
+      - if plant.photo.attached?
+        .img-tile{ :style => "background-image: url(#{rails_blob_url(photo(plant))})", :alt => "Photo of #{plant.photo}" }
+      -else
+        .img-tile.default
+          = image_tag(photo(plant), alt: "Photo of #{plant.photo}")
       .desc
-        %h3= plant.common_name.capitalize.truncate_words(2)
+        %h3= plant.common_name.titleize.truncate_words(2)
         %p.italic= plant.scientific_name.capitalize.truncate_words(2)
       = link_to "", plant, title: "Details of #{plant}", class: "tile-link"
