@@ -2,7 +2,7 @@ require 'rails_helper'
 RSpec.feature 'Admin deletes a plant' do
     context 'when logged in' do
       let(:user) { create(:user, :admin) }
-  
+
       before do
         sign_in(user)
         create(:plant, id: '1')
@@ -15,7 +15,7 @@ RSpec.feature 'Admin deletes a plant' do
         expect(page).to have_selector '.alert', text: 'Plant was successfully destroyed'
       end
 
-     
+
     end
 
-end
+end 

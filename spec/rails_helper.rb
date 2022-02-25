@@ -10,10 +10,12 @@ require 'rspec/rails'
 require 'capybara/rspec' # Add additional requires below this line.
 require 'devise'
 
-Capybara.javascript_driver = :selenium_headless
 
-# Alternatively, in the individual `*_spec.rb` files, manually
-# require only the support files necessary.
+
+Capybara.register_driver :rack_test do |app|
+  Capybara::RackTest::Driver.new(app, :respect_data_method => true)
+end
+
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 ActiveRecord::Migration.maintain_test_schema!

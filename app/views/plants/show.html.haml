@@ -26,8 +26,6 @@
         %span.sr-only Next
     - elsif @plant.photo.length == 1
       = image_tag(@plant.photo[0].variant(resize: "350x350"), alt: "Photo of #{@plant.photo}") unless @plant.new_record?
-    - elsif @plant.photo.length == 0
-      = image_tag(photo(@plant))
   .col-md-7
     %h2
       %em
