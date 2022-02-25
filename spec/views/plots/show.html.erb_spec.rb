@@ -47,7 +47,7 @@ RSpec.describe "plots/show", type: :view do
     it "is humanized" do
       assign(:plot, create(:plot, location_description: 'description of plot'))
       render
-      expect(rendered).to have_content("Description of plot.")
+      expect(rendered).to have_content("Description of plot")
     end
   end
 
