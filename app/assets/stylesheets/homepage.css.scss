@@ -49,7 +49,7 @@
 	height: 200px;
 	width: 200px;
 	&::after {
-		box-shadow: inset 0 0 0 1px hsla(0, 0%, 0%, .1);
+		box-shadow: $border-shadow;
 		border-radius: 50%;
 		content: "";
 		display: block;

@@ -1,4 +1,4 @@
-- content_for_title(@plant.common_name.capitalize)
+- content_for_title(@plant.common_name.titleize)
 - content_for(:subnav) do
   .btn-public
     = button_to('« Plants', plants_path, class: 'button primary', title: 'List of all plants', method: 'get')
@@ -6,42 +6,36 @@
   - if current_user&.admin?
     .btn-admin
       = link_to(content_tag(:i, '', :class => "icon-edit"), edit_plant_path(@plant), class: 'btn-icon', title: "Edit #{@plant}")
-      = link_to(content_tag(:i, '', :class => "icon-delete2"), @plant, method: :delete, data: { confirm: "Delete #{@plant.common_name}?" }, class: 'btn-icon', title: "Delete #{@plant}")
-%section
-  .col-md-5
-    %h2 Photo
-    - if @plant.photo.length > 1
-      #plantCarousel.carousel{"data-interval" => "false"}
+      = link_to(content_tag(:i, '', :class => "icon-trash"), @plant, method: :delete, data: { confirm: "Delete #{@plant.common_name}?" }, class: 'btn-icon', title: "Delete #{@plant}")
+.content
+  - if @plant.photo.length == 0
+    .img-square.default
+      = image_tag(photo(@plant), alt: "Photo of #{@plant.photo}")
+  - elsif @plant.photo.length == 1
+    .img-square{ :style => "background-image: url(#{rails_blob_url(photo(@plant))})", :alt => "Photo of #{@plant.photo}" }
+  - else
+    #plantCarousel.carousel{"data-interval" => "false"}
+      .center
+        %a.carousel-control-prev.btn-icon#chevron{"data-slide" => "prev", :href => "#plantCarousel", :role => "button"}
+          = content_tag(:i, '', :class => "icon-chevron-left")
         .carousel-inner
           - @plant.photo.each_with_index do |image, index|
-            %div{:class => "item #{index == 0 ? 'active' : ''}"}
-              = image_tag(@plant.photo[index].variant(resize: "350x350"), class: 'carousel_photos', alt: "Photo of #{@plant.photo}") unless @plant.new_record?
-              = link_to 'Delete Photo', delete_plant_image_attachment_plant_url(image.id), class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' }
-              %end
-      %a.carousel-control-prev{"data-slide" => "prev", :href => "#plantCarousel", :role => "button"}
-        %span.glyphicon.glyphicon-chevron-left{"aria-hidden" => "true"}
-        %span.sr-only Previous
-      %a.carousel-control-next{"data-slide" => "next", :href => "#plantCarousel", :role => "button"}
-        %span.glyphicon.glyphicon-chevron-right{"aria-hidden" => "true"}
-        %span.sr-only Next
-    - elsif @plant.photo.length == 1
-      = image_tag(@plant.photo[0].variant(resize: "350x350"), alt: "Photo of #{@plant.photo}") unless @plant.new_record?
-  .col-md-7
-    %h2
-      %em
-        = @plant.scientific_name.capitalize
+            %div{ :class => "img-square item #{index == 0 ? 'active' : ''}", :style => "background-image: url(#{rails_blob_url(photo(@plant, index))})", :alt => "Photo of #{image}" }
+        %a.carousel-control-next.btn-icon#chevron{"data-slide" => "next", :href => "#plantCarousel", :role => "button"}
+          = content_tag(:i, '', :class => "icon-chevron-right")
+  .info
+    %h2.heading.light-italic
+      = @plant.scientific_name.capitalize
       - if @plant.invasive
         (invasive)
-    %p= @plant.description
-    %p.citation= @plant.citation
+    %p.no-margin= @plant.description
+    %p.citation.italic= @plant.citation
     %table.table
       %thead
-        %tr
-          %th{scope: 'col'} Habitat Type
-          %th{scope: 'col'} Tolerance
-          %th{scope: 'col'} Invasive?
+        %th{scope: 'col'} Habitat Type
+        %th{scope: 'col'} Tolerance
+        %th{scope: 'col'} Invasive?
       %tbody
-        %tr
-          %td= @plant.habitat_type
-          %td= @plant.tolerance
-          %td{class: ('bg-danger' if @plant.invasive)}= @plant.invasive? ? 'Yes' : 'No'
+        %td= @plant.habitat_type
+        %td= @plant.tolerance
+        %td{class: ('danger' if @plant.invasive)}= @plant.invasive? ? 'Yes' : 'No'
