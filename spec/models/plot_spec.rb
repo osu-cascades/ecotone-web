@@ -62,6 +62,6 @@ RSpec.describe Plot, type: :model do
   end
 
   it 'formats location description' do
-    expect(plot.formatted_location_description).to eq('South wall of Tykeson Hall.')
+    expect(plot.formatted_location_description).to eq('South wall of Tykeson Hall')
   end
 end
