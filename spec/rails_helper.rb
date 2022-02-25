@@ -16,6 +16,8 @@ Capybara.register_driver :rack_test do |app|
   Capybara::RackTest::Driver.new(app, :respect_data_method => true)
 end
 
+Capybara.default_driver = :rack_test
+
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 ActiveRecord::Migration.maintain_test_schema!

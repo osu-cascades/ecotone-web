@@ -1,4 +1,4 @@
-equire 'rails_helper'
+require 'rails_helper'
 RSpec.feature 'Admin deletes a plot' do
     context 'when logged in' do
       let(:user) { create(:user, :admin) }
@@ -8,11 +8,10 @@ RSpec.feature 'Admin deletes a plot' do
         create(:plot, id: '1')
       end
 
-      scenario 'by selecting an existing plot', js: true  do
+      scenario 'by selecting an existing plot' do
         visit plot_path(1)
-        Capybara.page.find(".icon-delete2").click
-        page.driver.browser.switch_to.alert.accept
-        expect(page).to have_selector '.alert', text: 'Plot was successfully destroyed'
+        click_link 'Delete'
+        expect(page).to have_content('Plot was successfully destroyed.')
       end
 
 
