@@ -12,7 +12,7 @@ RSpec.describe Plot, type: :model do
       longitude: 121.3153,
       elevation: 3623.0,
       area: 100,
-      location_description: 'south wall of Tykeson Hall',
+      location_description: 'south wall of Tykeson Hall.',
       aspect: 'North',
       origin: 'Salvage',
       inoculated: true,

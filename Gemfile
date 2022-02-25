@@ -49,7 +49,8 @@ group :development, :test do
   gem 'capybara'
   gem 'factory_bot_rails', '~> 6.2.0'
   gem 'dotenv-rails'
-  gem 'poltergeist'
+  gem 'webdrivers'
+  gem 'selenium-webdriver'
   gem 'foreman', '~> 0.87.2'
   gem 'haml-rails', '~> 2.0.1'
 end
