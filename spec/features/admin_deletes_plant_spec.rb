@@ -8,11 +8,10 @@ RSpec.feature 'Admin deletes a plant' do
         create(:plant, id: '1')
       end
 
-      scenario 'by selecting an existing plant', js: true  do
+      scenario 'by selecting an existing plant' do
         visit plant_path(1)
-        Capybara.page.find(".icon-delete2").click
-        page.driver.browser.switch_to.alert.accept
-        expect(page).to have_selector '.alert', text: 'Plant was successfully destroyed'
+        click_link 'Delete'
+        expect(page).to have_content('Plant was successfully destroyed.')
       end
 
 
