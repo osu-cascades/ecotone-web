@@ -8,7 +8,10 @@ i {
 	&.icon-edit {
 		color: $blue3;
 	}
-	&.icon-delete2 {
+	&.icon-trash {
 		color: $red4;
+	}
+	&.icon-chevron-left, &.icon-chevron-right {
+		color: $grey4;
 	}
 }

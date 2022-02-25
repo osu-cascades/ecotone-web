@@ -15,11 +15,12 @@
   background-color: $orange3;
   border-color: $orange3;
   box-shadow: $shadow2;
-  &:hover, &:focus {
+  &:hover, &:focus, &:focus-visible {
     color: $grey9;
     background-color: $orange3;
     border-color: $orange3;
     box-shadow: $shadow1;
+    outline: 0px;
   }
   &:active {
     color: $grey9;
@@ -28,29 +29,6 @@
     box-shadow: $shadow1;
   }
 }
-
-// .secondary {
-//   color: $orange3;
-// 	background-color: white;
-//   border-color: $orange3;
-// 	box-shadow: $shadow2;
-// 	&:hover, &:focus {
-// 		color: $orange3;
-// 		background-color: white;
-//   	border-color: $orange2;
-//     box-shadow: $shadow1;
-//   }
-// }
-
-// .tertiary {
-// 	color: $orange3;
-// 	background-color: transparent;
-// 	text-decoration: underline;     
-// 	text-decoration-color: $orange3; 
-// 	&:hover, &:focus {
-// 		box-shadow: $shadow3;
-// 	}
-// }
 
 .btn-icon {
 	height: $space5;

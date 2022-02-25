@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '3.1.0'
+ruby '3.1.1'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -31,6 +31,11 @@ gem 'active_storage_validations'
 gem 'aws-sdk-s3'
 gem 'image_processing', '~> 1.2'
 gem 'leaflet-rails', '~> 1.7.0'
+
+# there is currently an issue with oauth and faraday gems: https://github.com/oauth-xx/oauth2/issues/572
+# hard set oauth2 until problem is resolved
+gem 'oauth2', '= 1.4.7'
+
 
 group :test do
   gem 'simplecov', '~> 0.21.2', require: false

@@ -1,26 +1,67 @@
 @import './constants.css.scss';
+@import "bootstrap";
 
-body { 
-  background-color: hsl(210, 100%, 98%); 
-  padding-top: $space7;
+
+@mixin box_sizing {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html, body { 
+  height: 100%;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  background-color: hsl(210, 100%, 98%);
   font-family: 'graphik-regular';
   color: $grey0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: $grey1;
 }
 
 p {
   font-family: 'graphik-light';
   font-size: $txt2;
   line-height: $space4;
+  margin: 0 0 $space1;
 }
 
 a { 
+  text-decoration: none;
   &:link, &:visited, &:hover, &:active {
     text-decoration: none
   }
 }
 
+.container {
+  min-height: 100%;
+  position: relative;
+}
+
+#body {
+  min-height: 100%;
+  padding-top: $space7;
+  padding-bottom: $space4;
+  margin-bottom: $space6;
+}
+
 .center {
   text-align: center;
+}
+
+.italic {
+  font-family: 'graphik-light-italic';
+}
+
+.light-italic {
+  font-family: 'graphik-extra-light-italic'
+}
+
+.no-margin {
+	margin: 0px;
 }
 
 .subnav {
@@ -37,8 +78,3 @@ form.button_to {
   margin: 0px;
   padding: 0px;
 }
-
-// .image {
-// 	padding: 12px;
-// 	padding-left: 128px;
-// }
