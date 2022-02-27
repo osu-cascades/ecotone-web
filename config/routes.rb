@@ -2,10 +2,10 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root    'static_pages#home'
 
+  get     'map' , to: 'static_pages#map'
+
   resources :users
   resources :biodiversity_reports
-
-  get     'map' , to: 'static_pages#map'
 
   resources :plots
   get     'plots/:id/download_qr' => 'plots#download_qr'
@@ -15,6 +15,10 @@ Rails.application.routes.draw do
 
   resources :plant_samples
   get 'export' => 'plant_samples#export'
+
+  resources :map
+  get     'map_2', to: 'map#show'
+
   resources :fungi_samples
   resources :lichen_samples
   resources :macroinvertebrate_samples
