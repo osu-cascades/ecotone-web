@@ -1,2 +1,4 @@
 - content_for_title('New Plot')
+- content_for(:subnav) do
+  = button_to('« Plots', plots_path, class: 'button primary', title: 'List of all plots', method: 'get')
 = render partial: 'form'

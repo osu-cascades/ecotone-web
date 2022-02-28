@@ -1,2 +1,4 @@
 - content_for_title('New Plant')
+- content_for(:subnav) do
+  = button_to('« Plants', plants_path, class: 'button primary', title: 'List of all plants', method: 'get')
 = render partial: 'form'
