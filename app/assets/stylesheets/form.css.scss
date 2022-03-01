@@ -35,20 +35,24 @@
 		font-size: $txt2;
 	}
 
-	// input[type="checkbox"] {
-	// 	margin: 0px;
-	// 	size: $txt2;
-	// }
+	input[type="checkbox"] {
+		margin: 0px $space2 0px;
+		height: $txt2;
+		width: $txt2;
+		justify-self: center;
+		align-self: center;
+	}
 
-	.photos {
-		display: grid;
-		grid-template-columns: auto auto auto;
-		row-gap: $space4;
-		justify-content: space-evenly;
+	.gallery {
+		&#form {
+			justify-content: left;
+			margin: 0px;
+			padding: 0px;
+		}
 		.img-square {
+			margin: 0px $space2 $space2 0px;
 			height: $space9;
 			width: $space9;
-			margin: 0px;
 		}
 	}
 
@@ -58,6 +62,9 @@
 			font-family: 'graphik-light';
 			font-weight: 100;
 			margin-bottom: $space0;
+		}
+		textarea {
+			resize: vertical;
 		}
 	}
 
