@@ -29,7 +29,7 @@ gem 'bootsnap'
 gem 'mini_magick', '~> 4.5', '>= 4.5.1'
 gem 'active_storage_validations'
 gem 'aws-sdk-s3'
-gem 'image_processing', '~> 1.2'
+gem 'image_processing', '~> 1.12'
 gem 'leaflet-rails', '~> 1.7.0'
 
 # there is currently an issue with oauth and faraday gems: https://github.com/oauth-xx/oauth2/issues/572

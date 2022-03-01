@@ -205,7 +205,7 @@ GEM
       ruby_parser (~> 3.5)
     i18n (1.10.0)
       concurrent-ruby (~> 1.0)
-    image_processing (1.12.1)
+    image_processing (1.12.2)
       mini_magick (>= 4.9.5, < 5)
       ruby-vips (>= 2.0.17, < 3)
     io-wait (0.2.1)
@@ -466,7 +466,7 @@ DEPENDENCIES
   guard-rspec
   haml (~> 5.2.2)
   haml-rails (~> 2.0.1)
-  image_processing (~> 1.2)
+  image_processing (~> 1.12)
   jbuilder (~> 2.11.2)
   jquery-rails
   kaminari
