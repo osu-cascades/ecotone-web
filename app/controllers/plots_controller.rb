@@ -2,6 +2,7 @@ class PlotsController < ApplicationController
   before_action :set_plot, only: [:show, :edit, :update, :destroy, :download_qr]
   before_action :login_required, except: [:index, :show, :download_qr]
   before_action :admin_required, except: [:index, :show, :download_qr]
+  before_action :redirect_cancel, :only => [:create, :update]
 
   def index
     @plots = Plot.order(:plot_id)
@@ -37,6 +38,10 @@ class PlotsController < ApplicationController
       @plants = Plant.all
       render 'edit'
     end
+  end
+
+  def redirect_cancel
+    redirect_to @plot if params[:cancel]
   end
 
   def delete_plot_image_attachment
