@@ -7,11 +7,11 @@
 $osu-orange: #C34500;
 $gray-medium-light: #eaeaea;
 
-@mixin box_sizing {
+<%# @mixin box_sizing {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-}
+} %>
 
 
 // Universal
@@ -98,13 +98,13 @@ a.navbar-brand img {
 }
 
 
-.debug_dump {
+<%# .debug_dump {
   clear: both;
   float: left;
   width: 100%;
   margin-top: 45px;
   @include box-sizing;
-}
+} %>
 
 
 // Sign In
@@ -121,40 +121,40 @@ a.navbar-brand img {
 
 // Forms
 
-input, textarea, select, .uneditable-input {
+<%# input, textarea, select, .uneditable-input {
   border: 1px solid #bbb;
   width: 100%;
   margin-bottom: 15px;
   @include box_sizing;
-}
+} %>
 
-input[type="checkbox"] {
+<%# input[type="checkbox"] {
   margin-bottom: 15px;
   box-shadow: none !important;
-}
+} %>
 
-textarea {
+<%# textarea {
   resize: vertical;
-}
+} %>
 
-.field_with_errors {
+<%# .field_with_errors {
   @extend .has-error;
   .form-control {
     color: $state-danger-text;
   }
-}
+} %>
 
-.g-recaptcha {
+<%# .g-recaptcha {
   margin-bottom: 15px;
-}
+} %>
 
-form img {
+<%# form img {
   margin-bottom: 20px;
 }
 
 label.form-label-photo {
   display: block;
-}
+} %>
 
 
 // Model indexes
