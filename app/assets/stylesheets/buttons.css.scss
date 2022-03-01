@@ -7,6 +7,7 @@
   padding: $space0;
   text-align: center;
   border-radius: $space0;
+  border: 1px solid black;
   transition-duration: 0.1s;
 }
 
@@ -16,15 +17,33 @@
   border-color: $orange3;
   box-shadow: $shadow2;
   &:hover, &:focus, &:focus-visible {
-    color: $grey9;
     background-color: $orange3;
     border-color: $orange3;
     box-shadow: $shadow1;
     outline: 0px;
   }
   &:active {
-    color: $grey9;
     background-color: $orange2;
+    border-color: $orange2;
+    box-shadow: $shadow1;
+  }
+}
+
+.secondary {
+  color: $orange3;
+  background-color: white;
+  border-color: $orange3;
+  box-shadow: $shadow2;
+  &:hover, &:focus, &:focus-visible {
+    color: $orange3;
+    background-color: white;
+    border-color: $orange3;
+    box-shadow: $shadow1;
+    outline: 0px;
+  }
+  &:active {
+    color: $orange3;
+    background-color: $grey9;
     border-color: $orange2;
     box-shadow: $shadow1;
   }
@@ -54,4 +73,16 @@
   grid-auto-flow: column;
   column-gap: $space2;
   justify-content: end;
+}
+
+.btn-form {
+  display: grid;
+  grid-auto-flow: column;
+  column-gap: $space3;
+  justify-content: end;
+  border-top: 1px solid $grey7;
+  padding: $space3;
+  &.submit {
+    margin-right: $space0;
+  }
 }
