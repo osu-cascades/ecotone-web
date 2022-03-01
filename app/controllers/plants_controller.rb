@@ -2,7 +2,8 @@ class PlantsController < ApplicationController
   before_action :set_plant, only: [:show, :edit, :update, :destroy, :download_qr]
   before_action :login_required, only: [:new, :create, :edit, :update, :destroy]
   before_action :admin_required, only: [:new, :create, :edit, :update, :destroy]
-  before_action :redirect_cancel, :only => [:create, :update]
+  before_action :redirect_cancel_edit, :only => [:update]
+  before_action :redirect_cancel_edit, :only => [:create]
 
   def index
     @plants = Plant.all
@@ -35,8 +36,12 @@ class PlantsController < ApplicationController
     end
   end
 
-  def redirect_cancel
+  def redirect_cancel_edit
     redirect_to @plant if params[:cancel]
+  end
+
+  def redirect_cancel_new
+    redirect_to plants_path if params[:cancel]
   end
 
   def destroy
