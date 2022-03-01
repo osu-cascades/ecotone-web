@@ -14,7 +14,7 @@
           = form.text_area :location_description, class: 'form-control'
         .data
           = form.label :featured_plant_id, "Featured Plant"
-          = form.collection_select :featured_plant_id, @plants, :id, :common_name, include_blank: 'None'
+          = form.collection_select :featured_plant_id, @plants, :id, :form_common_name, {include_blank: 'None'}, {class: 'form-control'}
         .data
           = form.label :area, 'Area (sq ft)'
           = form.text_field :area, class: 'form-control'
@@ -44,7 +44,7 @@
           = form.label :origin
           = form.text_field :origin, class: 'form-control'
         .data
-          = form.label :inoculated, "Inoculated?"
+          = form.label :inoculated, "Inoculated?", class: 'checkbox-label'
           = form.check_box :inoculated
         .data
           = form.label :initial_planting_date, "Initial Planting Date"
@@ -55,7 +55,7 @@
     .content
       .caption
         %h3 Photos
-        %p.italic Show the changes of the plot over time by adding pictures
+        %p.italic Show plot changes over time by adding pictures
       .input
         .gallery#form
           - @plot.photo.each_with_index do |image, index|

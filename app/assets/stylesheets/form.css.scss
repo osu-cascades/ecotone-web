@@ -36,11 +36,19 @@
 	}
 
 	input[type="checkbox"] {
-		margin: 0px $space2 0px;
+		margin: 0px $space1 0px;
 		height: $txt2;
 		width: $txt2;
-		justify-self: center;
-		align-self: center;
+		outline: 0px;
+	}
+
+	.checkbox-label {
+		color: $grey3;
+		font-family: 'graphik-light';
+		font-weight: 100;
+		padding: 0px;
+		padding-top: $space1;
+		margin: 0px;
 	}
 
 	.gallery {
@@ -62,9 +70,16 @@
 			font-family: 'graphik-light';
 			font-weight: 100;
 			margin-bottom: $space0;
+			&.checkbox-label {
+				margin: $space1 0px 0px;
+				padding: 0px;
+			}
 		}
 		textarea {
 			resize: vertical;
+		}
+		select {
+			padding-left: $space1;
 		}
 	}
 
@@ -75,7 +90,7 @@
 
 .form-control {
 	height: $txt7;
-	&:focus{
+	&:focus, &:focus-visible{
 		border-color: $orange6;
 		box-shadow: $border-orange;
 	}
