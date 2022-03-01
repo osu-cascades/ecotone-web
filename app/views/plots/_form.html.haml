@@ -1,34 +1,66 @@
-.row
-  .col-md-6.col-md-offset-3
-    = form_for(@plot, html: { multipart: true }) do |form|
-      = form_errors_for(@plot)
-      = form.label :plot_id, "Plot ID"
-      = form.text_field :plot_id, class: 'form-control'
-      = form.label :featured_plant_id
-      = form.collection_select :featured_plant_id, @plants, :id, :common_name, include_blank: 'Choose one'
-      = form.label :location_description
-      = form.text_area :location_description, class: 'form-control'
-      = form.label :latitude
-      = form.text_field :latitude, class: 'form-control'
-      = form.label :longitude
-      = form.text_field :longitude, class: 'form-control'
-      = form.label :elevation, 'Elevation (ft)'
-      = form.text_field :elevation, class: 'form-control'
-      = form.label :area, 'Area (sq ft)'
-      = form.text_field :area, class: 'form-control'
-      = form.label :aspect
-      = form.text_field :aspect, class: 'form-control'
-      = form.label :origin
-      = form.text_field :origin, class: 'form-control'
-      = form.label :inoculated, "Inoculated?"
-      = form.check_box :inoculated, class: 'form-control'
-      = form.label :initial_planting_date
-      = form.text_field :initial_planting_date, class: 'form-control'
-      = form.label :initial_succession
-      = form.text_field :initial_succession, class: 'form-control'
-      = form.label :photo
-      - (0...@plot.photo.count).each do |photo|
-        = image_tag(@plot.photo[photo].variant(resize: "200x200"), alt: "Photo of #{@plot.photo}") unless @plot.new_record? if @plot.photo.attached?
-      = form.file_field :photo, multiple: true, class: 'form-control'
-      = form.submit class: 'btn btn-primary'
-     
+.form
+  = form_for(@plot, html: { multipart: true }) do |form|
+    = form_errors_for(@plot)
+    .content
+      .caption
+        %h3 About
+        %p.italic Describe interesting plot features and where to find it
+      .input
+        .data
+          = form.label :plot_id, "Plot ID"
+          = form.text_field :plot_id, class: 'form-control'
+        .data
+          = form.label :location_description, "Description"
+          = form.text_area :location_description, class: 'form-control'
+        .data
+          = form.label :featured_plant_id, "Featured Plant"
+          = form.collection_select :featured_plant_id, @plants, :id, :common_name, include_blank: 'None'
+        .data
+          = form.label :area, 'Area (sq ft)'
+          = form.text_field :area, class: 'form-control'
+    .content
+      .caption
+        %h3 Location
+        %p.italic Add specific plot coordinates and exposure information
+      .input
+        .data
+          = form.label :latitude
+          = form.text_field :latitude, class: 'form-control'
+        .data
+          = form.label :longitude
+          = form.text_field :longitude, class: 'form-control'
+        .data
+          = form.label :elevation, 'Elevation (ft)'
+          = form.text_field :elevation, class: 'form-control'
+        .data
+          = form.label :aspect
+          = form.text_field :aspect, class: 'form-control'
+    .content
+      .caption
+        %h3 Information
+        %p.italic Detail the health and history of the plot
+      .input
+        .data
+          = form.label :origin
+          = form.text_field :origin, class: 'form-control'
+        .data
+          = form.label :inoculated, "Inoculated?"
+          = form.check_box :inoculated
+        .data
+          = form.label :initial_planting_date, "Initial Planting Date"
+          = form.text_field :initial_planting_date, class: 'form-control'
+        .data
+          = form.label :initial_succession, "Initial Succession"
+          = form.text_field :initial_succession, class: 'form-control'
+    .content
+      .caption
+        %h3 Photos
+        %p.italic Show the changes of the plot over time by adding pictures
+      .input
+        .photos
+          - @plot.photo.each_with_index do |image, index|
+            .img-square{ :style => "background-image: url(#{rails_blob_url(photo(@plot, index))})", :alt => "Photo of #{image}" }
+        = form.file_field :photo, multiple: true, class: 'form-control'
+    .btn-form
+      = button_to('Cancel', @plot, name: 'cancel', class: 'button secondary', method: 'get')
+      = form.submit class: 'button primary submit'
