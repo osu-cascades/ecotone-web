@@ -35,21 +35,14 @@
 		font-size: $txt2;
 	}
 
-	input[type="checkbox"] {
-		margin: 0px $space1 0px;
-		height: $txt2;
-		width: $txt2;
-		outline: 0px;
-	}
-
-	.checkbox-label {
-		color: $grey3;
-		font-family: 'graphik-light';
-		font-weight: 100;
-		padding: 0px;
-		padding-top: $space1;
-		margin: 0px;
-	}
+	// .checkbox-label {
+	// 	color: $grey3;
+	// 	font-family: 'graphik-light';
+	// 	font-weight: 100;
+	// 	// padding: 0px;
+	// 	margin: $space1 0px 0px;
+	// 	// margin: 0px;
+	// }
 
 	.gallery {
 		&#form {
@@ -70,16 +63,26 @@
 			font-family: 'graphik-light';
 			font-weight: 100;
 			margin-bottom: $space0;
-			&.checkbox-label {
-				margin: $space1 0px 0px;
-				padding: 0px;
-			}
+			// &.checkbox-label {
+			// 	// margin: $space1 0px 0px;
+			// 	// padding: 0px;
+			// }
 		}
 		textarea {
 			resize: vertical;
 		}
 		select {
 			padding-left: $space1;
+		}
+		
+	}
+
+	.checkbox-container {
+		display: inline;
+		margin: $space1 0px 0px;
+		label {
+			margin: 0px;
+			padding: 0px;
 		}
 	}
 
