@@ -1,12 +1,6 @@
 @import './constants.css.scss';
-@import "bootstrap";
+@import 'bootstrap';
 
-
-@mixin box_sizing {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
-}
 
 html, body { 
   height: 100%;
@@ -32,7 +26,7 @@ p {
 a { 
   text-decoration: none;
   &:link, &:visited, &:hover, &:active {
-    text-decoration: none
+    text-decoration: none;
   }
 }
 
@@ -77,4 +71,14 @@ form.button_to {
   width: $space9;
   margin: 0px;
   padding: 0px;
+}
+
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+		background-color: $red9;
+    &:focus {
+		  background-color: white;
+    }
+  }
 }
