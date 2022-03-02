@@ -20,5 +20,5 @@
           %td= sample.size
           %td= sample.description
           %td
-            = link_to 'view', sample, title: "Details of fungi sample #{sample.id}"
+            = link_to('view', sample, title: "Details of fungi sample #{sample.id}")
             = link_to('edit', edit_fungi_sample_path(sample), title: 'Edit sample') if sample.editable_by?(current_user)
