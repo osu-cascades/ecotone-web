@@ -11,7 +11,7 @@ RSpec.feature 'Admin deletes a plot' do
       scenario 'by selecting an existing plot' do
         visit plot_path(1)
         click_link 'Delete'
-        expect(page).to have_content('Plot was successfully destroyed.')
+        expect(page).to have_content('Plot was successfully deleted.')
       end
 
 
