@@ -21,4 +21,8 @@ module ApplicationHelper
       'missing.png'
     end
   end
+
+  def last_updated(entity)
+    entity.updated_at&.to_formatted_s(:long)
+  end
 end
