@@ -29,7 +29,7 @@
     %h2.heading#table-heading Information
     %table.table#vertical-table
       %thead
-        %th.citation.italic{colspan: '2'} Last updated #{@plot.updated_at&.to_formatted_s(:long)  }
+        %th.citation.italic{colspan: '2'} Last updated #{last_updated(@plot)}
       %tbody
         %tr
           %th{scope: 'row'} Featured Plant
