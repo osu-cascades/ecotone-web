@@ -11,7 +11,7 @@ RSpec.feature 'Admin deletes a plant' do
       scenario 'by selecting an existing plant' do
         visit plant_path(1)
         click_link 'Delete'
-        expect(page).to have_content('Plant was successfully destroyed.')
+        expect(page).to have_content('Plant was successfully deleted.')
       end
 
 

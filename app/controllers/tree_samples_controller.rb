@@ -57,7 +57,7 @@ class TreeSamplesController < ApplicationController
   def destroy
     @tree_sample.destroy
     respond_to do |format|
-      format.html { redirect_to tree_samples_url, flash: {notice: 'Tree sample was successfully destroyed.'} }
+      format.html { redirect_to tree_samples_url, flash: {notice: 'Tree sample was successfully deleted.'} }
       format.json { head :no_content }
     end
   end

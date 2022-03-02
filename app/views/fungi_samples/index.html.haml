@@ -1,15 +1,13 @@
 - content_for_title('Fungi Samples')
 - content_for(:subnav) do
   = button_to('Add Sample', new_fungi_sample_path, class: 'button primary', title: 'Add a new fungi sample', method: 'get')
-
 %section
-  %h2 Sample Information
   %table.table
     %thead
       %tr
-        %th{scope: 'col'} Id
-        %th{scope: 'col'} Collection date
-        %th{scope: 'col'} Location within plot
+        %th{scope: 'col'} ID
+        %th{scope: 'col'} Collection Date
+        %th{scope: 'col'} Location in Plot
         %th{scope: 'col'} Size
         %th{scope: 'col'} Description
         %th{scope: 'col'}
@@ -22,5 +20,5 @@
           %td= sample.size
           %td= sample.description
           %td
-            = link_to 'view', sample, title: "Details of fungi sample #{sample.id}"
+            = link_to('view', sample, title: "Details of fungi sample #{sample.id}")
             = link_to('edit', edit_fungi_sample_path(sample), title: 'Edit sample') if sample.editable_by?(current_user)

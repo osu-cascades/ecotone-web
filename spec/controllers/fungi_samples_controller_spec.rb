@@ -104,7 +104,7 @@ RSpec.describe FungiSamplesController, type: :controller do
 
     it 'produces correct flash notice' do
       delete :destroy, params: { id: @fungi_sample }
-      assert_equal 'Fungi sample was successfully destroyed.', flash[:success]
+      assert_equal 'Fungi sample was successfully deleted.', flash[:success]
     end
   end
 end

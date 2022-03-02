@@ -93,6 +93,7 @@
 		label {
 			margin: 0px;
 			padding: 0px;
+			width: 85px;
 		}
 	}
 
@@ -109,10 +110,42 @@
 	}
 }
 
-@media (max-width: 500px) {
-  // .content {
-  //   grid-auto-flow: row;
-	// 	align-items: center;
-  // 	justify-items: center;
-  // }
+@media (max-width: 800px) {
+	.form {
+		.content {
+			grid-template-columns: none;
+			grid-auto-flow: row;
+			align-items: center;
+			justify-items: center;
+			.caption {
+				padding-bottom: 0px;
+				text-align: center;
+			}
+			.input {
+				width: $space12;
+			}
+			#form {
+				justify-content: center;
+			}
+		}
+		.btn-form {
+			grid-auto-flow: row;
+			row-gap: $space2;
+			justify-content: center;
+			.primary {
+				grid-area: 1;
+			}
+		}
+	}
 }
+
+@media (max-width: 500px) {
+	.form {
+		.content {
+			.input {
+				width: $space11;
+			}
+		}
+	}
+}
+

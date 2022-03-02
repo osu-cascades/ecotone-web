@@ -54,7 +54,7 @@ class SpeciesVariationObservationsController < ApplicationController
   def destroy
     @species_variation_observation.destroy
     respond_to do |format|
-      format.html { redirect_to species_variation_observations_url, flash: { sucess: 'Species variation observation was successfully destroyed.' } }
+      format.html { redirect_to species_variation_observations_url, flash: { sucess: 'Species variation observation was successfully deleted.' } }
       format.json { head :no_content }
     end
   end

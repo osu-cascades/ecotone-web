@@ -58,7 +58,7 @@ class PlantSamplesController < ApplicationController
   def destroy
     @plant_sample.destroy
     redirect_to plant_samples_path
-    flash[:success] = 'Plant sample was successfully destroyed.'
+    flash[:success] = 'Plant sample was successfully deleted.'
   end
 
   private
