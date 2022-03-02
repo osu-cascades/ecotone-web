@@ -2,8 +2,8 @@ class PlantsController < ApplicationController
   before_action :set_plant, only: [:show, :edit, :update, :destroy, :download_qr]
   before_action :login_required, only: [:new, :create, :edit, :update, :destroy]
   before_action :admin_required, only: [:new, :create, :edit, :update, :destroy]
+  before_action :redirect_cancel_new, :only => [:create]
   before_action :redirect_cancel_edit, :only => [:update]
-  before_action :redirect_cancel_edit, :only => [:create]
 
   def index
     @plants = Plant.all
@@ -36,25 +36,25 @@ class PlantsController < ApplicationController
     end
   end
 
+  def redirect_cancel_new
+    redirect_to plants_path if params[:cancel]
+  end
+
   def redirect_cancel_edit
     redirect_to @plant if params[:cancel]
   end
 
-  def redirect_cancel_new
-    redirect_to plants_path if params[:cancel]
+  def delete_image_attachment
+    @photo = ActiveStorage::Attachment.find(params[:id])
+    @photo.purge
+    redirect_back fallback_location: @plant
+    flash[:success] = 'Photo was successfully deleted.'
   end
 
   def destroy
     @plant.destroy
     redirect_to plants_path
-    flash[:success] = 'Plant was successfully destroyed.'
-  end
-
-  def delete_plant_image_attachment
-    @photo = ActiveStorage::Attachment.find(params[:id])
-    @photo.purge
-    redirect_back fallback_location: plants_path
-    flash[:success] = 'Photo was successfully deleted.'
+    flash[:success] = 'Plant was successfully deleted.'
   end
 
   def download_qr
