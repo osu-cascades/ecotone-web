@@ -125,7 +125,7 @@ RSpec.describe PlotsController, type: :controller do
 
     it 'produces correct flash notice' do
       delete :destroy, params: { id: @plot }
-      assert_equal 'Plot was successfully destroyed.', flash[:success]
+      assert_equal 'Plot was successfully deleted.', flash[:success]
     end
   end
 
