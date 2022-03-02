@@ -59,7 +59,7 @@ class FungiSamplesController < ApplicationController
   def destroy
     @fungi_sample.destroy
     respond_to do |format|
-      format.html { redirect_to fungi_samples_url, flash: {success: 'Fungi sample was successfully destroyed.'} }
+      format.html { redirect_to fungi_samples_url, flash: {success: 'Fungi sample was successfully deleted.'} }
       format.json { head :no_content }
     end
   end

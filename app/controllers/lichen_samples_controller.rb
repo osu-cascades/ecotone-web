@@ -49,7 +49,7 @@ class LichenSamplesController < ApplicationController
   def destroy
     @lichen_sample.destroy
     respond_to do |format|
-      format.html { redirect_to lichen_samples_url, flash: {success: 'Lichen sample was successfully destroyed.'} }
+      format.html { redirect_to lichen_samples_url, flash: {success: 'Lichen sample was successfully deleted.'} }
       format.json { head :no_content }
     end
   end

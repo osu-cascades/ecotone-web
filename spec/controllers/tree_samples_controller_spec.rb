@@ -90,7 +90,7 @@ RSpec.describe TreeSamplesController, type: :controller do
 
     it 'produces correct flash notice' do
       delete :destroy, params: { id: @tree_sample }
-      assert_equal 'Tree sample was successfully destroyed.', flash[:notice]
+      assert_equal 'Tree sample was successfully deleted.', flash[:notice]
     end
   end
 end
