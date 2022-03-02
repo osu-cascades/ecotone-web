@@ -19,8 +19,9 @@ class TreeSample < ApplicationRecord
   validates_numericality_of :latitude, allow_nil: true
   validates_numericality_of :longitude, allow_nil: true
 
-  has_one_attached :photo
+  has_many_attached :photo
   validates :photo, content_type: ['image/jpg', 'image/png', 'image/jpeg']
+
   def to_s
     "#{plant} in #{plot} on #{collected_on} by #{user}"
   end

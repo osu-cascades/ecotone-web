@@ -7,7 +7,7 @@ class LichenSample < ApplicationRecord
   validates :location_within_plot, presence: true
   validates :description, presence: true
 
-  has_one_attached :photo
+  has_many_attached :photo
   validates :photo, content_type: ['image/jpg', 'image/png', 'image/jpeg']
 
   def to_s

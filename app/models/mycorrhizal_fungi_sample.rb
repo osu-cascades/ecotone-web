@@ -13,7 +13,7 @@ class MycorrhizalFungiSample < ApplicationRecord
   validates_inclusion_of :visible_hyphae, in: [true, false]
   validates_numericality_of :hyphae_coverage, if: :has_visible_hyphae?, only_integer: true, greater_than: 0, less_than_or_equal_to: 100
 
-  has_one_attached :photo
+  has_many_attached :photo
   validates :photo, content_type: ['image/jpg', 'image/png', 'image/jpeg']
 
   def has_visible_hyphae?
