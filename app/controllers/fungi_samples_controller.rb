@@ -2,6 +2,8 @@ class FungiSamplesController < ApplicationController
   before_action :login_required
   before_action :admin_required, only: :destroy
   before_action :set_fungi_sample, only: [:show, :edit, :update, :destroy]
+  before_action :redirect_cancel_new, :only => [:create]
+  before_action :redirect_cancel_edit, :only => [:update]
 
   def index
     @fungi_samples = FungiSample.all
@@ -46,10 +48,18 @@ class FungiSamplesController < ApplicationController
     end
   end
 
+  def redirect_cancel_new
+    redirect_to fungi_samples_path if params[:cancel]
+  end
+
+  def redirect_cancel_edit
+    redirect_to @fungi_sample if params[:cancel]
+  end
+
   def destroy
     @fungi_sample.destroy
     respond_to do |format|
-      format.html { redirect_to fungi_samples_url, flash: {success: 'Fungi sample was successfully destroyed.'} }
+      format.html { redirect_to fungi_samples_url, flash: {success: 'Fungi sample was successfully deleted.'} }
       format.json { head :no_content }
     end
   end

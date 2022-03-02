@@ -25,7 +25,7 @@ RSpec.describe BiodiversityReportsController, type: :controller do
 
     it 'produces correct flash notice' do
       delete :destroy, params: { id: @biodiversity_report }
-      assert_equal 'Biodiversity report was successfully destroyed.', flash[:success]
+      assert_equal 'Biodiversity report was successfully deleted.', flash[:success]
     end
   end
 end

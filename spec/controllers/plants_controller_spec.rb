@@ -117,7 +117,7 @@ RSpec.describe PlantsController, type: :controller do
 
     it 'produces correct flash notice' do
       delete :destroy, params: { id: @plant }
-      assert_equal 'Plant was successfully destroyed.', flash[:success]
+      assert_equal 'Plant was successfully deleted.', flash[:success]
     end
   end
 

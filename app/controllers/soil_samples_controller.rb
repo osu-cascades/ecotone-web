@@ -51,7 +51,7 @@ class SoilSamplesController < ApplicationController
   def destroy
     @soil_sample.destroy
     respond_to do |format|
-      format.html { redirect_to soil_samples_url, flash: {success: 'Soil sample was successfully destroyed.'} }
+      format.html { redirect_to soil_samples_url, flash: {success: 'Soil sample was successfully deleted.'} }
       format.json { head :no_content }
     end
   end
