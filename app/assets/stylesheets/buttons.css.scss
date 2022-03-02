@@ -49,6 +49,26 @@
   }
 }
 
+.delete {
+  width: $space7;
+  color: white;
+  background-color: $red4;
+  border-color: $red4;
+  transition: all .15s ease-in-out;
+  &:hover, &:focus, &:focus-visible {
+    color: white;
+    background-color: $red4;
+    border-color: $red4;
+    outline: 0px;
+    transform: scale(1.1);
+  }
+  &:active {
+    color: white;
+    background-color: $red3;
+    border-color: $red3;
+  }
+}
+
 .btn-icon {
 	height: $space5;
 	width: $space5;

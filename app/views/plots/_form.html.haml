@@ -59,7 +59,9 @@
       .input
         .gallery#form
           - @plot.photo.each_with_index do |image, index|
-            .img-square{ :style => "background-image: url(#{rails_blob_url(photo(@plot, index))})", :alt => "Photo of #{image}" }
+            .overlay-container
+              .img-square{ :style => "background-image: url(#{rails_blob_url(photo(@plot, index))})", :alt => "Photo of #{image}" }
+              %button.button.delete.overlay Delete
         = form.file_field :photo, multiple: true
     .btn-form
       = button_to('Cancel', @plot, name: 'cancel', class: 'button secondary', method: 'get')
