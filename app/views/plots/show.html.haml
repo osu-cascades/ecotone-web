@@ -26,7 +26,7 @@
             = content_tag(:i, '', :class => "icon-chevron-right")
     %p.center.space.italic= @plot.formatted_location_description
   .info
-    %h2.heading#plot-heading Information
+    %h2.heading#table-heading Information
     %table.table#vertical-table
       %thead
         %th.citation.italic{colspan: '2'} Last updated #{@plot.updated_at&.to_formatted_s(:long)  }
