@@ -6,7 +6,7 @@ class PlantsController < ApplicationController
   before_action :redirect_cancel_edit, :only => [:create]
 
   def index
-    @plants = Plant.all
+    @plants = Plant.all.sort_by {|plant| plant.common_name.downcase}
   end
 
   def show; end
