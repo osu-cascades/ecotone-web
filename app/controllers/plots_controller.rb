@@ -2,8 +2,9 @@ class PlotsController < ApplicationController
   before_action :set_plot, only: [:show, :edit, :update, :destroy, :download_qr]
   before_action :login_required, except: [:index, :show, :download_qr]
   before_action :admin_required, except: [:index, :show, :download_qr]
-  before_action :redirect_cancel_edit, :only => [:update]
   before_action :redirect_cancel_new, :only => [:create]
+  before_action :redirect_cancel_edit, :only => [:update]
+
 
   def index
     @plots = Plot.order(:plot_id)
@@ -41,25 +42,25 @@ class PlotsController < ApplicationController
     end
   end
 
-  def redirect_cancel_edit
-    redirect_to @plot if params[:cancel]
-  end
-
   def redirect_cancel_new
     redirect_to plots_path if params[:cancel]
   end
 
-  def delete_plot_image_attachment
+  def redirect_cancel_edit
+    redirect_to @plot if params[:cancel]
+  end
+
+  def delete_image_attachment
     @photo = ActiveStorage::Attachment.find(params[:id])
     @photo.purge
-    redirect_back fallback_location: plots_path
+    redirect_back fallback_location: @plot
     flash[:success] = 'Photo was successfully deleted.'
   end
 
   def destroy
     @plot.destroy
     redirect_to plots_path
-    flash[:success] = 'Plot was successfully destroyed.'
+    flash[:success] = 'Plot was successfully deleted.'
   end
 
   def download_qr
