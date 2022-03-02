@@ -7,11 +7,11 @@
 $osu-orange: #C34500;
 $gray-medium-light: #eaeaea;
 
-@mixin box_sizing {
+<%# @mixin box_sizing {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-}
+} %>
 
 
 // Universal
@@ -46,49 +46,6 @@ ul.pagination {
   }
 }
 
-.alert {
-  ul {
-    margin: 0 0 30px 0;
-  }
-}
-
-.alert .alert-heading {
-  margin: 0 0 10px 0;
-}
-
-.alert ul {
-  margin: 0px;
-}
-
-// Devise alerts
-
-.alert-error {
-    background-color: #f2dede;
-    border-color: #eed3d7;
-    color: #b94a48;
-    text-align: left;
- }
-
-.alert-alert {
-    background-color: #f2dede;
-    border-color: #eed3d7;
-    color: #b94a48;
-    text-align: left;
- }
-
-.alert-success {
-    background-color: #dff0d8;
-    border-color: #d6e9c6;
-    color: #468847;
-    text-align: left;
- }
-
-.alert-notice {
-    background-color: #dff0d8;
-    border-color: #d6e9c6;
-    color: #468847;
-    text-align: left;
- }
 
 // Header
 
@@ -98,13 +55,13 @@ a.navbar-brand img {
 }
 
 
-.debug_dump {
+<%# .debug_dump {
   clear: both;
   float: left;
   width: 100%;
   margin-top: 45px;
   @include box-sizing;
-}
+} %>
 
 
 // Sign In
@@ -118,44 +75,6 @@ a.navbar-brand img {
     height: 46px;
   }
 }
-
-// Forms
-
-input, textarea, select, .uneditable-input {
-  border: 1px solid #bbb;
-  width: 100%;
-  margin-bottom: 15px;
-  @include box_sizing;
-}
-
-input[type="checkbox"] {
-  margin-bottom: 15px;
-  box-shadow: none !important;
-}
-
-textarea {
-  resize: vertical;
-}
-
-.field_with_errors {
-  @extend .has-error;
-  .form-control {
-    color: $state-danger-text;
-  }
-}
-
-.g-recaptcha {
-  margin-bottom: 15px;
-}
-
-form img {
-  margin-bottom: 20px;
-}
-
-label.form-label-photo {
-  display: block;
-}
-
 
 // Model indexes
 
@@ -181,85 +100,6 @@ ul.indexing {
       margin: 0px;
     }
   }
-}
-
-.citation {
-  color: #4C4C4C;
-  font-size: 0.8em;
-}
-
-.qr {
-  border-width: 0;
-  border-style: none;
-  border-color: #0000ff;
-  border-collapse: collapse;
-  width: 50%;
-}
-.qr td {
-  border-width: 0;
-  border-style: none;
-  border-color: #0000ff;
-  border-collapse: collapse;
-  padding: 0;
-  margin: 0;
-  width: 0px;
-  height: 10px;
-}
-.qr td.black { background-color: #000; }
-.qr td.white { background-color: #fff; }
-
-
-
-// Biodiversity Report temperature slider / input range.
-// See app/javascript/biodiversiy_reports
-
-#temperature_wrapper input {
-  width: 90%;
-  display: inline;
-}
-
-#temperature_value {
-  display: inline-block;
-  width: 10%;
-  text-align: right;
-  font-size: 1.1em;
-}
-
-//Plot image carousel
-
-.carousel-control-prev
- {
-  position: absolute;
-  top: 50%;
-  bottom: 0;
-  right: 440px;
-  width:  30;
-  font-size: 35px;
-  color: $gray-medium-light;
-  text-align: center;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
-  background-color: rgba(0, 0, 0, 0);
-  filter: alpha(opacity=50);
-}
-
-.carousel-control-next
- {
-  position: absolute;
-  top: 50%;
-  bottom: 0;
-  left: 270px;
-  width:  20%; 
-  font-size: 35px;
-  color:	$gray-medium-light;
-  text-align: center;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, .6);
-  background-color: rgba(0, 0, 0, 0);
-  filter: alpha(opacity=50);
-}
-
-.carousel_photos {
-  padding-left: 20px;
-  padding-bottom: 10px;
 }
 
 #map {

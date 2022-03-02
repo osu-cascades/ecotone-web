@@ -104,7 +104,7 @@ RSpec.describe NonvascularPlantSamplesController, type: :controller do
 
     it 'produces correct flash notice' do
       delete :destroy, params: { id: @nonvascular_plant_sample }
-      assert_equal 'Nonvascular plant sample was successfully destroyed.', flash[:success]
+      assert_equal 'Nonvascular plant sample was successfully deleted.', flash[:success]
     end
   end
 end

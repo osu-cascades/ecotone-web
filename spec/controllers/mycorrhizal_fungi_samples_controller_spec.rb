@@ -104,7 +104,7 @@ RSpec.describe MycorrhizalFungiSamplesController, type: :controller do
 
     it 'produces correct flash notice' do
       delete :destroy, params: { id: @mycorrhizal_fungi_sample }
-      assert_equal 'Mycorrhizal fungi sample was successfully destroyed.', flash[:success]
+      assert_equal 'Mycorrhizal fungi sample was successfully deleted.', flash[:success]
     end
   end
 end

@@ -6,7 +6,7 @@ class PlantSample < ApplicationRecord
   belongs_to :user
   has_and_belongs_to_many :biodiversity_reports
 
-  has_one_attached :photo
+  has_many_attached :photo
   validates :photo, content_type: ['image/jpg', 'image/png']
 
   validates_presence_of :collected_on

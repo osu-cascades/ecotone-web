@@ -49,7 +49,7 @@ class NonvascularPlantSamplesController < ApplicationController
   def destroy
     @nonvascular_plant_sample.destroy
     respond_to do |format|
-      format.html { redirect_to nonvascular_plant_samples_url, flash: {success: 'Nonvascular plant sample was successfully destroyed.'} }
+      format.html { redirect_to nonvascular_plant_samples_url, flash: {success: 'Nonvascular plant sample was successfully deleted.'} }
       format.json { head :no_content }
     end
   end

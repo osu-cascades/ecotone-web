@@ -26,10 +26,10 @@
             = content_tag(:i, '', :class => "icon-chevron-right")
     %p.center.space.italic= @plot.formatted_location_description
   .info
-    %h2.heading#plot-heading Information
-    %table.table#plot-table
+    %h2.heading#table-heading Information
+    %table.table#vertical-table
       %thead
-        %th.citation.italic{colspan: '2'} Last updated #{@plot.updated_at&.to_formatted_s(:long)  }
+        %th.citation.italic{colspan: '2'} Last updated #{last_updated(@plot)}
       %tbody
         %tr
           %th{scope: 'row'} Featured Plant
@@ -56,10 +56,10 @@
           %th{scope: 'row'} Inoculated?
           %td= @plot.inoculated ? 'Yes' : 'No'
         %tr
-          %th{scope: 'row'} Initial planting date
+          %th{scope: 'row'} Initial Planting Date
           %td= @plot.initial_planting_date
         %tr
-          %th{scope: 'row'} Initial succession
+          %th{scope: 'row'} Initial Succession
           %td= @plot.initial_succession
 - if @plot.featured_plant 
   %h2.center= @plot.featured_plant.common_name.titleize

@@ -53,7 +53,7 @@ class MycorrhizalFungiSamplesController < ApplicationController
   def destroy
     @mycorrhizal_fungi_sample.destroy
     respond_to do |format|
-      format.html { redirect_to mycorrhizal_fungi_samples_url, flash: {success: 'Mycorrhizal fungi sample was successfully destroyed.'} }
+      format.html { redirect_to mycorrhizal_fungi_samples_url, flash: {success: 'Mycorrhizal fungi sample was successfully deleted.'} }
       format.json { head :no_content }
     end
   end

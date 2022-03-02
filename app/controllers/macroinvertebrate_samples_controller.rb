@@ -49,7 +49,7 @@ class MacroinvertebrateSamplesController < ApplicationController
   def destroy
     @macroinvertebrate_sample.destroy
     respond_to do |format|
-      format.html { redirect_to macroinvertebrate_samples_url, flash: {success: 'Macroinvertebrate sample was successfully destroyed.'} }
+      format.html { redirect_to macroinvertebrate_samples_url, flash: {success: 'Macroinvertebrate sample was successfully deleted.'} }
       format.json { head :no_content }
     end
   end

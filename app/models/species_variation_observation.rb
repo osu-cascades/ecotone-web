@@ -2,7 +2,7 @@ class SpeciesVariationObservation < ApplicationRecord
   belongs_to :user
   belongs_to :plot
   belongs_to :plant
-  has_one_attached :photo
+  has_many_attached :photo
   validates :photo, content_type: ['image/jpg', 'image/png', 'image/jpeg']
 
   validates :observed_on, presence: true
