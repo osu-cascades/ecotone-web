@@ -8,21 +8,7 @@
       = link_to(content_tag(:i, '', :class => "icon-edit"), edit_plant_path(@plant), class: 'btn-icon', title: "Edit #{@plant}")
       = link_to(content_tag(:i, '', :class => "icon-trash"), @plant, method: :delete, data: { confirm: "Delete #{@plant.common_name}?" }, class: 'btn-icon', title: "Delete #{@plant}")
 .content
-  - if @plant.photo.length == 0
-    .img-square.default
-      = image_tag(photo(@plant), alt: "Photo of #{@plant.photo}")
-  - elsif @plant.photo.length == 1
-    .img-square{ :style => "background-image: url(#{rails_blob_url(photo(@plant))})", :alt => "Photo of #{@plant.photo}" }
-  - else
-    #plantCarousel.carousel{"data-interval" => "false"}
-      .center
-        %a.carousel-control-prev.btn-icon#chevron{"data-slide" => "prev", :href => "#plantCarousel", :role => "button"}
-          = content_tag(:i, '', :class => "icon-chevron-left")
-        .carousel-inner
-          - @plant.photo.each_with_index do |image, index|
-            %div{ :class => "img-square item #{index == 0 ? 'active' : ''}", :style => "background-image: url(#{rails_blob_url(photo(@plant, index))})", :alt => "Photo of #{image}" }
-        %a.carousel-control-next.btn-icon#chevron{"data-slide" => "next", :href => "#plantCarousel", :role => "button"}
-          = content_tag(:i, '', :class => "icon-chevron-right")
+  = render 'layouts/image_carousel', entity: @plant
   .info
     %h2.heading.light-italic
       = @plant.scientific_name.capitalize

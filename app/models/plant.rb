@@ -14,4 +14,8 @@ class Plant < ApplicationRecord
   def to_s
     "#{common_name} (#{scientific_name})"
   end
+
+  def form_common_name
+    common_name.titleize
+  end
 end

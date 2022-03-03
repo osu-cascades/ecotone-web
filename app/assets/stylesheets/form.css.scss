@@ -1,0 +1,151 @@
+@import './constants.css.scss';
+
+.form {
+	display: grid;
+	grid-auto-flow: row;
+	margin: $space4;
+	justify-content: center;
+	
+	.content {
+		display: grid;
+		grid-template-columns: $space11 $space13;
+		border-top: 1px solid $grey7;
+		margin: 0px;
+		padding-left: $space0;
+		padding-right: $space0;
+	}
+
+	.caption {
+		padding: $space3;
+		h3 {
+			margin: 0px 0px $space1;
+		}
+		p {
+			color: $grey4;
+			font-size: $txt1;
+		}
+	}
+
+	.input {
+		display: grid;
+		grid-auto-flow: rows;
+		row-gap: $space3;
+		padding: $space3;
+		margin-bottom: $space1;
+		font-size: $txt2;
+	}
+
+	.gallery {
+		&#form {
+			justify-content: left;
+			margin: 0px;
+			padding: 0px;
+		}
+
+		.overlay-container {
+			display: grid;
+			margin: 0px $space2 $space2 0px;
+			position: relative;
+			height: $space9;
+			width: $space9;
+			&:hover .img-square{
+				opacity: 0.3;
+			}
+			&:hover .overlay{
+				opacity: 1;
+			}
+		}
+
+		.img-square {
+			margin: 0px $space2 $space2 0px;
+			width: 100%;
+			height: 100%;
+			transition: 0.35s ease;
+		}
+
+		.overlay {
+			position: absolute;
+			align-self: center;
+			justify-self: center;
+			opacity: 0;
+			transition: 0.35s ease;
+		}
+	}
+
+	.data {
+		label {
+			color: $grey3;
+			font-family: 'graphik-light';
+			font-weight: 100;
+			margin-bottom: $space0;
+		}
+		textarea {
+			resize: vertical;
+		}
+		select {
+			padding-left: $space1;
+		}
+	}
+
+	.checkbox-container {
+		display: inline;
+		margin: $space1 0px 0px;
+		label {
+			margin: 0px;
+			padding: 0px;
+			width: 85px;
+		}
+	}
+
+	.submit {
+		margin-right: $space0;
+	}
+}
+
+.form-control {
+	height: $txt7;
+	&:focus, &:focus-visible{
+		border-color: $orange6;
+		box-shadow: $border-orange;
+	}
+}
+
+@media (max-width: 800px) {
+	.form {
+		.content {
+			grid-template-columns: none;
+			grid-auto-flow: row;
+			align-items: center;
+			justify-items: center;
+			.caption {
+				padding-bottom: 0px;
+				text-align: center;
+			}
+			.input {
+				width: $space12;
+			}
+			#form {
+				justify-content: center;
+			}
+		}
+		.btn-form {
+			grid-auto-flow: row;
+			row-gap: $space2;
+			justify-content: center;
+			.primary {
+				grid-area: 1;
+			}
+		}
+	}
+}
+
+@media (max-width: 500px) {
+	.form {
+		.content {
+			.input {
+				width: $space11;
+			}
+		}
+	}
+}
+

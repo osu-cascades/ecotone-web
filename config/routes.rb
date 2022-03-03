@@ -28,13 +28,13 @@ Rails.application.routes.draw do
 
   resources :plots do
     member do
-      delete :delete_plot_image_attachment
+      delete :delete_image_attachment
     end
   end
 
   resources :plants do
     member do
-      delete :delete_plant_image_attachment
+      delete :delete_image_attachment
     end
   end
 

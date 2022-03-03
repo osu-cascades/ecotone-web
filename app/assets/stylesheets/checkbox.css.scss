@@ -1,0 +1,39 @@
+@import './constants.css.scss';
+
+input[type="checkbox"] {
+	appearance: none;
+	margin: 0px $space2 0px !important;
+	padding: 3px 6px 3px !important;
+	vertical-align: text-bottom;
+	height: $txt4;
+	width: $txt4;
+	outline: 0px;
+	border-radius: $space0;
+	background-color: white;
+	border: 1px solid #ccc;
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	cursor: pointer;
+	&::before {
+		position: absolute;
+		content: '';
+		width: 6px;
+		height: 12px;
+		border-style: solid;
+		color: white;
+		border-width: 0 3px 3px 0;
+		transform: rotate(38deg);
+		opacity: 0;
+	}
+	&:hover{
+		border-color: $orange6;
+		box-shadow: $border-orange;
+	}
+	&:checked {
+		border-color: $orange5;
+		background: $orange5;
+		box-shadow: none;
+		&::before {
+			opacity: 1;
+		}
+	}
+}

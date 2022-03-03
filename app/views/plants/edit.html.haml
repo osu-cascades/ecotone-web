@@ -1,2 +1,4 @@
-- content_for_title("Edit #{@plant.common_name}")
+- content_for_title("Edit #{@plant.common_name.titleize}")
+- content_for(:subnav) do
+  = button_to('« Back', @plant, class: 'button primary', method: 'get')
 = render partial: 'form'

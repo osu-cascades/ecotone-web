@@ -104,7 +104,7 @@ RSpec.describe SoilSamplesController, type: :controller do
 
     it 'produces correct flash notice' do
       delete :destroy, params: { id: @soil_sample }
-      assert_equal 'Soil sample was successfully destroyed.', flash[:success]
+      assert_equal 'Soil sample was successfully deleted.', flash[:success]
     end
   end
 end

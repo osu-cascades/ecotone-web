@@ -1,5 +1,4 @@
 require 'simplecov'
-#require 'paperclip/matchers'
 
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
@@ -8,13 +7,17 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 
 require 'spec_helper'
 require 'rspec/rails'
-require 'capybara/poltergeist' # Add additional requires below this line.
+require 'capybara/rspec' # Add additional requires below this line.
 require 'devise'
 
-Capybara.javascript_driver = :poltergeist
 
-# Alternatively, in the individual `*_spec.rb` files, manually
-# require only the support files necessary.
+
+Capybara.register_driver :rack_test do |app|
+  Capybara::RackTest::Driver.new(app, :respect_data_method => true)
+end
+
+Capybara.default_driver = :rack_test
+
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 ActiveRecord::Migration.maintain_test_schema!

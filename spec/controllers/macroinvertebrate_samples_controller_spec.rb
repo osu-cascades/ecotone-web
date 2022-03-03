@@ -104,7 +104,7 @@ RSpec.describe MacroinvertebrateSamplesController, type: :controller do
 
     it 'produces correct flash notice' do
       delete :destroy, params: { id: @macroinvertebrate_sample }
-      assert_equal 'Macroinvertebrate sample was successfully destroyed.', flash[:success]
+      assert_equal 'Macroinvertebrate sample was successfully deleted.', flash[:success]
     end
   end
 end

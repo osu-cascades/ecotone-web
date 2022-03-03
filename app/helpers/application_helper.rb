@@ -13,4 +13,16 @@ module ApplicationHelper
     provide(:title, title)
     content_for(:screen_title) { content_tag(:h1, class: 'center') { title } }
   end
+
+  def photo(entity, idx = 0)
+    if entity.photo.attached?
+      entity.photo[idx]
+    else
+      'missing.png'
+    end
+  end
+
+  def last_updated(entity)
+    entity.updated_at&.to_formatted_s(:long)
+  end
 end
