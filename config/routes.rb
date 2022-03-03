@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root    'static_pages#home'
 
   get     'map' , to: 'static_pages#map'
+  get     'plots/leaflet', to: 'plots#map'
 
   resources :users
   resources :biodiversity_reports
@@ -15,9 +16,6 @@ Rails.application.routes.draw do
 
   resources :plant_samples
   get 'export' => 'plant_samples#export'
-
-  resources :map
-  get     'map_2', to: 'map#show'
 
   resources :fungi_samples
   resources :lichen_samples
@@ -39,4 +37,5 @@ Rails.application.routes.draw do
       delete :delete_image_attachment
     end
   end
+
 end

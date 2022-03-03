@@ -10,7 +10,12 @@ class PlotsController < ApplicationController
     @plots = Plot.order(:plot_id)
   end
 
-  def show; end
+  def map
+    @plots = Plot.all
+  end;
+
+  def show; 
+  end
 
   def new
     @plot = Plot.new
