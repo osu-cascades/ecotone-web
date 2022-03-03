@@ -95,3 +95,29 @@
           %td= @plot.featured_plant.habitat_type
           %td= @plot.featured_plant.tolerance
           %td{class: ('danger' if @plot.featured_plant.invasive)}= @plot.featured_plant.invasive? ? 'Yes' : 'No'
+.info 
+  %section
+    %h2 Biodiversity Report Data
+    %table.table
+      %thead
+        %tr
+          %th{scope: 'col'} Id
+          %th{scope: 'col'} Measured on
+          %th{scope: 'col'} Plot
+          %th{scope: 'col'} Temperature
+          %th{scope: 'col'} Species richness
+          %th{scope: 'col'} Diversity index
+          %th{scope: 'col'} Species evenness
+          %th{scope: 'col'} Biomass estimate
+          %th{scope: 'col'}
+      %tbody
+        - @plot.biodiversity_reports.each do |report|
+          %tr
+            %td= report.id
+            %td= report.measured_on.to_formatted_s(:long)
+            %td= report.plot
+            %td= report.temperature
+            %td= report.species_richness
+            %td= report.diversity_index
+            %td= report.species_evenness
+            %td= report.biomass_estimate
