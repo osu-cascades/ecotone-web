@@ -1,23 +1,43 @@
-.row
-  .col-md-6.col-md-offset-3
-    = form_for(@plant, html: {multipart: true}) do |form|
-      = form_errors_for(@plant)
-      = form.label :common_name
-      = form.text_field :common_name, class: 'form-control'
-      = form.label :scientific_name
-      = form.text_field :scientific_name, class: 'form-control'
-      = form.label :description
-      = form.text_area :description, class: 'form-control', rows: 5
-      = form.label :citation
-      = form.text_field :citation, class: 'form-control'
-      = form.label :invasive, 'Invasive?'
-      = form.check_box(:invasive)
-      = form.label :habitat_type
-      = form.text_field :habitat_type, class: 'form-control'
-      = form.label :tolerance
-      = form.text_field :tolerance, class: 'form-control'
-      = form.label :photo, class: 'form-label-photo'
-      - (0...@plant.photo.count).each do |photo|
-        = image_tag(@plant.photo[photo].variant(resize: "200x200"), alt: "Photo of #{@plant.photo}") unless @plant.new_record? if @plant.photo.attached?
-      = form.file_field :photo, multiple: true, class: 'form-control'
-      = form.submit class: 'btn btn-primary'
+.form
+  = form_for(@plant, html: { multipart: true }) do |form|
+    = form_errors_for(@plant)
+    .content
+      .caption
+        %h3 Information 
+        %p.italic Fill in general details about the plant
+      .input
+        .data
+          = form.label :common_name
+          = form.text_field :common_name, class: 'form-control'
+        .data
+          = form.label :scientific_name
+          = form.text_field :scientific_name, class: 'form-control'
+        .data
+          = form.label :description
+          = form.text_area :description, class: 'form-control'
+        .data
+          = form.label :citation
+          = form.text_field :citation, class: 'form-control'
+        .data.checkbox-container
+          = form.label :invasive, 'Invasive?'
+          = form.check_box :invasive
+        .data
+          = form.label :habitat_type
+          = form.text_field :habitat_type, class: 'form-control'
+        .data
+          = form.label :tolerance
+          = form.text_field :tolerance, class: 'form-control'
+    .content
+      .caption
+        %h3 Photos
+        %p.italic Include pictures for easier plant identification
+      .input
+        .gallery#form
+          - @plant.photo.each_with_index do |image, index|
+            .overlay-container
+              .img-square{ :style => "background-image: url(#{rails_blob_url(photo(@plant, index))})", :alt => "Photo of #{image}" }
+              = link_to("Delete", delete_image_attachment_plot_url(image), method: :delete, class: 'button delete overlay')
+        = form.file_field :photo, multiple: true
+    .btn-form
+      = button_to('Cancel', @plant, name: 'cancel', class: 'button secondary', method: 'get')
+      = form.submit class: 'button primary submit'

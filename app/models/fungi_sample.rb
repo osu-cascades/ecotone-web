@@ -8,7 +8,7 @@ class FungiSample < ApplicationRecord
   validates_numericality_of :size, greater_than_or_equal_to: 0
   validates :description, presence: true
 
-  has_one_attached :photo
+  has_many_attached :photo
   validates :photo, content_type: ['image/jpg', 'image/png', 'image/jpeg']
 
   def to_s

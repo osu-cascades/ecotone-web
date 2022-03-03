@@ -43,7 +43,7 @@ class BiodiversityReportsController < ApplicationController
     @biodiversity_report = BiodiversityReport.find(params[:id])
     @biodiversity_report.destroy
     redirect_to biodiversity_reports_path
-    flash[:success] = 'Biodiversity report was successfully destroyed.'
+    flash[:success] = 'Biodiversity report was successfully deleted.'
   end
 
   private

@@ -11,7 +11,7 @@ class MacroinvertebrateSample < ApplicationRecord
   validates_numericality_of :quantity, greater_than_or_equal_to: 0
   validates :ecosystem_service, presence: true, inclusion: { in: ECOSYSTEM_SERVICES,
                                                              message: '%{value} is not a valid ecosystem service' }
-  has_one_attached :photo
+  has_many_attached :photo
   validates :photo, content_type: ['image/jpg', 'image/png', 'image/jpeg']
 
   def to_s

@@ -1,0 +1,15 @@
+- if entity.photo.length == 0
+	.img-square.default
+		= image_tag(photo(entity), alt: "Photo of #{entity.photo}")
+- elsif entity.photo.length == 1
+	.img-square{ :style => "background-image: url(#{rails_blob_url(photo(entity))})", :alt => "Photo of #{entity.photo}" }
+- else
+	#plantCarousel.carousel{"data-interval" => "false"}
+		.center
+			%a.carousel-control-prev.btn-icon#chevron{"data-slide" => "prev", :href => "#plantCarousel", :role => "button"}
+				= content_tag(:i, '', :class => "icon-chevron-left")
+			.carousel-inner
+				- entity.photo.each_with_index do |image, index|
+					%div{ :class => "img-square item #{index == 0 ? 'active' : ''}", :style => "background-image: url(#{rails_blob_url(photo(entity, index))})", :alt => "Photo of #{image}" }
+			%a.carousel-control-next.btn-icon#chevron{"data-slide" => "next", :href => "#plantCarousel", :role => "button"}
+				= content_tag(:i, '', :class => "icon-chevron-right")

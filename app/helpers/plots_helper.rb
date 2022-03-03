@@ -9,12 +9,4 @@ module PlotsHelper
       'n/a'
     end
   end
-
-  def photo(plot, idx = 0)
-    if plot.photo.attached?
-      plot.photo[idx]
-    else
-      'missing.png'
-    end
-  end
 end
