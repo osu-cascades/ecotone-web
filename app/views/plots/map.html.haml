@@ -11,12 +11,11 @@
 
     var map = L.map('map').setView([44.0429688, -121.3329103], 18, {layers: [satelliteLayer, outdoorLayer]});
     var plots = #{@plots.to_json.html_safe}
-    console.log(plots)
-
+    
     plots.forEach(plot => {
-      var ping = L.marker([plot.latitude, -plot.longitude]).bindPopup("<a href='#{plots_path}/#{plot_id=12}/'> Plot 12 </a>");
-      ping.addTo(map) 
-      console.log(plot.plot_id, plot.latitude, plot.longitude)
+      var ping = L.marker([plot.latitude, -plot.longitude]).bindPopup("Plot here");
+      ping.addTo(map);
+      console.log(plot.plot_id, plot.latitude, plot.longitude);
       })
   
     var satelliteLayer = L.tileLayer(mapBoxRequest, 
