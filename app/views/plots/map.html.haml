@@ -1,0 +1,43 @@
+.center.jumbotron
+  %h1 Ecotone 
+  %h2 An even better map of the campus
+/ source: http://getbootstrap.com/examples/carousel/#
+
+.content(id='map')
+  :javascript
+
+    var mapBoxAttribution = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>'
+    var mapBoxRequest = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=#{ENV['LEAFLET_KEY']}'
+
+    var map = L.map('map').setView([44.0429688, -121.3329103], 18, {layers: [satelliteLayer, outdoorLayer]});
+    var plots = #{@plots.to_json.html_safe}
+    console.log(plots)
+
+    plots.forEach(plot => {
+      var ping = L.marker([plot.latitude, -plot.longitude]).bindPopup("<a href='#{plots_path}/#{plot_id=12}/'> Plot 12 </a>");
+      ping.addTo(map) 
+      console.log(plot.plot_id, plot.latitude, plot.longitude)
+      })
+  
+    var satelliteLayer = L.tileLayer(mapBoxRequest, 
+    {
+      id: 'mapbox/satellite-streets-v11', 
+      tileSize: 512, 
+      zoomOffset: -1, 
+      attribution: mapBoxAttribution,
+    }).addTo(map);
+
+    var outdoorLayer = L.tileLayer(mapBoxRequest,
+    {
+      id: 'mapbox/outdoors-v11', 
+      tileSize: 512, 
+      zoomOffset: -1, 
+      attribution: mapBoxAttribution,
+    }).addTo(map);
+
+    var baseMaps = {
+      "Satellite": satelliteLayer,
+      "Ground": outdoorLayer
+    };
+
+    L.control.layers(baseMaps).addTo(map);
