@@ -1,36 +1,35 @@
 - content_for_title("Macroinvertebrate Sample ##{@macroinvertebrate_sample.id}")
 - content_for(:subnav) do
-  = link_to '« Back to Macroinvertebrate samples', macroinvertebrate_samples_path, class: 'btn btn-primary', title: 'Macroinvertebrate samples'
+  .btn-public
+    = button_to('« Samples', macroinvertebrate_samples_path, class: 'button primary', method: 'get')
   - if @macroinvertebrate_sample.editable_by?(current_user)
-    .btn-group
+    .btn-admin
       = link_to 'Edit', edit_macroinvertebrate_sample_path(@macroinvertebrate_sample), class: 'btn', title: 'Edit sample'
       - if current_user&.admin?
         = link_to 'Delete', @macroinvertebrate_sample, method: :delete, data: { confirm: "Delete macroinvertebrate sample #{@macroinvertebrate_sample.id}?" }, class: 'btn btn-danger', title: 'Delete sample'
-%section
-  .col-md-5
-    %h2 Photo
-    = image_tag @macroinvertebrate_sample.photo.variant(resize: "200x200"), alt: "Photo of #{@macroinvertebrate_sample}" if @macroinvertebrate_sample.photo.attached?
-  .col-md-7
-    %h2 Sample Information
-    %table.table
+.content
+  = render 'layouts/image_carousel', entity: @macroinvertebrate_sample
+  .info
+    %h2.heading#table-heading Information
+    %table.table#vertical-table
       %thead
-        %th{colspan: '2'}= @macroinvertebrate_sample
+        %th.citation.italic{colspan: '2'} Last updated #{last_updated(@macroinvertebrate_sample)} by #{@macroinvertebrate_sample.user}
       %tbody
         %tr
-          %th.col-md-4{scope: 'row'} Collection date
+          %th{scope: 'row'} Collection date
           %td= @macroinvertebrate_sample.collected_on
         %tr
-          %th.col-md-4{scope: 'row'} Plot
+          %th{scope: 'row'} Plot
           %td= @macroinvertebrate_sample.plot
         %tr
-          %th.col-md-4{scope: 'row'} Location within plot
+          %th{scope: 'row'} Location within plot
           %td= @macroinvertebrate_sample.location_within_plot
         %tr
-          %th.col-md-4{scope: 'row'} Phylum
+          %th{scope: 'row'} Phylum
           %td= @macroinvertebrate_sample.phylum
         %tr
-          %th.col-md-4{scope: 'row'} Quantity
+          %th{scope: 'row'} Quantity
           %td= @macroinvertebrate_sample.quantity
         %tr
-          %th.col-md-4{scope: 'row'} Ecosystem service
+          %th{scope: 'row'} Ecosystem service
           %td= @macroinvertebrate_sample.ecosystem_service
