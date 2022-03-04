@@ -16,12 +16,12 @@ RSpec.feature 'User creates a macroinvertebrate sample' do
     fill_in('Location within plot', with: 'Fake location')
     fill_in('Quantity', with: 1)
     select(MacroinvertebrateSample::ECOSYSTEM_SERVICES.first, from: 'Ecosystem service')
-    click_on('Create Macroinvertebrate sample')
+    click_on('Create Sample')
     expect(page).to have_content('Macroinvertebrate sample was successfully created')
   end
 
   scenario 'with invalid sample attributes' do
-    click_on('Create Macroinvertebrate sample')
+    click_on('Create Sample')
     expect(page).to have_content('The form contains 7 errors.')
     page.find('.alert').tap do |error_explanations|
       expect(error_explanations).to have_content('Plot must exist')

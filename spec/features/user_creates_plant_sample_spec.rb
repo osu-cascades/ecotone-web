@@ -16,12 +16,12 @@ RSpec.feature 'User creates a plant sample' do
     fill_in('Abundance', with: 1)
     fill_in('Percent cover', with: 1)
     fill_in('Biomass estimate', with: 1.0)
-    click_on('Create Plant sample')
+    click_on('Create Sample')
     expect(page).to have_content('Plant sample was successfully created')
   end
 
   scenario 'with invalid sample attributes' do
-    click_on('Create Plant sample')
+    click_on('Create Sample')
     expect(page).to have_content('The form contains 5 errors.')
     page.find('.alert').tap do |error_explanations|
       expect(error_explanations).to have_content('Plant must be specified')
