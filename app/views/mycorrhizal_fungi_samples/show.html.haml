@@ -6,7 +6,7 @@
     .btn-admin
       = link_to(content_tag(:i, '', :class => "icon-edit"), edit_mycorrhizal_fungi_sample_path(@mycorrhizal_fungi_sample), class: 'btn-icon')
       - if current_user&.admin?
-        = link_to(content_tag(:i, '', :class => "icon-trash"), @mycorrhizal_fungi_sample, method: :delete, data: { confirm: "Delete mycorrhizal_fungi sample #{@mycorrhizal_fungi_sample.id}?" }, class: 'btn-icon')
+        = link_to(content_tag(:i, '', :class => "icon-trash"), @mycorrhizal_fungi_sample, method: :delete, data: { confirm: "Delete mycorrhizal fungi sample #{@mycorrhizal_fungi_sample.id}?" }, class: 'btn-icon')
 .content
   = render 'layouts/image_carousel', entity: @mycorrhizal_fungi_sample
   .info
