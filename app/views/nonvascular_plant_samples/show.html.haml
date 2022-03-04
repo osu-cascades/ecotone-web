@@ -4,9 +4,9 @@
     = button_to('« Samples', nonvascular_plant_samples_path, class: 'button primary', method: 'get')
   - if @nonvascular_plant_sample.editable_by?(current_user)
     .btn-admin
-      = link_to 'Edit', edit_nonvascular_plant_sample_path(@nonvascular_plant_sample), class: 'btn', title: 'Edit sample'
+      = link_to(content_tag(:i, '', :class => "icon-edit"), edit_nonvascular_plant_sample_path(@nonvascular_plant_sample), class: 'btn-icon')
       - if current_user&.admin?
-        = link_to 'Delete', @nonvascular_plant_sample, method: :delete, data: { confirm: "Delete nonvascular_plant sample #{@nonvascular_plant_sample.id}?" }, class: 'btn btn-danger', title: 'Delete sample'
+        = link_to(content_tag(:i, '', :class => "icon-trash"), @nonvascular_plant_sample, method: :delete, data: { confirm: "Delete nonvascular plant sample #{@nonvascular_plant_sample.id}?" }, class: 'btn-icon')
 .content
   = render 'layouts/image_carousel', entity: @nonvascular_plant_sample
   .info
@@ -16,13 +16,13 @@
         %th.citation.italic{colspan: '2'} Last updated #{last_updated(@nonvascular_plant_sample)} by #{@nonvascular_plant_sample.user}
       %tbody
         %tr
-          %th{scope: 'row'} Collection date
+          %th{scope: 'row'} Collection Date
           %td= @nonvascular_plant_sample.collected_on
         %tr
           %th{scope: 'row'} Plot
           %td= @nonvascular_plant_sample.plot
         %tr
-          %th{scope: 'row'} Location within plot
+          %th{scope: 'row'} Location within Plot
           %td= @nonvascular_plant_sample.location_within_plot
         %tr
           %th{scope: 'row'} Description

@@ -1,0 +1,11 @@
+.content
+	.caption
+		%h3 Photos
+		%p.italic= phrase
+	.input
+		.gallery#form
+			- entity.photo.each_with_index do |image, index|
+				.overlay-container
+					.img-square{ :style => "background-image: url(#{rails_blob_url(photo(entity, index))})", :alt => "Photo of #{image}" }
+					= link_to("Delete", delete_image_attachment_path(image), method: :delete, class: 'button delete overlay')
+		= form.file_field :photo, multiple: true

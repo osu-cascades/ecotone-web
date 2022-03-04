@@ -25,18 +25,18 @@ RSpec.feature 'User creates a tree sample' do
       fill_in('Upper canopy height', with: 3.5)
       fill_in('Latitude N', with: 4.5)
       fill_in('Longitude W', with: 5.5)
-      click_on('Create Tree sample')
+      click_on('Create Sample')
       expect(page).to have_content('Tree sample was successfully created')
     end
 
     scenario 'without optional values' do
-      click_on('Create Tree sample')
+      click_on('Create Sample')
       expect(page).to have_content('Tree sample was successfully created')
     end
   end
 
   scenario 'with invalid sample attributes' do
-    click_on('Create Tree sample')
+    click_on('Create Sample')
     expect(page).to have_content('The form contains 6 errors.')
   end
 

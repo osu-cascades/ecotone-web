@@ -4,9 +4,9 @@
     = button_to('« Samples', tree_samples_path, class: 'button primary', method: 'get')
   - if @tree_sample.editable_by?(current_user)
     .btn-admin
-      = link_to 'Edit', edit_tree_sample_path(@tree_sample), class: 'btn', title: 'Edit sample'
+      = link_to(content_tag(:i, '', :class => "icon-edit"), edit_tree_sample_path(@tree_sample), class: 'btn-icon')
       - if current_user&.admin?
-        = link_to 'Delete', @tree_sample, method: :delete, data: { confirm: "Delete tree sample #{@tree_sample.id}?" }, class: 'btn btn-danger', title: 'Delete sample'
+        = link_to(content_tag(:i, '', :class => "icon-trash"), @tree_sample, method: :delete, data: { confirm: "Delete tree sample #{@tree_sample.id}?" }, class: 'btn-icon')
 .content
   = render 'layouts/image_carousel', entity: @tree_sample
   .info
@@ -16,7 +16,7 @@
         %th.citation.italic{colspan: '2'} Last updated #{last_updated(@tree_sample)} by #{@tree_sample.user}
       %tbody
         %tr
-          %th{scope: 'row'} Collection date
+          %th{scope: 'row'} Collection Date
           %td= @tree_sample.collected_on
         %tr
           %th{scope: 'row'} Plot

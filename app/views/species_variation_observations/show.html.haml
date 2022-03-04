@@ -1,12 +1,12 @@
 - content_for_title("Species Variation Observation ##{@species_variation_observation.id}")
 - content_for(:subnav) do
   .btn-public
-    = button_to('« Samples', species_variation_observations_path, class: 'button primary', method: 'get')
+    = button_to('« Observations', species_variation_observations_path, class: 'button primary', method: 'get')
   - if @species_variation_observation.editable_by?(current_user)
     .btn-admin
-      = link_to 'Edit', edit_species_variation_observation_path(@species_variation_observation), class: 'btn', title: 'Edit sample'
+      = link_to(content_tag(:i, '', :class => "icon-edit"), edit_species_variation_observation_path(@species_variation_observation), class: 'btn-icon')
       - if current_user&.admin?
-        = link_to 'Delete', @species_variation_observation, method: :delete, data: { confirm: "Delete macroinvertebrate sample #{@species_variation_observation.id}?" }, class: 'btn btn-danger', title: 'Delete sample'
+        = link_to(content_tag(:i, '', :class => "icon-trash"), @species_variation_observation, method: :delete, data: { confirm: "Delete species variation observation #{@species_variation_observation.id}?" }, class: 'btn-icon')
 .content
   = render 'layouts/image_carousel', entity: @species_variation_observation
   .info
@@ -16,7 +16,7 @@
         %th.citation.italic{colspan: '2'} Last updated #{last_updated(@species_variation_observation)} by #{@species_variation_observation.user}
       %tbody
         %tr
-          %th{scope: 'row'} Observation date
+          %th{scope: 'row'} Observation Date
           %td= @species_variation_observation.observed_on
         %tr
           %th{scope: 'row'} Plot
@@ -28,11 +28,11 @@
           %th{scope: 'row'} Observer
           %td= @species_variation_observation.user
         %tr
-          %th{scope: 'row'} Average height
+          %th{scope: 'row'} Average Height
           %td= "#{@species_variation_observation.average_height} cm"
         %tr
-          %th{scope: 'row'} Average width
+          %th{scope: 'row'} Average Width
           %td= "#{@species_variation_observation.average_width} cm"
         %tr
-          %th{scope: 'row'} Qualitative observations
+          %th{scope: 'row'} Qualitative Observations
           %td= @species_variation_observation.description

@@ -4,9 +4,9 @@
     = button_to('« Samples', lichen_samples_path, class: 'button primary', method: 'get')
   - if @lichen_sample.editable_by?(current_user)
     .btn-admin
-      = link_to 'Edit', edit_lichen_sample_path(@lichen_sample), class: 'btn', title: 'Edit sample'
+      = link_to(content_tag(:i, '', :class => "icon-edit"), edit_lichen_sample_path(@lichen_sample), class: 'btn-icon')
       - if current_user&.admin?
-        = link_to 'Delete', @lichen_sample, method: :delete, data: { confirm: "Delete lichen sample #{@lichen_sample.id}?" }, class: 'btn btn-danger', title: 'Delete sample'
+        = link_to(content_tag(:i, '', :class => "icon-trash"), @lichen_sample, method: :delete, data: { confirm: "Delete lichen sample #{@lichen_sample.id}?" }, class: 'btn-icon')
 .content
   = render 'layouts/image_carousel', entity: @lichen_sample
   .info
@@ -16,13 +16,13 @@
         %th.citation.italic{colspan: '2'} Last updated #{last_updated(@lichen_sample)} by #{@lichen_sample.user}
       %tbody
         %tr
-          %th{scope: 'row'} Collection date
+          %th{scope: 'row'} Collection Date
           %td= @lichen_sample.collected_on
         %tr
           %th{scope: 'row'} Plot
           %td= @lichen_sample.plot
         %tr
-          %th{scope: 'row'} Location within plot
+          %th{scope: 'row'} Location within Plot
           %td= @lichen_sample.location_within_plot
         %tr
           %th{scope: 'row'} Description

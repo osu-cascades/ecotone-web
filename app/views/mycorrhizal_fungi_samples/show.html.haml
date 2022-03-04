@@ -4,9 +4,9 @@
     = button_to('« Samples', mycorrhizal_fungi_samples_path, class: 'button primary', method: 'get')
   - if @mycorrhizal_fungi_sample.editable_by?(current_user)
     .btn-admin
-      = link_to 'Edit', edit_mycorrhizal_fungi_sample_path(@mycorrhizal_fungi_sample), class: 'btn', title: 'Edit sample'
+      = link_to(content_tag(:i, '', :class => "icon-edit"), edit_mycorrhizal_fungi_sample_path(@mycorrhizal_fungi_sample), class: 'btn-icon')
       - if current_user&.admin?
-        = link_to 'Delete', @mycorrhizal_fungi_sample, method: :delete, data: { confirm: "Delete mycorrhizal_fungi sample #{@mycorrhizal_fungi_sample.id}?" }, class: 'btn btn-danger', title: 'Delete sample'
+        = link_to(content_tag(:i, '', :class => "icon-trash"), @mycorrhizal_fungi_sample, method: :delete, data: { confirm: "Delete mycorrhizal fungi sample #{@mycorrhizal_fungi_sample.id}?" }, class: 'btn-icon')
 .content
   = render 'layouts/image_carousel', entity: @mycorrhizal_fungi_sample
   .info
@@ -16,10 +16,10 @@
         %th.citation.italic{colspan: '2'} Last updated #{last_updated(@mycorrhizal_fungi_sample)} by #{@mycorrhizal_fungi_sample.user}
       %tbody
         %tr
-          %th{scope: 'row'} Collection date
+          %th{scope: 'row'} Collection Date
           %td= @mycorrhizal_fungi_sample.collected_on
         %tr
-          %th{scope: 'row'} Sample length
+          %th{scope: 'row'} Sample Length
           %td= @mycorrhizal_fungi_sample.length
         %tr
           %th{scope: 'row'} Magnification
