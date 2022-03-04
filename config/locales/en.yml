@@ -74,6 +74,6 @@ en:
       tree_sample:
         create: "Create Sample"
         update: "Update Sample"
-      species_variation_observations:
+      species_variation_observation:
         create: "Create Obs."
         update: "Update Obs."
