@@ -1,30 +1,29 @@
 - content_for_title("Lichen Sample ##{@lichen_sample.id}")
 - content_for(:subnav) do
-  = link_to '« Back to Lichen samples', lichen_samples_path, class: 'btn btn-primary', title: 'Lichen samples'
+  .btn-public
+    = button_to('« Samples', lichen_samples_path, class: 'button primary', method: 'get')
   - if @lichen_sample.editable_by?(current_user)
-    .btn-group
+    .btn-admin
       = link_to 'Edit', edit_lichen_sample_path(@lichen_sample), class: 'btn', title: 'Edit sample'
       - if current_user&.admin?
         = link_to 'Delete', @lichen_sample, method: :delete, data: { confirm: "Delete lichen sample #{@lichen_sample.id}?" }, class: 'btn btn-danger', title: 'Delete sample'
-%section
-  .col-md-5
-    %h2 Photo
-    = image_tag @lichen_sample.photo.variant(resize: "200x200"), alt: "Photo of #{@lichen_sample}" if @lichen_sample.photo.attached?
-  .col-md-7
-    %h2 Sample Information
-    %table.table
+.content
+  = render 'layouts/image_carousel', entity: @lichen_sample
+  .info
+    %h2.heading#table-heading Information
+    %table.table#vertical-table
       %thead
-        %th{colspan: '2'}= @lichen_sample
+        %th.citation.italic{colspan: '2'} Last updated #{last_updated(@lichen_sample)} by #{@lichen_sample.user}
       %tbody
         %tr
-          %th.col-md-4{scope: 'row'} Collection date
+          %th{scope: 'row'} Collection date
           %td= @lichen_sample.collected_on
         %tr
-          %th.col-md-4{scope: 'row'} Plot
+          %th{scope: 'row'} Plot
           %td= @lichen_sample.plot
         %tr
-          %th.col-md-4{scope: 'row'} Location within plot
+          %th{scope: 'row'} Location within plot
           %td= @lichen_sample.location_within_plot
         %tr
-          %th.col-md-4{scope: 'row'} Description
+          %th{scope: 'row'} Description
           %td= @lichen_sample.description
