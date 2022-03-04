@@ -4,9 +4,9 @@
     = button_to('« Samples', soil_samples_path, class: 'button primary', method: 'get')
   - if @soil_sample.editable_by?(current_user)
     .btn-admin
-      = link_to 'Edit', edit_soil_sample_path(@soil_sample), class: 'btn', title: 'Edit sample'
+      = link_to(content_tag(:i, '', :class => "icon-edit"), edit_soil_sample_path(@soil_sample), class: 'btn-icon')
       - if current_user&.admin?
-        = link_to 'Delete', @soil_sample, method: :delete, data: { confirm: "Delete soil sample #{@soil_sample.id}?" }, class: 'btn btn-danger', title: 'Delete sample'
+        = link_to(content_tag(:i, '', :class => "icon-trash"), @soil_sample, method: :delete, data: { confirm: "Delete soil sample #{@soil_sample.id}?" }, class: 'btn-icon')
 .content
   .info
     %h2.heading#table-heading Information
@@ -15,10 +15,10 @@
         %th.citation.italic{colspan: '2'} Last updated #{last_updated(@soil_sample)} by #{@soil_sample.user}
       %tbody
         %tr
-          %th{scope: 'row'} Collection date
+          %th{scope: 'row'} Collection Date
           %td= @soil_sample.collected_on
         %tr
-          %th{scope: 'row'} Collection method
+          %th{scope: 'row'} Collection Method
           %td= @soil_sample.collection_method
         %tr
           %th{scope: 'row'} Plot
