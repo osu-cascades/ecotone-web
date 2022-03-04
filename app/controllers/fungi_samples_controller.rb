@@ -1,9 +1,9 @@
 class FungiSamplesController < ApplicationController
+  include Cancelable
+
   before_action :login_required
   before_action :admin_required, only: :destroy
   before_action :set_fungi_sample, only: [:show, :edit, :update, :destroy]
-  before_action :redirect_cancel_new, :only => [:create]
-  before_action :redirect_cancel_edit, :only => [:update]
 
   def index
     @fungi_samples = FungiSample.all
@@ -46,14 +46,6 @@ class FungiSamplesController < ApplicationController
         format.json { render json: @fungi_sample.errors, status: :unprocessable_entity }
       end
     end
-  end
-
-  def redirect_cancel_new
-    redirect_to fungi_samples_path if params[:cancel]
-  end
-
-  def redirect_cancel_edit
-    redirect_to @fungi_sample if params[:cancel]
   end
 
   def destroy

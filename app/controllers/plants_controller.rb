@@ -1,9 +1,9 @@
 class PlantsController < ApplicationController
+  include Cancelable
+  
   before_action :set_plant, only: [:show, :edit, :update, :destroy, :download_qr]
   before_action :login_required, only: [:new, :create, :edit, :update, :destroy]
   before_action :admin_required, only: [:new, :create, :edit, :update, :destroy]
-  before_action :redirect_cancel_new, :only => [:create]
-  before_action :redirect_cancel_edit, :only => [:update]
 
   def index
     @plants = Plant.all.sort_by {|plant| plant.common_name.downcase}
@@ -34,21 +34,6 @@ class PlantsController < ApplicationController
     else
       render :edit
     end
-  end
-
-  def redirect_cancel_new
-    redirect_to plants_path if params[:cancel]
-  end
-
-  def redirect_cancel_edit
-    redirect_to @plant if params[:cancel]
-  end
-
-  def delete_image_attachment
-    @photo = ActiveStorage::Attachment.find(params[:id])
-    @photo.purge
-    redirect_back fallback_location: @plant
-    flash[:success] = 'Photo was successfully deleted.'
   end
 
   def destroy

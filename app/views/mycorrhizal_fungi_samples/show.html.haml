@@ -1,39 +1,38 @@
 - content_for_title("Mycorrhizal Fungi Sample ##{@mycorrhizal_fungi_sample.id}")
 - content_for(:subnav) do
-  = link_to '« Back to Mycorrhizal fungi samples', mycorrhizal_fungi_samples_path, class: 'btn btn-primary', title: 'Mycorrhizal fungi samples'
+  .btn-public
+    = button_to('« Samples', mycorrhizal_fungi_samples_path, class: 'button primary', method: 'get')
   - if @mycorrhizal_fungi_sample.editable_by?(current_user)
-    .btn-group
-      = link_to 'Edit', edit_mycorrhizal_fungi_sample_path(@mycorrhizal_fungi_sample), class: 'btn', title: 'Edit sample'
+    .btn-admin
+      = link_to(content_tag(:i, '', :class => "icon-edit"), edit_mycorrhizal_fungi_sample_path(@mycorrhizal_fungi_sample), class: 'btn-icon')
       - if current_user&.admin?
-        = link_to 'Delete', @mycorrhizal_fungi_sample, method: :delete, data: { confirm: "Delete mycorrhizal fungi sample #{@mycorrhizal_fungi_sample.id}?" }, class: 'btn btn-danger', title: 'Delete sample'
-%section
-  .col-md-5
-    %h2 Photo
-    = image_tag @mycorrhizal_fungi_sample.photo.variant(resize: "200x200"), alt: "Photo of #{@mycorrhizal_fungi_sample}" if @mycorrhizal_fungi_sample.photo.attached?
-  .col-md-7
-    %h2 Sample Information
-    %table.table
+        = link_to(content_tag(:i, '', :class => "icon-trash"), @mycorrhizal_fungi_sample, method: :delete, data: { confirm: "Delete mycorrhizal fungi sample #{@mycorrhizal_fungi_sample.id}?" }, class: 'btn-icon')
+.content
+  = render 'layouts/image_carousel', entity: @mycorrhizal_fungi_sample
+  .info
+    %h2.heading#table-heading Information
+    %table.table#vertical-table
       %thead
-        %th{colspan: '2'}= @mycorrhizal_fungi_sample
+        %th.citation.italic{colspan: '2'} Last updated #{last_updated(@mycorrhizal_fungi_sample)} by #{@mycorrhizal_fungi_sample.user}
       %tbody
         %tr
-          %th.col-md-4{scope: 'row'} Collection date
+          %th{scope: 'row'} Collection Date
           %td= @mycorrhizal_fungi_sample.collected_on
         %tr
-          %th.col-md-4{scope: 'row'} Sample length
+          %th{scope: 'row'} Sample Length
           %td= @mycorrhizal_fungi_sample.length
         %tr
-          %th.col-md-4{scope: 'row'} Magnification
+          %th{scope: 'row'} Magnification
           %td= @mycorrhizal_fungi_sample.magnification
         %tr
-          %th.col-md-4{scope: 'row'} Vesicle Count
+          %th{scope: 'row'} Vesicle Count
           %td= @mycorrhizal_fungi_sample.vesicle_count
         %tr
-          %th.col-md-4{scope: 'row'} Arbuscule Count
+          %th{scope: 'row'} Arbuscule Count
           %td= @mycorrhizal_fungi_sample.arbuscule_count
         %tr
-          %th.col-md-4{scope: 'row'} Visible Hyphae
+          %th{scope: 'row'} Visible Hyphae
           %td= @mycorrhizal_fungi_sample.visible_hyphae ? 'Yes' : 'No'
         %tr
-          %th.col-md-4{scope: 'row'} Hyphae Coverage
+          %th{scope: 'row'} Hyphae Coverage
           %td= @mycorrhizal_fungi_sample.hyphae_coverage || 'unmeasured'

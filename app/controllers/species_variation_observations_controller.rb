@@ -1,4 +1,6 @@
 class SpeciesVariationObservationsController < ApplicationController
+  include Cancelable
+  
   before_action :login_required
   before_action :admin_required, only: :destroy
   before_action :set_species_variation_observation, only: [:show, :edit, :update, :destroy]

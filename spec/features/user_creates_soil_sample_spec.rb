@@ -19,12 +19,12 @@ RSpec.feature 'User creates a soil sample' do
     select('high', from: 'Nitrogen')
     select('low', from: 'Phosphorus')
     select('med', from: 'Potassium')
-    click_on('Create Soil sample')
+    click_on('Create Sample')
     expect(page).to have_content('Soil sample was successfully created')
   end
 
   scenario 'with invalid sample attributes' do
-    click_on('Create Soil sample')
+    click_on('Create Sample')
     expect(page).to have_content('The form contains 6 errors.')
     page.find('.alert').tap do |error_explanations|
       expect(error_explanations).to have_content('Plot must exist')
@@ -43,7 +43,7 @@ RSpec.feature 'User creates a soil sample' do
     fill_in('pH level', with: '4')
     fill_in('Temperature', with: '72')
     fill_in('Moisture', with: '10')
-    click_on('Create Soil sample')
+    click_on('Create Sample')
     expect(page).to have_content('Soil sample was successfully created')
   end
 
