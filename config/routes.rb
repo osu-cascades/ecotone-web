@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get     'map' , to: 'static_pages#map'
   get     'plots/leaflet', to: 'plots#map'
 
+  delete '/images/:id', to: 'image_attachments#delete', as: 'delete_image_attachment'
   resources :users
   resources :biodiversity_reports
 
@@ -26,16 +27,17 @@ Rails.application.routes.draw do
   resources :species_variation_observations
   resources :tree_samples
 
-  resources :plots do
-    member do
-      delete :delete_image_attachment
-    end
-  end
+  resources :images
 
-  resources :plants do
-    member do
-      delete :delete_image_attachment
-    end
-  end
+  # resources :plots do
+  #   member do
+  #     delete :delete_image_attachment
+  #   end
+  # end
 
+  # resources :plants do
+  #   member do
+  #     delete :delete_image_attachment
+  #   end
+  # end
 end
