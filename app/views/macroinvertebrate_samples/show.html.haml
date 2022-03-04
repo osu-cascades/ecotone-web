@@ -4,9 +4,9 @@
     = button_to('« Samples', macroinvertebrate_samples_path, class: 'button primary', method: 'get')
   - if @macroinvertebrate_sample.editable_by?(current_user)
     .btn-admin
-      = link_to 'Edit', edit_macroinvertebrate_sample_path(@macroinvertebrate_sample), class: 'btn', title: 'Edit sample'
+      = link_to(content_tag(:i, '', :class => "icon-edit"), edit_macroinvertebrate_sample_path(@macroinvertebrate_sample), class: 'btn-icon')
       - if current_user&.admin?
-        = link_to 'Delete', @macroinvertebrate_sample, method: :delete, data: { confirm: "Delete macroinvertebrate sample #{@macroinvertebrate_sample.id}?" }, class: 'btn btn-danger', title: 'Delete sample'
+        = link_to(content_tag(:i, '', :class => "icon-trash"), @macroinvertebrate_sample, method: :delete, data: { confirm: "Delete macroinvertebrate sample #{@macroinvertebrate_sample.id}?" }, class: 'btn-icon')
 .content
   = render 'layouts/image_carousel', entity: @macroinvertebrate_sample
   .info
@@ -16,13 +16,13 @@
         %th.citation.italic{colspan: '2'} Last updated #{last_updated(@macroinvertebrate_sample)} by #{@macroinvertebrate_sample.user}
       %tbody
         %tr
-          %th{scope: 'row'} Collection date
+          %th{scope: 'row'} Collection Date
           %td= @macroinvertebrate_sample.collected_on
         %tr
           %th{scope: 'row'} Plot
           %td= @macroinvertebrate_sample.plot
         %tr
-          %th{scope: 'row'} Location within plot
+          %th{scope: 'row'} Location within Plot
           %td= @macroinvertebrate_sample.location_within_plot
         %tr
           %th{scope: 'row'} Phylum
@@ -31,5 +31,5 @@
           %th{scope: 'row'} Quantity
           %td= @macroinvertebrate_sample.quantity
         %tr
-          %th{scope: 'row'} Ecosystem service
+          %th{scope: 'row'} Ecosystem Service
           %td= @macroinvertebrate_sample.ecosystem_service
