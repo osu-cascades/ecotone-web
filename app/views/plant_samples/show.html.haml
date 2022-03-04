@@ -1,36 +1,35 @@
 - content_for_title("Plant Sample ##{@plant_sample.id}")
 - content_for(:subnav) do
-  = link_to '« Back to Plant samples', plant_samples_path, class: 'btn btn-primary', title: 'Plant samples'
+  .btn-public
+    = button_to('« Samples', plant_samples_path, class: 'button primary', method: 'get')
   - if @plant_sample.editable_by?(current_user)
-    .btn-group
+    .btn-admin
       = link_to 'Edit', edit_plant_sample_path(@plant_sample), class: 'btn', title: 'Edit sample'
       - if current_user&.admin?
         = link_to 'Delete', @plant_sample, method: :delete, data: { confirm: "Delete plant sample #{@plant_sample.id}?" }, class: 'btn btn-danger', title: 'Delete sample'
-%section
-  .col-md-5
-    %h2 Photo
-    = image_tag @plant_sample.photo.variant(resize: "200x200"), alt: "Photo of #{@plant_sample}" if @plant_sample.photo.attached?
-  .col-md-7
-    %h2 Sample Information
-    %table.table
+.content
+  = render 'layouts/image_carousel', entity: @plant_sample
+  .info
+    %h2.heading#table-heading Information
+    %table.table#vertical-table
       %thead
-        %th{colspan: '2'}= @plant_sample
+        %th.citation.italic{colspan: '2'} Last updated #{last_updated(@plant_sample)} by #{@plant_sample.user}
       %tbody
         %tr
-          %th.col-md-4{scope: 'row'} Collection date
+          %th{scope: 'row'} Collection date
           %td= @plant_sample.collected_on
         %tr
-          %th.col-md-4{scope: 'row'} Plot
+          %th{scope: 'row'} Plot
           %td= @plant_sample.plot
         %tr
-          %th.col-md-4{scope: 'row'} Plant
+          %th{scope: 'row'} Plant
           %td= @plant_sample.plant.common_name
         %tr
-          %th.col-md-4{scope: 'row'} Abundance
+          %th{scope: 'row'} Abundance
           %td= @plant_sample.abundance
         %tr
-          %th.col-md-4{scope: 'row'} Percent Cover
+          %th{scope: 'row'} Percent Cover
           %td= @plant_sample.percent_cover
         %tr
-          %th.col-md-4{scope: 'row'} Biomass Estimate
+          %th{scope: 'row'} Biomass Estimate
           %td= @plant_sample.biomass_estimate
