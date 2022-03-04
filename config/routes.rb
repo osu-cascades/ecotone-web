@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   resources :plant_samples
   get     'export' => 'plant_samples#export'
 
-  get     'plots/leaflet', to: 'plots#map'
+  get     '/map', to: 'plots#map', as: 'map'
 
   delete  '/images/:id', to: 'image_attachments#delete', as: 'delete_image_attachment'
 

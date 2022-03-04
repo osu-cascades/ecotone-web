@@ -15,7 +15,6 @@
           %li= link_to 'Plots', plots_path, title: 'List of all plots'
           %li= link_to 'Plants', plants_path, title: 'List of all plants'
           %li= link_to 'Map', map_path, title: 'Map of the plots'
-          %li= link_to 'Leaflet', plots_leaflet_path, title: 'Map of the plots'
           - if user_signed_in?
             %li.dropdown
               %a.dropdown-toggle{'aria-expanded': 'false', 'aria-haspopup': 'true', 'data-toggle': 'dropdown', href: '#', role: 'button'}
