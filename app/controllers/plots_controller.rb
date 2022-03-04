@@ -1,10 +1,9 @@
 class PlotsController < ApplicationController
+  include Cancelable
+
   before_action :set_plot, only: [:show, :edit, :update, :destroy, :download_qr]
   before_action :login_required, except: [:index, :show, :download_qr]
   before_action :admin_required, except: [:index, :show, :download_qr]
-  before_action :redirect_cancel_new, :only => [:create]
-  before_action :redirect_cancel_edit, :only => [:update]
-
 
   def index
     @plots = Plot.order(:plot_id)
@@ -45,14 +44,6 @@ class PlotsController < ApplicationController
       @plants = Plant.all
       render 'edit'
     end
-  end
-
-  def redirect_cancel_new
-    redirect_to plots_path if params[:cancel]
-  end
-
-  def redirect_cancel_edit
-    redirect_to @plot if params[:cancel]
   end
 
   def destroy

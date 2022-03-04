@@ -29,5 +29,5 @@
           = form.text_field :tolerance, class: 'form-control'
     = render 'layouts/image_gallery', {form: form, entity: @plant, phrase: 'Include pictures for easier plant identification'}
     .btn-form
-      = button_to('Cancel', @plant, name: 'cancel', class: 'button secondary', method: 'get')
+      = button_to('Cancel', redirect_cancel_url, name: 'cancel', class: 'button secondary', method: 'get')
       = form.submit class: 'button primary submit'

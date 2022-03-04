@@ -54,5 +54,5 @@
           = form.text_field :initial_succession, class: 'form-control'
     = render 'layouts/image_gallery', {form: form, entity: @plot, phrase: 'Show plot changes over time by adding pictures'}
     .btn-form
-      = button_to('Cancel', @plot, name: 'cancel', class: 'button secondary', method: 'get')
+      = button_to('Cancel', redirect_cancel_url, name: 'cancel', class: 'button secondary', method: 'get')
       = form.submit class: 'button primary submit'
