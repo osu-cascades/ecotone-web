@@ -1,45 +1,43 @@
 - content_for_title("Soil Sample ##{@soil_sample.id}")
 - content_for(:subnav) do
-  = link_to '« Back to Soil samples', soil_samples_path, class: 'btn btn-primary', title: 'Soil samples'
+  .btn-public
+    = button_to('« Samples', soil_samples_path, class: 'button primary', method: 'get')
   - if @soil_sample.editable_by?(current_user)
-    .btn-group
+    .btn-admin
       = link_to 'Edit', edit_soil_sample_path(@soil_sample), class: 'btn', title: 'Edit sample'
       - if current_user&.admin?
         = link_to 'Delete', @soil_sample, method: :delete, data: { confirm: "Delete soil sample #{@soil_sample.id}?" }, class: 'btn btn-danger', title: 'Delete sample'
-%section
-  .col-md-5
-    %h2 Photo
-    %p (no photo)
-  .col-md-7
-    %h2 Sample Information
-    %table.table
+.content
+  .info
+    %h2.heading#table-heading Information
+    %table.table#vertical-table
       %thead
-        %th{colspan: '2'}= @soil_sample
+        %th.citation.italic{colspan: '2'} Last updated #{last_updated(@soil_sample)} by #{@soil_sample.user}
       %tbody
         %tr
-          %th.col-md-4{scope: 'row'} Collection date
+          %th{scope: 'row'} Collection date
           %td= @soil_sample.collected_on
         %tr
-          %th.col-md-4{scope: 'row'} Collection method
+          %th{scope: 'row'} Collection method
           %td= @soil_sample.collection_method
         %tr
-          %th.col-md-4{scope: 'row'} Plot
+          %th{scope: 'row'} Plot
           %td= @soil_sample.plot
         %tr
-          %th.col-md-4{scope: 'row'} pH
+          %th{scope: 'row'} pH
           %td= @soil_sample.ph_level
         %tr
-          %th.col-md-4{scope: 'row'} Temperature
+          %th{scope: 'row'} Temperature
           %td= @soil_sample.temperature
         %tr
-          %th.col-md-4{scope: 'row'} Moisture
+          %th{scope: 'row'} Moisture
           %td= @soil_sample.moisture
         %tr
-          %th.col-md-4{scope: 'row'} Nitrogen
+          %th{scope: 'row'} Nitrogen
           %td= @soil_sample.nutrients.find{ |n| n.name == 'Nitrogen'}&.level
         %tr
-          %th.col-md-4{scope: 'row'} Phosphorus
+          %th{scope: 'row'} Phosphorus
           %td= @soil_sample.nutrients.find{ |n| n.name == 'Phosphorus'}&.level
         %tr
-          %th.col-md-4{scope: 'row'} Potassium
+          %th{scope: 'row'} Potassium
           %td= @soil_sample.nutrients.find{ |n| n.name == 'Potassium'}&.level
