@@ -1,4 +1,6 @@
 class PlantSamplesController < ApplicationController
+  include Cancelable
+  
   before_action :login_required
   before_action :admin_required, only: :destroy
   before_action :set_plant_sample, only: [:show, :edit, :update, :destroy]

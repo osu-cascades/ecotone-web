@@ -14,12 +14,12 @@ RSpec.feature 'User creates a non-vascular plant sample' do
     select('Plot #1', from: 'Plot')
     fill_in('Location within plot', with: 'Fake location')
     fill_in('Description', with: 'Fake description')
-    click_on('Create Nonvascular plant sample')
+    click_on('Create Sample')
     expect(page).to have_content('Nonvascular plant sample was successfully created')
   end
 
   scenario 'with invalid sample attributes' do
-    click_on('Create Nonvascular plant sample')
+    click_on('Create Sample')
     expect(page).to have_content('The form contains 4 errors.')
     page.find('.alert').tap do |error_explanations|
       expect(error_explanations).to have_content('Plot must exist')

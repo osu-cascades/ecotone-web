@@ -1,8 +1,0 @@
-%p Collected on: #{macroinvertebrate_sample.collected_on}
-%p Plot: #{macroinvertebrate_sample.plot}
-%p Collected by: #{macroinvertebrate_sample.user}
-%p Phylum: #{macroinvertebrate_sample.phylum}
-%p Location within plot: #{macroinvertebrate_sample.location_within_plot}
-%p Quantity: #{macroinvertebrate_sample.quantity}
-%p Ecosystem service: #{macroinvertebrate_sample.ecosystem_service}
-= image_tag macroinvertebrate_sample.photo.url.variant(resize: "200x200"), alt: 'Photo of macroinvertebrate sample' if macroinvertebrate_sample.photo.attached?
