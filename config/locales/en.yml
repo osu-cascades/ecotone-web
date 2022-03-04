@@ -50,3 +50,30 @@ en:
       user:
         create: "Create my account"
         update: "Update my account"
+      fungi_sample:
+        create: "Create Sample"
+        update: "Update Sample"
+      lichen_sample:
+        create: "Create Sample"
+        update: "Update Sample"
+      macroinvertebrate_sample:
+        create: "Create Sample"
+        update: "Update Sample"
+      mycorrhizal_fungi_sample:
+        create: "Create Sample"
+        update: "Update Sample"
+      nonvascular_plant_sample:
+        create: "Create Sample"
+        update: "Update Sample"
+      plant_sample:
+        create: "Create Sample"
+        update: "Update Sample"
+      soil_sample:
+        create: "Create Sample"
+        update: "Update Sample"
+      tree_sample:
+        create: "Create Sample"
+        update: "Update Sample"
+      species_variation_observations:
+        create: "Create Obs."
+        update: "Update Obs."
