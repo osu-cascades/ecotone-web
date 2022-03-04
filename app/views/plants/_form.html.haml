@@ -36,7 +36,7 @@
           - @plant.photo.each_with_index do |image, index|
             .overlay-container
               .img-square{ :style => "background-image: url(#{rails_blob_url(photo(@plant, index))})", :alt => "Photo of #{image}" }
-              = link_to("Delete", delete_image_attachment_plot_url(image), method: :delete, class: 'button delete overlay')
+              = link_to("Delete", delete_image_attachment_path(image), method: :delete, class: 'button delete overlay')
         = form.file_field :photo, multiple: true
     .btn-form
       = button_to('Cancel', @plant, name: 'cancel', class: 'button secondary', method: 'get')
