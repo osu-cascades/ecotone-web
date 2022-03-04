@@ -6,19 +6,19 @@
 .content(id='map')
   :javascript
 
-    '#{@ping = Plot.find(1)}'
-
     var mapBoxAttribution = 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>'
-    var mapBoxRequest = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=#{ENV["LEAFLET_KEY"]}'
+    var mapBoxRequest = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=#{ENV['LEAFLET_KEY']}'
 
     var map = L.map('map').setView([44.0429688, -121.3329103], 18, {layers: [satelliteLayer, outdoorLayer]});
-
-    var plot_1    = L.marker([44.043577, -121.334438]).bindPopup("<a href='#{plots_path}/#{plot_id=1}/'> Plot: #{plot_id=1} </a> <b> Details: #{}</b>"),
-      plot_25     = L.marker(['#{@ping.latitude}', '-#{@ping.longitude}']).bindPopup("<a href='#{plots_path}/#{@ping.plot_id}'> Plot ##{@ping.plot_id} </a> <b> Details: #{@ping.location_description}</b>");
-
-    var plot_markers = L.layerGroup([plot_1, plot_25]).addTo(map);
-
-    var satelliteLayer = L.tileLayer(mapBoxRequest, 
+    var plots = #{@plots.to_json.html_safe}
+    
+    plots.forEach(plot => {
+      var p_url = ('#{plots_url}/'+plot.plot_id);
+      var ping = L.marker([plot.latitude, -plot.longitude]);
+      ping.bindPopup('<h6> Details: </h6>' + plot.location_description + ' <h6> Latitude: </h6>' + plot.latitude + '<h6> Longitude: </h6>' + plot.longitude + ' <a href="' + p_url + '"> Click me </a>').addTo(map);
+      });
+  
+    var satelliteLayer = L.tileLayer(mapBoxRequest,
     {
       id: 'mapbox/satellite-streets-v11', 
       tileSize: 512, 
@@ -26,7 +26,7 @@
       attribution: mapBoxAttribution,
     }).addTo(map);
 
-    var outdoorLayer = L.tileLayer(mapBoxRequest, 
+    var outdoorLayer = L.tileLayer(mapBoxRequest,
     {
       id: 'mapbox/outdoors-v11', 
       tileSize: 512, 
@@ -39,8 +39,4 @@
       "Ground": outdoorLayer
     };
 
-    var overlayMaps = {
-      "Plots": plot_markers
-    };
-
-    L.control.layers(baseMaps, overlayMaps).addTo(map);
+    L.control.layers(baseMaps).addTo(map);

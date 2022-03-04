@@ -19,12 +19,12 @@ RSpec.feature 'User creates a mycorrhizal fungi sample' do
     fill_in('Arbuscule count', with: '100')
     check('Visible hyphae')
     fill_in('Hyphae coverage', with: '50')
-    click_on('Create Mycorrhizal fungi sample')
+    click_on('Create Sample')
     expect(page).to have_content('Mycorrhizal fungi sample was successfully created')
   end
 
   scenario 'with invalid sample attributes' do
-    click_on('Create Mycorrhizal fungi sample')
+    click_on('Create Sample')
     expect(page).to have_selector '.alert', text: 'The form contains 7 errors.'
     page.find('.alert').tap do |error_explanations|
       expect(error_explanations).to have_content("Collection date can't be blank")
@@ -44,7 +44,7 @@ RSpec.feature 'User creates a mycorrhizal fungi sample' do
     select('4x', from: 'Magnification')
     fill_in('Vesicle count', with: '100')
     fill_in('Arbuscule count', with: '100')
-    click_on('Create Mycorrhizal fungi sample')
+    click_on('Create Sample')
     expect(page).to have_content('Mycorrhizal fungi sample was successfully created')
   end
 

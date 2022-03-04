@@ -1,2 +1,4 @@
 - content_for_title('Edit Soil Sample')
+- content_for(:subnav) do
+  = button_to('« Back', @soil_sample, class: 'button primary', method: 'get')
 = render partial: 'form'

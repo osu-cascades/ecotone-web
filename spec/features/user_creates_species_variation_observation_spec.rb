@@ -16,12 +16,12 @@ RSpec.feature 'User creates a species variation observation' do
     fill_in('Average height', with: '10.0')
     fill_in('Average width', with: '10.0')
     fill_in('Qualitative observations', with: 'Fake description')
-    click_on('Create Species variation observation')
+    click_on('Create Obs.')
     expect(page).to have_content('Species variation observation was successfully created')
   end
 
   scenario 'with invalid sample attributes' do
-    click_on('Create Species variation observation')
+    click_on('Create Obs.')
     expect(page).to have_content('The form contains 5 errors')
   end
 
