@@ -13,9 +13,9 @@
     var plots = #{@plots.to_json.html_safe}
     
     plots.forEach(plot => {
-      var p_url = (href='#{plots_url}/' + plot.plot_id);
+      var p_url = ('#{plots_url}/'+plot.plot_id);
       var ping = L.marker([plot.latitude, -plot.longitude]);
-      ping.bindPopup('<h6> Details: </h6>' + plot.location_description + '<h6> Link: </h6>' + p_url + ' <h6> Latitude: </h6>' + plot.latitude + '<h6> Longitude: </h6>' + plot.longitude).addTo(map);
+      ping.bindPopup('<h6> Details: </h6>' + plot.location_description + ' <h6> Latitude: </h6>' + plot.latitude + '<h6> Longitude: </h6>' + plot.longitude + ' <a href="' + p_url + '"> Click me </a>').addTo(map);
       });
   
     var satelliteLayer = L.tileLayer(mapBoxRequest,
