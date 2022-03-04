@@ -1,30 +1,29 @@
-- content_for_title("Non-Vascular Plant Sample ##{@nonvascular_plant_sample.id}")
+- content_for_title("Nonvascular Plant Sample ##{@nonvascular_plant_sample.id}")
 - content_for(:subnav) do
-  = link_to '« Back to Non-Vascular Plant samples', nonvascular_plant_samples_path, class: 'btn btn-primary', title: 'Non-Vascular plant samples'
+  .btn-public
+    = button_to('« Samples', nonvascular_plant_samples_path, class: 'button primary', method: 'get')
   - if @nonvascular_plant_sample.editable_by?(current_user)
-    .btn-group
+    .btn-admin
       = link_to 'Edit', edit_nonvascular_plant_sample_path(@nonvascular_plant_sample), class: 'btn', title: 'Edit sample'
       - if current_user&.admin?
-        = link_to 'Delete', @nonvascular_plant_sample, method: :delete, data: { confirm: "Delete non-vascular plant sample #{@nonvascular_plant_sample.id}?" }, class: 'btn btn-danger', title: 'Delete sample'
-%section
-  .col-md-5
-    %h2 Photo
-    = image_tag @nonvascular_plant_sample.photo.variant(resize: "200x200"), alt: "Photo of #{@nonvascular_plant_sample}" if @nonvascular_plant_sample.photo.attached?
-  .col-md-7
-    %h2 Sample Information
-    %table.table
+        = link_to 'Delete', @nonvascular_plant_sample, method: :delete, data: { confirm: "Delete nonvascular_plant sample #{@nonvascular_plant_sample.id}?" }, class: 'btn btn-danger', title: 'Delete sample'
+.content
+  = render 'layouts/image_carousel', entity: @nonvascular_plant_sample
+  .info
+    %h2.heading#table-heading Information
+    %table.table#vertical-table
       %thead
-        %th{colspan: '2'}= @nonvascular_plant_sample
+        %th.citation.italic{colspan: '2'} Last updated #{last_updated(@nonvascular_plant_sample)} by #{@nonvascular_plant_sample.user}
       %tbody
         %tr
-          %th.col-md-4{scope: 'row'} Collection date
+          %th{scope: 'row'} Collection date
           %td= @nonvascular_plant_sample.collected_on
         %tr
-          %th.col-md-4{scope: 'row'} Plot
+          %th{scope: 'row'} Plot
           %td= @nonvascular_plant_sample.plot
         %tr
-          %th.col-md-4{scope: 'row'} Location within plot
+          %th{scope: 'row'} Location within plot
           %td= @nonvascular_plant_sample.location_within_plot
         %tr
-          %th.col-md-4{scope: 'row'} Description
+          %th{scope: 'row'} Description
           %td= @nonvascular_plant_sample.description
