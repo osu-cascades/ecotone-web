@@ -44,13 +44,6 @@ class PlantsController < ApplicationController
     redirect_to @plant if params[:cancel]
   end
 
-  def delete_image_attachment
-    @photo = ActiveStorage::Attachment.find(params[:id])
-    @photo.purge
-    redirect_back fallback_location: @plant
-    flash[:success] = 'Photo was successfully deleted.'
-  end
-
   def destroy
     @plant.destroy
     redirect_to plants_path
