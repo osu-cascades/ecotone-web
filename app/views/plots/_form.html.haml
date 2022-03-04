@@ -52,17 +52,7 @@
         .data
           = form.label :initial_succession, "Initial Succession"
           = form.text_field :initial_succession, class: 'form-control'
-    .content
-      .caption
-        %h3 Photos
-        %p.italic Show plot changes over time by adding pictures
-      .input
-        .gallery#form
-          - @plot.photo.each_with_index do |image, index|
-            .overlay-container
-              .img-square{ :style => "background-image: url(#{rails_blob_url(photo(@plot, index))})", :alt => "Photo of #{image}" }
-              = link_to("Delete", delete_image_attachment_path(image), method: :delete, class: 'button delete overlay')
-        = form.file_field :photo, multiple: true
+    = render 'layouts/image_gallery', {form: form, entity: @plot, phrase: 'Show plot changes over time by adding pictures'}
     .btn-form
       = button_to('Cancel', @plot, name: 'cancel', class: 'button secondary', method: 'get')
       = form.submit class: 'button primary submit'

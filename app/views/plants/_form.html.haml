@@ -27,17 +27,7 @@
         .data
           = form.label :tolerance
           = form.text_field :tolerance, class: 'form-control'
-    .content
-      .caption
-        %h3 Photos
-        %p.italic Include pictures for easier plant identification
-      .input
-        .gallery#form
-          - @plant.photo.each_with_index do |image, index|
-            .overlay-container
-              .img-square{ :style => "background-image: url(#{rails_blob_url(photo(@plant, index))})", :alt => "Photo of #{image}" }
-              = link_to("Delete", delete_image_attachment_path(image), method: :delete, class: 'button delete overlay')
-        = form.file_field :photo, multiple: true
+    = render 'layouts/image_gallery', {form: form, entity: @plant, phrase: 'Include pictures for easier plant identification'}
     .btn-form
       = button_to('Cancel', @plant, name: 'cancel', class: 'button secondary', method: 'get')
       = form.submit class: 'button primary submit'
