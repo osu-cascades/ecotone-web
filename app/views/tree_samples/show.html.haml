@@ -20,7 +20,8 @@
           %td= @tree_sample.collected_on
         %tr
           %th{scope: 'row'} Plot
-          %td= @tree_sample.plot
+          %td
+            = link_to "#{@tree_sample.plot}", @tree_sample.plot
         %tr
           %th{scope: 'row'} Species
           %td= @tree_sample.plant
