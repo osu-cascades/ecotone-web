@@ -22,7 +22,8 @@
           %td= @soil_sample.collection_method
         %tr
           %th{scope: 'row'} Plot
-          %td= @soil_sample.plot
+          %td
+            = link_to "#{@soil_sample.plot}", @soil_sample.plot
         %tr
           %th{scope: 'row'} pH
           %td= @soil_sample.ph_level

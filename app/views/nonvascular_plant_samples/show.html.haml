@@ -20,7 +20,8 @@
           %td= @nonvascular_plant_sample.collected_on
         %tr
           %th{scope: 'row'} Plot
-          %td= @nonvascular_plant_sample.plot
+          %td
+            = link_to "#{@nonvascular_plant_sample.plot}", @nonvascular_plant_sample.plot
         %tr
           %th{scope: 'row'} Location within Plot
           %td= @nonvascular_plant_sample.location_within_plot
