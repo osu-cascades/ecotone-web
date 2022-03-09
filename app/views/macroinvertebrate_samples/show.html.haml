@@ -20,7 +20,8 @@
           %td= @macroinvertebrate_sample.collected_on
         %tr
           %th{scope: 'row'} Plot
-          %td= @macroinvertebrate_sample.plot
+          %td
+            = link_to "#{@macroinvertebrate_sample.plot}", @macroinvertebrate_sample.plot
         %tr
           %th{scope: 'row'} Location within Plot
           %td= @macroinvertebrate_sample.location_within_plot
