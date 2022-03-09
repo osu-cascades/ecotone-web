@@ -20,7 +20,8 @@
           %td= @fungi_sample.collected_on
         %tr
           %th{scope: 'row'} Plot
-          %td= @fungi_sample.plot
+          %th
+            = link_to "#{@fungi_sample.plot}", @fungi_sample.plot
         %tr
           %th{scope: 'row'} Location within Plot
           %td= @fungi_sample.location_within_plot
