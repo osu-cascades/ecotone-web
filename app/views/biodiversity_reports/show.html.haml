@@ -46,17 +46,3 @@
             %th.col-md-4{scope: 'row'} Biomass estimate
             %td= @biodiversity_report.biomass_estimate
 
-  .row
-    .col-md-12
-      %hr
-      %h3 Soil Samples
-      = render(@biodiversity_report.soil_samples) || '<p>No soil samples</p>'.html_safe
-      %hr
-      %h3 Lichen Samples
-      = render(@biodiversity_report.lichen_samples) || '<p>No lichen samples</p>'.html_safe
-      %hr
-      %h3 Macroinvertebrate Samples
-      = render(@biodiversity_report.macroinvertebrate_samples) || '<p>No macroinvertebrate samples</p>'.html_safe
-      %hr
-      %h3 Plant Samples
-      = render(@biodiversity_report.plant_samples) || '<p>No plant samples</p>'.html_safe
