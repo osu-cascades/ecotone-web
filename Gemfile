@@ -6,7 +6,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'rails', '~> 7.0.2'
+gem 'rails', '~> 7.0.2.3'
 gem 'bootstrap-sass', '~> 3.4.1'
 gem 'haml', '~> 5.2.2'
 gem 'pg'
@@ -32,9 +32,7 @@ gem 'aws-sdk-s3'
 gem 'image_processing', '~> 1.2'
 gem 'leaflet-rails', '~> 1.7.0'
 
-# there is currently an issue with oauth and faraday gems: https://github.com/oauth-xx/oauth2/issues/572
-# hard set oauth2 until problem is resolved
-gem 'oauth2', '= 1.4.7'
+gem 'oauth2', '= 1.4.9'
 
 
 group :test do
