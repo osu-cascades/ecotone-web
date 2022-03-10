@@ -15,7 +15,7 @@
     plots.forEach(plot => {
       var p_url = ('#{plots_url}/'+plot.plot_id);
       var ping = L.marker([plot.latitude, -plot.longitude]);
-      ping.bindPopup(`<h6> Plot Number: ${plot.plot_id} </h6>` + `<h6> Details: ${plot.location_description}</h6>` + `<h6> Latitude: ${plot.latitude} </h6>` + '<h6> Longitude: </h6>' + plot.longitude + ' <a href="' + p_url + '"> Click me </a>').addTo(map);
+      ping.bindPopup(`<h6> Plot Number: ${plot.plot_id} </h6>` + `<h6> Details: ${plot.location_description}</h6>` + `<h6> Latitude: ${plot.latitude} </h6>` + `<h6> Longitude: ${plot.longitude} </h6>` + ' <a href="' + p_url + '"> Click me </a>').addTo(map);
       });
 
     var satelliteLayer = L.tileLayer(mapBoxRequest,
