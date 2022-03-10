@@ -15,7 +15,8 @@
     plots.forEach(plot => {
       var p_url = ('#{plots_url}/'+plot.plot_id);
       var ping = L.marker([plot.latitude, -plot.longitude]);
-      ping.bindPopup(`<h6> Plot ${plot.plot_id} </h6>` +
+      ping.bindPopup(
+        `<h6> Plot ${plot.plot_id} </h6>` +
         `<h6> Details: ${plot.location_description}</h6>` + 
         `<h6> Latitude: ${plot.latitude} </h6>` + 
         `<h6> Longitude: ${plot.longitude} </h6>` + 
