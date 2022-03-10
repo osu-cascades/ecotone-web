@@ -19,7 +19,7 @@
         `<h6> Details: ${plot.location_description}</h6>` + 
         `<h6> Latitude: ${plot.latitude} </h6>` + 
         `<h6> Longitude: ${plot.longitude} </h6>` + 
-        ' <a href="' + p_url + '"> Click me </a>').addTo(map);
+        `<a href="${p_url}"> Go to plot </a>`).addTo(map);
       });
 
     var satelliteLayer = L.tileLayer(mapBoxRequest,
