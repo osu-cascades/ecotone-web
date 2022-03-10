@@ -32,8 +32,6 @@ gem 'aws-sdk-s3'
 gem 'image_processing', '~> 1.2'
 gem 'leaflet-rails', '~> 1.7.0'
 
-# there is currently an issue with oauth and faraday gems: https://github.com/oauth-xx/oauth2/issues/572
-# hard set oauth2 until problem is resolved
 gem 'oauth2', '= 1.4.9'
 
 
