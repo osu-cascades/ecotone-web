@@ -1,13 +1,11 @@
 - content_for_title('Non-Vascular Plant Samples')
 - content_for(:subnav) do
   = button_to('Add Sample', new_nonvascular_plant_sample_path, class: 'button primary', title: 'Add a new non-vascular plant sample', method: 'get')
-
 %section
-  %h2 Sample Information
   %table.table
     %thead
       %tr
-        %th{scope: 'col'} Id
+        %th{scope: 'col'} ID
         %th{scope: 'col'} Plot
         %th{scope: 'col'} Collection Date
         %th{scope: 'col'} Location in Plot
@@ -22,5 +20,5 @@
           %td= sample.location_within_plot
           %td= sample.description
           %td
-            = link_to 'view', sample, title: "Details of non-vascular plant sample #{sample.id}"
+            = link_to('view', sample, title: "Details of non-vascular plant sample #{sample.id}")
             = link_to('edit', edit_nonvascular_plant_sample_path(sample), title: 'Edit sample') if sample.editable_by?(current_user)
