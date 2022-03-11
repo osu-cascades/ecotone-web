@@ -6,7 +6,7 @@
       = f.date_field :collected_on, class: 'form-control'
       = f.label :plot_id, 'Plot'
       = f.collection_select :plot_id, @plots, :id, :name, include_blank: 'Choose...'
-      = f.label :location_within_plot
+      = f.label :location_within_plot, 'Location in Plot'
       = f.text_field :location_within_plot, class: 'form-control'
       = f.label :phylum
       = f.text_field :phylum, class: 'form-control'

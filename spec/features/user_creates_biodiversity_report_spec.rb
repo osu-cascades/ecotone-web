@@ -139,7 +139,7 @@ RSpec.feature 'User creates a biodiversity report' do
   #     click_link('Add macroinvertebrate sample')
   #     within('.macroinvertebrate_sample') do
   #       fill_in('Phylum', with: 'Example phylum')
-  #       fill_in('Location within plot', with: 'on a rock')
+  #       fill_in('Location in Plot', with: 'on a rock')
   #       fill_in('Quantity', with: '1')
   #       select('Pollinator', from: 'Ecosystem service')
   #     end
@@ -149,7 +149,7 @@ RSpec.feature 'User creates a biodiversity report' do
   #     click_link(BiodiversityReport.last.to_s)
   #     expect(page).to have_no_content('No macroinvertebrate sample')
   #     expect(page).to have_content('Phylum: Example phylum')
-  #     expect(page).to have_content('Location within plot: on a rock')
+  #     expect(page).to have_content('Location in Plot: on a rock')
   #     expect(page).to have_content('Quantity: 1')
   #     expect(page).to have_content('Ecosystem service: Pollinator')
   #   end
@@ -158,18 +158,18 @@ RSpec.feature 'User creates a biodiversity report' do
   #     click_link('Add macroinvertebrate sample')
   #     within('.macroinvertebrate_sample') do
   #       fill_in('Phylum', with: '')
-  #       fill_in('Location within plot', with: '')
+  #       fill_in('Location in Plot', with: '')
   #       fill_in('Quantity', with: '-1')
   #     end
   #     click_button('Create Biodiversity report')
   #     expect(page).to have_selector '.alert', text: /The form contains .* errors./
   #     expect(page.find('.alert')).to have_content("Macroinvertebrate samples phylum can't be blank")
-  #     expect(page.find('.alert')).to have_content("Macroinvertebrate samples location within plot can't be blank")
+  #     expect(page.find('.alert')).to have_content("Macroinvertebrate samples Location in Plot can't be blank")
   #     expect(page.find('.alert')).to have_content('Macroinvertebrate samples quantity must be greater than or equal to 0')
   #     expect(page.find('.alert')).to have_content("Macroinvertebrate samples ecosystem service can't be blank")
   #     expect(page.find('.alert')).to have_content('Macroinvertebrate samples ecosystem service is not a valid ecosystem service')
   #     expect(page).to have_field('Phylum', with: '')
-  #     expect(page).to have_field('Location within plot', with: '')
+  #     expect(page).to have_field('Location in Plot', with: '')
   #     expect(page).to have_field('Quantity', with: '-1')
   #   end
   # end
@@ -181,14 +181,14 @@ RSpec.feature 'User creates a biodiversity report' do
   #     click_link('Add macroinvertebrate sample')
   #     within('.macroinvertebrate_sample') do
   #       fill_in('Phylum', with: 'Example phylum')
-  #       fill_in('Location within plot', with: 'on a rock')
+  #       fill_in('Location in Plot', with: 'on a rock')
   #       fill_in('Quantity', with: '1')
   #       select('Pollinator', from: 'Ecosystem service')
   #     end
   #     click_link('Add macroinvertebrate sample')
   #     within all('.macroinvertebrate_sample').last do
   #       fill_in('Phylum', with: 'Example phylum')
-  #       fill_in('Location within plot', with: 'on a rock')
+  #       fill_in('Location in Plot', with: 'on a rock')
   #       fill_in('Quantity', with: '1')
   #       select('Pollinator', from: 'Ecosystem service')
   #     end
@@ -198,7 +198,7 @@ RSpec.feature 'User creates a biodiversity report' do
   #     click_link(BiodiversityReport.last.to_s)
   #     expect(page).to have_no_content('No macroinvertebrate sample')
   #     expect(page).to have_content('Phylum: Example phylum')
-  #     expect(page).to have_content('Location within plot: on a rock')
+  #     expect(page).to have_content('Location in Plot: on a rock')
   #     expect(page).to have_content('Quantity: 1')
   #     expect(page).to have_content('Ecosystem service: Pollinator')
   #   end
@@ -209,7 +209,7 @@ RSpec.feature 'User creates a biodiversity report' do
 
   #   scenario 'providing valid fungi sample data' do
   #     within('.fungi_sample') do
-  #       fill_in('Location within plot', with: 'on a rock')
+  #       fill_in('Location in Plot', with: 'on a rock')
   #       fill_in('Size', with: '1.5')
   #       fill_in('Description', with: 'description of fungi')
   #     end
@@ -218,24 +218,24 @@ RSpec.feature 'User creates a biodiversity report' do
   #     expect(page).to have_content(BiodiversityReport.last.to_s)
   #     click_link(BiodiversityReport.last.to_s)
   #     expect(page).to have_no_content('No fungi sample')
-  #     expect(page).to have_content('Location within plot: on a rock')
+  #     expect(page).to have_content('Location in Plot: on a rock')
   #     expect(page).to have_content('Size: 1.5')
   #     expect(page).to have_content('Description: description of fungi')
   #   end
 
   #   scenario 'providing invalid fungi sample data' do
   #     within('.fungi_sample') do
-  #       fill_in('Location within plot', with: '')
+  #       fill_in('Location in Plot', with: '')
   #       fill_in('Size', with: '-1')
   #       fill_in('Description', with: '')
   #     end
   #     click_button('Create Biodiversity report')
   #     expect(page).to have_selector '.alert', text: /The form contains .* errors./
-  #     expect(page.find('.alert')).to have_content("Fungi sample location within plot can't be blank")
+  #     expect(page.find('.alert')).to have_content("Fungi sample Location in Plot can't be blank")
   #     expect(page.find('.alert')).to have_content('Fungi sample size must be greater than or equal to 0')
   #     expect(page.find('.alert')).to have_content("Fungi sample description can't be blank")
   #     expect(page).to have_css('#fungi_sample_fields.collapse.in')
-  #     expect(page).to have_field('Location within plot', with: '')
+  #     expect(page).to have_field('Location in Plot', with: '')
   #     expect(page).to have_field('Size', with: '-1')
   #     expect(page).to have_field('Description', with: '')
   #   end
@@ -246,7 +246,7 @@ RSpec.feature 'User creates a biodiversity report' do
 
   #   scenario 'providing valid lichen sample data' do
   #     within('.lichen_sample') do
-  #       fill_in('Location within plot', with: 'on a rock')
+  #       fill_in('Location in Plot', with: 'on a rock')
   #       fill_in('Description', with: 'description of lichen')
   #     end
   #     click_button('Create Biodiversity report')
@@ -254,7 +254,7 @@ RSpec.feature 'User creates a biodiversity report' do
   #     expect(page).to have_content(BiodiversityReport.last.to_s)
   #     click_link(BiodiversityReport.last.to_s)
   #     expect(page).to have_no_content('No lichen sample')
-  #     expect(page).to have_content('Location within plot: on a rock')
+  #     expect(page).to have_content('Location in Plot: on a rock')
   #     expect(page).to have_content('Description: description of lichen')
   #   end
   # end
@@ -264,7 +264,7 @@ RSpec.feature 'User creates a biodiversity report' do
 
   #   scenario 'providing valid nonvascular plant sample data' do
   #     within('.nonvascular_plant_sample') do
-  #       fill_in('Location within plot', with: 'on a rock')
+  #       fill_in('Location in Plot', with: 'on a rock')
   #       fill_in('Description', with: 'description of nonvascular plant')
   #     end
   #     click_button('Create Biodiversity report')
@@ -272,7 +272,7 @@ RSpec.feature 'User creates a biodiversity report' do
   #     expect(page).to have_content(BiodiversityReport.last.to_s)
   #     click_link(BiodiversityReport.last.to_s)
   #     expect(page).to have_no_content('No nonvascular plant sample')
-  #     expect(page).to have_content('Location within plot: on a rock')
+  #     expect(page).to have_content('Location in Plot: on a rock')
   #     expect(page).to have_content('Description: description of nonvascular plant')
   #   end
   # end
