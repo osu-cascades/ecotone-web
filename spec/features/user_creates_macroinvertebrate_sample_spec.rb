@@ -10,7 +10,7 @@ RSpec.feature 'User creates a macroinvertebrate sample' do
   end
 
   scenario 'with valid sample attributes' do
-    fill_in('Collection date', with: '09/11/2001')
+    fill_in('Collection Date', with: '09/11/2001')
     select('Plot #1', from: 'Plot')
     fill_in('Phylum', with: 'Fake phylum')
     fill_in('Location within plot', with: 'Fake location')

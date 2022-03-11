@@ -12,7 +12,7 @@ RSpec.feature 'User creates a tree sample' do
   describe 'with valid sample attributes' do
 
     before do
-      fill_in('Collection date', with: '09/11/2001')
+      fill_in('Collection Date', with: '09/11/2001')
       select('Plot #1', from: 'Plot')
       select('Plant Example', from: 'Species')
       fill_in('Tag', with: 42)

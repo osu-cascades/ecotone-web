@@ -2,7 +2,7 @@
   .col-md-6.col-md-offset-3
     = form_for(@mycorrhizal_fungi_sample) do |form|
       = form_errors_for(@mycorrhizal_fungi_sample)
-      = form.label :collected_on, 'Collection date'
+      = form.label :collected_on, 'Collection Date'
       = form.date_field :collected_on, id: :mycorrhizal_fungi_sample_collected_on, class: 'form-control'
       = form.label :plot_id, 'Plot'
       = form.collection_select :plot_id, @plots, :id, :name, include_blank: 'Choose...'
