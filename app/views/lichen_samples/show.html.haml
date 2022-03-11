@@ -20,7 +20,8 @@
           %td= @lichen_sample.collected_on
         %tr
           %th{scope: 'row'} Plot
-          %td= @lichen_sample.plot
+          %td
+            = link_to "#{@lichen_sample.plot}", @lichen_sample.plot
         %tr
           %th{scope: 'row'} Location within Plot
           %td= @lichen_sample.location_within_plot

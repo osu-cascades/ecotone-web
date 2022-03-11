@@ -20,7 +20,8 @@
           %td= @species_variation_observation.observed_on
         %tr
           %th{scope: 'row'} Plot
-          %td= @species_variation_observation.plot
+          %td
+            = link_to "#{@species_variation_observation.plot}", @species_variation_observation.plot
         %tr
           %th{scope: 'row'} Plant
           %td= @species_variation_observation.plant

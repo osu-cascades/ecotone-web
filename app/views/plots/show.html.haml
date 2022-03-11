@@ -107,7 +107,7 @@
             %th{scope: 'col'} Species richness
             %th{scope: 'col'} Diversity index
         %tbody
-          - @plot.biodiversity_reports.each do |report|
+          - @plot.biodiversity_reports.reverse.each do |report|
             %tr
               %td= report.measured_on.to_formatted_s(:long)
               %td= report.temperature
