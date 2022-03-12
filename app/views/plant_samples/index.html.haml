@@ -1,31 +1,28 @@
 - content_for_title('Plant Samples')
 - content_for(:subnav) do
   = button_to('Add Sample', new_plant_sample_path, class: 'button primary', title: 'Add a new plant sample', method: 'get')
-
 %section
-  %h2 Sample Information
-  .table-responsive
-    %table.table.table-striped
-      %thead
+  %table.table
+    %thead
+      %tr
+        %th{scope: 'col'} ID
+        %th{scope: 'col'} Collection Date
+        %th{scope: 'col'} Plot
+        %th{scope: 'col'} Species
+        %th{scope: 'col'} Abundance
+        %th{scope: 'col'} Coverage
+        %th{scope: 'col'} Biomass Estimate
+        %th{scope: 'col'}
+    %tbody
+      - @plant_samples.each do |sample|
         %tr
-          %th{scope: 'col'} Id
-          %th{scope: 'col'} Collection Date
-          %th{scope: 'col'} Plot
-          %th{scope: 'col'} Species
-          %th{scope: 'col'} Abundance
-          %th{scope: 'col'} Percent cover
-          %th{scope: 'col'} Biomass estimate
-          %th{scope: 'col'}
-      %tbody
-        - @plant_samples.each do |sample|
-          %tr
-            %td= sample.id
-            %td= sample.collected_on
-            %td= sample.plot
-            %td= sample.plant.common_name
-            %td= sample.abundance
-            %td= sample.percent_cover
-            %td= sample.biomass_estimate
-            %td
-              = link_to 'view', sample, title: "Details of plant sample #{sample.id}"
-              = link_to('edit', edit_plant_sample_path(sample), title: 'Edit sample') if sample.editable_by?(current_user)
+          %td= sample.id
+          %td= sample.collected_on
+          %td= sample.plot
+          %td= sample.plant.common_name
+          %td= sample.abundance
+          %td= sample.percent_cover
+          %td= sample.biomass_estimate
+          %td
+            = link_to('view', sample, title: "Details of plant sample #{sample.id}")
+            = link_to('edit', edit_plant_sample_path(sample), title: 'Edit sample') if sample.editable_by?(current_user)

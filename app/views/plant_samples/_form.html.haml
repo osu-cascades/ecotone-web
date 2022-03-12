@@ -1,19 +1,29 @@
-.row
-  .col-md-6.col-md-offset-3
-    = form_for(@plant_sample, html: { multipart: true }) do |f|
-      = form_errors_for(@plant_sample)
-      = f.label :collected_on, 'Collection Date'
-      = f.date_field :collected_on, class: 'form-control'
-      = f.label :plot_id, 'Plot'
-      = f.collection_select :plot_id, @plots, :id, :name, include_blank: 'Choose...'
-      = f.label :plant_id, 'Plant'
-      = f.collection_select :plant_id, @plants, :id, :common_name, include_blank: 'Choose...'
-      = f.label :abundance
-      = f.text_field :abundance, class: 'form-control'
-      = f.label :percent_cover
-      = f.text_field :percent_cover, class: 'form-control'
-      = f.label :biomass_estimate
-      = f.text_field :biomass_estimate, class: 'form-control'
-      = f.label :photo
-      = f.file_field :photo, class: 'form-control'
-      = f.submit class: 'btn btn-primary'
+.form
+  = form_for(@plant_sample, html: { multipart: true }) do |form|
+    = form_errors_for(@plant_sample)
+    .content
+      .caption
+        %h3 Information 
+        %p.italic Provide data about the plant sample
+      .input
+        .data
+          = form.label :collected_on, 'Collection Date'
+          = form.date_field :collected_on, class: 'form-control'
+        .data
+          = form.label :plot_id, 'Plot'
+          = form.collection_select :plot_id, @plots, :id, :name, {include_blank: 'Choose plot...'}, {class: 'form-control'}
+        .data
+          = form.label :plant_id, 'Plant'
+          = form.collection_select :plant_id, @plants, :id, :form_common_name, {include_blank: 'Choose plant...'}, {class: 'form-control'}
+        .data
+          = form.label :abundance
+          = form.text_field :abundance, class: 'form-control'
+        .data
+          = form.label :percent_cover, 'Coverage'
+          = form.text_field :percent_cover, class: 'form-control'
+        .data
+          = form.label :biomass_estimate, 'Biomass Estimate'
+          = form.text_field :biomass_estimate, class: 'form-control'
+    = render 'layouts/image_gallery', {form: form, entity: @plant_sample, phrase: 'Include reference pictures for the sample'}
+    = render 'layouts/form_buttons', {form: form, text: 'Sample'}
+
