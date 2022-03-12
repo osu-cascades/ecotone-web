@@ -1,24 +1,43 @@
-.row
-  .col-md-6.col-md-offset-3
-    = form_for(@soil_sample) do |f|
-      = form_errors_for(@soil_sample)
-      = f.label :collected_on, 'Collection Date'
-      = f.date_field :collected_on, class: 'form-control'
-      = f.label :plot_id, 'Plot'
-      = f.collection_select :plot_id, @plots, :id, :name, include_blank: 'Choose...'
-      = f.label :collection_method
-      = f.select :collection_method, SoilSample.collection_methods.keys, include_blank: 'Choose...'
-      = f.label :ph_level, 'pH level'
-      = f.text_field :ph_level, class: 'form-control'
-      = f.label :temperature
-      = f.text_field :temperature, class: 'form-control'
-      = f.label :moisture
-      = f.text_field :moisture, class: 'form-control'
-      %h3 Nutrients
-      = f.fields_for :nutrients, @soil_sample.nutrients do |nf|
-        = nf.hidden_field :id
-        = nf.hidden_field :name
-        = nf.label :level, nf.object.name
-        = nf.select :level, Nutrient.levels.keys, include_blank: 'Choose...'
-
-      = f.submit class: 'btn btn-primary'
+.form
+  = form_for(@soil_sample, html: { multipart: true }) do |form|
+    = form_errors_for(@soil_sample)
+    .content
+      .caption
+        %h3 Information 
+        %p.italic Provide data about the soil sample
+      .input
+        .data
+          = form.label :collected_on, 'Collection Date'
+          = form.date_field :collected_on, class: 'form-control'
+        .data
+          = form.label :plot_id, 'Plot'
+          = form.collection_select :plot_id, @plots, :id, :name, {include_blank: 'Choose plot...'}, {class: 'form-control'}
+        .data
+          = form.label :collection_method
+          = form.select :collection_method, SoilSample.collection_methods.keys, {include_blank: 'Choose method...'}, {class: 'form-control'}
+        .data
+          = form.label :ph_level, 'pH level'
+          = form.text_field :ph_level, class: 'form-control'
+        .data
+          = form.label :temperature
+          = form.text_field :temperature, class: 'form-control'
+        .data
+          = form.label :moisture
+          = form.text_field :moisture, class: 'form-control'
+    .content
+      .caption 
+        %h3 Nutrients
+        %p.italic Include details about soil nutrients
+      .input
+        = form.fields_for :nutrients, @soil_sample.nutrients do |nf|
+          .data
+            = nf.hidden_field :id
+            = nf.hidden_field :name
+            = nf.label :amount, "#{nf.object.name} Amount"
+            = nf.text_field :amount, class: 'form-control'
+          .data
+            = nf.hidden_field :id
+            = nf.hidden_field :name
+            = nf.label :level, "#{nf.object.name} Level"
+            = nf.select :level, Nutrient.levels.keys, {include_blank: 'Choose level...'}, {class: 'form-control'}
+    = render 'layouts/form_buttons', {form: form, text: 'Sample'}
