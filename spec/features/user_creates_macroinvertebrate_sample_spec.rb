@@ -10,10 +10,10 @@ RSpec.feature 'User creates a macroinvertebrate sample' do
   end
 
   scenario 'with valid sample attributes' do
-    fill_in('Collection date', with: '09/11/2001')
+    fill_in('Collection Date', with: '09/11/2001')
     select('Plot #1', from: 'Plot')
     fill_in('Phylum', with: 'Fake phylum')
-    fill_in('Location within plot', with: 'Fake location')
+    fill_in('Location in Plot', with: 'Fake location')
     fill_in('Quantity', with: 1)
     select(MacroinvertebrateSample::ECOSYSTEM_SERVICES.first, from: 'Ecosystem service')
     click_on('Create Sample')
@@ -27,7 +27,7 @@ RSpec.feature 'User creates a macroinvertebrate sample' do
       expect(error_explanations).to have_content('Plot must exist')
       expect(error_explanations).to have_content("Collected on can't be blank")
       expect(error_explanations).to have_content("Phylum can't be blank")
-      expect(error_explanations).to have_content("Location within plot can't be blank")
+      expect(error_explanations).to have_content("Location in Plot can't be blank")
       expect(error_explanations).to have_content('Quantity is not a number')
       expect(error_explanations).to have_content("Ecosystem service can't be blank")
       expect(error_explanations).to have_content('Ecosystem service is not a valid ecosystem service')

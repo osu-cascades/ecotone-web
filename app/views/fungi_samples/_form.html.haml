@@ -7,13 +7,13 @@
         %p.italic Provide data about the fungi sample
       .input
         .data
-          = form.label :collected_on, 'Collection date'
+          = form.label :collected_on, 'Collection Date'
           = form.date_field :collected_on, class: 'form-control'
         .data
           = form.label :plot_id, 'Plot'
           = form.collection_select :plot_id, @plots, :id, :name, {include_blank: 'Choose plot...'}, {class: 'form-control'}
         .data
-          = form.label :location_within_plot
+          = form.label :location_within_plot, 'Location in Plot'
           = form.text_field :location_within_plot, class: 'form-control'
         .data
           = form.label :size
