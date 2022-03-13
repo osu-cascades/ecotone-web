@@ -10,9 +10,9 @@ RSpec.feature 'User creates a non-vascular plant sample' do
   end
 
   scenario 'with valid sample attributes' do
-    fill_in('Collection date', with: '09/11/2001')
+    fill_in('Collection Date', with: '09/11/2001')
     select('Plot #1', from: 'Plot')
-    fill_in('Location within plot', with: 'Fake location')
+    fill_in('Location in Plot', with: 'Fake location')
     fill_in('Description', with: 'Fake description')
     click_on('Create Sample')
     expect(page).to have_content('Nonvascular plant sample was successfully created')
@@ -24,7 +24,7 @@ RSpec.feature 'User creates a non-vascular plant sample' do
     page.find('.alert').tap do |error_explanations|
       expect(error_explanations).to have_content('Plot must exist')
       expect(error_explanations).to have_content("Collected on can't be blank")
-      expect(error_explanations).to have_content("Location within plot can't be blank")
+      expect(error_explanations).to have_content("Location in Plot can't be blank")
       expect(error_explanations).to have_content("Description can't be blank") 
     end
   end

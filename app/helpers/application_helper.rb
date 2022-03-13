@@ -25,4 +25,14 @@ module ApplicationHelper
   def last_updated(entity)
     entity.updated_at&.to_formatted_s(:long)
   end
+
+  def nutrient_table_data(sample, nutrient)
+    amount = sample.nutrients.find{ |n| n.name == nutrient}&.amount
+    level = sample.nutrients.find{ |n| n.name == nutrient}&.level
+    if amount.nil? || (level.include? 'not present')
+      "#{level}"
+    else
+      "#{amount} (#{level})"
+    end
+  end
 end

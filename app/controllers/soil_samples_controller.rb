@@ -66,7 +66,7 @@ class SoilSamplesController < ApplicationController
 
     def soil_sample_params
       params.require(:soil_sample).permit(:collected_on, :plot_id, :collection_method, :ph_level, :temperature, :moisture,
-         nutrients_attributes: [:id, :name, :level])
+         nutrients_attributes: [:id, :name, :amount, :level])
     end
 
 end
