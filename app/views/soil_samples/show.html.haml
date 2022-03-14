@@ -35,10 +35,10 @@
           %td= @soil_sample.moisture
         %tr
           %th{scope: 'row'} Nitrogen
-          %td= @soil_sample.nutrients.find{ |n| n.name == 'Nitrogen'}&.level
+          %td= nutrient_table_data(@soil_sample, 'Nitrogen')
         %tr
           %th{scope: 'row'} Phosphorus
-          %td= @soil_sample.nutrients.find{ |n| n.name == 'Phosphorus'}&.level
+          %td= nutrient_table_data(@soil_sample, 'Phosphorus')
         %tr
           %th{scope: 'row'} Potassium
-          %td= @soil_sample.nutrients.find{ |n| n.name == 'Potassium'}&.level
+          %td= nutrient_table_data(@soil_sample, 'Potassium')

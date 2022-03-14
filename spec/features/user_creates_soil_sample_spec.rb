@@ -10,7 +10,7 @@ RSpec.feature 'User creates a soil sample' do
   end
 
   scenario 'with valid sample attributes' do
-    fill_in('Collection date', with: '09/11/2001')
+    fill_in('Collection Date', with: '09/11/2001')
     select('Plot #1', from: 'Plot')
     select('point', from: 'Collection method')
     fill_in('pH level', with: '4')
@@ -37,7 +37,7 @@ RSpec.feature 'User creates a soil sample' do
   end
 
   scenario 'without nutrient levels' do
-    fill_in('Collection date', with: '09/11/2001')
+    fill_in('Collection Date', with: '09/11/2001')
     select('Plot #1', from: 'Plot')
     select('point', from: 'Collection method')
     fill_in('pH level', with: '4')

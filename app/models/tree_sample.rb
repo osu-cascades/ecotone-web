@@ -28,7 +28,7 @@ class TreeSample < ApplicationRecord
 
   def self.to_csv
     CSV.generate(headers: true) do |csv|
-      header = ['Id', 'Collection date', 'Plot', 'Species', 'Tag', 'Growth Stage', 'DBH', 'Lower Canopy Height', 'Upper Canopy Height', 'Latitude', 'Longitude']
+      header = ['Id', 'Collection Date', 'Plot', 'Species', 'Tag', 'Growth Stage', 'DBH', 'Lower Canopy Height', 'Upper Canopy Height', 'Latitude', 'Longitude']
       csv << header
       TreeSample.includes(:plot, :plant).each do |ts|
         csv.add_row [

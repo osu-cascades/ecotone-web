@@ -10,12 +10,12 @@ RSpec.feature 'User creates a plant sample' do
   end
 
   scenario 'with valid sample attributes' do
-    fill_in('Collection date', with: '09/11/2001')
+    fill_in('Collection Date', with: '09/11/2001')
     select('Plot #1', from: 'Plot')
     select('Plant Example', from: 'Plant')
     fill_in('Abundance', with: 1)
-    fill_in('Percent cover', with: 1)
-    fill_in('Biomass estimate', with: 1.0)
+    fill_in('Coverage', with: 1)
+    fill_in('Biomass Estimate', with: 1.0)
     click_on('Create Sample')
     expect(page).to have_content('Plant sample was successfully created')
   end

@@ -2,23 +2,21 @@
 - content_for(:subnav) do
   = button_to('Add Sample', new_tree_sample_path, class: 'button primary', title: 'Add a new tree sample', method: 'get')
   -# = link_to('Download as CSV', tree_samples_path(format: :csv), class: 'btn', title: 'Download as CSV')
-
 %section
-  %h2 Sample Information
   %table.table
     %thead
       %tr
-        %th{scope: 'col'} Id
+        %th{scope: 'col'} ID
         %th{scope: 'col'} Collection Date
         %th{scope: 'col'} Plot
         %th{scope: 'col'} Species
         %th{scope: 'col'} Tag
         %th{scope: 'col'} Growth Stage
         %th{scope: 'col'} DBH (cm)
-        %th{scope: 'col'} Lower Canopy Height (m)
-        %th{scope: 'col'} Upper Canopy Height (m)
-        %th{scope: 'col'} Latitude (°)
-        %th{scope: 'col'} Longitude (°)
+        %th{scope: 'col'} Lower Canopy Ht. (m)
+        %th{scope: 'col'} Upper Canopy Ht. (m)
+        %th{scope: 'col'} Lat. (°)
+        %th{scope: 'col'} Long. (°)
         %th{scope: 'col'}
     %tbody
       - @tree_samples.each do |sample|
@@ -35,5 +33,5 @@
           %td= sample.latitude
           %td= sample.longitude
           %td
-            = link_to 'view', sample, title: "Details of tree sample #{sample.id}"
+            = link_to('view', sample, title: "Details of tree sample #{sample.id}")
             = link_to('edit', edit_tree_sample_path(sample), title: 'Edit sample') if sample.editable_by?(current_user)

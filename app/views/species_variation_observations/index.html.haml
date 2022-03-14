@@ -1,14 +1,12 @@
 - content_for_title('Species Variation Observations')
 - content_for(:subnav) do
   = button_to('Add Observation', new_species_variation_observation_path, class: 'button primary', title: 'Add a new species variation observation', method: 'get')
-
 %section
-  %h2 Observations
   %table.table
     %thead
       %tr
-        %th{scope: 'col'} Id
-        %th{scope: 'col'} Observation date
+        %th{scope: 'col'} ID
+        %th{scope: 'col'} Observation Date
         %th{scope: 'col'} Plot
         %th{scope: 'col'} Plant
         %th{scope: 'col'} Average Height
@@ -16,15 +14,15 @@
         %th{scope: 'col'} Qualitative Observation
         %th{scope: 'col'}
     %tbody
-      - @species_variation_observations.each do |o|
+      - @species_variation_observations.each do |obs|
         %tr
-          %td= o.id
-          %td= o.observed_on
-          %td= o.plot
-          %td= o.plant
-          %td= o.average_height
-          %td= o.average_width
-          %td= o.description
+          %td= obs.id
+          %td= obs.observed_on
+          %td= obs.plot
+          %td= obs.plant
+          %td= obs.average_height
+          %td= obs.average_width
+          %td= obs.description
           %td
-            = link_to 'view', o, title: "Details of species variation observation #{o.id}"
-            = link_to('edit', edit_species_variation_observation_path(o), title: 'Edit observation') if o.editable_by?(current_user)
+            = link_to('view', obs, title: "Details of species variation observation #{obs.id}")
+            = link_to('edit', edit_species_variation_observation_path(obs), title: 'Edit observation') if obs.editable_by?(current_user)
