@@ -62,7 +62,8 @@
           %th{scope: 'row'} Initial Succession
           %td= @plot.initial_succession
 - if @plot.featured_plant 
-  %h2.center= @plot.featured_plant.common_name.titleize
+  %h2.center
+    = link_to "#{@plot.featured_plant.common_name.titleize}", @plot.featured_plant
   .content
     - if @plot.featured_plant.photo.length == 0
       .img-square.default
