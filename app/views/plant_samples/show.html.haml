@@ -24,7 +24,8 @@
             = link_to "#{@plant_sample.plot}", @plant_sample.plot
         %tr
           %th{scope: 'row'} Plant
-          %td= @plant_sample.plant.common_name
+          %td
+            = link_to "#{@plant_sample.plant.common_name}", @plant_sample.plant.common_name
         %tr
           %th{scope: 'row'} Abundance
           %td= @plant_sample.abundance
