@@ -10,6 +10,8 @@ class BiodiversityReport < ApplicationRecord
   has_one_attached :photo
   validates :photo, content_type: ['image/jpg', 'image/png', 'image/jpeg']
 
+  has_many :biodiversity_reports
+
   validates_presence_of :measured_on
   validates_presence_of :measured_at
   validates_numericality_of :temperature, allow_nil: true
