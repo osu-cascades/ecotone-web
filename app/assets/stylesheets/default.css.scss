@@ -37,6 +37,11 @@ a {
   position: relative;
 }
 
+.space {
+  height: $space5;
+  width: $space5;
+}
+
 #body {
   min-height: 100%;
   padding-top: $space7;
