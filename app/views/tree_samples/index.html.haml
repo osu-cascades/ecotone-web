@@ -3,7 +3,7 @@
   = button_to('Add Sample', new_tree_sample_path, class: 'button primary', title: 'Add a new tree sample', method: 'get')
   -# = link_to('Download as CSV', tree_samples_path(format: :csv), class: 'btn', title: 'Download as CSV')
 %section
-  %table.table
+  %table.table#list
     %thead
       %tr
         %th{scope: 'col'} ID
@@ -17,10 +17,9 @@
         %th{scope: 'col'} Upper Canopy Ht. (m)
         %th{scope: 'col'} Lat. (°)
         %th{scope: 'col'} Long. (°)
-        %th{scope: 'col'}
     %tbody
       - @tree_samples.each do |sample|
-        %tr
+        %tr{:onclick => "location.href='#{url_for(sample)}'"}
           %td= sample.id
           %td= sample.collected_on
           %td= sample.plot
@@ -32,6 +31,3 @@
           %td= sample.upper_canopy_height
           %td= sample.latitude
           %td= sample.longitude
-          %td
-            = link_to('view', sample, title: "Details of tree sample #{sample.id}")
-            = link_to('edit', edit_tree_sample_path(sample), title: 'Edit sample') if sample.editable_by?(current_user)

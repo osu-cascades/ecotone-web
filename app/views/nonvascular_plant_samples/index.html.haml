@@ -2,7 +2,7 @@
 - content_for(:subnav) do
   = button_to('Add Sample', new_nonvascular_plant_sample_path, class: 'button primary', title: 'Add a new non-vascular plant sample', method: 'get')
 %section
-  %table.table
+  %table.table#list
     %thead
       %tr
         %th{scope: 'col'} ID
@@ -10,15 +10,11 @@
         %th{scope: 'col'} Collection Date
         %th{scope: 'col'} Location in Plot
         %th{scope: 'col'} Description
-        %th{scope: 'col'}
     %tbody
       - @nonvascular_plant_samples.each do |sample|
-        %tr
+        %tr{:onclick => "location.href='#{url_for(sample)}'"}
           %td= sample.id
           %td= sample.plot
           %td= sample.collected_on
           %td= sample.location_within_plot
           %td= sample.description
-          %td
-            = link_to('view', sample, title: "Details of non-vascular plant sample #{sample.id}")
-            = link_to('edit', edit_nonvascular_plant_sample_path(sample), title: 'Edit sample') if sample.editable_by?(current_user)
