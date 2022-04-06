@@ -96,17 +96,17 @@
           %td= @plot.featured_plant.tolerance
           %td{class: ('danger' if @plot.featured_plant.invasive)}= @plot.featured_plant.invasive? ? 'Yes' : 'No'
 - if @plot.biodiversity_reports  
-  .space       
+  .space
+  %h2.center Biodiversity Report Data       
   .info
     %section
-      %h2.heading#table-heading.center Biodiversity Report Data
       %table.table
         %thead
           %tr
-            %th{scope: 'col'} Measured on
+            %th{scope: 'col'} Measured On
             %th{scope: 'col'} Temperature
-            %th{scope: 'col'} Species richness
-            %th{scope: 'col'} Diversity index
+            %th{scope: 'col'} Species Richness
+            %th{scope: 'col'} Diversity Index
         %tbody
           - @plot.biodiversity_reports.reverse.each do |report|
             %tr
