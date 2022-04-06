@@ -20,6 +20,10 @@ td {
 	padding: $space1 $space3 $space1 $space0 !important;
 }
 
+#list tbody tr:hover {
+	background-color: $grey8;
+}
+
 #vertical-table {
 	margin-top: 0px;
 	width: $space12;
