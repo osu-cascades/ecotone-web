@@ -62,8 +62,7 @@
           %th{scope: 'row'} Initial Succession
           %td= @plot.initial_succession
 - if @plot.featured_plant 
-  %h2.center
-    = link_to "#{@plot.featured_plant.common_name.titleize}", @plot.featured_plant
+  %h2.center= @plot.featured_plant.common_name.titleize
   .content
     - if @plot.featured_plant.photo.length == 0
       .img-square.default
@@ -96,8 +95,9 @@
           %td= @plot.featured_plant.habitat_type
           %td= @plot.featured_plant.tolerance
           %td{class: ('danger' if @plot.featured_plant.invasive)}= @plot.featured_plant.invasive? ? 'Yes' : 'No'
-- if @plot.biodiversity_reports          
-  .info 
+- if @plot.biodiversity_reports  
+  .space       
+  .info
     %section
       %h2.heading#table-heading.center Biodiversity Report Data
       %table.table
