@@ -20,11 +20,10 @@
           %td= collected_on(@tree_sample)
         %tr
           %th{scope: 'row'} Plot
-          %td= link_to("#{@tree_sample.plot}", @tree_sample.plot)
+          %td= link_to("#{@tree_sample.plot}", @tree_sample.plot, class: "plot")
         %tr
           %th{scope: 'row'} Species
-          %td
-            = link_to("#{@tree_sample.plant.common_name.titleize}", @tree_sample.plant)
+          %td= link_to("#{@tree_sample.plant.common_name.titleize}", @tree_sample.plant, class: "plant")
         %tr
           %th{scope: 'row'} Tag Number
           %td= @tree_sample.tag_number

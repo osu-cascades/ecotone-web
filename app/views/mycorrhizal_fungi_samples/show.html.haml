@@ -20,7 +20,7 @@
           %td= collected_on(@mycorrhizal_fungi_sample)
         %tr
           %th{scope: 'row'} Plot
-          %td= link_to("#{@mycorrhizal_fungi_sample.plot}", @mycorrhizal_fungi_sample.plot)
+          %td= link_to("#{@mycorrhizal_fungi_sample.plot}", @mycorrhizal_fungi_sample.plot, class: "plot")
         %tr
           %th{scope: 'row'} Sample Length
           %td= @mycorrhizal_fungi_sample.length
