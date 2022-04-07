@@ -30,7 +30,16 @@ td {
 	th {
 		font-size: $txt1;
 	}
-	a {
+	a.plot{
+		color: $orange2;
+		&:hover, &:focus, &:focus-visible {
+			color: $orange1;
+		}
+		&:active {
+			color: $orange0;
+		}
+	}
+	a.plant {
 		color: $green2;
 		&:hover, &:focus, &:focus-visible {
 			color: $green1;
