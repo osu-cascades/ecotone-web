@@ -17,11 +17,10 @@
       %tbody
         %tr
           %th{scope: 'row'} Collection Date
-          %td= @lichen_sample.collected_on
+          %td= collected_on(@lichen_sample)
         %tr
           %th{scope: 'row'} Plot
-          %td
-            = link_to "#{@lichen_sample.plot}", @lichen_sample.plot
+          %td= link_to("#{@lichen_sample.plot}", @lichen_sample.plot, class: "plot")
         %tr
           %th{scope: 'row'} Location in Plot
           %td= @lichen_sample.location_within_plot
