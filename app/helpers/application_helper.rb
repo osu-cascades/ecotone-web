@@ -23,8 +23,11 @@ module ApplicationHelper
   end
 
   def last_updated(entity)
-    date = entity.updated_at&.to_formatted_s(:long)
-    "Last updated #{date} by #{entity.user}"
+    "Last updated #{formatted_date(entity)} by #{entity.user}"
+  end
+
+  def formatted_date(entity)
+    entity.updated_at&.to_formatted_s(:long)
   end
 
   def nutrient_table_data(sample, nutrient)
