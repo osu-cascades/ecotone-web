@@ -17,11 +17,10 @@
       %tbody
         %tr
           %th{scope: 'row'} Collection Date
-          %td= @nonvascular_plant_sample.collected_on
+          %td= collected_on(@nonvascular_plant_sample)
         %tr
           %th{scope: 'row'} Plot
-          %td
-            = link_to "#{@nonvascular_plant_sample.plot}", @nonvascular_plant_sample.plot
+          %td= link_to("#{@nonvascular_plant_sample.plot}", @nonvascular_plant_sample.plot, class: "plot")
         %tr
           %th{scope: 'row'} Location in Plot
           %td= @nonvascular_plant_sample.location_within_plot

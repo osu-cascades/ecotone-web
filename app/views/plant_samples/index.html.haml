@@ -16,9 +16,9 @@
       - @plant_samples.each do |sample|
         %tr{:onclick => "location.href='#{url_for(sample)}'"}
           %td= sample.id
-          %td= sample.collected_on
+          %td= collected_on(sample)
           %td= sample.plot
-          %td= sample.plant.common_name
+          %td= sample.plant.common_name.titleize
           %td= sample.abundance
           %td= sample.percent_cover
           %td= sample.biomass_estimate

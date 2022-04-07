@@ -7,6 +7,7 @@
       %tr
         %th{scope: 'col'} ID
         %th{scope: 'col'} Collection Date
+        %th{scope: 'col'} Plot
         %th{scope: 'col'} Sample Length (cm)
         %th{scope: 'col'} Magnification
         %th{scope: 'col'} Vesicle Count
@@ -17,7 +18,8 @@
       - @mycorrhizal_fungi_samples.each do |sample|
         %tr{:onclick => "location.href='#{url_for(sample)}'"}
           %td= sample.id
-          %td= sample.collected_on
+          %td= collected_on(sample)
+          %td= sample.plot
           %td= "#{sample.length}cm"
           %td= sample.magnification
           %td= sample.vesicle_count
