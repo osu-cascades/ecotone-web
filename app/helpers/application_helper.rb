@@ -34,6 +34,10 @@ module ApplicationHelper
     entity.collected_on.to_formatted_s(:long)
   end
 
+  def observed_on(entity)
+    entity.observed_on.to_formatted_s(:long)
+  end
+
   def nutrient_table_data(sample, nutrient)
     amount = sample.nutrients.find{ |n| n.name == nutrient}&.amount
     level = sample.nutrients.find{ |n| n.name == nutrient}&.level
