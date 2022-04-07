@@ -17,11 +17,10 @@
       %tbody
         %tr
           %th{scope: 'row'} Collection Date
-          %td= @macroinvertebrate_sample.collected_on
+          %td= collected_on(@macroinvertebrate_sample)
         %tr
           %th{scope: 'row'} Plot
-          %td
-            = link_to "#{@macroinvertebrate_sample.plot}", @macroinvertebrate_sample.plot
+          %td= link_to("#{@macroinvertebrate_sample.plot}", @macroinvertebrate_sample.plot)
         %tr
           %th{scope: 'row'} Location in Plot
           %td= @macroinvertebrate_sample.location_within_plot

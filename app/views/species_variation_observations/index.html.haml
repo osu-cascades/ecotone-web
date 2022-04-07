@@ -16,7 +16,7 @@
       - @species_variation_observations.each do |obs|
         %tr{:onclick => "location.href='#{url_for(obs)}'"}
           %td= obs.id
-          %td= obs.observed_on
+          %td= observed_on(obs)
           %td= obs.plot
           %td= obs.plant
           %td= obs.average_height
