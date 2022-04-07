@@ -61,10 +61,11 @@
             %th{scope: 'col'} Species Richness
             %th{scope: 'col'} Diversity Index
         %tbody
-          - @biodiversity_reports.each do |report|
-            %tr
-              %td= report.plot
-              %td= report.measured_on.to_formatted_s(:long)
-              %td= report.temperature
-              %td= report.species_richness
-              %td= report.diversity_index
+          - @biodiversity_reports.each do |report| 
+            -if report.plot_id == @biodiversity_report.plot_id
+              %tr
+                %td= report.plot
+                %td= report.measured_on.to_formatted_s(:long)
+                %td= report.temperature
+                %td= report.species_richness
+                %td= report.diversity_index
