@@ -8,7 +8,9 @@ class BiodiversityReportsController < ApplicationController
     @biodiversity_reports = BiodiversityReport.order(measured_on: :desc).page(params[:page])
   end
 
-  def show; end
+  def show
+    @biodiversity_reports = BiodiversityReport.order(measured_on: :desc).page(params[:page])
+  end
 
   def new
     @biodiversity_report = BiodiversityReport.new
