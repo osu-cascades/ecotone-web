@@ -62,7 +62,7 @@
             %th{scope: 'col'} Diversity Index
         %tbody
           - @biodiversity_reports.each do |report| 
-            -if report.plot_id == @biodiversity_report.plot_id
+            -if report.plot_id == @biodiversity_report.plot_id && report.id != @biodiversity_report.id
               %tr
                 %td= link_to "#{report.plot}", report.plot
                 %td= report.measured_on.to_formatted_s(:long)
