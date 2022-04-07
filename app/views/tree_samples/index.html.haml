@@ -23,7 +23,7 @@
           %td= sample.id
           %td= collected_on(sample)
           %td= sample.plot
-          %td= sample.plant.common_name
+          %td= sample.plant.common_name.titleize
           %td= sample.tag_number
           %td= sample.growth_stage.capitalize
           %td= sample.dbh

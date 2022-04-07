@@ -23,7 +23,7 @@
           %td= link_to("#{@species_variation_observation.plot}", @species_variation_observation.plot)
         %tr
           %th{scope: 'row'} Plant
-          %td= link_to("#{@species_variation_observation.plant.common_name}", @species_variation_observation.plant)
+          %td= link_to("#{@species_variation_observation.plant.common_name.titleize}", @species_variation_observation.plant)
         %tr
           %th{scope: 'row'} Observer
           %td= @species_variation_observation.user

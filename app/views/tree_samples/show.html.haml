@@ -24,7 +24,7 @@
         %tr
           %th{scope: 'row'} Species
           %td
-            = link_to("#{@tree_sample.plant.common_name}", @tree_sample.plant)
+            = link_to("#{@tree_sample.plant.common_name.titleize}", @tree_sample.plant)
         %tr
           %th{scope: 'row'} Tag Number
           %td= @tree_sample.tag_number
