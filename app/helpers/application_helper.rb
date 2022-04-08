@@ -23,7 +23,19 @@ module ApplicationHelper
   end
 
   def last_updated(entity)
+    "Last updated #{formatted_date(entity)} by #{entity.user}"
+  end
+
+  def formatted_date(entity)
     entity.updated_at&.to_formatted_s(:long)
+  end
+
+  def collected_on(entity)
+    entity.collected_on.to_formatted_s(:long)
+  end
+
+  def observed_on(entity)
+    entity.observed_on.to_formatted_s(:long)
   end
 
   def nutrient_table_data(sample, nutrient)

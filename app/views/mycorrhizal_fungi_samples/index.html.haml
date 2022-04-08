@@ -2,29 +2,27 @@
 - content_for(:subnav) do
   = button_to('Add Sample', new_mycorrhizal_fungi_sample_path, class: 'button primary', title: 'Add a new mycorrhizal fungi sample', method: 'get')
 %section
-  %table.table
+  %table.table#list
     %thead
       %tr
         %th{scope: 'col'} ID
         %th{scope: 'col'} Collection Date
+        %th{scope: 'col'} Plot
         %th{scope: 'col'} Sample Length (cm)
         %th{scope: 'col'} Magnification
         %th{scope: 'col'} Vesicle Count
         %th{scope: 'col'} Arbuscule Count
         %th{scope: 'col'} Visible Hyphae?
         %th{scope: 'col'} Hyphae Coverage
-        %th{scope: 'col'}
     %tbody
       - @mycorrhizal_fungi_samples.each do |sample|
-        %tr
+        %tr{:onclick => "location.href='#{url_for(sample)}'"}
           %td= sample.id
-          %td= sample.collected_on
+          %td= collected_on(sample)
+          %td= sample.plot
           %td= "#{sample.length}cm"
           %td= sample.magnification
           %td= sample.vesicle_count
           %td= sample.arbuscule_count
           %td= sample.visible_hyphae ? 'Yes' : 'No'
           %td= sample.hyphae_coverage ? "#{sample.hyphae_coverage}%" : 'unmeasured'
-          %td
-            = link_to('view', sample, title: "Details of mycorrhizal fungi sample #{sample.id}")
-            = link_to('edit', edit_mycorrhizal_fungi_sample_path(sample), title: 'Edit sample') if sample.editable_by?(current_user)

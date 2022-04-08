@@ -2,12 +2,12 @@
 - content_for(:subnav) do
   = button_to('Add Sample', new_soil_sample_path, class: 'button primary', title: 'Add a new soil sample', method: 'get')
 %section
-  %table.table
+  %table.table#list
     %thead
       %tr
         %th{scope: 'col'} ID
-        %th{scope: 'col'} Plot
         %th{scope: 'col'} Collection Date
+        %th{scope: 'col'} Plot
         %th{scope: 'col'} Collection Method
         %th{scope: 'col'} pH
         %th{scope: 'col'} Temperature
@@ -15,13 +15,12 @@
         %th{scope: 'col'} N
         %th{scope: 'col'} P
         %th{scope: 'col'} K
-        %th{scope: 'col'}
     %tbody
       - @soil_samples.each do |sample|
-        %tr
+        %tr{:onclick => "location.href='#{url_for(sample)}'"}
           %td= sample.id
+          %td= collected_on(sample)
           %td= sample.plot
-          %td= sample.collected_on
           %td= sample.collection_method
           %td= sample.ph_level
           %td= sample.temperature
@@ -29,6 +28,3 @@
           %td= nutrient_table_data(sample, 'Nitrogen')
           %td= nutrient_table_data(sample, 'Phosphorus')
           %td= nutrient_table_data(sample, 'Potassium')
-          %td
-            = link_to('view', sample, title: "Details of soil sample #{sample.id}")
-            = link_to('edit', edit_soil_sample_path(sample), title: 'Edit sample') if sample.editable_by?(current_user)

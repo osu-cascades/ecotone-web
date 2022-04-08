@@ -2,7 +2,7 @@
 - content_for(:subnav) do
   = button_to('Add Observation', new_species_variation_observation_path, class: 'button primary', title: 'Add a new species variation observation', method: 'get')
 %section
-  %table.table
+  %table.table#list
     %thead
       %tr
         %th{scope: 'col'} ID
@@ -12,17 +12,13 @@
         %th{scope: 'col'} Average Height
         %th{scope: 'col'} Average Width
         %th{scope: 'col'} Qualitative Observation
-        %th{scope: 'col'}
     %tbody
       - @species_variation_observations.each do |obs|
-        %tr
+        %tr{:onclick => "location.href='#{url_for(obs)}'"}
           %td= obs.id
-          %td= obs.observed_on
+          %td= observed_on(obs)
           %td= obs.plot
-          %td= obs.plant
+          %td= obs.plant.common_name.titleize
           %td= obs.average_height
           %td= obs.average_width
           %td= obs.description
-          %td
-            = link_to('view', obs, title: "Details of species variation observation #{obs.id}")
-            = link_to('edit', edit_species_variation_observation_path(obs), title: 'Edit observation') if obs.editable_by?(current_user)

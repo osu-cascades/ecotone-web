@@ -2,7 +2,7 @@
 - content_for(:subnav) do
   = button_to('Add Sample', new_macroinvertebrate_sample_path, class: 'button primary', title: 'Add a new macroinvertebrate sample', method: 'get')
 %section
-  %table.table
+  %table.table#list
     %thead
       %tr
         %th{scope: 'col'} ID
@@ -12,17 +12,13 @@
         %th{scope: 'col'} Phylum
         %th{scope: 'col'} Quantity
         %th{scope: 'col'} Ecosystem Service
-        %th{scope: 'col'}
     %tbody
       - @macroinvertebrate_samples.each do |sample|
-        %tr
+        %tr{:onclick => "location.href='#{url_for(sample)}'"}
           %td= sample.id
-          %td= sample.collected_on
+          %td= collected_on(sample)
           %td= sample.plot
           %td= sample.location_within_plot
           %td= sample.phylum
           %td= sample.quantity
           %td= sample.ecosystem_service
-          %td
-            = link_to('view', sample, title: "Details of macroinvertebrate sample #{sample.id}")
-            = link_to('edit', edit_macroinvertebrate_sample_path(sample), title: 'Edit sample') if sample.editable_by?(current_user)
