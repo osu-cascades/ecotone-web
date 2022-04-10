@@ -6,10 +6,12 @@ class NonvascularPlantSamplesController < ApplicationController
   before_action :set_nonvascular_plant_sample, only: [:show, :edit, :update, :destroy]
 
   def index
-    @nonvascular_plant_samples = NonvascularPlantSample.all
+    @nonvascular_plant_samples = NonvascularPlantSample.order(collected_on: :desc).page(params[:page])
   end
 
-  def show; end
+  def show; 
+    @nonvascular_plant_samples = NonvascularPlantSample.order(collected_on: :desc).page(params[:page])
+  end
 
   def new
     @nonvascular_plant_sample = NonvascularPlantSample.new
