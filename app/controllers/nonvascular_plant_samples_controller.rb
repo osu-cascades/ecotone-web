@@ -10,7 +10,6 @@ class NonvascularPlantSamplesController < ApplicationController
   end
 
   def show; 
-    @nonvascular_plant_samples = NonvascularPlantSample.order(collected_on: :desc).page(params[:page])
   end
 
   def new
