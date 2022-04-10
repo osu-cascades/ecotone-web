@@ -1,6 +1,9 @@
 - content_for_title('Non-Vascular Plant Samples')
 - content_for(:subnav) do
   = button_to('Add Sample', new_nonvascular_plant_sample_path, class: 'button primary', title: 'Add a new non-vascular plant sample', method: 'get')
+
+= paginate @nonvascular_plant_samples
+
 %section
   %table.table#list
     %thead
@@ -18,3 +21,5 @@
           %td= sample.plot
           %td= sample.location_within_plot
           %td= sample.description
+
+= paginate @nonvascular_plant_samples
