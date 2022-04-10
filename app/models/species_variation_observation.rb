@@ -9,6 +9,8 @@ class SpeciesVariationObservation < ApplicationRecord
   validates_numericality_of :average_height, greater_than_or_equal_to: 0
   validates_numericality_of :average_width, greater_than_or_equal_to: 0
 
+  paginates_per 10
+
   def to_s
     "#{plant} in #{plot} on #{observed_on} by #{user}"
   end

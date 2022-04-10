@@ -6,7 +6,7 @@ class MacroinvertebrateSamplesController < ApplicationController
   before_action :set_macroinvertebrate_sample, only: [:show, :edit, :update, :destroy]
 
   def index
-    @macroinvertebrate_samples = MacroinvertebrateSample.all
+    @macroinvertebrate_samples = MacroinvertebrateSample.order(collected_on: :desc).page(params[:page])
   end
 
   def show; end
