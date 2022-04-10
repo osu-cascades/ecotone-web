@@ -6,7 +6,7 @@ class FungiSamplesController < ApplicationController
   before_action :set_fungi_sample, only: [:show, :edit, :update, :destroy]
 
   def index
-    @fungi_samples = FungiSample.all
+    @fungi_samples = FungiSample.order(collected_on: :desc).page(params[:page])
   end
 
   def show; end

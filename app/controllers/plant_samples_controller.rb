@@ -6,7 +6,7 @@ class PlantSamplesController < ApplicationController
   before_action :set_plant_sample, only: [:show, :edit, :update, :destroy]
 
   def index
-    @plant_samples = PlantSample.all
+    @plant_samples = PlantSample.order(collected_on: :desc).page(params[:page])
   end
 
   def export
