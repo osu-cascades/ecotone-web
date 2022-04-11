@@ -13,10 +13,10 @@
       %h2 Photo
       = image_tag @biodiversity_report.photo.variant(resize: "200x200"), alt: "Photo of #{@biodiversity_report.plot}" if @biodiversity_report.photo.attached?
     .col-md-7
-      %h2.center by #{link_to(@biodiversity_report.author)}
+      %h2.center= "by #{@biodiversity_report.author}"
       %table.table
         %thead
-          %th{colspan: '2'} by #{link_to(@biodiversity_report.author)} #{byline(@biodiversity_report)}
+          %th{colspan: '2'}= @biodiversity_report.byline
         %tbody
           %tr
             %th.col-md-4{scope: 'row'} Collection Date
@@ -26,8 +26,7 @@
             %td= @biodiversity_report.measured_at.to_formatted_s(:ampm)
           %tr
             %th.col-md-4{scope: 'row'} Author
-            %td
-              = link_to "#{@biodiversity_report.author}", @biodiversity_report.author
+            %td= @biodiversity_report.author
           %tr
             %th.col-md-4{scope: 'row'} Plot
             %td

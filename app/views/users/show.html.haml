@@ -7,4 +7,4 @@
     - @user.biodiversity_reports.each do |report|
       %li
         %h3= link_to report.to_s, report, title: "Details of #{report}"
-        %p= "by #{@user} #{byline(report)}"
+        %p= report.byline
