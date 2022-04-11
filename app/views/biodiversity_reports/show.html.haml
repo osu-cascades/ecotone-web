@@ -6,8 +6,7 @@
     .btn-admin
       = link_to(content_tag(:i, '', :class => "icon-edit"), edit_biodiversity_report_path(@biodiversity_report), class: 'btn-icon')
       - if current_user&.admin?
-        = link_to 'Delete', @biodiversity_report, method: :delete, data: { confirm: 'Delete Report?' }, class: 'btn btn-danger', title: "Delete #{@biodiversity_report}"
-
+        = link_to(content_tag(:i, '', :class => "icon-trash"), @biodiversity_report, method: :delete, data: { confirm: "Delete Biodiversity Report #{@biodiversity_report.id}?" }, class: 'btn-icon')
 %section
   .row
     .col-md-5
