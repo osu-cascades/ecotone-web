@@ -9,13 +9,13 @@
     %thead
       %tr
         %th{scope: 'col'} Id
-        %th{scope: 'col'} Measured on
+        %th{scope: 'col'} Measured On
         %th{scope: 'col'} Plot
         %th{scope: 'col'} Temperature
-        %th{scope: 'col'} Species richness
-        %th{scope: 'col'} Diversity index
-        %th{scope: 'col'} Species evenness
-        %th{scope: 'col'} Biomass estimate
+        %th{scope: 'col'} Species Richness
+        %th{scope: 'col'} Diversity Index
+        %th{scope: 'col'} Species Evenness
+        %th{scope: 'col'} Biomass Estimate
     %tbody
       - @biodiversity_reports.each do |report|
         %tr{:onclick => "location.href='#{url_for(report)}'"}
