@@ -23,8 +23,7 @@
           %td= @biodiversity_report.author
         %tr
           %th{scope: 'row'} Plot
-          %td
-            = link_to "#{@biodiversity_report.plot}", @biodiversity_report.plot
+          %td= link_to(@biodiversity_report.plot)
         %tr
           %th{scope: 'row'} Temperature
           %td= @biodiversity_report.temperature
