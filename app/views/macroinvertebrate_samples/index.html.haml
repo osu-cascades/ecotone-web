@@ -1,6 +1,9 @@
 - content_for_title('Macroinvertebrate Samples')
 - content_for(:subnav) do
   = button_to('Add Sample', new_macroinvertebrate_sample_path, class: 'button primary', title: 'Add a new macroinvertebrate sample', method: 'get')
+
+= paginate @macroinvertebrate_samples
+
 %section
   %table.table#list
     %thead
@@ -22,3 +25,5 @@
           %td= sample.phylum
           %td= sample.quantity
           %td= sample.ecosystem_service
+
+= paginate @macroinvertebrate_samples

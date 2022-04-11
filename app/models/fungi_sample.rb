@@ -11,6 +11,8 @@ class FungiSample < ApplicationRecord
   has_many_attached :photo
   validates :photo, content_type: ['image/jpg', 'image/png', 'image/jpeg']
 
+  paginates_per 10
+
   def to_s
     "#{plot} on #{collected_on} by #{user}"
   end

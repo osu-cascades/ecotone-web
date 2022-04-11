@@ -1,6 +1,9 @@
 - content_for_title('Plant Samples')
 - content_for(:subnav) do
   = button_to('Add Sample', new_plant_sample_path, class: 'button primary', title: 'Add a new plant sample', method: 'get')
+
+= paginate @plant_samples
+
 %section
   %table.table#list
     %thead
@@ -22,3 +25,5 @@
           %td= sample.abundance
           %td= sample.percent_cover
           %td= sample.biomass_estimate
+
+= paginate @plant_samples
