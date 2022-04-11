@@ -6,7 +6,7 @@ class MycorrhizalFungiSamplesController < ApplicationController
   before_action :set_mycorrhizal_fungi_sample, only: [:show, :edit, :update, :destroy]
 
   def index
-    @mycorrhizal_fungi_samples = MycorrhizalFungiSample.all
+    @mycorrhizal_fungi_samples = MycorrhizalFungiSample.order(collected_on: :desc).page(params[:page])
   end
 
   def show; end

@@ -6,7 +6,7 @@ class SoilSamplesController < ApplicationController
   before_action :set_soil_sample, only: [:show, :edit, :update, :destroy]
 
   def index
-    @soil_samples = SoilSample.all
+    @soil_samples = SoilSample.order(collected_on: :desc).page(params[:page])
   end
 
   def show; end
