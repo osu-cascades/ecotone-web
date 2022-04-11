@@ -13,7 +13,7 @@
     %h2.heading#table-heading Information
     %table.table#vertical-table
       %thead
-        %th{colspan: '2'}= @biodiversity_report.byline
+        %th.citation.italic{colspan: '2'} #{last_updated(@biodiversity_report)} #{link_to(@biodiversity_report.user)}
         %tbody
           %tr
             %th.col-md-4{scope: 'row'} Collection Date
