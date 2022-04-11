@@ -23,7 +23,7 @@ module ApplicationHelper
   end
 
   def last_updated(entity)
-    "Last updated #{formatted_date(entity)} by #{entity.user}"
+    "Last updated #{formatted_date(entity)} by "
   end
 
   def formatted_date(entity)
