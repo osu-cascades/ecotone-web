@@ -14,35 +14,35 @@
     %table.table#vertical-table
       %thead
         %th.citation.italic{colspan: '2'} #{last_updated(@biodiversity_report)} #{link_to(@biodiversity_report.user)}
-        %tbody
-          %tr
-            %th.col-md-4{scope: 'row'} Collection Date
-            %td= @biodiversity_report.measured_on.to_formatted_s(:long)
-          %tr
-            %th.col-md-4{scope: 'row'} Collection time
-            %td= @biodiversity_report.measured_at.to_formatted_s(:ampm)
-          %tr
-            %th.col-md-4{scope: 'row'} Author
-            %td= @biodiversity_report.author
-          %tr
-            %th.col-md-4{scope: 'row'} Plot
-            %td
-              = link_to "#{@biodiversity_report.plot}", @biodiversity_report.plot
-          %tr
-            %th.col-md-4{scope: 'row'} Temperature
-            %td= @biodiversity_report.temperature
-          %tr
-            %th.col-md-4{scope: 'row'} Species richness
-            %td= @biodiversity_report.species_richness
-          %tr
-            %th.col-md-4{scope: 'row'} Diversity index
-            %td= @biodiversity_report.diversity_index
-          %tr
-            %th.col-md-4{scope: 'row'} Species evenness
-            %td= @biodiversity_report.species_evenness
-          %tr
-            %th.col-md-4{scope: 'row'} Biomass estimate
-            %td= @biodiversity_report.biomass_estimate
+      %tbody
+        %tr
+          %th{scope: 'row'} Collection Date
+          %td= @biodiversity_report.measured_on.to_formatted_s(:long)
+        %tr
+          %th{scope: 'row'} Collection time
+          %td= @biodiversity_report.measured_at.to_formatted_s(:ampm)
+        %tr
+          %th{scope: 'row'} Author
+          %td= @biodiversity_report.author
+        %tr
+          %th{scope: 'row'} Plot
+          %td
+            = link_to "#{@biodiversity_report.plot}", @biodiversity_report.plot
+        %tr
+          %th{scope: 'row'} Temperature
+          %td= @biodiversity_report.temperature
+        %tr
+          %th{scope: 'row'} Species richness
+          %td= @biodiversity_report.species_richness
+        %tr
+          %th{scope: 'row'} Diversity index
+          %td= @biodiversity_report.diversity_index
+        %tr
+          %th{scope: 'row'} Species evenness
+          %td= @biodiversity_report.species_evenness
+        %tr
+          %th{scope: 'row'} Biomass estimate
+          %td= @biodiversity_report.biomass_estimate
 
 - if @biodiversity_reports
   .space
