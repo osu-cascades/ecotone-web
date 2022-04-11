@@ -16,7 +16,11 @@
     plots.forEach(plot => {
       var p_url = ('#{plots_url}/'+plot.plot_id);
       var ping = L.marker([plot.latitude, -plot.longitude]);
-      console.log('Plot: ', plot);
+      var active_url = ('https://osu-ecotone.herokuapp.com/rails/active_storage/blobs/redirect/'+plot.photo_file_name);
+      console.log(active_url);
+      console.log(plot.photo_file_name);
+      var photo_test_url = "https://i.imgur.com/gi2i4.jpeg"
+
       ping.bindPopup(
         `<h6> Plot ${plot.plot_id} </h6>` +
         `<h6> Details: ${plot.location_description}</h6>` + 
@@ -24,7 +28,7 @@
         `<h6> Longitude: ${plot.longitude} </h6>` + 
         `<a href="${p_url}"> Go to Plot </a>` +
         `<br>` +
-        `<img src="${plot.photo_url}" height="100px" width="100px"/>`).addTo(map);
+        `<img src="${photo_test_url}" height="100px" width="100px"/>`).addTo(map);
       });
 
     var satelliteLayer = L.tileLayer(mapBoxRequest,
