@@ -17,10 +17,7 @@
       %tbody
         %tr
           %th{scope: 'row'} Collection Date
-          %td= @biodiversity_report.measured_on.to_formatted_s(:long)
-        %tr
-          %th{scope: 'row'} Collection time
-          %td= @biodiversity_report.measured_at.to_formatted_s(:ampm)
+          %td= measured_on(@biodiversity_report)
         %tr
           %th{scope: 'row'} Author
           %td= @biodiversity_report.author
