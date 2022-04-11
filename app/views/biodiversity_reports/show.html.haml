@@ -1,4 +1,4 @@
-- content_for_title(@biodiversity_report.to_s)
+- content_for_title("Biodiversity Report ##{@biodiversity_report.id}")
 - content_for(:subnav) do
   = link_to '« Back to reports', :back, class: 'btn btn-primary', title: 'List of biodiversity reports'
   - if @biodiversity_report.editable_by?(current_user)
