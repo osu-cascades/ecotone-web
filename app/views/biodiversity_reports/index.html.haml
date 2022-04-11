@@ -23,7 +23,7 @@
         %tr
           %td= report.id
           %td= report.measured_on.to_formatted_s(:long)
-          %td= link_to("#{report.plot}", report.plot)
+          %td= report.plot
           %td= report.temperature
           %td= report.species_richness
           %td= report.diversity_index
