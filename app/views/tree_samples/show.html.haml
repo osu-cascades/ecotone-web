@@ -13,17 +13,17 @@
     %h2.heading#table-heading Information
     %table.table#vertical-table
       %thead
-        %th.citation.italic{colspan: '2'}= last_updated(@tree_sample)
+        %th.citation.italic{colspan: '2'} #{last_updated(@tree_sample)} #{link_to(@tree_sample.user)}
       %tbody
         %tr
           %th{scope: 'row'} Collection Date
           %td= collected_on(@tree_sample)
         %tr
           %th{scope: 'row'} Plot
-          %td= link_to("#{@tree_sample.plot}", @tree_sample.plot, class: "plot")
+          %td= link_to("#{@tree_sample.plot}", @tree_sample.plot)
         %tr
           %th{scope: 'row'} Species
-          %td= link_to("#{@tree_sample.plant.common_name.titleize}", @tree_sample.plant, class: "plant")
+          %td= link_to("#{@tree_sample.plant.common_name.titleize}", @tree_sample.plant)
         %tr
           %th{scope: 'row'} Tag Number
           %td= @tree_sample.tag_number

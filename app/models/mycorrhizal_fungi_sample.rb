@@ -16,6 +16,8 @@ class MycorrhizalFungiSample < ApplicationRecord
   has_many_attached :photo
   validates :photo, content_type: ['image/jpg', 'image/png', 'image/jpeg']
 
+  paginates_per 10
+
   def has_visible_hyphae?
     visible_hyphae
   end

@@ -18,6 +18,8 @@ class SoilSample < ApplicationRecord
   validates_numericality_of :temperature
   validates_numericality_of :moisture, greater_than_or_equal_to: 0
 
+  paginates_per 10
+
   DEFAULT_NUTRIENT_NAMES = ['Nitrogen', 'Phosphorus', 'Potassium']
 
   # Associate three Nutrient models: Nitrogen, Phosphorus and Potassium

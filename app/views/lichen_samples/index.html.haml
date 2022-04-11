@@ -1,6 +1,9 @@
 - content_for_title('Lichen Samples')
 - content_for(:subnav) do
   = button_to('Add Sample', new_lichen_sample_path, class: 'button primary', title: 'Add a new lichen sample', method: 'get')
+
+= paginate @lichen_samples
+
 %section
   %table.table#list
     %thead
@@ -18,3 +21,5 @@
           %td= sample.plot
           %td= sample.location_within_plot
           %td= sample.description
+
+= paginate @lichen_samples

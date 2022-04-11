@@ -26,9 +26,18 @@ p {
 a { 
   text-decoration: none;
   outline: 0px;
+  // keep these to override bootstrap defaults
   &:link, &:visited, &:hover, &:active, &:focus, &:focus-visible, &:focus-within {
     text-decoration: none;
     outline: 0px;
+  }
+  // all links default to green color palette
+  color: $green2;
+  &:hover, &:focus, &:focus-visible {
+    color: $green1;
+  }
+  &:active {
+    color: $green0;
   }
 }
 
