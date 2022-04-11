@@ -20,10 +20,10 @@
           %td= observed_on(@species_variation_observation)
         %tr
           %th{scope: 'row'} Plot
-          %td= link_to("#{@species_variation_observation.plot}", @species_variation_observation.plot, class: "plot")
+          %td= link_to("#{@species_variation_observation.plot}", @species_variation_observation.plot)
         %tr
           %th{scope: 'row'} Plant
-          %td= link_to("#{@species_variation_observation.plant.common_name.titleize}", @species_variation_observation.plant, class: "plant")
+          %td= link_to("#{@species_variation_observation.plant.common_name.titleize}", @species_variation_observation.plant)
         %tr
           %th{scope: 'row'} Observer
           %td= @species_variation_observation.user
