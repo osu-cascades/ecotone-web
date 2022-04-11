@@ -7,7 +7,7 @@ class BiodiversityReport < ApplicationRecord
   has_and_belongs_to_many :macroinvertebrate_samples
   has_and_belongs_to_many :plant_samples
 
-  has_one_attached :photo
+  has_many_attached :photo
   validates :photo, content_type: ['image/jpg', 'image/png', 'image/jpeg']
 
   validates_presence_of :measured_on
