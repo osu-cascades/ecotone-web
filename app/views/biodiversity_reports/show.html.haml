@@ -7,11 +7,10 @@
       = link_to(content_tag(:i, '', :class => "icon-edit"), edit_biodiversity_report_path(@biodiversity_report), class: 'btn-icon')
       - if current_user&.admin?
         = link_to(content_tag(:i, '', :class => "icon-trash"), @biodiversity_report, method: :delete, data: { confirm: "Delete Biodiversity Report #{@biodiversity_report.id}?" }, class: 'btn-icon')
-%section
-  .row
-    .col-md-5
-      %h2 Photo
-      = image_tag @biodiversity_report.photo.variant(resize: "200x200"), alt: "Photo of #{@biodiversity_report.plot}" if @biodiversity_report.photo.attached?
+.content
+  = render 'layouts/image_carousel', entity: @biodiversity_report
+  .info
+    %h2.heading#table-heading Information
     .col-md-7
       %h2.center= "by #{@biodiversity_report.author}"
       %table.table
