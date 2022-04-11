@@ -26,7 +26,7 @@
           %td= sample.id
           %td= collected_on(sample)
           %td= link_to("#{sample.plot}", sample.plot, class: "plot")
-          %td= sample.plant.common_name.titleize
+          %td= sample.plot
           %td= sample.tag_number
           %td= sample.growth_stage.capitalize
           %td= sample.dbh
