@@ -20,7 +20,7 @@
           %td= measured_on(@biodiversity_report)
         %tr
           %th{scope: 'row'} Author
-          %td= @biodiversity_report.author
+          %td= link_to(@biodiversity_report.author)
         %tr
           %th{scope: 'row'} Plot
           %td= link_to(@biodiversity_report.plot)
