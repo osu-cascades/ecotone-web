@@ -13,7 +13,7 @@
     %h2.heading#table-heading Information
     %table.table#vertical-table
       %thead
-        %th.citation.italic{colspan: '2'}= last_updated(@mycorrhizal_fungi_sample)
+        %th.citation.italic{colspan: '2'} #{last_updated(@mycorrhizal_fungi_sample)} #{link_to(@mycorrhizal_fungi_sample.user)}
       %tbody
         %tr
           %th{scope: 'row'} Collection Date
