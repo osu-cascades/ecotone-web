@@ -11,11 +11,9 @@
   = render 'layouts/image_carousel', entity: @biodiversity_report
   .info
     %h2.heading#table-heading Information
-    .col-md-7
-      %h2.center= "by #{@biodiversity_report.author}"
-      %table.table
-        %thead
-          %th{colspan: '2'}= @biodiversity_report.byline
+    %table.table#vertical-table
+      %thead
+        %th{colspan: '2'}= @biodiversity_report.byline
         %tbody
           %tr
             %th.col-md-4{scope: 'row'} Collection Date
