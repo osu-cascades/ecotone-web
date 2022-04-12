@@ -77,3 +77,6 @@ en:
       species_variation_observation:
         create: "Create Obs."
         update: "Update Obs."
+      biodiversity_report:
+        create: "Create Report"
+        update: "Update Report"
