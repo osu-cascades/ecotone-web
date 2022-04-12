@@ -1,4 +1,6 @@
 class BiodiversityReportsController < ApplicationController
+  include Cancelable
+  
   before_action :login_required
   before_action :admin_required, only: :destroy
   before_action :load_plots_and_plants, only: [:new, :edit]

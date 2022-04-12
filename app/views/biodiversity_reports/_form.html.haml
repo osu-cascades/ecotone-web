@@ -13,22 +13,19 @@
           = form.label :measured_on, 'Date'
           = form.date_field :measured_on, class: 'form-control'
         .data
-          = form.label :measured_at, 'Time'
-          = form.time_field :measured_at, class: 'form-control'
-        .data
           = form.label :temperature
           = form.text_field :temperature, class: 'form-control'
         .data
-          = form.label :species_richness
+          = form.label :species_richness, 'Species Richness'
           = form.text_field :species_richness, class: 'form-control'
         .data
-          = form.label :species_evenness
+          = form.label :species_evenness, 'Species Evenness'
           = form.text_field :species_evenness, class: 'form-control'
         .data
-          = form.label :diversity_index, 'Shannon-Wiener diversity index'
+          = form.label :diversity_index, 'Shannon-Wiener Diversity Index'
           = form.text_field :diversity_index, class: 'form-control'
         .data
-          = form.label :biomass_estimate
+          = form.label :biomass_estimate, 'Biomass Estimate'
           = form.text_field :biomass_estimate, class: 'form-control'
     = render 'layouts/image_gallery', {form: form, entity: @biodiversity_report, phrase: 'Include reference pictures for the report'}
     = render 'layouts/form_buttons', form: form
