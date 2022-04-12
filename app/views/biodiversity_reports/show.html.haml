@@ -45,7 +45,7 @@
   %h2.center Past Biodiversity Report Data       
   .info
     %section
-      %table.table
+      %table.table#list
         %thead
           %tr
             %th{scope: 'col'} Plot
@@ -56,8 +56,8 @@
         %tbody
           - @biodiversity_reports.each do |report| 
             -if report.plot_id == @biodiversity_report.plot_id && report.id != @biodiversity_report.id && report.measured_on <= @biodiversity_report.measured_on
-              %tr
-                %td= link_to "#{report.plot}", report.plot
+              %tr{:onclick => "location.href='#{url_for(report)}'"}
+                %td= report.plot
                 %td= report.measured_on.to_formatted_s(:long)
                 %td= report.temperature
                 %td= report.species_richness
