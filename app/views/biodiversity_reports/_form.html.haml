@@ -1,23 +1,31 @@
-.row
-  .col-md-6.col-md-offset-3
-    = form_for(@biodiversity_report, html: {multipart: true}) do |form|
-      = form_errors_for(@biodiversity_report)
-      = form.label :plot_id, 'Plot'
-      = form.collection_select :plot_id, @plots, :id, :name, include_blank: 'Choose one'
-      = form.label :measured_on, 'Date'
-      = form.date_field :measured_on, class: 'form-control'
-      = form.label :measured_at, 'Time'
-      = form.time_field :measured_at, class: 'form-control'
-      = form.label :temperature
-      = form.text_field :temperature, class: 'form-control'
-      = form.label :species_richness
-      = form.text_field :species_richness, class: 'form-control'
-      = form.label :species_evenness
-      = form.text_field :species_evenness, class: 'form-control'
-      = form.label :diversity_index, 'Shannon-Wiener diversity index'
-      = form.text_field :diversity_index, class: 'form-control'
-      = form.label :biomass_estimate
-      = form.text_field :biomass_estimate, class: 'form-control'
-      = form.label :photo
-      = form.file_field :photo, class: 'form-control'
-      = form.submit class: 'btn btn-primary'
+.form
+  = form_for(@biodiversity_report, html: {multipart: true}) do |form|
+    = form_errors_for(@biodiversity_report)
+    .content
+      .caption
+        %h3 Information 
+        %p.italic Provide data about the biodiversity report
+      .input
+        .data
+          = form.label :plot_id, 'Plot'
+          = form.collection_select :plot_id, @plots, :id, :name, {include_blank: 'Choose plot...'}, {class: 'form-control'}
+        .data
+          = form.label :measured_on, 'Date'
+          = form.date_field :measured_on, class: 'form-control'
+        .data
+          = form.label :temperature
+          = form.text_field :temperature, class: 'form-control'
+        .data
+          = form.label :species_richness, 'Species Richness'
+          = form.text_field :species_richness, class: 'form-control'
+        .data
+          = form.label :species_evenness, 'Species Evenness'
+          = form.text_field :species_evenness, class: 'form-control'
+        .data
+          = form.label :diversity_index, 'Shannon-Wiener Diversity Index'
+          = form.text_field :diversity_index, class: 'form-control'
+        .data
+          = form.label :biomass_estimate, 'Biomass Estimate'
+          = form.text_field :biomass_estimate, class: 'form-control'
+    = render 'layouts/image_gallery', {form: form, entity: @biodiversity_report, phrase: 'Include reference pictures for the report'}
+    = render 'layouts/form_buttons', form: form

@@ -1,51 +1,44 @@
-- content_for_title(@biodiversity_report.to_s)
+- content_for_title("Biodiversity Report ##{@biodiversity_report.id}")
 - content_for(:subnav) do
-  = link_to '« Back to reports', :back, class: 'btn btn-primary', title: 'List of biodiversity reports'
+  .btn-public
+    = button_to('« Reports', biodiversity_reports_path, class: 'button primary', method: 'get')
   - if @biodiversity_report.editable_by?(current_user)
-    .btn-group
-      = link_to 'Edit', edit_biodiversity_report_path(@biodiversity_report), class: 'btn', title: "Edit #{@biodiversity_report}"
+    .btn-admin
+      = link_to(content_tag(:i, '', :class => "icon-edit"), edit_biodiversity_report_path(@biodiversity_report), class: 'btn-icon')
       - if current_user&.admin?
-        = link_to 'Delete', @biodiversity_report, method: :delete, data: { confirm: 'Delete Report?' }, class: 'btn btn-danger', title: "Delete #{@biodiversity_report}"
-
-%section
-  .row
-    .col-md-5
-      %h2 Photo
-      = image_tag @biodiversity_report.photo.variant(resize: "200x200"), alt: "Photo of #{@biodiversity_report.plot}" if @biodiversity_report.photo.attached?
-    .col-md-7
-      %h2.center= "by #{@biodiversity_report.author}"
-      %table.table
-        %thead
-          %th{colspan: '2'}= @biodiversity_report.byline
-        %tbody
-          %tr
-            %th.col-md-4{scope: 'row'} Collection Date
-            %td= @biodiversity_report.measured_on.to_formatted_s(:long)
-          %tr
-            %th.col-md-4{scope: 'row'} Collection time
-            %td= @biodiversity_report.measured_at.to_formatted_s(:ampm)
-          %tr
-            %th.col-md-4{scope: 'row'} Author
-            %td= @biodiversity_report.author
-          %tr
-            %th.col-md-4{scope: 'row'} Plot
-            %td
-              = link_to "#{@biodiversity_report.plot}", @biodiversity_report.plot
-          %tr
-            %th.col-md-4{scope: 'row'} Temperature
-            %td= @biodiversity_report.temperature
-          %tr
-            %th.col-md-4{scope: 'row'} Species richness
-            %td= @biodiversity_report.species_richness
-          %tr
-            %th.col-md-4{scope: 'row'} Diversity index
-            %td= @biodiversity_report.diversity_index
-          %tr
-            %th.col-md-4{scope: 'row'} Species evenness
-            %td= @biodiversity_report.species_evenness
-          %tr
-            %th.col-md-4{scope: 'row'} Biomass estimate
-            %td= @biodiversity_report.biomass_estimate
+        = link_to(content_tag(:i, '', :class => "icon-trash"), @biodiversity_report, method: :delete, data: { confirm: "Delete Biodiversity Report #{@biodiversity_report.id}?" }, class: 'btn-icon')
+.content
+  = render 'layouts/image_carousel', entity: @biodiversity_report
+  .info
+    %h2.heading#table-heading Information
+    %table.table#vertical-table
+      %thead
+        %th.citation.italic{colspan: '2'} #{last_updated(@biodiversity_report)} #{link_to(@biodiversity_report.user)}
+      %tbody
+        %tr
+          %th{scope: 'row'} Collection Date
+          %td= measured_on(@biodiversity_report)
+        %tr
+          %th{scope: 'row'} Author
+          %td= link_to(@biodiversity_report.author)
+        %tr
+          %th{scope: 'row'} Plot
+          %td= link_to(@biodiversity_report.plot)
+        %tr
+          %th{scope: 'row'} Temperature
+          %td= @biodiversity_report.temperature
+        %tr
+          %th{scope: 'row'} Species Richness
+          %td= @biodiversity_report.species_richness
+        %tr
+          %th{scope: 'row'} Diversity Index
+          %td= @biodiversity_report.diversity_index
+        %tr
+          %th{scope: 'row'} Species Evenness
+          %td= @biodiversity_report.species_evenness
+        %tr
+          %th{scope: 'row'} Biomass Estimate
+          %td= @biodiversity_report.biomass_estimate
 
 - if @biodiversity_reports
   .space
