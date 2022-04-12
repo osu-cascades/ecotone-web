@@ -63,7 +63,7 @@ class MacroinvertebrateSamplesController < ApplicationController
     end
 
     def macroinvertebrate_sample_params
-      params.require(:macroinvertebrate_sample).permit(:collected_on, :plot_id, :phylum, :location_within_plot, :quantity, :ecosystem_service, :photo)
+      params.require(:macroinvertebrate_sample).permit(:collected_on, :plot_id, :phylum, :location_within_plot, :quantity, :ecosystem_service, photo: [])
     end
 
 end
