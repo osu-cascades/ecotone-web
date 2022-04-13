@@ -20,7 +20,7 @@ RSpec.feature 'User edits a biodiversity report' do
 
   scenario 'without changing anything' do
     visit edit_biodiversity_report_path(biodiversity_report)
-    click_button('Update Biodiversity report')
+    click_button('Update Report')
     expect(page).to have_selector '.alert', text: 'Biodiversity report was successfully updated.'
   end
 
