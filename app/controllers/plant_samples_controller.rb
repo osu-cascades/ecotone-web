@@ -71,7 +71,7 @@ class PlantSamplesController < ApplicationController
 
     def plant_sample_params
       params.require(:plant_sample).permit(:collected_on, :abundance, :percent_cover, :biomass_estimate,
-        photo: [], :plant_id, :plot_id)
+        :photo, :plant_id, :plot_id)
     end
 
 end
