@@ -10,8 +10,8 @@ RSpec.feature 'User edits a biodiversity report' do
 
   scenario 'providing invalid report data' do
     visit edit_biodiversity_report_path(biodiversity_report)
-    fill_in('Species richness', with: 'invalid value')
-    click_button('Update Biodiversity report')
+    fill_in('Species Richness', with: 'invalid value')
+    click_button('Update Report')
     expect(page).to have_selector '.alert', text: 'The form contains 1 error.'
     page.find('.alert').tap do |error_explanations|
       expect(error_explanations).to have_content('Species richness is not a number')
