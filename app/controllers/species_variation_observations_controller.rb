@@ -68,7 +68,7 @@ class SpeciesVariationObservationsController < ApplicationController
     end
 
     def species_variation_observation_params
-      params.require(:species_variation_observation).permit(:observed_on, :plot_id, :plant_id, :average_height, :average_width, :description, :photo)
+      params.require(:species_variation_observation).permit(:observed_on, :plot_id, :plant_id, :average_height, :average_width, :description, photo: [])
     end
 
 end
