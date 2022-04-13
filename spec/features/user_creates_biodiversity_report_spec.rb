@@ -12,24 +12,22 @@ RSpec.feature 'User creates a biodiversity report' do
   scenario 'providing valid report data' do
     select('Plot #1', from: 'Plot')
     fill_in('Date', with: '09/11/2001')
-    fill_in('Time', with: '04:45 PM')
     # fill_in('biodiversity_report_temperature', with: '72')
     find(:xpath, "//*[@id='biodiversity_report_temperature']").set 72
-    fill_in('Species richness', with: '10')
-    fill_in('Shannon-Wiener diversity index', with: '5.0')
-    fill_in('Species evenness', with: '0.5')
-    fill_in('Biomass estimate', with: '1.0')
-    click_button('Create Biodiversity report')
+    fill_in('Species Richness', with: '10')
+    fill_in('Shannon-Wiener Diversity Index', with: '5.0')
+    fill_in('Species Evenness', with: '0.5')
+    fill_in('Biomass Estimate', with: '1.0')
+    click_button('Create Report')
     expect(page).to have_selector '.alert', text: 'Biodiversity report was successfully created.'
   end
 
   scenario 'providing invalid report data' do
-    click_button('Create Biodiversity report')
-    expect(page).to have_selector '.alert', text: 'The form contains 5 errors.'
+    click_button('Create Report')
+    expect(page).to have_selector '.alert', text: 'The form contains 4 errors.'
     page.find('.alert').tap do |error_explanations|
       expect(error_explanations).to have_content('Plot must be specified')
       expect(error_explanations).to have_content("Date can't be blank")
-      expect(error_explanations).to have_content("Time can't be blank")
       expect(error_explanations).to have_content('Species richness is not a number')
       expect(error_explanations).to have_content('Diversity index is not a number')
     end

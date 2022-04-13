@@ -6,7 +6,6 @@ RSpec.describe BiodiversityReport, type: :model do
   context 'when created' do
     it { is_expected.to have_attributes(
       measured_on: Date.today,
-      measured_at: Date.today,
       temperature: 1.5,
       species_richness: 1,
       diversity_index: 1.5,
@@ -31,7 +30,6 @@ RSpec.describe BiodiversityReport, type: :model do
     it { is_expected.to validate_numericality_of(:species_evenness).is_greater_than_or_equal_to(0).is_less_than_or_equal_to(1) }
     it { is_expected.to validate_numericality_of(:biomass_estimate).is_greater_than_or_equal_to(0).allow_nil }
     it { is_expected.to validate_presence_of(:measured_on) }
-    it { is_expected.to validate_presence_of(:measured_at) }
   end
 
   describe 'associations' do
