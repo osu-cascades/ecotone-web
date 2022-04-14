@@ -10,7 +10,7 @@ class SoilSample < ApplicationRecord
   has_many :nutrients, dependent: :destroy
   has_and_belongs_to_many :biodiversity_reports
 
-  accepts_nested_attributes_for :nutrients#, reject_if: :nutrient_presence_unspecified
+  accepts_nested_attributes_for :nutrients, reject_if: :nutrient_presence_unspecified
 
   validates_presence_of :collected_on
   validates_presence_of :collection_method
@@ -36,7 +36,10 @@ class SoilSample < ApplicationRecord
 
   private
   def all_nutrients_selected
-    errors.add(:nutrients, "must all have values") if nutrients.map{ |n| n}.blank?
+    failure = true
+    if nutrients.length() < 3 && nutrients.length > 0
+      errors.add(:nutrients, "must all have values")
+    end
   end
 
   def nutrient_presence_unspecified(attributes)
