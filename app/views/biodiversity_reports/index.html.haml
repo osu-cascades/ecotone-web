@@ -5,22 +5,20 @@
 = paginate @biodiversity_reports
 
 %section
-  %h2 Report Information
-  %table.table
+  %table.table#list
     %thead
       %tr
-        %th{scope: 'col'} Id
-        %th{scope: 'col'} Measured on
+        %th{scope: 'col'} ID
+        %th{scope: 'col'} Measured On
         %th{scope: 'col'} Plot
         %th{scope: 'col'} Temperature
-        %th{scope: 'col'} Species richness
-        %th{scope: 'col'} Diversity index
-        %th{scope: 'col'} Species evenness
-        %th{scope: 'col'} Biomass estimate
-        %th{scope: 'col'}
+        %th{scope: 'col'} Species Richness
+        %th{scope: 'col'} Diversity Index
+        %th{scope: 'col'} Species Evenness
+        %th{scope: 'col'} Biomass Estimate
     %tbody
       - @biodiversity_reports.each do |report|
-        %tr
+        %tr{:onclick => "location.href='#{url_for(report)}'"}
           %td= report.id
           %td= report.measured_on.to_formatted_s(:long)
           %td= report.plot
@@ -29,8 +27,5 @@
           %td= report.diversity_index
           %td= report.species_evenness
           %td= report.biomass_estimate
-          %td
-            = link_to 'view', report, title: "Details of report #{report.id}"
-            = link_to('edit', edit_biodiversity_report_path(report), title: 'Edit report') if report.editable_by?(current_user)
 
 = paginate @biodiversity_reports

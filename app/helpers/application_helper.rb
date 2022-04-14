@@ -31,11 +31,15 @@ module ApplicationHelper
   end
 
   def collected_on(entity)
-    entity.collected_on.to_formatted_s(:long)
+    entity.collected_on&.to_formatted_s(:long)
   end
 
   def observed_on(entity)
-    entity.observed_on.to_formatted_s(:long)
+    entity.observed_on&.to_formatted_s(:long)
+  end
+
+  def measured_on(entity)
+    entity.measured_on&.to_formatted_s(:long)
   end
 
   def nutrient_table_data(sample, nutrient)

@@ -9,7 +9,7 @@ RSpec.describe PlotsHelper, type: :helper do
       before { plot.featured_plant = nil }
       before { allow(helper).to receive(:current_user).and_return(current_user) }
       it "returns 'Unassigned' with a link to edit the plot" do
-        expect(helper.link_to_featured_plant(plot)).to match "Unassigned. <a title=\"Edit Plot #1\" class=\"plant\" href=\"/plots/1/edit\">Add one?</a>"
+        expect(helper.link_to_featured_plant(plot)).to match "Unassigned. <a title=\"Edit Plot #1\" href=\"/plots/1/edit\">Add one?</a>"
       end
     end
 
