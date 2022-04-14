@@ -24,6 +24,7 @@ class SoilSamplesController < ApplicationController
 
   def create
     @soil_sample = SoilSample.new(soil_sample_params)
+    @soil_sample.build_default_nutrients if @soil_sample.nutrients.empty?
     @soil_sample.user = current_user
     respond_to do |format|
       if @soil_sample.save
