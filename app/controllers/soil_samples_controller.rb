@@ -31,7 +31,14 @@ class SoilSamplesController < ApplicationController
         format.json { render :show, status: :created, location: @soil_sample }
       else
         @plots = Plot.order(:plot_id)
-        @soil_sample.build_default_nutrients2(@soil_sample.nutrients[0].name)
+        case @soil_sample.nutrients.length()
+        when 0
+          @soil_sample.build_remaining_nutrients
+        when 1
+          @soil_sample.build_remaining_nutrients(@soil_sample.nutrients[0].name)
+        when 2
+          @soil_sample.build_remaining_nutrients(@soil_sample.nutrients[0].name,@soil_sample.nutrients[1].name)
+        end
         format.html { render :new }
         format.json { render json: @soil_sample.errors, status: :unprocessable_entity }
       end
