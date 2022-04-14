@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   before_action :prevent_normal_users_from_viewing_other_users, only: [:show]
 
   def index
-    @users = User.all
+    @users = User.order(created_at: :desc).page(params[:page])
   end
 
   def show
