@@ -26,7 +26,14 @@ class SoilSample < ApplicationRecord
   # Associate three Nutrient models: Nitrogen, Phosphorus and Potassium
   def build_default_nutrients
     DEFAULT_NUTRIENT_NAMES.each do |name|
-      nutrients.build(name: name)
+      nutrients.build(name: name) 
+    end
+  end
+
+  def build_default_nutrients2(soil_sample)
+    puts(soil_sample)
+    DEFAULT_NUTRIENT_NAMES.each do |name|
+      nutrients.build(name: name) unless name == soil_sample
     end
   end
 
@@ -36,7 +43,6 @@ class SoilSample < ApplicationRecord
 
   private
   def all_nutrients_selected
-    failure = true
     if nutrients.length() < 3 && nutrients.length > 0
       errors.add(:nutrients, "must all have values")
     end
