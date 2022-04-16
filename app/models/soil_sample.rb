@@ -30,9 +30,9 @@ class SoilSample < ApplicationRecord
     end
   end
 
-  def build_remaining_nutrients(nutrient_1, nutrient_2 = nil)
+  def build_remaining_nutrients(remaining_nutrients)
     DEFAULT_NUTRIENT_NAMES.each do |name|
-      nutrients.build(name: name) unless name == nutrient_1 || name == nutrient_2
+      nutrients.build(name: name) unless remaining_nutrients.include? name
     end
   end
 
