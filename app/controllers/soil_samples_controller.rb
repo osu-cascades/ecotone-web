@@ -33,7 +33,7 @@ class SoilSamplesController < ApplicationController
         @plots = Plot.order(:plot_id)
         case @soil_sample.nutrients.length()
         when 0
-          @soil_sample.build_remaining_nutrients
+          @soil_sample.build_default_nutrients
         when 1
           @soil_sample.build_remaining_nutrients(@soil_sample.nutrients[0].name)
         when 2
