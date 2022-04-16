@@ -24,13 +24,7 @@ class SoilSample < ApplicationRecord
   DEFAULT_NUTRIENT_NAMES = ['Nitrogen', 'Phosphorus', 'Potassium']
 
   # Associate three Nutrient models: Nitrogen, Phosphorus and Potassium
-  def build_default_nutrients
-    DEFAULT_NUTRIENT_NAMES.each do |name|
-      nutrients.build(name: name) 
-    end
-  end
-
-  def build_remaining_nutrients(current_nutrients)
+  def build_default_nutrients(current_nutrients)
     DEFAULT_NUTRIENT_NAMES.each do |name|
       nutrients.build(name: name) unless current_nutrients.include? name
     end
