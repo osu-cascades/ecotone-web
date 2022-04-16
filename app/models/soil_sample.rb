@@ -17,7 +17,7 @@ class SoilSample < ApplicationRecord
   validates_numericality_of :ph_level, greater_than_or_equal_to: 0, less_than_or_equal_to: 14
   validates_numericality_of :temperature
   validates_numericality_of :moisture, greater_than_or_equal_to: 0
-  validate :all_nutrients_selected
+  #validate :all_nutrients_selected
 
   paginates_per 10
 
@@ -37,7 +37,7 @@ class SoilSample < ApplicationRecord
   private
   def all_nutrients_selected
     if nutrients.length() < 3 && nutrients.length > 0
-      errors.add(:nutrients, "must all have values")
+      errors.add(nutrients: "must all have values")
     end
   end
 
