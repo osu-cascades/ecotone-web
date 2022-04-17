@@ -1,0 +1,13 @@
+@import './constants.css.scss';
+
+.users {
+	display: grid;
+	justify-content: center;
+}
+
+#users {
+	font-size: $txt4;
+	td {
+		min-width: $space12;
+	}
+}
