@@ -1,10 +1,20 @@
 - content_for_title(@user.name)
-%h2.center= @user.email
-%hr
-%section
-  %h2 My Biodiversity Reports
-  %ul.indexing
-    - @user.biodiversity_reports.each do |report|
-      %li
-        %h3= link_to report.to_s, report, title: "Details of #{report}"
-        %p= report.byline
+- content_for(:subnav) do
+  .btn-public
+    = button_to('« Users', users_path, class: 'button primary', title: 'List of all users', method: 'get')
+  - if current_user&.admin?
+    .btn-admin
+      = link_to(content_tag(:i, '', :class => "icon-trash"), @user, method: :delete, data: { confirm: "Delete #{@user.name}?" }, class: 'btn-icon', title: "Delete #{@plant}")
+.email.center.italic= @user.email
+
+%section.small-table
+  %table.table.list#reports
+    %thead
+      %tr
+        %th{scope: 'col'} Report
+        %th{scope: 'col'} Collection Date
+    %tbody
+      - @user.biodiversity_reports.each do |report|
+        %tr{:onclick => "location.href='#{url_for(report)}'"}
+          %td= report.to_s
+          %td= report.measured_on&.to_formatted_s(:long)
