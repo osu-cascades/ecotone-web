@@ -25,6 +25,11 @@ td {
 	cursor: pointer;
 }
 
+.small-table {
+	display: grid;
+	justify-content: center;
+}
+
 #vertical-table {
 	margin-top: 0px;
 	width: $space12;
