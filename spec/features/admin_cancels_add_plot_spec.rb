@@ -11,7 +11,7 @@ RSpec.feature 'Admin hits cancel' do
     scenario 'after visitng add plots page' do
       visit new_plot_path
       click_on('Cancel')
-      expect(page).to have_current_path('/plots?cancel=Cancel')
+      expect(page).to have_current_path('/plots/new')
     end
   end
 end

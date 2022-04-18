@@ -1,5 +1,4 @@
 class PlantsController < ApplicationController
-  include Cancelable
   
   before_action :set_plant, only: [:show, :edit, :update, :destroy, :download_qr]
   before_action :login_required, only: [:new, :create, :edit, :update, :destroy]
@@ -63,4 +62,5 @@ class PlantsController < ApplicationController
     params.require(:plant).permit(:common_name, :scientific_name, :description,
      :habitat_type, :tolerance, :citation, :invasive, photo: [])
   end
+  
 end
