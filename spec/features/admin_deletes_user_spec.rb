@@ -6,14 +6,13 @@ RSpec.feature 'Admin deletes user' do
 
     before do
       sign_in(user)
-      create(:user, :alternate)
+      create(:user, :alternate, id: '1')
     end
 
-    scenario 'selecting an existing user' do
-      visit users_path
-      expect(page).to have_link 'Delete'
+    scenario 'by selecting an existing user' do
+      visit user_path(1)
       click_link 'Delete'
-      expect(page).to have_selector '.alert', text: 'User deleted.'
+      expect(page).to have_content('User deleted.')
     end
   end
 end
