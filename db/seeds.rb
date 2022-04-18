@@ -86,4 +86,14 @@
         description: "Lorem ipsum dolor sit amet."
     )
 
+    PlantSample.create!(
+        user: User.find(user_num),
+        collected_on: "#01/06/2022",
+        abundance: 5,
+        percent_cover: 5,
+        biomass_estimate: 5,
+        plant_id: num, 
+        plot_id: num
+    )
+
         end
