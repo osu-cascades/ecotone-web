@@ -20,8 +20,14 @@ td {
 	padding: $space1 $space3 $space1 $space0 !important;
 }
 
-#list tbody tr:hover {
+.list tbody tr:hover {
 	background-color: $grey8;
+	cursor: pointer;
+}
+
+.small-table {
+	display: grid;
+	justify-content: center;
 }
 
 #vertical-table {

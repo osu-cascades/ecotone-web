@@ -1,8 +1,11 @@
 - content_for_title('All Users')
-%ul.indexing
-  - @users.each do |user|
-    %li
-      %h3
-        = link_to user.name, user, title: "Details of #{user}"
-        = '(admin)' if user.admin?
-        = delete_user_link(current_user, user)
+
+%section.small-table
+  %table.table.list#users
+    %tbody
+      - @users.each do |user|
+        %tr{:onclick => "location.href='#{url_for(user)}'"}
+          %td
+            = user.name
+            = '(admin)' if user.admin?
+
