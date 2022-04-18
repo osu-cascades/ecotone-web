@@ -8,7 +8,7 @@
       - @users.each do |user|
         %tr{:onclick => "location.href='#{url_for(user)}'"}
           %td
-            = user.name
+            = user.name.titleize
             = '(admin)' if user.admin?
 
 = paginate @users
