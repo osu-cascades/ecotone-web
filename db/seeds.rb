@@ -11,8 +11,8 @@
         admin: false )
 
     Plant.create!(
-        common_name: "Lorem Ipsum#{num}",
-        scientific_name: "Lorem ipsum#{num}",
+        common_name: "Plant ##{num}",
+        scientific_name: "Plant ##{num}",
         description: "Lorem ipsum dolor sit amet, consectetur 
             adipiscing elit, sed do eiusmod tempor incididunt ut 
             labore et dolore magna aliqua. Ut enim ad minim 
