@@ -96,4 +96,14 @@
         plot_id: num
     )
 
+    SoilSample.create!(
+        user: User.find(user_num),
+        collected_on: "#01/06/2022",
+        plot_id: num, 
+        collection_method: "composite",
+        ph_level: 7,
+        temperature: 45,
+        moisture: 6,
+       # add nutrient attributes
+    )
         end
