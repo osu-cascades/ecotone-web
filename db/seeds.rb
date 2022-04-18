@@ -130,4 +130,15 @@
         latitude: 45,
         longitude: 121
     )
+
+    BiodiversityReport.create!(
+        author: User.find(user_num),
+        measured_on: "#01/06/2022",
+        plot_id: num,
+        temperature: 51,
+        species_richness: 34, 
+        species_evenness: 0.1, 
+        biomass_estimate: 0.1,
+        diversity_index: 1
+    )
         end
