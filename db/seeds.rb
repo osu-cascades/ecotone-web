@@ -64,4 +64,18 @@
         quantity: "1",
         ecosystem_service: "Consumer" 
     )
+
+    MycorrhizalFungiSample.create!(
+        collected_on: "#01/06/2022", 
+        length: 1, 
+        magnification: 40, 
+        vesicle_count: 1, 
+        arbuscule_count: 1,
+        visible_hyphae: "Yes", 
+        hyphae_coverage: 1, 
+        user_id: user_num, 
+        plot_id: num, 
+        plant_id: num    
+    )
+
         end
