@@ -1,5 +1,4 @@
 class NonvascularPlantSamplesController < ApplicationController
-  include Cancelable
   
   before_action :login_required
   before_action :admin_required, only: :destroy
@@ -64,7 +63,7 @@ class NonvascularPlantSamplesController < ApplicationController
     end
 
     def nonvascular_plant_sample_params
-      params.require(:nonvascular_plant_sample).permit(:collected_on, :plot_id, :location_within_plot, :size, :description, :photo)
+      params.require(:nonvascular_plant_sample).permit(:collected_on, :plot_id, :location_within_plot, :size, :description, photo: [])
     end
 
 end

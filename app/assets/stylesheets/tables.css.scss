@@ -20,8 +20,14 @@ td {
 	padding: $space1 $space3 $space1 $space0 !important;
 }
 
-#list tbody tr:hover {
+.list tbody tr:hover {
 	background-color: $grey8;
+	cursor: pointer;
+}
+
+.small-table {
+	display: grid;
+	justify-content: center;
 }
 
 #vertical-table {
@@ -29,24 +35,6 @@ td {
 	width: $space12;
 	th {
 		font-size: $txt1;
-	}
-	a.plot{
-		color: $orange2;
-		&:hover, &:focus, &:focus-visible {
-			color: $orange1;
-		}
-		&:active {
-			color: $orange0;
-		}
-	}
-	a.plant {
-		color: $green2;
-		&:hover, &:focus, &:focus-visible {
-			color: $green1;
-		}
-		&:active {
-			color: $green0;
-		}
 	}
 }
 

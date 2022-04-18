@@ -1,5 +1,4 @@
 class LichenSamplesController < ApplicationController
-  include Cancelable
   
   before_action :login_required
   before_action :admin_required, only: :destroy
@@ -63,7 +62,7 @@ class LichenSamplesController < ApplicationController
     end
 
     def lichen_sample_params
-      params.require(:lichen_sample).permit(:collected_on, :plot_id, :location_within_plot, :description, :photo)
+      params.require(:lichen_sample).permit(:collected_on, :plot_id, :location_within_plot, :description, photo: [])
     end
 
 end

@@ -1,5 +1,4 @@
 class PlantSamplesController < ApplicationController
-  include Cancelable
   
   before_action :login_required
   before_action :admin_required, only: :destroy
@@ -71,7 +70,7 @@ class PlantSamplesController < ApplicationController
 
     def plant_sample_params
       params.require(:plant_sample).permit(:collected_on, :abundance, :percent_cover, :biomass_estimate,
-        :photo, :plant_id, :plot_id)
+        :plant_id, :plot_id, photo: [])
     end
 
 end

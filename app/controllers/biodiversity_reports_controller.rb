@@ -1,4 +1,5 @@
 class BiodiversityReportsController < ApplicationController
+  
   before_action :login_required
   before_action :admin_required, only: :destroy
   before_action :load_plots_and_plants, only: [:new, :edit]
@@ -9,7 +10,7 @@ class BiodiversityReportsController < ApplicationController
   end
 
   def show
-    @biodiversity_reports = BiodiversityReport.order(measured_on: :desc).page(params[:page])
+    @biodiversity_reports = BiodiversityReport.order(measured_on: :desc).all
   end
 
   def new
@@ -61,7 +62,7 @@ class BiodiversityReportsController < ApplicationController
 
   def biodiversity_report_params
     params.require(:biodiversity_report).permit(:measured_on, :measured_at, :plot_id,
-      :temperature, :species_richness, :species_evenness, :biomass_estimate, :photo,
-      :diversity_index)
+      :temperature, :species_richness, :species_evenness, :biomass_estimate, :diversity_index, photo: [])
   end
+  
 end

@@ -1,5 +1,4 @@
 class FungiSamplesController < ApplicationController
-  include Cancelable
 
   before_action :login_required
   before_action :admin_required, only: :destroy
@@ -63,7 +62,7 @@ class FungiSamplesController < ApplicationController
     end
 
     def fungi_sample_params
-      params.require(:fungi_sample).permit(:collected_on, :plot_id, :location_within_plot, :size, :description, :photo)
+      params.require(:fungi_sample).permit(:collected_on, :plot_id, :location_within_plot, :size, :description, photo: [])
     end
 
 end

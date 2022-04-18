@@ -11,6 +11,8 @@ class User < ApplicationRecord
 
   has_many :biodiversity_reports, foreign_key: 'author_id'
 
+  paginates_per 10
+  
   def self.from_omniauth(auth, allowed_domains)
     return unless allowed_domains.include? auth&.extra&.raw_info&.hd
     where(email: auth.info.email).first_or_create do |user|

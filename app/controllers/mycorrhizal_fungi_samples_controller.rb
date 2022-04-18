@@ -1,5 +1,4 @@
 class MycorrhizalFungiSamplesController < ApplicationController
-  include Cancelable
   
   before_action :login_required
   before_action :admin_required, only: :destroy
@@ -68,7 +67,7 @@ class MycorrhizalFungiSamplesController < ApplicationController
 
 
     def mycorrhizal_fungi_sample_params
-      params.require(:mycorrhizal_fungi_sample).permit(:collected_on, :length, :magnification, :vesicle_count, :arbuscule_count, :visible_hyphae, :hyphae_coverage, :user_id, :plot_id, :plant_id, :photo)
+      params.require(:mycorrhizal_fungi_sample).permit(:collected_on, :length, :magnification, :vesicle_count, :arbuscule_count, :visible_hyphae, :hyphae_coverage, :user_id, :plot_id, :plant_id, photo: [])
     end
 
 end

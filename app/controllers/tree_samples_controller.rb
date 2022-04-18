@@ -1,5 +1,4 @@
 class TreeSamplesController < ApplicationController
-  include Cancelable
   
   before_action :login_required
   before_action :admin_required, only: :destroy
@@ -71,7 +70,7 @@ class TreeSamplesController < ApplicationController
     end
 
     def tree_sample_params
-      params.require(:tree_sample).permit(:collected_on, :plot_id, :plant_id, :tag_number, :growth_stage, :dbh, :lower_canopy_height, :upper_canopy_height, :latitude, :longitude, :photo)
+      params.require(:tree_sample).permit(:collected_on, :plot_id, :plant_id, :tag_number, :growth_stage, :dbh, :lower_canopy_height, :upper_canopy_height, :latitude, :longitude, photo: [])
     end
 
 end

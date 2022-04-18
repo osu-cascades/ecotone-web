@@ -100,7 +100,7 @@
   %h2.center Biodiversity Report Data       
   .info
     %section
-      %table.table
+      %table.table.list
         %thead
           %tr
             %th{scope: 'col'} Measured On
@@ -109,7 +109,7 @@
             %th{scope: 'col'} Diversity Index
         %tbody
           - @plot.biodiversity_reports.order('measured_on DESC').each do |report|
-            %tr
+            %tr{:onclick => "location.href='#{url_for(report)}'"}
               %td= report.measured_on.to_formatted_s(:long)
               %td= report.temperature
               %td= report.species_richness
