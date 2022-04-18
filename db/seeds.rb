@@ -1,8 +1,9 @@
 
-20.times do |plant|
+20.times do |num|
+    
     Plant.create!(
-        common_name: "Lorem Ipsum#{plant}",
-        scientific_name: "Lorem ipsum#{plant}",
+        common_name: "Lorem Ipsum#{num}",
+        scientific_name: "Lorem ipsum#{num}",
         description: "Lorem ipsum dolor sit amet, consectetur 
         adipiscing elit, sed do eiusmod tempor incididunt ut 
             labore et dolore magna aliqua. Ut enim ad minim 
@@ -10,5 +11,21 @@
             nisi ut aliquip ex ea commodo consequat.",
         habitat_type: "Lorem ipsum dolor sit amet.",
         tolerance: "Lorem ipsum dolor sit amet."
+    )
+
+    Plot.create!(
+        plot_id: "#{num}",
+        featured_plant_id: 1,
+        latitude: 44,
+        longitude: 121,
+        location_description: "Lorem ipsum dolor sit amet, consectetur 
+        adipiscing elit, sed do eiusmod tempor incididunt ut 
+            labore et dolore magna aliqua.",
+        elevation: 3684,
+        area: 300,
+        aspect: "North facing",
+        origin: "Nursery",
+        initial_planting_date: "Spring 2017",
+        initial_succession: "Primary"
     )
         end
