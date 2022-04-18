@@ -106,4 +106,14 @@
         moisture: 6,
        # add nutrient attributes
     )
+
+    SpeciesVariationObservation.create!(
+        user: User.find(user_num),
+        observed_on: "#01/06/2022",
+        plot_id: num, 
+        plant_id: num, 
+        average_height: 2,
+        average_width: 2,
+        description: "Lorem ipsum dolor sit amet."
+    )
         end
