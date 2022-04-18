@@ -116,4 +116,18 @@
         average_width: 2,
         description: "Lorem ipsum dolor sit amet."
     )
+
+    TreeSample.create!(
+        user: User.find(user_num),
+        collected_on: "#01/06/2022",
+        plot_id: num, 
+        plant_id: num, 
+        tag_number: 105,
+        growth_stage: 2,
+        dbh: 45,
+        lower_canopy_height: 35,
+        upper_canopy_height: 55,
+        latitude: 45,
+        longitude: 121
+    )
         end
