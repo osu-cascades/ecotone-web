@@ -12,7 +12,7 @@ RSpec.feature 'Admin hits cancel' do
     scenario 'after visitng edit plant page' do
       visit edit_plant_path(1)
       click_on('Cancel')
-      expect(page).to have_current_path('/plants/1?cancel=Cancel')
+      expect(page).to have_current_path('/plants/1/edit')
     end
   end
 end
