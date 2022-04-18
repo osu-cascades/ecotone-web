@@ -1,5 +1,7 @@
 - content_for_title('All Users')
 
+= paginate @users
+
 %section.small-table
   %table.table.list#users
     %tbody
@@ -9,3 +11,4 @@
             = user.name
             = '(admin)' if user.admin?
 
+= paginate @users
