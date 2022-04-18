@@ -78,4 +78,12 @@
         plant_id: num    
     )
 
+    NonvascularPlantSample.create!(
+        user: User.find(user_num),
+        collected_on: "#01/06/2022",
+        plot_id: num, 
+        location_within_plot: "Lorem ipsum dolor sit amet.",
+        description: "Lorem ipsum dolor sit amet."
+    )
+
         end
