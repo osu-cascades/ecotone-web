@@ -54,4 +54,14 @@
         location_within_plot: "Lorem ipsum dolor sit amet.",
         description: "Lorem ipsum dolor sit amet."
     )
+
+    MacroinvertebrateSample.create!(
+        user: User.find(user_num),
+        collected_on: "#01/06/2022",
+        plot_id: num,
+        phylum: "Lorem ipsum",
+        location_within_plot: "Lorem ipsum dolor sit amet.",
+        quantity: "1",
+        ecosystem_service: "Consumer" 
+    )
         end
