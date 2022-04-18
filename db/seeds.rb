@@ -1,6 +1,13 @@
 
 20.times do |num|
-    
+
+    User.create!(
+        name:  "Person#{num}",
+        email: "person_#{num}@example.com",
+        password:              "password",
+        password_confirmation: "password",
+        admin: false )
+
     Plant.create!(
         common_name: "Lorem Ipsum#{num}",
         scientific_name: "Lorem ipsum#{num}",
