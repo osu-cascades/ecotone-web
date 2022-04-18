@@ -14,7 +14,7 @@
         %th{scope: 'col'} Report
         %th{scope: 'col'} Collection Date
     %tbody
-      - @user.biodiversity_reports.each do |report|
+      - @user.biodiversity_reports.order('measured_on DESC').each do |report|
         %tr{:onclick => "location.href='#{url_for(report)}'"}
           %td= report.to_s
           %td= measured_on(report)
