@@ -1,0 +1,18 @@
+@import './constants.css.scss';
+
+#users {
+	font-size: $txt4;
+	td {
+		min-width: $space12;
+	}
+}
+
+#reports {
+	min-width: $space13;
+}
+
+.email {
+	padding-bottom: $space2;
+	color: $grey4;
+	font-size: $txt3;
+}

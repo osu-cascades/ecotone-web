@@ -24,8 +24,6 @@ Rails.application.routes.draw do
 
   get     '/map', to: 'plots#map', as: 'map'
 
-  get     '/cancel', to: 'redirect_cancel#redirect', as: 'redirect_cancel'
-
   delete  '/images/:id', to: 'image_attachments#delete', as: 'delete_image_attachment'
 
 end

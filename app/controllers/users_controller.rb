@@ -1,12 +1,11 @@
 class UsersController < ApplicationController
-  include Cancelable
   
   before_action :login_required, except: [:new, :create]
   before_action :admin_required, only: :destroy
   before_action :prevent_normal_users_from_viewing_other_users, only: [:show]
 
   def index
-    @users = User.all
+    @users = User.all.order(name: :asc)
   end
 
   def show
@@ -28,4 +27,5 @@ class UsersController < ApplicationController
   def prevent_normal_users_from_viewing_other_users
     redirect_to(root_url) unless current_user.id == params[:id].to_i || current_user.admin?
   end
+  
 end

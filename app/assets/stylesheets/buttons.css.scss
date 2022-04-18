@@ -1,10 +1,18 @@
 @import './constants.css.scss';
 
+// helps *almost* vertically center the text in a button
+// still haven't found any good internet resources for doing this better
+.button:before {
+	content: "";
+	display: inline-block;
+	height: $space5;
+	vertical-align: middle;
+}
+
 .button {
   font-size: $txt1;
   height: $space5;
   width: $space9;
-  padding: $space0;
   text-align: center;
   border-radius: $space0;
   border: 1px solid black;
