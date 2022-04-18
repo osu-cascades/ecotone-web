@@ -1,6 +1,5 @@
 class PlotsController < ApplicationController
-  include Cancelable
-
+  
   before_action :set_plot, only: [:show, :edit, :update, :destroy, :download_qr]
   before_action :login_required, except: [:index, :show, :map, :download_qr]
   before_action :admin_required, except: [:index, :show, :map, :download_qr]

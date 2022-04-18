@@ -1,5 +1,4 @@
 class FungiSamplesController < ApplicationController
-  include Cancelable
 
   before_action :login_required
   before_action :admin_required, only: :destroy
