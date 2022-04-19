@@ -17,7 +17,7 @@ class SoilSamplesController < ApplicationController
   end
 
   def edit
-    @soil_sample.build_default_nutrients(@soil_sample.nutrients.map { |sample| sample.name }) if @soil_sample.nutrients.empty?
+    @soil_sample.build_default_nutrients(@soil_sample.nutrients.map { |sample| sample.name })
     @plots = Plot.order(:plot_id)
   end
 
