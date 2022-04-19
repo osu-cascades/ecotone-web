@@ -1,5 +1,4 @@
 class SoilSamplesController < ApplicationController
-  include Cancelable
   
   before_action :login_required
   before_action :admin_required, only: :destroy
@@ -13,12 +12,12 @@ class SoilSamplesController < ApplicationController
 
   def new
     @soil_sample = SoilSample.new
-    @soil_sample.build_default_nutrients
+    @soil_sample.build_default_nutrients(@soil_sample.nutrients.map { |sample| sample.name })
     @plots = Plot.order(:plot_id)
   end
 
   def edit
-    @soil_sample.build_default_nutrients if @soil_sample.nutrients.empty?
+    @soil_sample.build_default_nutrients(@soil_sample.nutrients.map { |sample| sample.name }) if @soil_sample.nutrients.empty?
     @plots = Plot.order(:plot_id)
   end
 
@@ -31,6 +30,7 @@ class SoilSamplesController < ApplicationController
         format.json { render :show, status: :created, location: @soil_sample }
       else
         @plots = Plot.order(:plot_id)
+        @soil_sample.build_default_nutrients(@soil_sample.nutrients.map { |sample| sample.name })
         format.html { render :new }
         format.json { render json: @soil_sample.errors, status: :unprocessable_entity }
       end

@@ -1,5 +1,4 @@
 class BiodiversityReportsController < ApplicationController
-  include Cancelable
   
   before_action :login_required
   before_action :admin_required, only: :destroy
@@ -65,4 +64,5 @@ class BiodiversityReportsController < ApplicationController
     params.require(:biodiversity_report).permit(:measured_on, :measured_at, :plot_id,
       :temperature, :species_richness, :species_evenness, :biomass_estimate, :diversity_index, photo: [])
   end
+  
 end
