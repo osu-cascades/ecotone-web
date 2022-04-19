@@ -1,4 +1,4 @@
-- content_for_title(@user.name)
+- content_for_title(@user.name.titleize)
 - content_for(:subnav) do
   .btn-public
     = button_to('« Users', users_path, class: 'button primary', title: 'List of all users', method: 'get')
