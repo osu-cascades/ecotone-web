@@ -22,8 +22,18 @@ module ApplicationHelper
     end
   end
 
+
+
+  # def last_updated(entity)
+  #   "Last updated #{formatted_date(entity)} by "
+  # end
+
   def last_updated(entity)
-    "Last updated #{formatted_date(entity)} by "
+    if entity.to_s.include? "by"
+      "Last updated #{entity.datestamp} by #{link_to entity.user}"
+    else
+      "Last updated #{entity.datestamp}"
+    end
   end
 
   def formatted_date(entity)
