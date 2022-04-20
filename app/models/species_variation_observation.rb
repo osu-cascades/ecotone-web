@@ -11,6 +11,14 @@ class SpeciesVariationObservation < ApplicationRecord
 
   paginates_per 10
 
+  def updated_string
+    updated_at&.to_formatted_s(:long)
+  end 
+
+  def datestamp
+    observed_on&.to_formatted_s(:long)
+  end
+
   def to_s
     "#{plant} in #{plot} on #{observed_on} by #{user}"
   end
