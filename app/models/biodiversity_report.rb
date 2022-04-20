@@ -19,12 +19,16 @@ class BiodiversityReport < ApplicationRecord
 
   paginates_per 10
 
-  def to_s
-    "Biodiversity Report #{id}"
+  def updated_string
+    updated_at&.to_formatted_s(:long)
+  end 
+
+  def datestamp
+    measured_on&.to_formatted_s(:long)
   end
 
-  def byline
-    "by #{author} on #{measured_on&.to_formatted_s(:long)} at #{measured_at&.to_formatted_s(:ampm)}"
+  def to_s
+    "Biodiversity Report #{id}"
   end
 
   def user

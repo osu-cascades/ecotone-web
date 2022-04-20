@@ -13,11 +13,11 @@
     %h2.heading#table-heading Information
     %table.table#vertical-table
       %thead
-        %th.citation.italic{colspan: '2'} #{last_updated(@fungi_sample)} #{link_to(@fungi_sample.user)}
+        %th.citation.italic{colspan: '2'}= last_updated(@fungi_sample)
       %tbody
         %tr
           %th{scope: 'row'} Collection Date
-          %td= collected_on(@fungi_sample)
+          %td= @fungi_sample.datestamp
         %tr
           %th{scope: 'row'} Plot
           %td= link_to("#{@fungi_sample.plot}", @fungi_sample.plot)

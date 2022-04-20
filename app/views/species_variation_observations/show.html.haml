@@ -13,11 +13,11 @@
     %h2.heading#table-heading Information
     %table.table#vertical-table
       %thead
-        %th.citation.italic{colspan: '2'} #{last_updated(@species_variation_observation)} #{link_to(@species_variation_observation.user)}
+        %th.citation.italic{colspan: '2'}= last_updated(@species_variation_observation)
       %tbody
         %tr
           %th{scope: 'row'} Observation Date
-          %td= observed_on(@species_variation_observation)
+          %td= @species_variation_observation.datestamp
         %tr
           %th{scope: 'row'} Plot
           %td= link_to("#{@species_variation_observation.plot}", @species_variation_observation.plot)
