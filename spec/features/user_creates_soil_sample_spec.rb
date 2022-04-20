@@ -47,4 +47,19 @@ RSpec.feature 'User creates a soil sample' do
     expect(page).to have_content('Soil sample was successfully created')
   end
 
+  scenario 'without all nutrients' do
+    fill_in('Collection Date', with: '09/11/2001')
+    select('Plot #1', from: 'Plot')
+    select('point', from: 'Collection method')
+    fill_in('pH level', with: '4')
+    fill_in('Temperature', with: '72')
+    fill_in('Moisture', with: '10')
+    select('high', from: 'Nitrogen')
+    select('low', from: 'Phosphorus')
+    click_on('Create Sample')
+    page.find('.alert').tap do |error_explanations|
+      expect(error_explanations).to have_content('Nutrients must all have values')
+    end
+  end
+
 end

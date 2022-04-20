@@ -18,7 +18,6 @@ RSpec.describe SoilSample, type: :model do
   describe 'destruction' do
     it "destroys associated nutrients" do
       soil_sample = nutrient.soil_sample
-      byebug
       soil_sample.nutrients.reload
       soil_sample.destroy
       expect { nutrient.reload }.to raise_error(ActiveRecord::RecordNotFound)
