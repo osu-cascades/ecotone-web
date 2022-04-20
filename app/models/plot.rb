@@ -32,6 +32,10 @@ class Plot < ApplicationRecord
     remove_period(location_description.slice(0,1).capitalize + location_description.strip.slice(1..-1))
   end
 
+  def datestamp
+    updated_at&.to_formatted_s(:long)
+  end 
+
   private
 
   def remove_period(str)
