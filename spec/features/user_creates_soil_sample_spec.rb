@@ -62,6 +62,7 @@ RSpec.feature 'User creates a soil sample' do
     click_on('Create Sample')
     page.find('.alert').tap do |error_explanations|
       expect(error_explanations).to have_content('Nutrients must all have values')
+      expect(error_explanations).to have_content('Nutrients must have both a level and an amount')
     end
   end
 
