@@ -23,7 +23,7 @@ module ApplicationHelper
   end
 
   def last_updated(entity)
-    if entity.to_s.include? "by"
+    if entity.respond_to? 'user'
       "Last updated #{entity.updated_string} by #{link_to(entity.user)}".html_safe
     else
       "Last updated #{entity.updated_string}"
