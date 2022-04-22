@@ -102,7 +102,7 @@ rails db:reset
 * Run the application: `rails s`
 * Hit http://localhost:3000 in your browser of choice
 
-If you see the Ecotone homepage pop up, congratulations! You can now hack away.
+If you see the Ecotone homepage pop up, congratulations! You can now hack away:tada:
 
 ### 5. Heroku setup (optional)
 Still not sick of setting up your dev environment? Then continue with configuring app deployment to Heroku by adding the following lines to your `.git/config` file:
