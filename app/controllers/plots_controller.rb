@@ -1,8 +1,8 @@
 class PlotsController < ApplicationController
   
   before_action :set_plot, only: [:show, :edit, :update, :destroy, :download_qr]
-  before_action :login_required, except: [:index, :show, :map, :download_qr]
-  before_action :admin_required, except: [:index, :show, :map, :download_qr]
+  before_action :login_required, except: [:index, :show, :map, :download_qr, :get_photo_url]
+  before_action :admin_required, except: [:index, :show, :map, :download_qr, :get_photo_url]
 
   def index
     @plots = Plot.order(:plot_id)
@@ -49,6 +49,14 @@ class PlotsController < ApplicationController
     @plot.destroy
     redirect_to plots_path
     flash[:success] = 'Plot was successfully deleted.'
+  end
+
+  #def get_photo_url
+  #   Rails.application.routes.url_helpers.url_for(@plot.photo)
+  #end
+
+  def get_photo_url
+    'FUCK'
   end
 
   def download_qr
