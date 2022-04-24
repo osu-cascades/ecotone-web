@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   resources :plots
   get     'plots/:id/download_qr' => 'plots#download_qr'
+  get     '/map', action: :get_photo_url, controller: 'plots', as: 'plot_photos'
 
   resources :plants
   get     'plants/:id/download_qr' => 'plants#download_qr'
