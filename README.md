@@ -88,13 +88,21 @@ Now it's time to worry about the GOOGLE_CLIENT sections.
 rails db:setup
 rails db:migrate
 ````
+If you want to start with some information already populated in the database, run the seed file.
+````
+rails db:seed
+````
+If that command fails, instead run the reset command to drop and reset the databases with the seed data.
+````
+rails db:reset
+````
 
 ### 4. "Hello world" run of Ecotone
 * Run the tests (test suite should be green): `rspec`
 * Run the application: `rails s`
 * Hit http://localhost:3000 in your browser of choice
 
-If you see the Ecotone homepage pop up, congratulations! You can now hack away.
+If you see the Ecotone homepage pop up, congratulations! You can now hack away:tada:
 
 ### 5. Heroku setup (optional)
 Still not sick of setting up your dev environment? Then continue with configuring app deployment to Heroku by adding the following lines to your `.git/config` file:
@@ -116,12 +124,23 @@ If you are pushing from your local master branch, then you can omit the last par
 
 ### Final Tidbits
 If you want all the app power of admin privileges, follow these steps:
+
+First, find yourself as a user. You can either take a guess at your ID or check using Rails dbconsole.
+````
+rails db
+````
+Enter the password if prompted. This opens up a shell to your local development database. You can use basic SQL statements to see all users in the database. Find yourself and take note of what ID is assigned to you.
+````
+>>> SELECT * from users;
+````
+
+Next, open up the rails console (another shell), which we can use to manipulate information.
 ````
 rails c
 ````
 This will open up the rails terminal. Once inside, find yourself as a user then set your admin priveleges.
 ````
->>> me = User.find(2)
+>>> me = User.find(ID)
 >>> me.admin = true
 >>> me.save
 >>> exit
