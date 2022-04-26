@@ -4,12 +4,15 @@ class PlotsController < ApplicationController
   before_action :login_required, except: [:index, :show, :map, :download_qr, :get_photo_url]
   before_action :admin_required, except: [:index, :show, :map, :download_qr, :get_photo_url]
 
+  helper_method :get_photo_url
+
   def index
     @plots = Plot.order(:plot_id)
   end
 
   def map
     @plots = Plot.all
+    get_photo_url
   end;
 
   def show; 
@@ -51,12 +54,10 @@ class PlotsController < ApplicationController
     flash[:success] = 'Plot was successfully deleted.'
   end
 
-  #def get_photo_url
-  #   Rails.application.routes.url_helpers.url_for(@plot.photo)
-  #end
-
   def get_photo_url
-    'FUCK'
+    @plots.map { |plot|
+      plot.as_json.merge({ image: url_for(plot.photo[0]) })
+    }
   end
 
   def download_qr
