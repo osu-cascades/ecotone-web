@@ -30,13 +30,4 @@ module ApplicationHelper
     end
   end
 
-  def nutrient_table_data(sample, nutrient)
-    amount = sample.nutrients.find{ |n| n.name == nutrient}&.amount
-    level = sample.nutrients.find{ |n| n.name == nutrient}&.level
-    if amount.nil? || (level.include? 'not present')
-      "#{level}"
-    else
-      "#{amount} (#{level})"
-    end
-  end
 end
