@@ -22,6 +22,14 @@ class MycorrhizalFungiSample < ApplicationRecord
     visible_hyphae
   end
 
+  def updated_string
+    updated_at&.to_formatted_s(:long)
+  end 
+
+  def datestamp
+    collected_on&.to_formatted_s(:long)
+  end
+
   def to_s
     "#{plot}, #{plant}, on #{collected_on} by #{user}"
   end

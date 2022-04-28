@@ -18,9 +18,6 @@ RSpec.describe BiodiversityReport, type: :model do
       expect(report.to_s).to eq("Biodiversity Report #{report.id}")
     end
 
-    it 'has a byline consisting of the author name, date and time' do
-      expect(report.byline).to eq("by #{report.author} on #{report.measured_on.to_formatted_s(:long)} at #{report.measured_at.to_formatted_s(:ampm)}")
-    end
   end
 
   describe 'validations' do

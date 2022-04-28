@@ -5,7 +5,7 @@ class TreeSamplesController < ApplicationController
   before_action :set_tree_sample, only: [:show, :edit, :update, :destroy]
 
   def index
-    @tree_samples = TreeSample.order(collected_on: :desc).page(params[:page])
+    @tree_samples = TreeSample.order(collected_on: :desc).page(params[:page]).includes(:plot, :plant)
     respond_to do |format|
       format.html
       format.csv { send_data @tree_samples.to_csv, filename: "treesamples-#{Date.today}.csv" }

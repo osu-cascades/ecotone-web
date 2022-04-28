@@ -13,11 +13,11 @@
     %h2.heading#table-heading Information
     %table.table#vertical-table
       %thead
-        %th.citation.italic{colspan: '2'} #{last_updated(@biodiversity_report)} #{link_to(@biodiversity_report.user)}
+        %th.citation.italic{colspan: '2'}= last_updated(@biodiversity_report)
       %tbody
         %tr
           %th{scope: 'row'} Collection Date
-          %td= measured_on(@biodiversity_report)
+          %td= @biodiversity_report.datestamp
         %tr
           %th{scope: 'row'} Author
           %td= link_to(@biodiversity_report.author)

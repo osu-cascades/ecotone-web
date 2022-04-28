@@ -18,6 +18,7 @@ RSpec.describe SoilSample, type: :model do
   describe 'destruction' do
     it "destroys associated nutrients" do
       soil_sample = nutrient.soil_sample
+      soil_sample.nutrients.reload
       soil_sample.destroy
       expect { nutrient.reload }.to raise_error(ActiveRecord::RecordNotFound)
     end
@@ -36,7 +37,7 @@ RSpec.describe SoilSample, type: :model do
   end
 
   describe '#build_default_nutrients' do
-    before { soil_sample.build_default_nutrients }
+    before { soil_sample.build_default_nutrients(soil_sample.nutrients) }
     it 'associates three nutrients' do
       expect(soil_sample.nutrients.length).to equal(3)
     end

@@ -20,7 +20,7 @@
       - @biodiversity_reports.each do |report|
         %tr{:onclick => "location.href='#{url_for(report)}'"}
           %td= report.id
-          %td= report.measured_on.to_formatted_s(:long)
+          %td= report.datestamp
           %td= report.plot
           %td= report.temperature
           %td= report.species_richness

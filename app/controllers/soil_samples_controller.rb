@@ -5,19 +5,19 @@ class SoilSamplesController < ApplicationController
   before_action :set_soil_sample, only: [:show, :edit, :update, :destroy]
 
   def index
-    @soil_samples = SoilSample.order(collected_on: :desc).page(params[:page])
+    @soil_samples = SoilSample.order(collected_on: :desc).page(params[:page]).includes(:plot, :nutrients)
   end
 
   def show; end
 
   def new
     @soil_sample = SoilSample.new
-    @soil_sample.build_default_nutrients
+    @soil_sample.build_default_nutrients(@soil_sample.nutrients.map { |sample| sample.name })
     @plots = Plot.order(:plot_id)
   end
 
   def edit
-    @soil_sample.build_default_nutrients if @soil_sample.nutrients.empty?
+    @soil_sample.build_default_nutrients(@soil_sample.nutrients.map { |sample| sample.name })
     @plots = Plot.order(:plot_id)
   end
 
@@ -30,6 +30,7 @@ class SoilSamplesController < ApplicationController
         format.json { render :show, status: :created, location: @soil_sample }
       else
         @plots = Plot.order(:plot_id)
+        @soil_sample.build_default_nutrients(@soil_sample.nutrients.map { |sample| sample.name })
         format.html { render :new }
         format.json { render json: @soil_sample.errors, status: :unprocessable_entity }
       end
