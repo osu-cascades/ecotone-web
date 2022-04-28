@@ -10,9 +10,7 @@
     var mapBoxRequest = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=#{ENV['LEAFLET_KEY']}'
 
     var map = L.map('map').setView([44.0429688, -121.3329103], 18, {layers: [satelliteLayer, outdoorLayer]});
-    var plots = #{@plots.to_json.html_safe}
-    console.log('Plots: ' , plots);
-    console.log( '#{get_photo_url}.html_safe' )
+    var plots = #{plots_to_json};    
 
     plots.forEach(plot => {
       var p_url = ('#{plots_url}/'+plot.plot_id);
@@ -26,9 +24,8 @@
         `<h6> Latitude: ${plot.latitude} </h6>` + 
         `<h6> Longitude: ${plot.longitude} </h6>` + 
         `<a href="${p_url}"> Go to Plot </a>` +
-        `<br>` +
-        `<img src='#{get_photo_url}' height="100px" width="100px"/>`).addTo(map);
-        //`<img src="${photo_test_url}" height="100px" width="100px"/>`).addTo(map);
+        `<br><br>` +
+        `<img src=${plot.image} height="100px" width="100px"/>`).addTo(map);
       });
 
     var satelliteLayer = L.tileLayer(mapBoxRequest,
