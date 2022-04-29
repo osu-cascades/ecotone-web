@@ -1,7 +1,4 @@
-.center.jumbotron
-  %h1 Ecotone 
-  %h2 An even better map of the campus
-/ source: http://getbootstrap.com/examples/carousel/#
+- content_for_title('Campus Map')
 
 .content(id='map')
   :javascript
@@ -10,23 +7,22 @@
     var mapBoxRequest = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=#{ENV['LEAFLET_KEY']}'
 
     var map = L.map('map').setView([44.0429688, -121.3329103], 18, {layers: [satelliteLayer, outdoorLayer]});
-    var plots = #{@plots.to_json.html_safe}
-    console.log('Plots: ' , plots);
+    var plots = #{plots_to_json};    
 
     plots.forEach(plot => {
-      var p_url = ('#{plots_url}/'+plot.plot_id);
+      var plot_url = ('#{plots_url}/'+plot.plot_id);
+      var plot_photo = plot.photo_file_name
       var ping = L.marker([plot.latitude, -plot.longitude]);
-      console.log('https://osu-ecotone.herokuapp.com/rails/active_storage/blobs/redirect/'+plot.photo+'/'+plot.photo_file_name);
-      var photo_test_url = "https://i.imgur.com/gi2i4.jpeg"
 
       ping.bindPopup(
-        `<h4> Plot ${plot.plot_id} </h6>` +
-        `<h5> Details: ${plot.location_description}</h6>` + 
-        `<h6> Latitude: ${plot.latitude} </h6>` + 
-        `<h6> Longitude: ${plot.longitude} </h6>` + 
-        `<a href="${p_url}"> Go to Plot </a>` +
-        `<br>` +
-        `<img src="${plot.photo_file_name}" height="100px" width="100px"/>`).addTo(map);
+        `<div class=map-popup>`+
+          `<h2 class=center><a href="${plot_url}"> Plot ${plot.plot_id} </a></h2>` +
+          `<h4 class=center>\(${plot.latitude}, ${plot.longitude}\)</h4>` +
+          `<div class=content>`+
+            `<p>${plot.location_description}</p>` + 
+            `<img src=${plot.image}/>`).addTo(map) +
+          `</div>` + 
+        `</div>`
       });
 
     var satelliteLayer = L.tileLayer(mapBoxRequest,
