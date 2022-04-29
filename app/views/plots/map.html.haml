@@ -10,13 +10,11 @@
     var plots = #{plots_to_json};    
 
     plots.forEach(plot => {
-      var plot_url = ('#{plots_url}/'+plot.plot_id);
-      var plot_photo = plot.photo_file_name
       var ping = L.marker([plot.latitude, -plot.longitude]);
 
       ping.bindPopup(
-        `<div class=map-popup>`+
-          `<h2 class=center><a href="${plot_url}"> Plot ${plot.plot_id} </a></h2>` +
+        `<div class=map-popup>` +
+          `<h2 class=center><a href="${plot.url}"> Plot \#${plot.plot_id} </a></h2>` +
           `<h4 class=center>\(${plot.latitude}, ${plot.longitude}\)</h4>` +
           `<div class=content>`+
             `<p>${plot.location_description}</p>` + 

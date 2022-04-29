@@ -55,7 +55,7 @@ class PlotsController < ApplicationController
 
   def plots_to_json
     @plots.map { |plot|
-      plot.as_json.merge({ image: url_for(photo(plot)) })
+      plot.as_json.merge({ url: url_for(plot), image: url_for(photo(plot)) })
     }.to_json.html_safe
   end
 
