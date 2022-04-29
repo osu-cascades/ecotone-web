@@ -1,6 +1,6 @@
 - content_for_title('Biodiversity Reports')
 - content_for(:subnav) do
-  = button_to('Create Report', new_biodiversity_report_path, class: 'button primary', method: 'get')
+  = link_to('Create Report', new_biodiversity_report_path, class: 'button primary', method: 'get')
 
 = paginate @biodiversity_reports
 

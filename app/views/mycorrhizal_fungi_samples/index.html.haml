@@ -1,6 +1,6 @@
 - content_for_title('Mycorrhizal Fungi Samples')
 - content_for(:subnav) do
-  = button_to('Add Sample', new_mycorrhizal_fungi_sample_path, class: 'button primary', title: 'Add a new mycorrhizal fungi sample', method: 'get')
+  = link_to('Add Sample', new_mycorrhizal_fungi_sample_path, class: 'button primary', title: 'Add a new mycorrhizal fungi sample', method: 'get')
 
 = paginate @mycorrhizal_fungi_samples
 

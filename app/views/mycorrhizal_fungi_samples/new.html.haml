@@ -1,4 +1,4 @@
 - content_for_title('New Mycorrhizal Fungi Sample')
 - content_for(:subnav) do
-  = button_to('« Samples', mycorrhizal_fungi_samples_path, class: 'button primary', method: 'get')
+  = link_to('« Samples', mycorrhizal_fungi_samples_path, class: 'button primary', method: 'get')
 = render partial: 'form'
