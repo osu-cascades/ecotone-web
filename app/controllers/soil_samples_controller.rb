@@ -5,7 +5,7 @@ class SoilSamplesController < ApplicationController
   before_action :set_soil_sample, only: [:show, :edit, :update, :destroy]
 
   def index
-    @soil_samples = SoilSample.order(collected_on: :desc).page(params[:page])
+    @soil_samples = SoilSample.order(collected_on: :desc).page(params[:page]).includes(:plot, :nutrients)
   end
 
   def show; end
@@ -17,7 +17,7 @@ class SoilSamplesController < ApplicationController
   end
 
   def edit
-    @soil_sample.build_default_nutrients(@soil_sample.nutrients.map { |sample| sample.name }) if @soil_sample.nutrients.empty?
+    @soil_sample.build_default_nutrients(@soil_sample.nutrients.map { |sample| sample.name })
     @plots = Plot.order(:plot_id)
   end
 

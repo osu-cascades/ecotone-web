@@ -4,6 +4,8 @@ class PlotsController < ApplicationController
   before_action :login_required, except: [:index, :show, :map, :download_qr]
   before_action :admin_required, except: [:index, :show, :map, :download_qr]
 
+  helper_method :plots_to_json
+
   def index
     @plots = Plot.order(:plot_id)
   end
@@ -49,6 +51,19 @@ class PlotsController < ApplicationController
     @plot.destroy
     redirect_to plots_path
     flash[:success] = 'Plot was successfully deleted.'
+  end
+
+  def plots_to_json
+    @plots.map { |plot|
+      plot.as_json.merge({ url: url_for(plot), image: url_for(photo(plot)) })
+    }.to_json.html_safe
+  end
+
+  def photo(plot)
+    if plot.photo.attached?
+      return plot.photo[0]
+    end
+    photo = '/assets/missing.png'
   end
 
   def download_qr

@@ -13,6 +13,14 @@ class FungiSample < ApplicationRecord
 
   paginates_per 10
 
+  def updated_string
+    updated_at&.to_formatted_s(:long)
+  end 
+
+  def datestamp
+    collected_on&.to_formatted_s(:long)
+  end
+
   def to_s
     "#{plot} on #{collected_on} by #{user}"
   end

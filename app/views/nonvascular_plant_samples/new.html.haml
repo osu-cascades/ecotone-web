@@ -1,4 +1,4 @@
 - content_for_title('New Nonvascular Plant Sample')
 - content_for(:subnav) do
-  = button_to('« Samples', nonvascular_plant_samples_path, class: 'button primary', method: 'get')
+  = link_to('« Samples', nonvascular_plant_samples_path, class: 'button primary', method: 'get')
 = render partial: 'form'

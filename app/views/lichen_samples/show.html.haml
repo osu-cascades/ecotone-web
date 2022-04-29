@@ -1,7 +1,7 @@
 - content_for_title("Lichen Sample ##{@lichen_sample.id}")
 - content_for(:subnav) do
   .btn-public
-    = button_to('« Samples', lichen_samples_path, class: 'button primary', method: 'get')
+    = link_to('« Samples', lichen_samples_path, class: 'button primary', method: 'get')
   - if @lichen_sample.editable_by?(current_user)
     .btn-admin
       = link_to(content_tag(:i, '', :class => "icon-edit"), edit_lichen_sample_path(@lichen_sample), class: 'btn-icon')
@@ -13,11 +13,11 @@
     %h2.heading#table-heading Information
     %table.table#vertical-table
       %thead
-        %th.citation.italic{colspan: '2'} #{last_updated(@lichen_sample)} #{link_to(@lichen_sample.user)}
+        %th.citation.italic{colspan: '2'}= last_updated(@lichen_sample)
       %tbody
         %tr
           %th{scope: 'row'} Collection Date
-          %td= collected_on(@lichen_sample)
+          %td= @lichen_sample.datestamp
         %tr
           %th{scope: 'row'} Plot
           %td= link_to("#{@lichen_sample.plot}", @lichen_sample.plot)

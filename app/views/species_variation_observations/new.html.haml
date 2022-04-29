@@ -1,4 +1,4 @@
 - content_for_title('New Species Variation Observation')
 - content_for(:subnav) do
-  = button_to('« Observations', species_variation_observations_path, class: 'button primary', method: 'get')
+  = link_to('« Observations', species_variation_observations_path, class: 'button primary', method: 'get')
 = render partial: 'form'

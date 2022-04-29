@@ -1,7 +1,7 @@
 - content_for_title("Plant Sample ##{@plant_sample.id}")
 - content_for(:subnav) do
   .btn-public
-    = button_to('« Samples', plant_samples_path, class: 'button primary', method: 'get')
+    = link_to('« Samples', plant_samples_path, class: 'button primary', method: 'get')
   - if @plant_sample.editable_by?(current_user)
     .btn-admin
       = link_to(content_tag(:i, '', :class => "icon-edit"), edit_plant_sample_path(@plant_sample), class: 'btn-icon')
@@ -13,11 +13,11 @@
     %h2.heading#table-heading Information
     %table.table#vertical-table
       %thead
-        %th.citation.italic{colspan: '2'} #{last_updated(@plant_sample)} #{link_to(@plant_sample.user)}
+        %th.citation.italic{colspan: '2'}= last_updated(@plant_sample)
       %tbody
         %tr
           %th{scope: 'row'} Collection Date
-          %td= collected_on(@plant_sample)
+          %td= @plant_sample.datestamp
         %tr
           %th{scope: 'row'} Plot
           %td= link_to("#{@plant_sample.plot}", @plant_sample.plot)

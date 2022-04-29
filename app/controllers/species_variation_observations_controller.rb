@@ -5,7 +5,7 @@ class SpeciesVariationObservationsController < ApplicationController
   before_action :set_species_variation_observation, only: [:show, :edit, :update, :destroy]
 
   def index
-    @species_variation_observations = SpeciesVariationObservation.order(observed_on: :desc).page(params[:page])
+    @species_variation_observations = SpeciesVariationObservation.order(observed_on: :desc).page(params[:page]).includes(:plot, :plant)
   end
 
   def show

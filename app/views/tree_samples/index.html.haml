@@ -1,6 +1,6 @@
 - content_for_title('Tree Samples')
 - content_for(:subnav) do
-  = button_to('Add Sample', new_tree_sample_path, class: 'button primary', title: 'Add a new tree sample', method: 'get')
+  = link_to('Add Sample', new_tree_sample_path, class: 'button primary', title: 'Add a new tree sample', method: 'get')
   -# = link_to('Download as CSV', tree_samples_path(format: :csv), class: 'btn', title: 'Download as CSV')
 
 = paginate @tree_samples
@@ -24,7 +24,7 @@
       - @tree_samples.each do |sample|
         %tr{:onclick => "location.href='#{url_for(sample)}'"}
           %td= sample.id
-          %td= collected_on(sample)
+          %td= sample.datestamp
           %td= sample.plot
           %td= sample.plant.common_name.titleize
           %td= sample.tag_number

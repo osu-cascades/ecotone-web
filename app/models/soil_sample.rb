@@ -18,6 +18,7 @@ class SoilSample < ApplicationRecord
   validates_numericality_of :temperature
   validates_numericality_of :moisture, greater_than_or_equal_to: 0
   validate :all_nutrients_selected
+  validate :level_and_amount_selected
 
   paginates_per 10
 
@@ -30,14 +31,32 @@ class SoilSample < ApplicationRecord
     end
   end
 
+  def updated_string
+    updated_at&.to_formatted_s(:long)
+  end 
+
+  def datestamp
+    collected_on&.to_formatted_s(:long)
+  end
+
   def to_s
     "#{plot} on #{collected_on} by #{user}"
   end
 
   private
   def all_nutrients_selected
-    if nutrients.length() < 3 && nutrients.length > 0
+    if nutrients.length() < 3 && nutrients.length > 0 
        errors.add(:nutrients, "must all have values")
+    end
+  end
+
+  def level_and_amount_selected
+    if nutrients.length > 0
+      nutrients.each do |nutrient|
+        if nutrient.level.blank? || nutrient.amount.blank? 
+          errors.add(:nutrients, "must have both a level and an amount")
+        end
+      end
     end
   end
 

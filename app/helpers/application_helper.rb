@@ -23,23 +23,11 @@ module ApplicationHelper
   end
 
   def last_updated(entity)
-    "Last updated #{formatted_date(entity)} by "
-  end
-
-  def formatted_date(entity)
-    entity.updated_at&.to_formatted_s(:long)
-  end
-
-  def collected_on(entity)
-    entity.collected_on&.to_formatted_s(:long)
-  end
-
-  def observed_on(entity)
-    entity.observed_on&.to_formatted_s(:long)
-  end
-
-  def measured_on(entity)
-    entity.measured_on&.to_formatted_s(:long)
+    if entity.respond_to? 'user'
+      "Last updated #{entity.updated_string} by #{link_to(entity.user)}".html_safe
+    else
+      "Last updated #{entity.updated_string}"
+    end
   end
 
   def nutrient_table_data(sample, nutrient)

@@ -1,6 +1,6 @@
 - content_for_title('Fungi Samples')
 - content_for(:subnav) do
-  = button_to('Add Sample', new_fungi_sample_path, class: 'button primary', title: 'Add a new fungi sample', method: 'get')
+  = link_to('Add Sample', new_fungi_sample_path, class: 'button primary', title: 'Add a new fungi sample', method: 'get')
 
 = paginate @fungi_samples
 
@@ -18,7 +18,7 @@
       - @fungi_samples.each do |sample|
         %tr{:onclick => "location.href='#{url_for(sample)}'"}
           %td= sample.id
-          %td= collected_on(sample)
+          %td= sample.datestamp
           %td= sample.plot
           %td= sample.location_within_plot
           %td= sample.size

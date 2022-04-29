@@ -1,7 +1,7 @@
 - content_for_title("Tree Sample ##{@tree_sample.id}")
 - content_for(:subnav) do
   .btn-public
-    = button_to('« Samples', tree_samples_path, class: 'button primary', method: 'get')
+    = link_to('« Samples', tree_samples_path, class: 'button primary', method: 'get')
   - if @tree_sample.editable_by?(current_user)
     .btn-admin
       = link_to(content_tag(:i, '', :class => "icon-edit"), edit_tree_sample_path(@tree_sample), class: 'btn-icon')
@@ -13,11 +13,11 @@
     %h2.heading#table-heading Information
     %table.table#vertical-table
       %thead
-        %th.citation.italic{colspan: '2'} #{last_updated(@tree_sample)} #{link_to(@tree_sample.user)}
+        %th.citation.italic{colspan: '2'}= last_updated(@tree_sample)
       %tbody
         %tr
           %th{scope: 'row'} Collection Date
-          %td= collected_on(@tree_sample)
+          %td= @tree_sample.datestamp
         %tr
           %th{scope: 'row'} Plot
           %td= link_to("#{@tree_sample.plot}", @tree_sample.plot)

@@ -1,7 +1,7 @@
 - content_for_title(@user.name.titleize)
 - content_for(:subnav) do
   .btn-public
-    = button_to('« Users', users_path, class: 'button primary', title: 'List of all users', method: 'get')
+    = link_to('« Users', users_path, class: 'button primary', title: 'List of all users', method: 'get')
   - if current_user&.admin?
     .btn-admin
       = link_to(content_tag(:i, '', :class => "icon-trash"), @user, method: :delete, data: { confirm: "Delete #{@user.name}?" }, class: 'btn-icon', title: "Delete #{@plant}")
@@ -17,4 +17,4 @@
       - @user.biodiversity_reports.order('measured_on DESC').each do |report|
         %tr{:onclick => "location.href='#{url_for(report)}'"}
           %td= report.to_s
-          %td= measured_on(report)
+          %td= report.datestamp

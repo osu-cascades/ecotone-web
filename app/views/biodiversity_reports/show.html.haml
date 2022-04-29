@@ -1,7 +1,7 @@
 - content_for_title("Biodiversity Report ##{@biodiversity_report.id}")
 - content_for(:subnav) do
   .btn-public
-    = button_to('« Reports', biodiversity_reports_path, class: 'button primary', method: 'get')
+    = link_to('« Reports', biodiversity_reports_path, class: 'button primary', method: 'get')
   - if @biodiversity_report.editable_by?(current_user)
     .btn-admin
       = link_to(content_tag(:i, '', :class => "icon-edit"), edit_biodiversity_report_path(@biodiversity_report), class: 'btn-icon')
@@ -13,11 +13,11 @@
     %h2.heading#table-heading Information
     %table.table#vertical-table
       %thead
-        %th.citation.italic{colspan: '2'} #{last_updated(@biodiversity_report)} #{link_to(@biodiversity_report.user)}
+        %th.citation.italic{colspan: '2'}= last_updated(@biodiversity_report)
       %tbody
         %tr
           %th{scope: 'row'} Collection Date
-          %td= measured_on(@biodiversity_report)
+          %td= @biodiversity_report.datestamp
         %tr
           %th{scope: 'row'} Author
           %td= link_to(@biodiversity_report.author)

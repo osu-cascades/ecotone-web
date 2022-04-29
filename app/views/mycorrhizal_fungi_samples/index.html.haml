@@ -1,6 +1,6 @@
 - content_for_title('Mycorrhizal Fungi Samples')
 - content_for(:subnav) do
-  = button_to('Add Sample', new_mycorrhizal_fungi_sample_path, class: 'button primary', title: 'Add a new mycorrhizal fungi sample', method: 'get')
+  = link_to('Add Sample', new_mycorrhizal_fungi_sample_path, class: 'button primary', title: 'Add a new mycorrhizal fungi sample', method: 'get')
 
 = paginate @mycorrhizal_fungi_samples
 
@@ -21,7 +21,7 @@
       - @mycorrhizal_fungi_samples.each do |sample|
         %tr{:onclick => "location.href='#{url_for(sample)}'"}
           %td= sample.id
-          %td= collected_on(sample)
+          %td= sample.datestamp
           %td= sample.plot
           %td= "#{sample.length}cm"
           %td= sample.magnification

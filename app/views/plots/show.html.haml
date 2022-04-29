@@ -1,7 +1,7 @@
 - content_for_title("Plot ##{@plot.plot_id}")
 - content_for(:subnav) do
   .btn-public
-    = button_to('« Plots', plots_path, class: 'button primary', title: 'List of all plots', method: 'get')
+    = link_to('« Plots', plots_path, class: 'button primary', title: 'List of all plots', method: 'get')
     = link_to(content_tag(:i, '', :class => "icon-qr-code"), { controller: 'plots' , action: 'download_qr', id: @plot }, 'data-turbolinks': false, class: 'btn-icon', title: "Download QR Code for #{@plot}")
   - if current_user&.admin?
     .btn-admin
@@ -29,7 +29,7 @@
     %h2.heading#table-heading Information
     %table.table#vertical-table
       %thead
-        %th.citation.italic{colspan: '2'}= formatted_date(@plot)
+        %th.citation.italic{colspan: '2'}= last_updated(@plot)
       %tbody
         %tr
           %th{scope: 'row'} Featured Plant
