@@ -1,0 +1,72 @@
+@import './constants.css.scss';
+
+.leaflet-container {
+	border-radius: $space0;
+}
+
+.map-popup {
+	padding: $space0;
+
+	.content {
+		margin: $space1;
+		margin-top: $space3;
+	}
+
+	img {
+		position: relative;
+		display: block;
+		width: $space9;
+		height: $space9;
+		background-size: cover;
+		border-radius: $space0;
+		&::after {
+			box-shadow: $border-shadow;
+			border-radius: $space0;
+			content: "";
+			display: block;
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+		}
+	}
+
+	h2 {
+		font-size: $txt6;
+		margin: 0;
+	}
+
+	h4 {
+		font-size: $txt1;
+		color: $grey5;
+		margin: $space0;
+	}
+
+	p {
+		font-size: $txt2;
+		line-height: $txt4;
+		margin: 0 !important;
+		padding-right: $space2;
+	}
+
+	// have to repeat link code here to override leaflet defaults
+	a { 
+		text-decoration: none;
+		outline: 0px;
+		// keep these to override bootstrap defaults
+		&:link, &:visited, &:hover, &:active, &:focus, &:focus-visible, &:focus-within {
+			text-decoration: none;
+			outline: 0px;
+		}
+		// all links default to green color palette
+		color: $green2 !important;
+		&:hover, &:focus, &:focus-visible {
+			color: $green1;
+		}
+		&:active {
+			color: $green0;
+		}
+	}
+  
+}
