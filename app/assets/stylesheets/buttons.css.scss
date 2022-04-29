@@ -1,17 +1,10 @@
 @import './constants.css.scss';
 
-// helps *almost* vertically center the text in a button
-// still haven't found any good internet resources for doing this better
-.button:before {
-	content: "";
-	display: inline-block;
-	height: $space5;
-	vertical-align: middle;
-}
-
+// setting line-height equal to height vertically centers the text 
 .button {
   font-size: $txt1;
   height: $space5;
+  line-height: $space5;
   width: $space9;
   text-align: center;
   border-radius: $space0;
@@ -25,12 +18,14 @@
   border-color: $orange3;
   box-shadow: $shadow2;
   &:hover, &:focus, &:focus-visible {
+    color: white;
     background-color: $orange3;
     border-color: $orange3;
     box-shadow: $shadow1;
     outline: 0px;
   }
   &:active {
+    color: white;
     background-color: $orange2;
     border-color: $orange2;
     box-shadow: $shadow1;
@@ -59,6 +54,7 @@
 
 .delete {
   font-size: $txt0;
+  line-height: $space4;
   height: $space4;
   width: $space7;
   color: white;
