@@ -1,7 +1,7 @@
 - content_for_title(@plant.common_name.titleize)
 - content_for(:subnav) do
   .btn-public
-    = button_to('« Plants', plants_path, class: 'button primary', title: 'List of all plants', method: 'get')
+    = link_to('« Plants', plants_path, class: 'button primary', title: 'List of all plants', method: 'get')
     = link_to(content_tag(:i, '', :class => "icon-qr-code"), { action: 'download_qr' }, 'data-turbolinks': false, class: 'btn-icon', title: "Download QR Code for #{@plant}")
   - if current_user&.admin?
     .btn-admin

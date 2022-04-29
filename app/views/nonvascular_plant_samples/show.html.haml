@@ -1,7 +1,7 @@
 - content_for_title("Nonvascular Plant Sample ##{@nonvascular_plant_sample.id}")
 - content_for(:subnav) do
   .btn-public
-    = button_to('« Samples', nonvascular_plant_samples_path, class: 'button primary', method: 'get')
+    = link_to('« Samples', nonvascular_plant_samples_path, class: 'button primary', method: 'get')
   - if @nonvascular_plant_sample.editable_by?(current_user)
     .btn-admin
       = link_to(content_tag(:i, '', :class => "icon-edit"), edit_nonvascular_plant_sample_path(@nonvascular_plant_sample), class: 'btn-icon')

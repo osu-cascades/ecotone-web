@@ -1,7 +1,7 @@
 - content_for_title("Mycorrhizal Fungi Sample ##{@mycorrhizal_fungi_sample.id}")
 - content_for(:subnav) do
   .btn-public
-    = button_to('« Samples', mycorrhizal_fungi_samples_path, class: 'button primary', method: 'get')
+    = link_to('« Samples', mycorrhizal_fungi_samples_path, class: 'button primary', method: 'get')
   - if @mycorrhizal_fungi_sample.editable_by?(current_user)
     .btn-admin
       = link_to(content_tag(:i, '', :class => "icon-edit"), edit_mycorrhizal_fungi_sample_path(@mycorrhizal_fungi_sample), class: 'btn-icon')

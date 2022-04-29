@@ -1,7 +1,7 @@
 - content_for_title("Macroinvertebrate Sample ##{@macroinvertebrate_sample.id}")
 - content_for(:subnav) do
   .btn-public
-    = button_to('« Samples', macroinvertebrate_samples_path, class: 'button primary', method: 'get')
+    = link_to('« Samples', macroinvertebrate_samples_path, class: 'button primary', method: 'get')
   - if @macroinvertebrate_sample.editable_by?(current_user)
     .btn-admin
       = link_to(content_tag(:i, '', :class => "icon-edit"), edit_macroinvertebrate_sample_path(@macroinvertebrate_sample), class: 'btn-icon')

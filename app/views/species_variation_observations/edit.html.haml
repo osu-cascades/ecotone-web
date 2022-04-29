@@ -1,4 +1,4 @@
 - content_for_title('Edit Species Variation Observation')
 - content_for(:subnav) do
-  = button_to('« Back', @species_variation_observation, class: 'button primary', method: 'get')
+  = link_to('« Back', @species_variation_observation, class: 'button primary', method: 'get')
 = render partial: 'form'

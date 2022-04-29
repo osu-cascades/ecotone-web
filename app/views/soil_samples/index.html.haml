@@ -1,6 +1,6 @@
 - content_for_title('Soil Samples')
 - content_for(:subnav) do
-  = button_to('Add Sample', new_soil_sample_path, class: 'button primary', title: 'Add a new soil sample', method: 'get')
+  = link_to('Add Sample', new_soil_sample_path, class: 'button primary', title: 'Add a new soil sample', method: 'get')
 
 = paginate @soil_samples
 

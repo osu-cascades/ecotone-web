@@ -1,7 +1,7 @@
 - content_for_title("Species Variation Observation ##{@species_variation_observation.id}")
 - content_for(:subnav) do
   .btn-public
-    = button_to('« Observations', species_variation_observations_path, class: 'button primary', method: 'get')
+    = link_to('« Observations', species_variation_observations_path, class: 'button primary', method: 'get')
   - if @species_variation_observation.editable_by?(current_user)
     .btn-admin
       = link_to(content_tag(:i, '', :class => "icon-edit"), edit_species_variation_observation_path(@species_variation_observation), class: 'btn-icon')
