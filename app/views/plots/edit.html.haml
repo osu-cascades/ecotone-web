@@ -1,4 +1,4 @@
 - content_for_title("Edit Plot ##{@plot.plot_id}")
 - content_for(:subnav) do
-  = button_to('« Back', @plot, class: 'button primary', method: 'get')
+  = link_to('« Back', @plot, class: 'button primary', method: 'get')
 = render partial: 'form'

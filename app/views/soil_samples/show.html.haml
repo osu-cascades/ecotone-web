@@ -1,7 +1,7 @@
 - content_for_title("Soil Sample ##{@soil_sample.id}")
 - content_for(:subnav) do
   .btn-public
-    = button_to('« Samples', soil_samples_path, class: 'button primary', method: 'get')
+    = link_to('« Samples', soil_samples_path, class: 'button primary', method: 'get')
   - if @soil_sample.editable_by?(current_user)
     .btn-admin
       = link_to(content_tag(:i, '', :class => "icon-edit"), edit_soil_sample_path(@soil_sample), class: 'btn-icon')
