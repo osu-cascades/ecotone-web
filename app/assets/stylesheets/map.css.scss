@@ -13,9 +13,24 @@
 	}
 
 	img {
-		height: $space9;
+		position: relative;
+		margin: 0px $space5 0px;
+		display: block;
 		width: $space9;
+		height: $space9;
+		background-size: cover;
 		border-radius: $space0;
+		&::after {
+			box-shadow: $border-shadow;
+			border-radius: $space0;
+			content: "";
+			display: block;
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+		}
 	}
 
 	h2 {
