@@ -64,6 +64,7 @@ class SpeciesVariationObservationsController < ApplicationController
 
     def set_species_variation_observation
       @species_variation_observation = SpeciesVariationObservation.find(params[:id])
+      @preload = [@species_variation_observation.user, @species_variation_observation.plot, @species_variation_observation.plant]
     end
 
     def species_variation_observation_params
