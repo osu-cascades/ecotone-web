@@ -67,6 +67,7 @@ class TreeSamplesController < ApplicationController
 
     def set_tree_sample
       @tree_sample = TreeSample.find(params[:id])
+      @preload = [@tree_sample.user, @tree_sample.plot, @tree_sample.plant]
     end
 
     def tree_sample_params

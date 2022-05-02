@@ -39,4 +39,5 @@ module ApplicationHelper
       "#{amount} (#{level})"
     end
   end
+  
 end

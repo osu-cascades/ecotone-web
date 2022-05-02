@@ -3,6 +3,7 @@ class SoilSamplesController < ApplicationController
   before_action :login_required
   before_action :admin_required, only: :destroy
   before_action :set_soil_sample, only: [:show, :edit, :update, :destroy]
+  include ApplicationHelper
 
   def index
     @soil_samples = SoilSample.order(collected_on: :desc).page(params[:page]).includes(:plot, :nutrients)
@@ -62,6 +63,7 @@ class SoilSamplesController < ApplicationController
 
     def set_soil_sample
       @soil_sample = SoilSample.find(params[:id])
+      @preload = [@soil_sample.plot, @soil_sample.user, nutrient_table_data(@soil_sample, "")]
     end
 
     def soil_sample_params
