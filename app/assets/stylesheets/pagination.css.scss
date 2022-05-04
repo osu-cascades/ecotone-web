@@ -1,0 +1,26 @@
+@import './constants.css.scss';
+
+nav.paginator {
+	display: block;
+	margin: 0 0 2em 0;
+}
+
+ul.pagination {
+	margin: 0px;
+}
+
+.pagination li a {
+	color: $orange3;
+	&:hover {
+		color: $orange4;
+	}
+}
+
+.pagination li.active a {
+	background-color: $orange3;
+	border-color: $orange3;
+	&:hover {
+		background-color: $orange3;
+		border-color: $orange3;
+	}
+}
