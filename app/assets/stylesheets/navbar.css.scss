@@ -1,11 +1,14 @@
 @import './constants.css.scss';
 
+// manipulating the bootstrap CSS for some customization
+// the navbar from bootstrap is pretty okay, so we won't rebuild it from scratch
+
 #logo {
   float: left;
   display: flex;
   align-items: center;
   font-size: $txt5;
-  color: $grey5;
+  color: $grey6;
   margin-right: $space1;
   padding-top: $space1;
   &:hover {
@@ -14,5 +17,61 @@
   }
   &:active {
     color: $green4;
+  }
+}
+
+#crest {
+  height: $space6;
+  margin-top: -14px;
+}
+
+#navbar li a {
+  &:active {
+    color: $grey7;
+  }
+}
+
+#navbar li.dropdown a {
+  &:active {
+    color: $grey3;
+  }
+}
+
+.navbar-inverse .navbar-toggle {
+  border-color: transparent;
+}
+
+// override the menu breakpoint so admin views break nicely into a mobile menu
+// otherwise the menu overflows and takes up a lot of space
+@media (max-width: 995px) {
+  .navbar-header {
+    float: none;
+  }
+
+  .navbar-toggle {
+    display: block;
+  }
+
+  .navbar-collapse {
+    border-top: 1px solid transparent;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+    &.collapse {
+      display: none !important;
+      &.in {
+        display: block !important;
+      }
+    }
+  }
+  
+  .navbar-nav {
+    float: none !important;
+    margin: 7.5px -15px;
+    &li {
+      float: none;
+      &a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+    }
   }
 }
