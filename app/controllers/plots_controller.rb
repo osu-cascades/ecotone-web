@@ -12,10 +12,9 @@ class PlotsController < ApplicationController
 
   def map
     @plots = Plot.all
-  end;
-
-  def show; 
   end
+
+  def show; end
 
   def new
     @plot = Plot.new
