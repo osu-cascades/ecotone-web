@@ -6,6 +6,7 @@ module ApplicationHelper
   end
 
   def form_errors_for(object)
+    object.photo.purge if object.photo.attached?
     render partial: 'shared/form_errors', locals: { object: object }
   end
 
