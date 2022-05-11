@@ -10,6 +10,9 @@ class SoilSample < ApplicationRecord
   has_many :nutrients, dependent: :destroy
   has_and_belongs_to_many :biodiversity_reports
 
+  has_many_attached :photo
+  validates :photo, content_type: ['image/jpg', 'image/png', 'image/jpeg']
+
   accepts_nested_attributes_for :nutrients, reject_if: :nutrient_presence_unspecified
 
   validates_presence_of :collected_on
