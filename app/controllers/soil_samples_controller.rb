@@ -63,12 +63,11 @@ class SoilSamplesController < ApplicationController
 
     def set_soil_sample
       @soil_sample = SoilSample.find(params[:id])
-      @preload = [@soil_sample.plot, @soil_sample.user, nutrient_table_data(@soil_sample, "")]
     end
 
     def soil_sample_params
       params.require(:soil_sample).permit(:collected_on, :plot_id, :collection_method, :ph_level, :temperature, :moisture,
-         nutrients_attributes: [:id, :name, :amount, :level])
+         nutrients_attributes: [:id, :name, :amount, :level], photo: [])
     end
 
 end
