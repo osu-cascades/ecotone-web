@@ -12,7 +12,7 @@ RSpec.describe ApplicationHelper, type: :helper do
   end
 
   describe '#form_errors_for' do
-    let(:model) { double }
+    let(:model) { double(:photo => double(:attached? => true, :purge => true)) }
 
     context 'when there are no form errors' do
       it 'returns an empty string when the model has no errors' do
