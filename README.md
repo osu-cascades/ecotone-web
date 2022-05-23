@@ -122,6 +122,8 @@ git push [staging|production] {branch}:master
 ````
 If you are pushing from your local master branch, then you can omit the last part of the command. Otherwise, replace {branch} with the name of the branch you are deploying from. To override outdated commits, such as when you push then rollback to a previous version, add `--force` to the command.
 
+### 6. Leaflet and MapBox (optional)
+
 ### Final Tidbits
 If you want all the app power of admin privileges, follow these steps:
 
