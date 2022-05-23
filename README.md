@@ -127,6 +127,8 @@ If you are pushing from your local master branch, then you can omit the last par
 Leaflet Library [https://leafletjs.com/]
 MapBox API [https://www.mapbox.com/]
 
+If you plan on working on the Leaflet map implementation, then the proper configuration variable must be enabled within you `.env` file. Adding the line; `LEAFLET_KEY=<key>` to the aforementioned file will enable local development for the map and corresponding features. 
+
 ### Final Tidbits
 If you want all the app power of admin privileges, follow these steps:
 
