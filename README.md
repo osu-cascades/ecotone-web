@@ -123,11 +123,12 @@ git push [staging|production] {branch}:master
 If you are pushing from your local master branch, then you can omit the last part of the command. Otherwise, replace {branch} with the name of the branch you are deploying from. To override outdated commits, such as when you push then rollback to a previous version, add `--force` to the command.
 
 ### 6. Leaflet and MapBox (optional)
+Ecotone's map of plots requires a specific library and API:
 
-Leaflet Library [https://leafletjs.com/]
-MapBox API [https://www.mapbox.com/]
+[Leaflet Library](https://leafletjs.com/)
+[MapBox API](https://www.mapbox.com/)
 
-If you plan on working on the Leaflet map implementation, then the proper configuration variable must be enabled within you `.env` file. Adding the line; `LEAFLET_KEY=<key>` to the aforementioned file will enable local development for the map and corresponding features. 
+If you plan on working on the Leaflet map implementation locally, then the proper configuration variable must be enabled within your `.env` file by adding `LEAFLET_KEY=<key>`. This will enable local development for the map and corresponding features. 
 
 ### Final Tidbits
 If you want all the app power of admin privileges, follow these steps:
