@@ -124,6 +124,9 @@ If you are pushing from your local master branch, then you can omit the last par
 
 ### 6. Leaflet and MapBox (optional)
 
+Leaflet Library [https://leafletjs.com/]
+MapBox API [https://www.mapbox.com/]
+
 ### Final Tidbits
 If you want all the app power of admin privileges, follow these steps:
 
