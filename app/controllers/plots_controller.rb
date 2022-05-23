@@ -11,7 +11,7 @@ class PlotsController < ApplicationController
   end
 
   def map
-    @plots = Plot.all
+    @plots = Plot.all.includes(photo_attachments: :blob)
   end;
 
   def show; 
