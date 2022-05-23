@@ -63,7 +63,6 @@ class SoilSamplesController < ApplicationController
 
     def set_soil_sample
       @soil_sample = SoilSample.find(params[:id])
-      @preload = [@soil_sample.plot, @soil_sample.user, nutrient_table_data(@soil_sample, "")]
     end
 
     def soil_sample_params
