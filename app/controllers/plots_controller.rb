@@ -12,10 +12,9 @@ class PlotsController < ApplicationController
 
   def map
     @plots = Plot.all.includes(photo_attachments: :blob)
-  end;
-
-  def show; 
   end
+
+  def show; end
 
   def new
     @plot = Plot.new
