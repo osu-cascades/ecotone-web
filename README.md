@@ -125,10 +125,10 @@ If you are pushing from your local master branch, then you can omit the last par
 ### 6. Leaflet and MapBox (optional)
 Ecotone's map of plots requires a specific library and API:
 
-[Leaflet Library](https://leafletjs.com/)
-[MapBox API](https://www.mapbox.com/)
+* [Leaflet Library](https://leafletjs.com/)
+* [MapBox API](https://www.mapbox.com/)
 
-If you plan on working on the Leaflet map implementation locally, then the proper configuration variable must be enabled within your `.env` file by adding `LEAFLET_KEY=<key>`. This will enable local development for the map and corresponding features. 
+If you plan on working on the Leaflet map implementation locally, then you must enable the proper configuration variable within your `.env` file by adding `LEAFLET_KEY=<key>`. This will allow you to edit the map and its corresponding features in your development environment.
 
 ### Final Tidbits
 If you want all the app power of admin privileges, follow these steps:
