@@ -17,7 +17,7 @@ RSpec.feature 'User creates a biodiversity report' do
     fill_in('Species Richness', with: '10')
     fill_in('Shannon-Wiener Diversity Index', with: '5.0')
     fill_in('Species Evenness', with: '0.5')
-    fill_in('Biomass Estimate', with: '1.0')
+    fill_in('Biomass Estimate (grams per square meter)', with: '1.0')
     click_button('Create Report')
     expect(page).to have_selector '.alert', text: 'Biodiversity report was successfully created.'
   end
