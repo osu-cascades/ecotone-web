@@ -25,7 +25,7 @@
           %th{scope: 'row'} Plot
           %td= link_to(@biodiversity_report.plot)
         %tr
-          %th{scope: 'row'} Temperature
+          %th{scope: 'row'} Temperature (celsius)
           %td= @biodiversity_report.temperature
         %tr
           %th{scope: 'row'} Species Richness
@@ -37,7 +37,7 @@
           %th{scope: 'row'} Species Evenness
           %td= @biodiversity_report.species_evenness
         %tr
-          %th{scope: 'row'} Biomass Estimate
+          %th{scope: 'row'} Biomass Estimate (grams per square meter)
           %td= @biodiversity_report.biomass_estimate
 
 - if @biodiversity_reports
