@@ -25,7 +25,7 @@
           = form.label :diversity_index, 'Shannon-Wiener Diversity Index'
           = form.text_field :diversity_index, class: 'form-control'
         .data
-          = form.label :biomass_estimate, 'Biomass Estimate'
+          = form.label :biomass_estimate, 'Biomass Estimate (grams per square meter)'
           = form.text_field :biomass_estimate, class: 'form-control'
     = render 'layouts/image_gallery', {form: form, entity: @biodiversity_report, phrase: 'Include reference pictures for the report'}
     = render 'layouts/form_buttons', form: form
