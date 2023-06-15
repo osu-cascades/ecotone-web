@@ -22,7 +22,7 @@
           = form.label :percent_cover, 'Coverage'
           = form.text_field :percent_cover, class: 'form-control'
         .data
-          = form.label :biomass_estimate, 'Biomass Estimate'
+          = form.label :biomass_estimate, 'Biomass Estimate (grams per square meter)'
           = form.text_field :biomass_estimate, class: 'form-control'
     = render 'layouts/image_gallery', {form: form, entity: @plant_sample, phrase: 'Include reference pictures for the sample'}
     = render 'layouts/form_buttons', {form: form, text: 'Sample'}
