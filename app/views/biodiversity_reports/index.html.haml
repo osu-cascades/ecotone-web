@@ -11,11 +11,11 @@
         %th{scope: 'col'} ID
         %th{scope: 'col'} Measured On
         %th{scope: 'col'} Plot
-        %th{scope: 'col'} Temperature
+        %th{scope: 'col'} Temperature (celsius)
         %th{scope: 'col'} Species Richness
         %th{scope: 'col'} Diversity Index
         %th{scope: 'col'} Species Evenness
-        %th{scope: 'col'} Biomass Estimate
+        %th{scope: 'col'} Biomass Estimate (grams per square meter)
     %tbody
       - @biodiversity_reports.each do |report|
         %tr{:onclick => "location.href='#{url_for(report)}'"}
